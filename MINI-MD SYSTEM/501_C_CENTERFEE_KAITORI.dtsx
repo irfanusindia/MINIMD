@@ -1,0 +1,2536 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/4/2017 11:24:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{79AD498D-7299-45CD-A207-E921CF204B9D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="501_C_CENTERFEE_KAITORI"
+  DTS:PackageType="5"
+  DTS:VersionBuild="359"
+  DTS:VersionGUID="{FD44FAA3-01C6-464F-947D-50C4D8778F70}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CSV作成]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="CSV作成"
+      DTS:DTSID="{C222F698-1E1D-48D5-8669-9FC0D8CF2391}"
+      DTS:ObjectName="CSV作成">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::filePath] + "\\" +  @[User::distSireSakiCode] + "_" +  @[User::excelName]  + "_" +  @[User::distNenGetsu] + ".CSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="仕入条件"
+              DTS:DTSID="{A565F4C9-91B4-4974-8E88-1BAFCD8CAAAC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="取引先№"
+              DTS:DTSID="{48B3B2AA-0AE9-41EC-9442-2F4A5368C3A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="取引先名"
+              DTS:DTSID="{4B42E7CF-1435-4542-84A9-3FADBA4A0A22}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="倉庫ｺｰﾄﾞ"
+              DTS:DTSID="{54AF9654-C810-46AC-A52F-CC7DE2462D16}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="商品ｺｰﾄﾞ"
+              DTS:DTSID="{03EF1C51-84A0-473B-9044-9F0C124854BB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="商品名"
+              DTS:DTSID="{C85A1AF8-34A4-4847-9081-A302EE317D1D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ﾒｰｶｰ品番"
+              DTS:DTSID="{A4C8EF9F-A307-45B5-BF5B-7C0F676BAE10}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="下代"
+              DTS:DTSID="{3A9E8A9E-DCEC-4FBE-B912-2AB7F8946F0C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="出荷数"
+              DTS:DTSID="{B74B3DFC-684D-41B0-A340-B6E063BCEE5A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="下代合計"
+              DTS:DTSID="{AFAFF1EF-808B-45A7-BF7C-99468C07774D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="センターフィー"
+              DTS:DTSID="{66232337-8E70-47DA-816F-70C251031A32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="業態区分"
+              DTS:DTSID="{E2DD7BCF-37A2-4BD4-A9A6-C5F9ACDA9654}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Delete_CSV]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{c09301f6-f4af-4d89-b619-73cb4a49cdca}"
+      DTS:ObjectName="Delete_CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::filePath] + "\\" +  @[User::distSireSakiCode] + "_" +  @[User::excelName]  + "_" +  @[User::distNenGetsu] + ".CSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.CSV" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Delete_ZIP]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{763CDEEB-6DC5-4ECD-A020-9113164B91AD}"
+      DTS:ObjectName="Delete_ZIP">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::filePath] + "\\" +  @[User::distSireSakiCode] + "_" +  @[User::excelName]  + "_" +  @[User::distNenGetsu] + ".ZIP"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.ZIP" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{BCB06BBB-C9F3-4A69-86F2-CC00169B8BA5}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\501_C_CENTERFEE_KAITORI_20170516" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4A74375D-701F-41FF-B399-D9D815B014EE}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA32tYfgxgJkK7gRQWnfokdwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAYzX+JR3AKmbG6GFdDPoGinnk0WnOqECtKG10nVtYBGgAAAAAOgAAAAAIAACAAAABwI+lgx/7kMt64rNhOJDon3Sa2HxQ90HANeTdpgYKz9yAAAABewwkuoKp00Op+V0aQWfvMxTXwlHVyy3857NgsNZoviUAAAAAmC9RhvYLPnekJoEBxvIY03bHM8ZVhByjS7MndBbZ6m8DoCCGFtMJkbpRRXIj2gZViYzy/xFZmIgGGzBuF4vxG</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{E9443F2D-5073-4E13-A7BA-354D88D308D3}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3BCFD545-2352-4E05-A054-AD882AFB3CE1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1AFA6F23-0B5C-4C02-BB9F-6AFFF8B6EB5C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::filePath] + &quot;\\&quot; +  @[User::distSireSakiCode] + &quot;_&quot; +  @[User::excelName]  + &quot;_&quot; +  @[User::distNenGetsu] + &quot;.CSV&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="csvFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B8BA943B-2176-4144-A20F-529318EE0B6F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="distNenGetsu">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A63F83B8-6C20-4A43-8ABA-C70E2D9B5E2B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="distSireSakiCode">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9248D18A-6422-4B82-9C11-42FB00B40712}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtNenGetsu">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4A54D585-7041-4D3F-B6F6-17C3EAB08C3F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtSireSaki">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D1210327-9D62-444C-83E9-752DECED9F13}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="excelName">
+      <DTS:VariableValue
+        DTS:DataType="8">KAITORI_CENTERFEE</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8AF4B6D1-CE03-4463-86BE-7E8E95E5D7A3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filePath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\IM_FILES\Chouhyou</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7CDD27FC-EAB3-44D4-9DB5-6AF10D87D9AC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="maxDate">
+      <DTS:VariableValue
+        DTS:DataType="7">3/20/2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{04EB5AA4-A3D5-4BB2-BFD2-0DD2480D7D2C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="minDate">
+      <DTS:VariableValue
+        DTS:DataType="7">2/21/2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F3E44A8B-E591-4C02-9D86-CDCBE032E069}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sheetName">
+      <DTS:VariableValue
+        DTS:DataType="8">Q_EXECL出力</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5EEB54E8-A424-4D68-8E11-F37E3CF3380E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="REPLACE(LEFT( (DT_WSTR, 22) (@[User::maxDate]), 10 ) ,&quot;/&quot;,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strMaxDate">
+      <DTS:VariableValue
+        DTS:DataType="8">20170320</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B52FB383-E50E-464D-9049-6F9BF4F2E212}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="REPLACE(LEFT( (DT_WSTR, 22) (@[User::minDate]), 10 ) ,&quot;/&quot;,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strMinDate">
+      <DTS:VariableValue
+        DTS:DataType="8">20170221</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38862D51-B6DF-48BA-8CD7-9A2916C96434}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_ftp_password">
+      <DTS:VariableValue
+        DTS:DataType="8">NSSOLUSER</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D520BF40-884C-4DAC-82B2-FCED37AC73BA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_ftp_path">
+      <DTS:VariableValue
+        DTS:DataType="8">/JUTAKU_KAITORI</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B05EA8C4-7011-4D8A-9C99-CAE67B494D8E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_ftp_port">
+      <DTS:VariableValue
+        DTS:DataType="8">21</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D6FBE5CC-C742-4B50-B861-AD5FE6173544}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_ftp_server">
+      <DTS:VariableValue
+        DTS:DataType="8">10.100.100.43</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5ED1540-AF1E-42B2-B7FC-C104087FEF1C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_ftp_username">
+      <DTS:VariableValue
+        DTS:DataType="8">NSSOL</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{25620B79-6F05-478D-BF4D-89FBF0641BC9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; +  (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0, GETDATE() )),2))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="7">5/16/2017</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{E9443F2D-5073-4E13-A7BA-354D88D308D3}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dist 年度_月度"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{38AD3065-5B7D-4031-80CD-0389BD2B9B3D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dist 年度_月度"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4A74375D-701F-41FF-B399-D9D815B014EE}"
+          SQLTask:SqlStatementSource="SELECT CALENDER.年度+CALENDER.月度 AS DISTNENGETSU,MIN(カレンダー年月日) AS MINDATE,MAX(カレンダー年月日) AS MAXDATE&#xA;FROM D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS AS IFS&#xA;LEFT JOIN MI_SYS_CALENDAR_INFO AS CALENDER&#xA;ON IFS.HD_STOCK_DATE = CALENDER.カレンダー年月日&#xA;WHERE IFS.HD_SUP_CODE IN (SELECT DISTINCT メーカー FROM T_CENTERFEE_MATOME_DATA)&#xA;AND IFS.HD_STOCK_DATE NOT BETWEEN (SELECT MIN(月度開始日) AS MINDATE FROM M_DENPYOU_SIME_MASTER WHERE 月度締日 IS NOT NULL)&#xA;AND (SELECT MAX(月度終了日) AS MAXDATE FROM M_DENPYOU_SIME_MASTER WHERE 月度締日 IS NOT NULL)&#xA;AND IFS.HD_DEALTYPE_CODE='K'&#xA;GROUP BY 年度,月度&#xA;ORDER BY 年度,月度"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::dtNenGetsu" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\FTP_PUT"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{D777F7F9-8A3C-4223-B480-D97480A8DE15}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP_PUT"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_caba4d996a3946c182361c4116949bdd"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::excelName,User::filePath,User::str_ftp_password,User::str_ftp_path,User::str_ftp_port,User::str_ftp_server,User::str_ftp_username">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_caba4d996a3946c182361c4116949bdd.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{c21ab887-cb3e-413e-87ea-082f6967dc49}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_d8917cfb519340c5a80c83a46a5d925c</RootNamespace><AssemblyName>ST_caba4d996a3946c182361c4116949bdd</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Namespaces
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System;
+#endregion
+namespace ST_d8917cfb519340c5a80c83a46a5d925c
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+		public void Main()
+		{
+            // get all important data from variables
+            string strLocalFile = Dts.Variables["User::filePath"].Value.ToString();
+            string strRemotePath = Dts.Variables["User::str_ftp_path"].Value.ToString();
+            string port = Dts.Variables["User::str_ftp_port"].Value.ToString();
+            string server = Dts.Variables["User::str_ftp_server"].Value.ToString();
+            string user = Dts.Variables["User::str_ftp_username"].Value.ToString();
+            string password = Dts.Variables["User::str_ftp_password"].Value.ToString();
+            string pattern = "*" + Dts.Variables["User::excelName"].Value.ToString() + "*.ZIP";
+
+            //call ftp functions
+            // make directory if not exists on ftp server
+            _makeDirectory(strLocalFile, strRemotePath, port, server, user, password, pattern);
+            
+            //transfer files to ftp server
+            _uploadFTPFile(strLocalFile, strRemotePath, port, server, user, password, pattern);
+
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region Upload File
+
+        /// <summary>
+        ///     <para>Date : 2017-02-10 </para>
+        ///     <para>Irfan Mansuri </para>
+        ///     <para>Here from all local files, first we are extracting nendogetsudo code.</para>
+        ///     <para>Files are uploaded on their respective folders using that nendogetsudo code.</para>
+        ///  
+        /// </summary>
+        /// 
+        /// <param name="strLocalFile">Local File Path</param>
+        /// <param name="strRemoteFile">Remote File Path</param>
+        /// <param name="port">Port number of FTP Server</param>
+        /// <param name="server">Server's IP Address</param>
+        /// <param name="user">Username of FTP Server</param>
+        /// <param name="password">Password of User</param>
+        /// <param name="fileExtension">File Extension</param>
+        public void _uploadFTPFile(string strLocalFile, string strRemoteFile, string port, string server, string user, string password, string pattern)
+        {
+            //string strHost = "ftp://" + "" + user + ":" + password + "@" + server + ":" + port;
+            string strHost = "ftp://" + "" + user + ":" + password + "@" + server;
+            FtpWebRequest ftpRequest = null;
+            FileStream fileStream = null;
+            int intBufferLength = 2048;
+            string strFileName = string.Empty;
+            string strNendoGetsudo = string.Empty;
+            //loop thru all local shiiresaki files.
+            string[] strFtp_files_list = Directory.GetFiles(strLocalFile, pattern);
+            try
+            {
+                foreach (string shiiresaki_file in strFtp_files_list)
+                {
+
+                    //get file name and nendoGetsudo from path.
+                    strFileName = Path.GetFileName(shiiresaki_file); // get file name
+                    byte[] theBytes = Encoding.GetEncoding("UTF-8").GetBytes(Path.GetFileName(shiiresaki_file));
+                    strNendoGetsudo = Path.GetFileNameWithoutExtension(Encoding.GetEncoding("UTF-8").GetString(theBytes)).Split('_').Last().ToString(); //get nendogetsudo code from filename
+
+                    // transfer current files according to nendoGetsudo folders.
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(strHost + strRemoteFile + "/" + strNendoGetsudo + "/" + Encoding.GetEncoding("UTF-8").GetString(theBytes));
+                    ftpRequest.Credentials = new NetworkCredential(user, password);
+                    ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
+                    //ftpRequest.UseBinary = true;
+                    ftpRequest.UsePassive = true;
+                    ftpRequest.KeepAlive = true;
+                    FileInfo fileInfo = new FileInfo(shiiresaki_file);
+                    fileStream = fileInfo.OpenRead();
+                    byte[] buffer = new byte[intBufferLength];
+                    Stream uploadStream = ftpRequest.GetRequestStream();
+                    int contentLength = fileStream.Read(buffer, 0, intBufferLength);
+                    while (contentLength != 0)
+                    {
+                        uploadStream.Write(buffer, 0, contentLength);
+                        contentLength = fileStream.Read(buffer, 0, intBufferLength);
+                    }
+                    uploadStream.Close();
+                    fileStream.Close();
+                }
+            }
+            #region Catch / Finally
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                strLocalFile = null;
+                strRemoteFile = null;
+                port = null;
+                server = null;
+                user = null;
+                password = null;
+                pattern = null;
+                strHost = null;
+                strFileName = null;
+                strNendoGetsudo = null;
+                strFtp_files_list = null;
+                ftpRequest = null;
+                fileStream = null;
+            }
+            #endregion
+            
+        }
+        #endregion
+
+        #region Make Directory
+        /// <summary>
+        ///     <para>Date : 2017-02-10 </para>
+        ///     <para>Irfan Mansuri </para>
+        ///     <para>From the list of files available in local, we are extracting nendoGetsudo code</para>
+        ///     <para>Here we are making directories based on nendoGetsudo code</para>
+        /// </summary>
+        /// <param name="strLocalFile">Local File Path</param>
+        /// <param name="strRemoteFile">Remote File Path</param>
+        /// <param name="port">Port number of FTP Server</param>
+        /// <param name="server">Server's IP Address</param>
+        /// <param name="user">Username of FTP Server</param>
+        /// <param name="password">Password of User</param>
+        /// <param name="fileExtension">File Extension</param>
+        public void _makeDirectory(string strLocalFile, string strRemoteFile, string port, string server, string user, string password, string pattern)
+        {
+            //string strHost = "ftp://" + "" + user + ":" + password + "@" + server + ":" + port;
+            string strHost = "ftp://" + "" + user + ":" + password + "@" + server;
+            FtpWebRequest ftpRequest = null;
+            List<string> totalCode = new List<string>();
+            string[] ftp_files_list = Directory.GetFiles(strLocalFile, pattern);
+            try
+            {
+                foreach (string shiiresaki_file in ftp_files_list)
+                {
+                    string nendoGetsudo = Path.GetFileNameWithoutExtension(shiiresaki_file).Split('_').Last().ToString();
+                    totalCode.Add(nendoGetsudo);
+                }
+                string[] folderList = totalCode.Distinct().ToArray();
+                foreach (string nendoGetsudo in folderList)
+                {
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(strHost + strRemoteFile + "/" + nendoGetsudo);
+                    ftpRequest.Credentials = new NetworkCredential(user, password);
+                    ftpRequest.Method = WebRequestMethods.Ftp.MakeDirectory; // Make directory if it is not on the ftp server.
+                    try
+                    {
+                        var resp = (FtpWebResponse)ftpRequest.GetResponse();
+                    }
+                    catch (WebException ex)
+                    {
+                    }
+                }
+            }
+            #region Catch / Finally 
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                strLocalFile = null;
+                strRemoteFile = null;
+                port = null;
+                server = null;
+                user = null;
+                password = null;
+                pattern = null;
+                strHost = null;
+                ftpRequest = null;
+                totalCode = null;
+                ftp_files_list = null;
+                ftpRequest = null;
+            }
+            #endregion
+        }
+
+        #endregion
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_d8917cfb519340c5a80c83a46a5d925c</msb:CodeName>
+		<msb:DisplayName>ST_d8917cfb519340c5a80c83a46a5d925c</msb:DisplayName>
+		<msb:ProjectId>{463F6C6B-C541-41C3-B7AC-35D3D1F88404}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_caba4d996a3946c182361c4116949bdd.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Settings.get_Default():ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Sett" +
+    "ings")]
+
+namespace ST_d8917cfb519340c5a80c83a46a5d925c.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_d8917cfb519340c5a80c83a46a5d925c")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_d8917cfb519340c5a80c83a46a5d925c")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_d8917cfb519340c5a80c83a46a5d925c.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_d8917cfb519340c5a80c83a46a5d925c.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_caba4d996a3946c182361c4116949bdd.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDABA62lgAAAAAAAAAAOAAAiELAQsAABoAAAAIAAAAAAAA/jgA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKQ4AABXAAAAAEAAAAgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAABBkAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADg
+OAAAAAAAAEgAAAACAAUAKCYAAHwSAAABAAAAAAAAAHAlAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqABMwCAAfAQAAAgAAEQIoFgAACm8XAAAKcnMAAHBvGAAACm8ZAAAKbxoA
+AAoKAigWAAAKbxcAAApykQAAcG8YAAAKbxkAAApvGgAACgsCKBYAAApvFwAACnK3AABwbxgAAApv
+GQAACm8aAAAKDAIoFgAACm8XAAAKct0AAHBvGAAACm8ZAAAKbxoAAAoNAigWAAAKbxcAAApyBwEA
+cG8YAAAKbxkAAApvGgAAChMEAigWAAAKbxcAAApyNQEAcG8YAAAKbxkAAApvGgAAChMFcmMBAHAC
+KBYAAApvFwAACnJnAQBwbxgAAApvGQAACm8aAAAKcocBAHAoGwAAChMGAgYHCAkRBBEFEQYoCgAA
+BgIGBwgJEQQRBREGKAkAAAYCKBYAAAoWbxwAAAoqABswBADWAQAAAwAAERyNHgAAARMNEQ0WcpMB
+AHCiEQ0XDgWiEQ0YcqEBAHCiEQ0ZDgaiEQ0acqUBAHCiEQ0bDgSiEQ0oHQAACgoUCxQMIAAIAAAN
+fh4AAAomfh4AAAoTBAMOBygfAAAKEwURBRMOFhMPODUBAAARDhEPmhMGEQYoIAAACiZyqQEAcCgh
+AAAKEQYoIAAACm8iAAAKEwdyqQEAcCghAAAKEQdvIwAACigkAAAKF40iAAABExAREBYfX50REG8l
+AAAKKAEAACtvGgAAChMEHI0eAAABExERERYGohERFwSiEREYcrUBAHCiEREZEQSiEREacrUBAHCi
+EREbcqkBAHAoIQAAChEHbyMAAAqiEREoHQAACignAAAKdCYAAAELBw4FDgZzKAAACm8pAAAKB3K5
+AQBwbyoAAAoHF28rAAAKBxdvLAAAChEGcy0AAAoTCBEIby4AAAoMCY0rAAABEwkHby8AAAoTCggR
+CRYJbzAAAAoTCysYEQoRCRYRC28xAAAKCBEJFglvMAAAChMLEQst5BEKbzIAAAoIbzIAAAoRDxdY
+Ew8RDxEOjmk/wP7//94FEwwRDHreIhQQARQQAhQQAxQQBBQQBRQQBhQQBxQKFBMEFBMFFAsUDNwq
+AABBNAAAAAAAAF4AAABOAQAArAEAAAUAAAAtAAABAgAAAF4AAABVAQAAswEAACIAAAAAAAAAGzAE
+ADQBAAAEAAARHI0eAAABEwkRCRZykwEAcKIRCRcOBaIRCRhyoQEAcKIRCRkOBqIRCRpypQEAcKIR
+CRsOBKIRCSgdAAAKChQLczMAAAoMAw4HKB8AAAoNCRMKFhMLKz0RChELmhMEEQQoJAAACheNIgAA
+ARMMEQwWH1+dEQxvJQAACigBAAArbxoAAAoTBQgRBW80AAAKEQsXWBMLEQsRCo5pMrsIKAIAACso
+AwAAKxMGEQYTDRYTDitREQ0RDpoTBwYEcrUBAHARByg3AAAKKCcAAAp0JgAAAQsHDgUOBnMoAAAK
+bykAAAoHcsMBAHBvKgAACgdvOAAACnQwAAABJt4DJt4AEQ4XWBMOEQ4RDY5pMqfeBRMIEQh63iAU
+EAEUEAIUEAMUEAQUEAUUEAYUEAcUChQLFAwUDRQL3CoBKAAAAADrAA75AAMxAAABAABOAL4MAQUt
+AAABAgBOAMUTASAAAAAAHgIoOQAACiq0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
+UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
+bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAQlNKQgEAAQAAAAAADAAAAHY0LjAu
+MzAzMTkAAAAABQBsAAAAhAUAACN+AADwBQAAQAgAACNTdHJpbmdzAAAAADAOAADMAQAAI1VTAPwP
+AAAQAAAAI0dVSUQAAAAMEAAAcAIAACNCbG9iAAAAAAAAAAIAAAFXHaIJCQsAAAD6JTMAFgAAAQAA
+ADEAAAAFAAAABgAAAAsAAAAPAAAAOQAAAAIAAAAPAAAABAAAAAIAAAADAAAABAAAAAEAAAABAAAA
+BQAAAAEAAAABAAAAAwAAAAAACgABAAAAAAAGAMEAugAKAN0AyAAOAD0BFAEGAFkBugAGAG8BXgEG
+AKABiwEGALICmAIGAN0CywIGAPQCywIGABEDywIGADADywIGAEkDywIGAGIDywIGAH0DywIGAJgD
+ywIGALEDywIGAOoDygMGAAoEygMGAF8ETAQGAHwEugAGAIEEugAGAKUEywIKANEEuwQKAOoEuwQG
+AP8EygMOACEFFAEOAEMFFAESAJwFfAUSALQFfAUGANkFugAGAAYG/AUGABkG/AUGADYGKgYGAHoG
+ugAWAJ0GkQYGAMMGqAYKAOEG1gYKAPMG1gYKAAEH1gYKABMH1gYGAFgH/AUGAGEH/AUGAHUHugAG
+AHoH/AUGAKMHugAGAK0HqAYKAMkH1gYKAOEH1gYKAPAH1gYAAAAAAQAAAAAAAQABAAAAEAAyADwA
+BQABAAEAAAEQAGsAPAAJAAMABQABABAAdAB/AA0ABAAIAAMBAACjAAAAEQAEAAwAEQB/ARMAEQCs
+ARcAEQD2ATkABgY9AlIAVoBFAlUAVoBNAlUAUCAAAAAAgxi8ARsAAQBYIAAAAACTCMIBHwABAJEg
+AAAAAJMI1gEkAAEAmCAAAAAAkwjiASkAAQCgIAAAAACWCAYCPQACALMgAAAAAIYYvAEbAAIApyAA
+AAAAkRgaBZQAAgC8IAAAAACGABoCGwACAOghAAAAAIYAHwJHAAIAACQAAAAAhgAuAkcACQBoJQAA
+AACGGLwBGwAQAAAAAQBVAgAAAQBbAgAAAgBoAgAAAwB2AgAABAB7AgAABQCCAgAABgCHAgAABwCQ
+AgAAAQBbAgAAAgBoAgAAAwB2AgAABAB7AgAABQCCAgAABgCHAgAABwCQAjkAvAFjAEEAvAFjAEkA
+vAFjAFEAvAFjAFkAvAFjAGEAvAFjAGkAvAFjAHEAvAFjAHkAvAFjAIEAvAFjAIkAvAFoAJEAvAEb
+AJkAvAEbAAkAvAEbAKEAkwRtAKEArgR0ACkAvAF5ALkAvAGFAMkAvAEbABEAvAEbANEAvAEbABkA
+VQWYANkApgWdAOEAvQWiAOkAxgWoAAkA0AWsAPEA4AWwANkA5wVoAPEA4AXBAPEA9gXHAPkAEAbK
+AAEBHgbRAAkBPwbWAAkBSwbdAAkBVAbjAAEBXgbRAPEAfwbpABkB0QbwACkB7AYBATkBvAEIASkB
+IAcOASkBMAdjADEBOwcVATEBSgcVAUkBvAFjAEkBbAcaASkBgQcgAWEBkgcmAWEBlwcuAWEBnQcb
+AAwAvAEbAAwAtAdjARkBuAdpARkBwQd7AfEA4AWJASkB1QeRARkAvAEbAAgAFABZAAgAGABeACkA
+kwCLAC4AGwApAi4AIwApAi4AYwBPAi4ACwC4AS4AEwAAAi4AMwAAAi4AKwApAi4AOwAvAi4AQwAp
+Ai4AWwBGAkMAawBeAEkAkwCLAGEAmwBeAIMAqwBeAIAAtwA2AZcBAgABAAMAAwAAAG8BLwAAAO4B
+NAAAABICQgACAAIAAwACAAMABQABAAQABQACAAUABwBcAQSAAAABAAAAmBiQiAAAAAAAACgEAAAE
+AAAAAAAAAAAAAAABALEAAAAAAAQAAAAAAAAAAAAAAAEAugAAAAAADAAAAAAAAAAAAAAACgD1AAAA
+AAAMAAAAAAAAAAAAAAAKAF0FAAAAAAQAAAAAAAAAAAAAAAEAhQYAAAAAAAAAAAEAAAD9BwAABQAE
+AE0A/QBrAP0AbQD9AAAAAAAAPE1vZHVsZT4AU1RfY2FiYTRkOTk2YTM5NDZjMTgyMzYxYzQxMTY5
+NDliZGQuZGxsAFJlc291cmNlcwBTVF9kODkxN2NmYjUxOTM0MGM1YTgwYzgzYTQ2YTVkOTI1Yy5Q
+cm9wZXJ0aWVzAFNldHRpbmdzAFNjcmlwdE1haW4AU1RfZDg5MTdjZmI1MTkzNDBjNWE4MGM4M2E0
+NmE1ZDkyNWMAU2NyaXB0UmVzdWx0cwBtc2NvcmxpYgBTeXN0ZW0AT2JqZWN0AFN5c3RlbS5Db25m
+aWd1cmF0aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2Ny
+aXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFZTVEFSVFNj
+cmlwdE9iamVjdE1vZGVsQmFzZQBFbnVtAFN5c3RlbS5SZXNvdXJjZXMAUmVzb3VyY2VNYW5hZ2Vy
+AHJlc291cmNlTWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZvAHJlc291cmNlQ3Vs
+dHVyZQAuY3RvcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAEN1
+bHR1cmUAZGVmYXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQATWFpbgBfdXBsb2FkRlRQ
+RmlsZQBfbWFrZURpcmVjdG9yeQB2YWx1ZV9fAFN1Y2Nlc3MARmFpbHVyZQB2YWx1ZQBzdHJMb2Nh
+bEZpbGUAc3RyUmVtb3RlRmlsZQBwb3J0AHNlcnZlcgB1c2VyAHBhc3N3b3JkAHBhdHRlcm4AU3lz
+dGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAU3lzdGVtLlJl
+ZmxlY3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmli
+dXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1
+dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFz
+c2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3VsdHVyZUF0dHJpYnV0ZQBBc3NlbWJs
+eVZlcnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBDb21waWxh
+dGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFNU
+X2NhYmE0ZDk5NmEzOTQ2YzE4MjM2MWM0MTE2OTQ5YmRkAFN5c3RlbS5EaWFnbm9zdGljcwBEZWJ1
+Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAFR5cGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZy
+b21IYW5kbGUAQXNzZW1ibHkAZ2V0X0Fzc2VtYmx5AFN5c3RlbS5Db21wb25lbnRNb2RlbABFZGl0
+b3JCcm93c2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0
+ZWRBdHRyaWJ1dGUALmNjdG9yAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBTY3Jp
+cHRPYmplY3RNb2RlbABnZXRfRHRzAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwBNaWNy
+b3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFZhcmlhYmxlcwBnZXRfVmFyaWFibGVzAFZhcmlh
+YmxlAGdldF9JdGVtAGdldF9WYWx1ZQBUb1N0cmluZwBTdHJpbmcAQ29uY2F0AHNldF9UYXNrUmVz
+dWx0AEVtcHR5AFN5c3RlbS5JTwBEaXJlY3RvcnkAR2V0RmlsZXMAUGF0aABHZXRGaWxlTmFtZQBT
+eXN0ZW0uVGV4dABFbmNvZGluZwBHZXRFbmNvZGluZwBHZXRCeXRlcwBHZXRTdHJpbmcAR2V0Rmls
+ZU5hbWVXaXRob3V0RXh0ZW5zaW9uAENoYXIAU3BsaXQAU3lzdGVtLkNvcmUAU3lzdGVtLkxpbnEA
+RW51bWVyYWJsZQBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBJRW51bWVyYWJsZWAxAExhc3QA
+U3lzdGVtLk5ldABXZWJSZXF1ZXN0AENyZWF0ZQBGdHBXZWJSZXF1ZXN0AE5ldHdvcmtDcmVkZW50
+aWFsAElDcmVkZW50aWFscwBzZXRfQ3JlZGVudGlhbHMAc2V0X01ldGhvZABzZXRfVXNlUGFzc2l2
+ZQBzZXRfS2VlcEFsaXZlAEZpbGVJbmZvAEZpbGVTdHJlYW0AT3BlblJlYWQAQnl0ZQBTdHJlYW0A
+R2V0UmVxdWVzdFN0cmVhbQBSZWFkAFdyaXRlAENsb3NlAEV4Y2VwdGlvbgBMaXN0YDEAQWRkAERp
+c3RpbmN0AFRvQXJyYXkAV2ViUmVzcG9uc2UAR2V0UmVzcG9uc2UARnRwV2ViUmVzcG9uc2UAV2Vi
+RXhjZXB0aW9uAFNUX2Q4OTE3Y2ZiNTE5MzQwYzVhODBjODNhNDZhNWQ5MjVjLlByb3BlcnRpZXMu
+UmVzb3VyY2VzLnJlc291cmNlcwAAcVMAVABfAGQAOAA5ADEANwBjAGYAYgA1ADEAOQAzADQAMABj
+ADUAYQA4ADAAYwA4ADMAYQA0ADYAYQA1AGQAOQAyADUAYwAuAFAAcgBvAHAAZQByAHQAaQBlAHMA
+LgBSAGUAcwBvAHUAcgBjAGUAcwAAHVUAcwBlAHIAOgA6AGYAaQBsAGUAUABhAHQAaAAAJVUAcwBl
+AHIAOgA6AHMAdAByAF8AZgB0AHAAXwBwAGEAdABoAAAlVQBzAGUAcgA6ADoAcwB0AHIAXwBmAHQA
+cABfAHAAbwByAHQAAClVAHMAZQByADoAOgBzAHQAcgBfAGYAdABwAF8AcwBlAHIAdgBlAHIAAC1V
+AHMAZQByADoAOgBzAHQAcgBfAGYAdABwAF8AdQBzAGUAcgBuAGEAbQBlAAAtVQBzAGUAcgA6ADoA
+cwB0AHIAXwBmAHQAcABfAHAAYQBzAHMAdwBvAHIAZAAAAyoAAB9VAHMAZQByADoAOgBlAHgAYwBl
+AGwATgBhAG0AZQAACyoALgBaAEkAUAAADWYAdABwADoALwAvAAADOgAAA0AAAAtVAFQARgAtADgA
+AQMvAAAJUwBUAE8AUgAAB00ASwBEAAAAYDaYuYXeF0SgBVxC0CYaoQAIt3pcVhk04IkIiYRdzYCA
+zJEDBhIVAwYSGQMgAAEEAAASFQQAABIZBQABARIZBAgAEhUECAASGQMGEgwEAAASDAQIABIMCiAH
+AQ4ODg4ODg4CBggDBhEUBAAAAAAEAQAAAAQgAQEOBCABAQgGAAESURFVBCAAElkGIAIBDhJZBAcB
+EhUFIAEBEWEIAQACAAAAAAADAAABBCAAEm0EIAAScQUgARJ1HAMgABwDIAAOBgADDg4ODgkHBw4O
+Dg4ODg4FAAEOHQ4CBg4GAAIdDg4OBAABDg4GAAESgIUOBSABHQUOBSABDh0FBiABHQ4dAwwQAQEe
+ABUSgJEBHgADCgEOBgABEoCVDgUgAgEODgYgAQESgKEEIAEBAgUgABKAqQUgABKAsQcgAwgdBQgI
+ByADAR0FCAglBxIOEoCZEoCpCA4dDg4dBRKApR0FEoCxCBKAtR0OHQ4IHQMdDgYVEoC5AQ4FIAEB
+EwAREAEBFRKAkQEeABUSgJEBHgANEAEBHR4AFRKAkQEeAAcABA4ODg4OBSAAEoC9IAcPDhKAmRUS
+gLkBDh0ODg4dDg4SgLUdDh0OCB0DHQ4IRwEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC4wAQBU
+DhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1ld29yayA0KAEAI1NUX2Q4OTE3Y2ZiNTE5
+MzQwYzVhODBjODNhNDZhNWQ5MjVjAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTcAAAgBAAgA
+AAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEAAMw4AAAAAAAAAAAAAO44AAAAIAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAADgOAAAAAAAAAAAAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNj
+b3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAACwAwAAAAAAAAAAAACwAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAkIiYGAAAAQCQiJgYPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAEEAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAA7AIAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABfAGQA
+OAA5ADEANwBjAGYAYgA1ADEAOQAzADQAMABjADUAYQA4ADAAYwA4ADMAYQA0ADYAYQA1AGQAOQAy
+ADUAYwAAAEAADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA2ADIAOQA2AC4A
+MwA0ADkANgAwAAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfAGMAYQBi
+AGEANABkADkAOQA2AGEAMwA5ADQANgBjADEAOAAyADMANgAxAGMANAAxADEANgA5ADQAOQBiAGQA
+ZAAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQBy
+AGkAZwBoAHQAIABAACAAIAAyADAAMQA3AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUA
+bgBhAG0AZQAAAFMAVABfAGMAYQBiAGEANABkADkAOQA2AGEAMwA5ADQANgBjADEAOAAyADMANgAx
+AGMANAAxADEANgA5ADQAOQBiAGQAZAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEA
+bQBlAAAAAABTAFQAXwBkADgAOQAxADcAYwBmAGIANQAxADkAMwA0ADAAYwA1AGEAOAAwAGMAOAAz
+AGEANAA2AGEANQBkADkAMgA1AGMAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4A
+AAAxAC4AMAAuADYAMgA5ADYALgAzADQAOQA2ADAAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwAeQAg
+AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADYAMgA5ADYALgAzADQAOQA2ADAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAADkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\年度_月度wise Loop"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C2FE08C2-DFD2-4F28-B7D1-692A074A7DD7}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="年度_月度wise Loop">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{2025C6C1-08A8-46D0-A15C-FB142C86214C}"
+        DTS:ObjectName="{2025C6C1-08A8-46D0-A15C-FB142C86214C}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::dtNenGetsu" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\年度_月度wise Loop\DIST仕入先コード"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E5887A66-9274-40F7-B854-98070BF38A49}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DIST仕入先コード"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\年度_月度wise Loop\DIST仕入先コード\dtSireCdオブジェクトに保存"
+                  componentClassID="Microsoft.RecordsetDestination"
+                  contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates and populates an in-memory ADO recordset that is available outside of the data flow. Scripts and other package elements can use the recordset. For example, use a recordset to store the names of files that will be loaded into the data warehouse."
+                  name="dtSireCdオブジェクトに保存">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the recordset."
+                      name="VariableName">User::dtSireSaki</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\年度_月度wise Loop\DIST仕入先コード\dtSireCdオブジェクトに保存.Inputs[Recordset Destination Input]"
+                      hasSideEffects="true"
+                      name="Recordset Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\dtSireCdオブジェクトに保存.Inputs[Recordset Destination Input].Columns[メーカー]"
+                          cachedCodepage="932"
+                          cachedDataType="str"
+                          cachedLength="7"
+                          cachedName="メーカー"
+                          lineageId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output].Columns[メーカー]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="GET_DIST仕入先コードクエリ"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT MATOME.メーカー FROM T_CENTERFEE_MATOME_DATA AS MATOME
+LEFT JOIN D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS AS IFS
+ON IFS.HD_SUP_CODE = MATOME.メーカー
+WHERE IFS.HD_STOCK_DATE BETWEEN ? AND ? 
+AND IFS.HD_DEALTYPE_CODE='K' AND MATOME.メーカー NOT IN ('199999')
+AND [ｾﾝﾀｰFee合計（税抜き）] != 0</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">932</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{B52FB383-E50E-464D-9049-6F9BF4F2E212};"Parameter1:Input",{5EEB54E8-A424-4D68-8E11-F37E3CF3380E};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                      connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output].Columns[メーカー]"
+                          codePage="932"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output].ExternalColumns[メーカー]"
+                          length="7"
+                          lineageId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output].Columns[メーカー]"
+                          name="メーカー"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output].ExternalColumns[メーカー]"
+                          codePage="932"
+                          dataType="str"
+                          length="7"
+                          name="メーカー" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[メーカー]"
+                          codePage="932"
+                          dataType="str"
+                          length="7"
+                          lineageId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[メーカー]"
+                          name="メーカー" />
+                        <outputColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\年度_月度wise Loop\DIST仕入先コード.Paths[OLE DB Source Output]"
+                  endId="Package\年度_月度wise Loop\DIST仕入先コード\dtSireCdオブジェクトに保存.Inputs[Recordset Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Foreach Loop Container"
+          DTS:DTSID="{A08051B4-6505-4421-9DF9-B74249AA0150}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="仕入先コードwise Loopしてファイル作成">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{ECB36188-6745-4154-946B-31A5AF11999C}"
+            DTS:ObjectName="{ECB36188-6745-4154-946B-31A5AF11999C}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::dtSireSaki" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:DelayValidation="True"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{2BE2255A-741C-461B-AC6E-95ABB0073A3A}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="CENTER_FEEファイル作成"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先"
+                      componentClassID="Microsoft.FlatFileDestination"
+                      contactInfo="フラット ファイル変換先;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                      description="フラット ファイル変換先"
+                      localeId="1041"
+                      name="フラット ファイル変換先">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="対象ファイルにデータを上書きするか、追加するかを指定します。"
+                          name="Overwrite">true</property>
+                        <property
+                          dataType="System.Null"
+                          description="他のデータが書き込まれる前に、対象のファイルに書き込むテキストを指定します。"
+                          expressionType="Notify"
+                          name="Header" />
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Connections[FlatFileConnection]"
+                          connectionManagerID="Package.ConnectionManagers[CSV作成]"
+                          connectionManagerRefId="Package.ConnectionManagers[CSV作成]"
+                          name="FlatFileConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力]"
+                          hasSideEffects="true"
+                          name="フラット ファイル変換先の入力">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[仕入条件]"
+                              cachedDataType="wstr"
+                              cachedLength="10"
+                              cachedName="仕入条件"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[仕入条件]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[仕入条件]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[取引先№]"
+                              cachedDataType="wstr"
+                              cachedLength="10"
+                              cachedName="取引先№"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[取引先№]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先№]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[取引先名]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="取引先名"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[取引先名]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先名]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[倉庫ｺｰﾄﾞ]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="倉庫ｺｰﾄﾞ"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[倉庫ｺｰﾄﾞ]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[倉庫ｺｰﾄﾞ]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[商品ｺｰﾄﾞ]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="商品ｺｰﾄﾞ"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[商品ｺｰﾄﾞ]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品ｺｰﾄﾞ]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[商品名]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="商品名"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[商品名]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品名]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[ﾒｰｶｰ品番]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="ﾒｰｶｰ品番"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[ﾒｰｶｰ品番]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[ﾒｰｶｰ品番]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[下代]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="下代"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[下代]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[出荷数]"
+                              cachedDataType="wstr"
+                              cachedLength="10"
+                              cachedName="出荷数"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[出荷数]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[出荷数]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[下代合計]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="下代合計"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[下代合計]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代合計]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[センターフィー]"
+                              cachedDataType="wstr"
+                              cachedLength="200"
+                              cachedName="センターフィー"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[センターフィー]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[センターフィー]" />
+                            <inputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[業態区分]"
+                              cachedDataType="wstr"
+                              cachedLength="10"
+                              cachedName="業態区分"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[業態区分]"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[業態区分]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[仕入条件]"
+                              dataType="wstr"
+                              length="10"
+                              name="仕入条件" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[取引先№]"
+                              dataType="wstr"
+                              length="10"
+                              name="取引先№" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[取引先名]"
+                              dataType="wstr"
+                              length="200"
+                              name="取引先名" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[倉庫ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              name="倉庫ｺｰﾄﾞ" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[商品ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              name="商品ｺｰﾄﾞ" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[商品名]"
+                              dataType="wstr"
+                              length="200"
+                              name="商品名" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[ﾒｰｶｰ品番]"
+                              dataType="wstr"
+                              length="200"
+                              name="ﾒｰｶｰ品番" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[下代]"
+                              dataType="wstr"
+                              length="200"
+                              name="下代" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[出荷数]"
+                              dataType="wstr"
+                              length="10"
+                              name="出荷数" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[下代合計]"
+                              dataType="wstr"
+                              length="200"
+                              name="下代合計" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[センターフィー]"
+                              dataType="wstr"
+                              length="200"
+                              name="センターフィー" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[業態区分]"
+                              dataType="wstr"
+                              length="10"
+                              name="業態区分" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                    </component>
+                    <component
+                      refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="会計データ_仕入先コード_年度月度"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	CONVERT(NVARCHAR(10),'買取') AS 仕入条件,
+	CONVERT(NVARCHAR(10),MATOME.ﾒｰｶｰ) AS [取引先№],
+	CONVERT(NVARCHAR(200),MATOME.ﾒｰｶｰ名) AS 取引先名,
+	CONVERT(NVARCHAR(200),MATOME.倉庫コード) AS 倉庫ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),MATOME.自社品番) AS 商品ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),MATOME.備考) AS 商品名,
+	CONVERT(NVARCHAR(200),MATOME.品番) AS ﾒｰｶｰ品番,
+	CONVERT(NVARCHAR(200),(CASE WHEN CAST(MATOME.原価 AS NVARCHAR) = '不良品手数料' THEN NULL ELSE CAST(MATOME.原価 AS NVARCHAR) END)) AS 下代,
+	CONVERT(NVARCHAR(10),仕入数合計) AS 出荷数,
+	CONVERT(NVARCHAR(200),CONVERT(bigint,原価計)) AS 下代合計,
+	CONVERT(bigint,[ｾﾝﾀｰFEE合計（税抜き）]) AS センターフィー,
+	CONVERT(NVARCHAR(10),業態) AS 業態区分
+FROM (
+		SELECT * FROM T_CENTERFEE_MATOME_DATA
+			WHERE メーカー IN (SELECT DISTINCT HD_SUP_CODE FROM D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS
+			WHERE HD_STOCK_DATE BETWEEN ? AND ? 
+			AND HD_DEALTYPE_CODE='K') AND メーカー= ? 
+) AS MATOME
+UNION ALL
+SELECT
+	CONVERT(NVARCHAR(10),'') AS 仕入条件,
+	CONVERT(NVARCHAR(10),'') AS [取引先№],
+	CONVERT(NVARCHAR(200),'') AS 取引先名,
+	CONVERT(NVARCHAR(200),'') AS 倉庫ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品名,
+	CONVERT(NVARCHAR(200),'') AS ﾒｰｶｰ品番,
+	CONVERT(NVARCHAR(200),'') AS 下代,
+	CONVERT(NVARCHAR(10),'') AS 出荷数,
+	CONVERT(NVARCHAR(200),'') AS 下代合計,
+	SUM(CONVERT(bigint,[ｾﾝﾀｰFEE合計（税抜き）])) AS センターフィー,
+	CONVERT(NVARCHAR(10),'税抜き合計') AS 業態区分
+FROM (
+		SELECT * FROM T_CENTERFEE_MATOME_DATA
+			WHERE メーカー IN (SELECT DISTINCT HD_SUP_CODE FROM D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS
+			WHERE HD_STOCK_DATE BETWEEN ? AND ? 
+			AND HD_DEALTYPE_CODE='K') AND メーカー= ? 
+) AS MATOME
+UNION ALL
+SELECT
+	CONVERT(NVARCHAR(10),'') AS 仕入条件,
+	CONVERT(NVARCHAR(10),'') AS [取引先№],
+	CONVERT(NVARCHAR(200),'') AS 取引先名,
+	CONVERT(NVARCHAR(200),'') AS 倉庫ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品名,
+	CONVERT(NVARCHAR(200),'') AS ﾒｰｶｰ品番,
+	CONVERT(NVARCHAR(200),'') AS 下代,
+	CONVERT(NVARCHAR(10),'') AS 出荷数,
+	CONVERT(NVARCHAR(200),'') AS 下代合計,
+	CONVERT(bigint,ROUND(SUM([ｾﾝﾀｰFEE合計（税抜き）]) * (0.08),0)) AS センターフィー,
+	CONVERT(NVARCHAR(10),'税額') AS 業態区分
+FROM (
+		SELECT * FROM T_CENTERFEE_MATOME_DATA
+			WHERE メーカー IN (SELECT DISTINCT HD_SUP_CODE FROM D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS
+			WHERE HD_STOCK_DATE BETWEEN ? AND ? 
+			AND HD_DEALTYPE_CODE='K') AND メーカー= ? 
+) AS MATOME
+UNION ALL
+SELECT
+	CONVERT(NVARCHAR(10),'') AS 仕入条件,
+	CONVERT(NVARCHAR(10),'') AS [取引先№],
+	CONVERT(NVARCHAR(200),'') AS 取引先名,
+	CONVERT(NVARCHAR(200),'') AS 倉庫ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品ｺｰﾄﾞ,
+	CONVERT(NVARCHAR(200),'') AS 商品名,
+	CONVERT(NVARCHAR(200),'') AS ﾒｰｶｰ品番,
+	CONVERT(NVARCHAR(200),'') AS 下代,
+	CONVERT(NVARCHAR(10),'') AS 出荷数,
+	CONVERT(NVARCHAR(200),'') AS 下代合計,
+	SUM(CONVERT(bigint,[ｾﾝﾀｰFEE合計（税抜き）])) + CONVERT(bigint,ROUND(SUM([ｾﾝﾀｰFEE合計（税抜き）]) * (0.08),0)) AS センターフィー,
+	CONVERT(NVARCHAR(10),'税込合計') AS 業態区分
+FROM (
+		SELECT * FROM T_CENTERFEE_MATOME_DATA
+			WHERE メーカー IN (SELECT DISTINCT HD_SUP_CODE FROM D_KAIKEI_CENTERFEE_DATA_REPORT_COMPANY_IFS
+			WHERE HD_STOCK_DATE BETWEEN ?  AND  ? 
+			AND HD_DEALTYPE_CODE='K') AND メーカー= ? 
+) AS MATOME</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">932</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{B52FB383-E50E-464D-9049-6F9BF4F2E212};"Parameter1:Input",{5EEB54E8-A424-4D68-8E11-F37E3CF3380E};"Parameter2:Input",{A63F83B8-6C20-4A43-8ABA-C70E2D9B5E2B};"Parameter3:Input",{B52FB383-E50E-464D-9049-6F9BF4F2E212};"Parameter4:Input",{5EEB54E8-A424-4D68-8E11-F37E3CF3380E};"Parameter5:Input",{A63F83B8-6C20-4A43-8ABA-C70E2D9B5E2B};"Parameter6:Input",{B52FB383-E50E-464D-9049-6F9BF4F2E212};"Parameter7:Input",{5EEB54E8-A424-4D68-8E11-F37E3CF3380E};"Parameter8:Input",{A63F83B8-6C20-4A43-8ABA-C70E2D9B5E2B};"Parameter9:Input",{B52FB383-E50E-464D-9049-6F9BF4F2E212};"Parameter10:Input",{5EEB54E8-A424-4D68-8E11-F37E3CF3380E};"Parameter11:Input",{A63F83B8-6C20-4A43-8ABA-C70E2D9B5E2B};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                          connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[仕入条件]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[仕入条件]"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[仕入条件]"
+                              name="仕入条件"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先№]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[取引先№]"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先№]"
+                              name="取引先№"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先名]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[取引先名]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[取引先名]"
+                              name="取引先名"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[倉庫ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[倉庫ｺｰﾄﾞ]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[倉庫ｺｰﾄﾞ]"
+                              name="倉庫ｺｰﾄﾞ"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[商品ｺｰﾄﾞ]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品ｺｰﾄﾞ]"
+                              name="商品ｺｰﾄﾞ"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品名]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[商品名]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[商品名]"
+                              name="商品名"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[ﾒｰｶｰ品番]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[ﾒｰｶｰ品番]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[ﾒｰｶｰ品番]"
+                              name="ﾒｰｶｰ品番"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[下代]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代]"
+                              name="下代"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[出荷数]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[出荷数]"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[出荷数]"
+                              name="出荷数"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代合計]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[下代合計]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[下代合計]"
+                              name="下代合計"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[センターフィー]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[センターフィー]"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[センターフィー]"
+                              name="センターフィー"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[業態区分]"
+                              dataType="wstr"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[業態区分]"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].Columns[業態区分]"
+                              name="業態区分"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[仕入条件]"
+                              dataType="wstr"
+                              length="10"
+                              name="仕入条件" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[取引先№]"
+                              dataType="wstr"
+                              length="10"
+                              name="取引先№" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[取引先名]"
+                              dataType="wstr"
+                              length="200"
+                              name="取引先名" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[倉庫ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              name="倉庫ｺｰﾄﾞ" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[商品ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              name="商品ｺｰﾄﾞ" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[商品名]"
+                              dataType="wstr"
+                              length="200"
+                              name="商品名" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[ﾒｰｶｰ品番]"
+                              dataType="wstr"
+                              length="200"
+                              name="ﾒｰｶｰ品番" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[下代]"
+                              dataType="wstr"
+                              length="200"
+                              name="下代" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[出荷数]"
+                              dataType="wstr"
+                              length="10"
+                              name="出荷数" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[下代合計]"
+                              dataType="wstr"
+                              length="200"
+                              name="下代合計" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[センターフィー]"
+                              dataType="i8"
+                              name="センターフィー" />
+                            <externalMetadataColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output].ExternalColumns[業態区分]"
+                              dataType="wstr"
+                              length="10"
+                              name="業態区分" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[仕入条件]"
+                              dataType="wstr"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[仕入条件]"
+                              name="仕入条件" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[取引先№]"
+                              dataType="wstr"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[取引先№]"
+                              name="取引先№" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[取引先名]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[取引先名]"
+                              name="取引先名" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[倉庫ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[倉庫ｺｰﾄﾞ]"
+                              name="倉庫ｺｰﾄﾞ" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[商品ｺｰﾄﾞ]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[商品ｺｰﾄﾞ]"
+                              name="商品ｺｰﾄﾞ" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[商品名]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[商品名]"
+                              name="商品名" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ﾒｰｶｰ品番]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ﾒｰｶｰ品番]"
+                              name="ﾒｰｶｰ品番" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[下代]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[下代]"
+                              name="下代" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[出荷数]"
+                              dataType="wstr"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[出荷数]"
+                              name="出荷数" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[下代合計]"
+                              dataType="wstr"
+                              length="200"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[下代合計]"
+                              name="下代合計" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[センターフィー]"
+                              dataType="i8"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[センターフィー]"
+                              name="センターフィー" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[業態区分]"
+                              dataType="wstr"
+                              length="10"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[業態区分]"
+                              name="業態区分" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成.Paths[OLE DB Source Output]"
+                      endId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力]"
+                      name="OLE DB Source Output"
+                      startId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Old Report ZIP"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="File System Task"
+              DTS:DTSID="{6E186A2C-6135-4AD6-BE17-30094BFCC3F6}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Delete Old Report ZIP"
+              DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOperationType="DeleteFile"
+                  TaskSourcePath="{763CDEEB-6DC5-4ECD-A020-9113164B91AD}" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Report CSV"
+              DTS:CreationName="Microsoft.FileSystemTask"
+              DTS:Description="File System Task"
+              DTS:DTSID="{f47af2bd-75b5-4ecd-9f23-84f2b041f367}"
+              DTS:ExecutableType="Microsoft.FileSystemTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Delete Report CSV"
+              DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <FileSystemData
+                  TaskOperationType="DeleteFile"
+                  TaskSourcePath="{c09301f6-f4af-4d89-b619-73cb4a49cdca}" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\ZIP"
+              DTS:CreationName="Microsoft.ExecuteProcess"
+              DTS:Description="Execute Process Task"
+              DTS:DTSID="{02122076-3d6a-451a-aebb-43f1d538d5f5}"
+              DTS:ExecutableType="Microsoft.ExecuteProcess"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="ZIP"
+              DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="Arguments">" a -tzip  "+ REPLACE( @[User::csvFilePath], "CSV", "zip" ) + " " + @[User::csvFilePath]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecuteProcessData
+                  Executable="C:\Program Files\7-Zip\7z.exe"
+                  Arguments=" a -tzip  D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.zip D:\public\IM_FILES\Chouhyou\_KAITORI_CENTERFEE_.CSV" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{CEBB5BC6-57DC-4D7C-A540-C2CE842BEA1E}"
+              DTS:From="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Old Report ZIP"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{B1C735AE-BF1B-47D3-972A-0B1A5F705371}"
+              DTS:From="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\ZIP" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint 2]"
+              DTS:CreationName=""
+              DTS:DTSID="{27273A9B-EB87-4BE9-BF32-446F86EE2DBD}"
+              DTS:From="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\ZIP"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 2"
+              DTS:To="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Report CSV" />
+          </DTS:PrecedenceConstraints>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{2AE57CFD-A6B3-48E6-AAC5-FBB0769F109A}"
+              DTS:ObjectName="{2AE57CFD-A6B3-48E6-AAC5-FBB0769F109A}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::distSireSakiCode" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\年度_月度wise Loop.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{837792C4-2522-4167-8B42-EB3E5EA58E93}"
+          DTS:From="Package\年度_月度wise Loop\DIST仕入先コード"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{5116A5F3-99C1-4D06-B20E-2DE451DF1EAC}"
+          DTS:ObjectName="{5116A5F3-99C1-4D06-B20E-2DE451DF1EAC}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::distNenGetsu" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{E8DBEBCE-0E9E-49E7-A6AA-94B81C09FA14}"
+          DTS:ObjectName="{E8DBEBCE-0E9E-49E7-A6AA-94B81C09FA14}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::minDate" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{2810AEC4-552C-4A58-8B2F-35A0843B939B}"
+          DTS:ObjectName="{2810AEC4-552C-4A58-8B2F-35A0843B939B}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::maxDate" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{97191699-C389-49E7-A0B5-96311267D32B}"
+      DTS:From="Package\Dist 年度_月度"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\年度_月度wise Loop" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{99CF2E0D-BF6B-4762-900E-332B5EB46187}"
+      DTS:From="Package\年度_月度wise Loop"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\FTP_PUT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Dist 年度_月度"
+          TopLeft="170,25" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\FTP_PUT"
+          TopLeft="179,703.666666666667" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\年度_月度wise Loop\DIST仕入先コード"
+          TopLeft="15,10" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成"
+          TopLeft="25,93" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Old Report ZIP"
+          TopLeft="26,15" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\Delete Report CSV"
+          TopLeft="30,257" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\ZIP"
+          TopLeft="26,179" />
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint]"
+          TopLeft="119,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint 1]"
+          TopLeft="121.5,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成.PrecedenceConstraints[Constraint 2]"
+          TopLeft="122,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,36"
+              Start="0,0"
+              End="-9,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,18"
+                    Point2="-9,18"
+                    Point3="-9,22" />
+                  <mssgle:LineSegment
+                    End="-9,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Delete Same 年度_月度 file if exists to get new one"
+          ParentId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成"
+          FontInfo="{assembly:Null}"
+          Size="297,54"
+          Id="c3f4e1c4-f65a-4479-917c-99bb0a031bb1"
+          TopLeft="216,15" />
+        <AnnotationLayout
+          Text="Write Actual CSV, for 年度_月度と仕入先コード"
+          ParentId="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成"
+          FontInfo="{assembly:Null}"
+          Size="281,39"
+          Id="80074e12-1c95-4adf-b9d4-ae0cedd6a766"
+          TopLeft="226,85" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="601,354"
+          Size="601,397"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成"
+          TopLeft="17,83" />
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop.PrecedenceConstraints[Constraint]"
+          TopLeft="98.5,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="219,31"
+              Start="0,0"
+              End="219,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="215,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="215,15.5"
+                    Point2="219,15.5"
+                    Point3="219,19.5" />
+                  <mssgle:LineSegment
+                    End="219,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Get Distinct ShiireSaki Code to loop"
+          ParentId="Package\年度_月度wise Loop"
+          FontInfo="{assembly:Null}"
+          Size="256,39"
+          Id="a6e9bf7e-858e-4458-97a6-7b53a9136d13"
+          TopLeft="186,10" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="670,535"
+          Size="670,578"
+          Id="Package\年度_月度wise Loop"
+          TopLeft="167,121" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244.5,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="257.5,54"
+              Start="0,0"
+              End="257.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="253.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="253.5,27"
+                    Point2="257.5,27"
+                    Point3="257.5,31" />
+                  <mssgle:LineSegment
+                    End="257.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="502,699">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,25.666666666667"
+              Start="0,0"
+              End="-166.5,25.666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.666666666667"
+                    Point2="0,25.666666666667"
+                    Point3="-4,25.666666666667" />
+                  <mssgle:LineSegment
+                    End="-166.5,25.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Get Distinct 年度_月度 for different files"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="262,39"
+          Id="1b902708-e82d-4e60-a92e-e76cb2cafd57"
+          TopLeft="333,26" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\年度_月度wise Loop\DIST仕入先コード">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ"
+          TopLeft="165,64" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\年度_月度wise Loop\DIST仕入先コード\dtSireCdオブジェクトに保存"
+          TopLeft="170,179" />
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop\DIST仕入先コード.Paths[OLE DB Source Output]"
+          TopLeft="267.25,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\年度_月度wise Loop\DIST仕入先コード\GET_DIST仕入先コードクエリ">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="241,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度"
+          TopLeft="191,67" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\フラット ファイル変換先"
+          TopLeft="230,168" />
+        <EdgeLayout
+          Id="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成.Paths[OLE DB Source Output]"
+          TopLeft="313.75,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\年度_月度wise Loop\仕入先コードwise Loopしてファイル作成\CENTER_FEEファイル作成\会計データ_仕入先コード_年度月度">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,420 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2014 4:43:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONM27625"
+  DTS:CreatorName="RIGHT-ON\999986"
+  DTS:DTSID="{714B51A4-A80C-4D4F-BC23-C96B6FD05C7C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="201_T_DAY_TEN_SKU_SIIRE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="339"
+  DTS:VersionGUID="{AD58AF7E-6573-463F-A059-E2A663D9C9EF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{915C3B4C-EDE2-4036-9F6A-BCF98B6077EE}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())) +  (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\201_T_DAY_TEN_SKU_SIIRE_20161223" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F05062E8-BD6E-43AB-B1F4-AC41311F238B}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-004_T_DAY_TEN_SKU_SIIRE-{F05062E8-BD6E-43AB-B1F4-AC41311F238B}MINI_MD_DB;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAYZfPCXKnUKyTD3bJMwwYQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADWZX0eInTWKjRZkIB6XTfgY8/Yfu5I73qiCEVIv/SnRwAAAAAOgAAAAAIAACAAAAAHgPaIDXU7f1xk64zAQ/eZz+ohybkhBFVEnXDS+PI+HCAAAADVrXfrUscYLGHSKQNZC8XSkqyl+DxznS2WLvO4v8ySWEAAAABJ7XFebZ3CKYkfj0cBi0uhk8fgxvOB9gojAvU9oBq9G+UusgBvvum+/19gnINXWyCtWJPMvsNIPm8jTHM0JMnT</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{1B199D5A-3FFA-4BBF-8ACC-E5BD7701CC1A}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー1">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C8D9CC28-DCA0-42AB-B659-B082DE959D09}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C9E8B70-6E53-49E7-8C62-3888985BFB1C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CURRENT_DATE">
+      <DTS:VariableValue
+        DTS:DataType="7">6/24/2016 11:12:05 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{1B199D5A-3FFA-4BBF-8ACC-E5BD7701CC1A}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションをコミット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="COMMIT TRANSACTION"
+      DTS:DTSID="{4206FC9C-51E7-444D-A90E-C814130BE35D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションをコミット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F05062E8-BD6E-43AB-B1F4-AC41311F238B}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションをロールバック"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="ROLLBACK TRANSACTION"
+      DTS:DTSID="{22EE93A6-7414-4E3B-86DA-5706D3051598}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションをロールバック"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F05062E8-BD6E-43AB-B1F4-AC41311F238B}"
+          SQLTask:SqlStatementSource="ROLLBACK TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションを開始"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="BEGIN TRANSACTION"
+      DTS:DTSID="{AD38E80B-E77C-4FCD-83D2-FF2B1BAB60CF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションを開始"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F05062E8-BD6E-43AB-B1F4-AC41311F238B}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\一致しない行を仕入実績に入れる"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F41DA38E-8CFE-4EBD-A445-8F53BEB496D9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="一致しない行を仕入実績に入れる"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F05062E8-BD6E-43AB-B1F4-AC41311F238B}"
+          SQLTask:SqlStatementSource="INSERT INTO T_DAY_SKU_SIIRE_JISSEKI(発生日付,仕入日付,仕入伝票番号,仕入伝票明細番号,買取受託,勘定コード,仕入サイト,ＳＫＵコード,訂正元購買伝票番号,仕入数,仕入原価,仕入売価,仕入先コード,トランゼクションID,税コード)&#xA;SELECT 発生日付,仕入日付,仕入伝票番号,仕入伝票明細番号,買取受託,勘定コード,仕入サイト,ＳＫＵコード,訂正元購買伝票番号,仕入数,仕入原価,仕入売価,仕入先コード,トランゼクションID,税コード &#xA;FROM T_DAY_SKU_SIIRE_JISSEKI_TEMP temp&#xA;WHERE NOT EXISTS (SELECT 発生日付,仕入日付,仕入伝票番号,仕入伝票明細番号,買取受託,勘定コード,仕入サイト,ＳＫＵコード,訂正元購買伝票番号,仕入数,仕入原価,仕入売価,仕入先コード,トランゼクションID,税コード&#xA;              FROM T_DAY_SKU_SIIRE_JISSEKI main&#xA;              WHERE  temp.発生日付 = main.発生日付 AND&#xA;temp.買取受託 = main.買取受託 AND&#xA;temp.仕入日付 = main.仕入日付 AND&#xA;temp.仕入伝票番号 = main.仕入伝票番号 AND&#xA;temp.仕入伝票明細番号 = main.仕入伝票明細番号 AND&#xA;temp.ＳＫＵコード = main.ＳＫＵコード AND&#xA;temp.仕入サイト = main.仕入サイト);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CADC68A3-B9AE-425A-A45C-9ECF2985F8D4}"
+      DTS:From="Package\一致しない行を仕入実績に入れる"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\トランザクションをコミット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D06B2817-5E67-4827-9098-72D2DD5818A6}"
+      DTS:From="Package\トランザクションを開始"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\一致しない行を仕入実績に入れる" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{40A90903-0C66-4375-B25B-66724EB7767E}"
+      DTS:From="Package\一致しない行を仕入実績に入れる"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\トランザクションをロールバック"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\トランザクションをコミット"
+          TopLeft="358.239177489178,346.557566978407" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\トランザクションをロールバック"
+          TopLeft="804,241.557567430408" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\トランザクションを開始"
+          TopLeft="358.239177489178,131.724233698883" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\一致しない行を仕入実績に入れる"
+          TopLeft="358.239177489178,249.640899273212" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="480.239177489178,291.640899273212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.916667705195"
+              Start="0,0"
+              End="0,47.416667705195">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.416667705195" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="480.239177489178,173.724233698883">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.3333333333334,75.916665574329"
+              Start="0,0"
+              End="-39.3333333333334,68.416665574329">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2532566778574" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.2532566778574"
+                    Point2="0,45.2532566778574"
+                    Point3="-4,45.2532566778574" />
+                  <mssgle:LineSegment
+                    End="-35.3333333333334,45.2532566778574" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.3333333333334,45.2532566778574"
+                    Point2="-39.3333333333334,45.2532566778574"
+                    Point3="-39.3333333333334,49.2532566778574" />
+                  <mssgle:LineSegment
+                    End="-39.3333333333334,68.416665574329" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="602.239177489178,270.640899273212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.760822510822,-8.08333184280394"
+              Start="0,0"
+              End="194.260822510822,-8.08333184280394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.880411255411,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.880411255411,0"
+                    Point2="100.880411255411,0"
+                    Point3="100.880411255411,-4" />
+                  <mssgle:LineSegment
+                    End="100.880411255411,-4.08333184280394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.880411255411,-4.08333184280394"
+                    Point2="100.880411255411,-8.08333184280394"
+                    Point3="104.880411255411,-8.08333184280394" />
+                  <mssgle:LineSegment
+                    End="194.260822510822,-8.08333184280394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="85.639063599161,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="一致しない行を仕入実績に入れる"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="211,39"
+          Id="71b8bfb1-aaf5-4a3a-846e-da7bc83653e8"
+          TopLeft="370,216.833331600622" />
+        <AnnotationLayout
+          Text="トランザクションを開始"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="163,39"
+          Id="6d4ef053-a393-4349-be7b-bf13770c323c"
+          TopLeft="391,100.333333505525" />
+        <AnnotationLayout
+          Text="トランザクションをロールバック"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="211,39"
+          Id="b226b2fb-58ee-4082-b149-37009e84f68a"
+          TopLeft="802,211.140902082081" />
+        <AnnotationLayout
+          Text="トランザクションをコミット"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="187,39"
+          Id="676fa18f-34e7-404d-9fd6-a3ee97673626"
+          TopLeft="391,315.140900984362" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

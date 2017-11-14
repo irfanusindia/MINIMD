@@ -1,0 +1,2194 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/10/2017 10:43:53 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{98EF5BF0-11C1-47BE-9105-92E6BF461A1B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="434_IF_R016_TWN"
+  DTS:PackageType="5"
+  DTS:VersionBuild="491"
+  DTS:VersionGUID="{02497FD2-DF8C-45E7-993E-FFCBEEBF3D5B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{58B4C3E2-ADEB-4A3F-8829-919C5BE8ED75}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\434_IF_R016_TWN_20170721" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{512592A3-632F-447C-81BA-CF39330926F1}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAb4Spc8952U6stg6+UIa24QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAfuR7wegD/jLO9UVBhdL4NQcd/GvCVwNg/6A7+RSQXyAAAAAAOgAAAAAIAACAAAAAqkmI7txbe0kbUDBHtUSOPnvaPAh8O4xlhWTLxgutwDyAAAAAzk9YIdjHxTWBy1mB6ff366ZqTD7H5cRuuwTwFM+9slEAAAADjBoQfFJhqYmKZ5I3v7+FCXa6GQRIrHeuRRzq5EY8j0+u1b77n/2OaHyEG3IqrtogxurEQxEEvaI9CDg+csaum</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[R016_File]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="R016_File"
+      DTS:DTSID="{7979773A-7EC1-4B06-8399-0BD65B037D29}"
+      DTS:ObjectName="R016_File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileFolder] + "\\" + @[User::ftpFileName]  +"_" +  ((DT_WSTR, 10) @[User::today]) + ".TSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="D:\public\IM_FILES\R016_TW_20170722.TSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="店舗コード"
+              DTS:DTSID="{8F790C5F-0911-4601-AC8A-A7D8065B1DD4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票日付"
+              DTS:DTSID="{779274FF-6EAA-475C-BF2C-9D58103F5024}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="通貨コ－ド"
+              DTS:DTSID="{71F021A8-FDE6-464A-A808-7C91E96433EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="識別子-後続項目"
+              DTS:DTSID="{1974AA03-1D83-4DA9-81DF-E5CFD82E1156}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="13"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="品目コード"
+              DTS:DTSID="{65C4AA88-2814-41C1-B9A6-9D4044F41E85}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="販売促進"
+              DTS:DTSID="{AC1C5977-4A8F-4654-8224-5067407FBC96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="プラス/マイナス_1"
+              DTS:DTSID="{6FEE8B5A-9D80-48E1-A211-8F87F902BAE2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="36"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="販売数量"
+              DTS:DTSID="{D9F176F7-5D7F-4501-BED9-FAAF0AE84DAE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="プラス/マイナス_2"
+              DTS:DTSID="{9E54BF37-4C02-4485-A893-10507FFE047D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="売上金額"
+              DTS:DTSID="{294DAE8D-7B1D-4749-B278-3D60A673E4F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="条件のプラス/マイナス_1"
+              DTS:DTSID="{F7A1A420-6B06-4369-980E-E21B03C2855F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="条件/割引タイプ_2"
+              DTS:DTSID="{0FE025E9-62B9-481D-9AB0-16A95E70DF20}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="販売割引"
+              DTS:DTSID="{C2DC65A1-61AA-480E-AA4D-9B1F642090F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="条件タイプID"
+              DTS:DTSID="{3E1BD22B-312E-4C6D-858B-41FEC38015BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="20文字式条件タイプID"
+              DTS:DTSID="{17812CBA-B02D-4A8D-A15B-7EA4ED1E1C94}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="項目CONDIDの識別子"
+              DTS:DTSID="{0200BE42-9B9C-4537-BD46-7309C351CCAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ボーナスバイテキスト"
+              DTS:DTSID="{5733334A-9A68-4A53-806A-5489693000F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="税コード"
+              DTS:DTSID="{63F45FAD-8ECA-4369-A3FB-F15B0DB903A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="税額_1"
+              DTS:DTSID="{455A51C3-A9D0-4856-96AB-1713F3EEDEE8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="条件のプラス/マイナス"
+              DTS:DTSID="{142FA528-2919-45AC-824C-9914B6941589}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="税タイプ"
+              DTS:DTSID="{D528EF3B-B8AD-4659-86BB-0D25DCFBAF30}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="税額_2"
+              DTS:DTSID="{73BD2509-3810-4526-8732-4AA9A5C63C19}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="項目グループ"
+              DTS:DTSID="{DA34E69C-ED33-47DB-87FC-5D1BA16FF50E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="項目名"
+              DTS:DTSID="{5F3D4974-016D-407F-9EDA-DACF6FE2F322}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="項目値"
+              DTS:DTSID="{C85263F3-1468-4612-853C-122972666E00}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{10780ADC-117C-48B7-A000-2866963795D3}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77CEA871-E82F-42AA-93CF-B424B053FB23}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6FDA02EE-02C2-4C41-8EE4-E4A67652AF60}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\IM_FILES</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D6F4B3E-AA86-4DE7-8BD1-80C796B19F3F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ftpFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">R016_TW</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{28B81BBE-8D9F-4876-8374-39EEDAC09C3F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="DATEADD(&quot;d&quot;,-1,GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="maxDate">
+      <DTS:VariableValue
+        DTS:DataType="7">7/20/2017 2:12:48 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A3D64A42-0BE8-4BA1-8D9C-06ABA5B04138}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="DATEADD(&quot;d&quot;,-1,GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="minDate">
+      <DTS:VariableValue
+        DTS:DataType="7">7/20/2017 2:12:48 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C12DECF-C92D-4C9F-8A92-F8A0D48D3448}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="packageFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projects\Source Code\Release Area\MINI-MD SYSTEM\MINI-MD SYSTEM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{55D3C433-C081-456C-9F2F-4EB9F7958675}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,1, GETDATE() )) + RIGHT(&quot;00&quot;+ (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,1, GETDATE() )),2) + (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,1, GETDATE() )),2))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="8">20170722</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{10780ADC-117C-48B7-A000-2866963795D3}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FTP PUT"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{4C09D2EC-910F-4350-A1C8-BE9183736C78}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP PUT"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_ffffe3657e1a4bfcbb79725768cf0e97"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::ftpFileName,User::packageFolder,System::PackageName,User::today">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Settings.get_Default():ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Sett" +
+    "ings")]
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_ffffe3657e1a4bfcbb79725768cf0e97.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{B1E9EC81-E9E1-485A-8532-1509F58C8AD3}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_4260a491174c473c9badfd6cb0bf44b9</RootNamespace><AssemblyName>ST_ffffe3657e1a4bfcbb79725768cf0e97</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Program.cs" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\InstallDir#\devenv.exe" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Program.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9
+{
+    class Program
+    {
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Namespaces
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
+#endregion
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+		public void Main()
+		{
+            Microsoft.SqlServer.Dts.Runtime.Application app;
+            Package packageRun;
+            app = new Microsoft.SqlServer.Dts.Runtime.Application();
+            MyEventListener eventListener = new MyEventListener();
+            string strPackageFullPath = Dts.Variables["User::packageFolder"].Value.ToString() + @"\999_FTP_DATA_PUT_2.dtsx";
+            packageRun = app.LoadPackage(strPackageFullPath, eventListener);
+            packageRun.Variables["fileName"].Value = Dts.Variables["User::ftpFileName"].Value.ToString();
+            packageRun.Variables["today"].Value = Dts.Variables["User::today"].Value.ToString();
+            packageRun.Variables["packageCode"].Value = Dts.Variables["System::PackageName"].Value.ToString().Substring(0,3);
+            DTSExecResult results = packageRun.Execute(null, null, eventListener, null, null);
+            if (results == DTSExecResult.Failure)
+            {
+                Dts.Events.FireError(0, "FTPプットタスク", "ファイル移動できませんでした。", String.Empty, 0);
+            }
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+
+    class MyEventListener : DefaultEvents
+    {
+        public override bool OnError(DtsObject source, int errorCode, string subComponent,
+          string description, string helpFile, int helpContext, string idofInterfaceWithError)
+        {
+
+            MessageBox.Show(subComponent + "," + description);
+            Console.WriteLine("Error in {0}/{1} : {2}", source, subComponent, description);
+            return false;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_4260a491174c473c9badfd6cb0bf44b9</msb:CodeName>
+		<msb:DisplayName>ST_4260a491174c473c9badfd6cb0bf44b9</msb:DisplayName>
+		<msb:ProjectId>{A0244974-DFD3-4E54-AC54-A7A0F3200C3D}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_ffffe3657e1a4bfcbb79725768cf0e97.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+		<msb:File Include="Program.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_ffffe3657e1a4bfcbb79725768cf0e97.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAE+NcVkAAAAAAAAAAOAAAiELAQsAABQAAAAIAAAAAAAAnjMA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAEwzAABPAAAAAEAAAAgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAApBMAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACA
+MwAAAAAAAEgAAAACAAUA4CIAAGwQAAABAAAAAAAAACgiAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA0AAAoqHgIoDQAACioTMAIALQAAAAEAABF+AQAABC0g
+cgEAAHDQAwAAAigPAAAKbxAAAApzEQAACgoGgAEAAAR+AQAABCoafgIAAAQqHgKAAgAABCoafgMA
+AAQqLnMHAAAGgAMAAAQqHgIoFAAACioAEzAGACMBAAACAAARcxYAAAoKcwwAAAYMAigXAAAKbxgA
+AApycwAAcG8ZAAAKbxoAAApvGwAACnKbAABwKBwAAAoNBgkIbx0AAAoLB28eAAAKcs0AAHBvGQAA
+CgIoFwAACm8YAAAKct8AAHBvGQAACm8aAAAKbxsAAApvHwAACgdvHgAACnIDAQBwbxkAAAoCKBcA
+AApvGAAACnIPAQBwbxkAAApvGgAACm8bAAAKbx8AAAoHbx4AAApyJwEAcG8ZAAAKAigXAAAKbxgA
+AApyPwEAcG8ZAAAKbxoAAApvGwAAChYZbyAAAApvHwAACgcUFAgUFG8hAAAKEwQRBBczIgIoFwAA
+Cm8iAAAKFnJnAQBwcnsBAHB+IwAAChZvJAAACiYCKBcAAAoWbyUAAAoqHgIoJgAACiqOBXKbAQBw
+DgQoJwAACigoAAAKJnKfAQBwAwUOBCgpAAAKFioeAigqAAAKKgC0AAAAzsrvvgEAAACRAAAAbFN5
+c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAs
+IEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0u
+UmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAQlNKQgEA
+AQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA8AQAACN+AABcBQAAZAcAACNTdHJpbmdzAAAA
+AMAMAADQAQAAI1VTAJAOAAAQAAAAI0dVSUQAAACgDgAAzAEAACNCbG9iAAAAAAAAAAIAAAFXHaIB
+CQMAAAD6JTMAFgAAAQAAACwAAAAHAAAABgAAAAwAAAAIAAAAKgAAAAIAAAAPAAAAAgAAAAIAAAAD
+AAAABAAAAAEAAAAFAAAAAQAAAAEAAAAAAAoAAQAAAAAABgDZANIACgD1AOAADgBVASwBBgBxAdIA
+EgC1AZUBBgDaAckBBgALAvYBEgCcApUBBgAkAwoDBgBPAz0DBgBmAz0DBgCDAz0DBgCiAz0DBgC7
+Az0DBgDUAz0DBgDvAz0DBgAKBD0DBgAjBD0DBgBcBDwEBgB8BDwEBgDRBL4EBgDuBNIABgDzBNIA
+BgAXBT0DCgBDBS0FCgBcBS0FBgBxBTwEDgCTBSwBEgC1BZUBDgDBBSwBEgDbBZUBEgDzBZUBBgAY
+BtIAEgAmBpUBEgAuBpUBEgBFBpUBEgBmBpUBEgBxBpUBEgB/BpUBEgCLBpUBDgCfBiwBFgDyBt0G
+FgD9Bt0GBgAPB9IAAAAAAAEAAAAAAAEAAQAAABAAMgA6AAUAAQABAAAAEABeAGgABQABAAIAAAEQ
+AJcAaAAJAAMABgABABAAoAA6AA0ABAAJAAMBAACrAAAAEQAEAAsAAAAQALkAOgAVAAcACwARAOoB
+FwARABcCGwARAFsCOQAGBoQCRwBWgIwCSgBWgJQCSgBQIAAAAACGGMMBEwABAFggAAAAAIMYwwET
+AAEAYCAAAAAAkwgnAh8AAQCZIAAAAACTCDsCJAABAKAgAAAAAJMIRwIpAAEAqCAAAAAAlghrAj0A
+AgC7IAAAAACGGMMBEwACAK8gAAAAAJEYjAWVAAIAxCAAAAAAhgB/AhMAAgDzIQAAAACGGMMBEwAC
+APshAAAAAMYApgJYAAIAHyIAAAAAhhjDARMACQAAAAEArgIAAAEAtAIAAAIAuwIAAAMAxQIAAAQA
+0gIAAAUA3gIAAAYA5wIAAAcA8wJJAMMBZABRAMMBZABZAMMBZABhAMMBZABpAMMBZABxAMMBZAB5
+AMMBZACBAMMBZACJAMMBZACRAMMBZACZAMMBaQChAMMBEwAJAMMBEwCpAMMBEwCxAAUFbgCxACAF
+dQAxAMMBegDJAMMBhgDZAMMBEwARAMMBEwDhAMMBEwDpAMMBEwAZANMFmQDxAOUFngD5APwFowAB
+AQUGqgAJAA8GrgAJAR8GsgDpADkGuAAhAeUFngABAVIGwgAJAVwGxwApAZcGzQDxALMG3wAJAb4G
+5QBJAcQG6ADxAM4GaQAZAMMBEwAJAR8G/wBRAQoHBgFhARcHDQEpAMMBEwAIABQATgAIABgAUwAp
+AJMAjAAuABsAhgEuACMAhgEuAGMArAEuAAsAFQEuABMAXQEuACsAhgEuADMAXQEuADsAjAEuAEMA
+hgEuAFsAowFJAJMAjABhAJsAUwBjAHMAUwCjAKsAUwCBAPEAAwABAAQAAwAAANoBLwAAAFMCNAAA
+AHcCQgACAAMAAwACAAQABQABAAUABQACAAYABwAEgAAAAQAAAAsZ72MAAAAAAACaBAAABAAAAAAA
+AAAAAAAAAQDJAAAAAAAEAAAAAAAAAAAAAAABANIAAAAAAAwAAAAAAAAAAAAAAAoADQEAAAAADAAA
+AAAAAAAAAAAACgB2AQAAAAAEAAAAAAAAAAAAAAABAN0GAAAAAAAAAAABAAAAIQcAAAYABQAAAAA8
+TW9kdWxlPgBTVF9mZmZmZTM2NTdlMWE0YmZjYmI3OTcyNTc2OGNmMGU5Ny5kbGwAUHJvZ3JhbQBT
+VF80MjYwYTQ5MTE3NGM0NzNjOWJhZGZkNmNiMGJmNDRiOQBSZXNvdXJjZXMAU1RfNDI2MGE0OTEx
+NzRjNDczYzliYWRmZDZjYjBiZjQ0YjkuUHJvcGVydGllcwBTZXR0aW5ncwBTY3JpcHRNYWluAFNj
+cmlwdFJlc3VsdHMATXlFdmVudExpc3RlbmVyAG1zY29ybGliAFN5c3RlbQBPYmplY3QAU3lzdGVt
+LkNvbmZpZ3VyYXRpb24AQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UATWljcm9zb2Z0LlNxbFNlcnZl
+ci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAVlNU
+QVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEVudW0ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2Vk
+RFRTAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUARGVmYXVsdEV2ZW50cwAuY3RvcgBT
+eXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgByZXNvdXJjZU1hbgBTeXN0ZW0uR2xvYmFs
+aXphdGlvbgBDdWx0dXJlSW5mbwByZXNvdXJjZUN1bHR1cmUAZ2V0X1Jlc291cmNlTWFuYWdlcgBn
+ZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBDdWx0dXJlAGRlZmF1bHRJbnN0YW5jZQBnZXRfRGVmYXVs
+dABEZWZhdWx0AE1haW4AdmFsdWVfXwBTdWNjZXNzAEZhaWx1cmUARHRzT2JqZWN0AE9uRXJyb3IA
+dmFsdWUAc291cmNlAGVycm9yQ29kZQBzdWJDb21wb25lbnQAZGVzY3JpcHRpb24AaGVscEZpbGUA
+aGVscENvbnRleHQAaWRvZkludGVyZmFjZVdpdGhFcnJvcgBTeXN0ZW0uUnVudGltZS5WZXJzaW9u
+aW5nAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJseVRp
+dGxlQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1
+cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RB
+dHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
+aWJ1dGUAQXNzZW1ibHlDdWx0dXJlQXR0cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0dHJpYnV0ZQBT
+eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRy
+aWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAU1RfZmZmZmUzNjU3ZTFhNGJmY2Ji
+Nzk3MjU3NjhjZjBlOTcAU3lzdGVtLkRpYWdub3N0aWNzAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRy
+aWJ1dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBBc3NlbWJseQBn
+ZXRfQXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0
+ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQAuY2N0b3IA
+U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFwcGxpY2F0aW9uAFNjcmlwdE9iamVj
+dE1vZGVsAGdldF9EdHMAVmFyaWFibGVzAGdldF9WYXJpYWJsZXMAVmFyaWFibGUAZ2V0X0l0ZW0A
+Z2V0X1ZhbHVlAFRvU3RyaW5nAFN0cmluZwBDb25jYXQAUGFja2FnZQBJRFRTRXZlbnRzAExvYWRQ
+YWNrYWdlAER0c0NvbnRhaW5lcgBzZXRfVmFsdWUAU3Vic3RyaW5nAEV4ZWN1dGFibGUARFRTRXhl
+Y1Jlc3VsdABDb25uZWN0aW9ucwBJRFRTTG9nZ2luZwBFeGVjdXRlAEV2ZW50c09iamVjdFdyYXBw
+ZXIAZ2V0X0V2ZW50cwBFbXB0eQBGaXJlRXJyb3IAc2V0X1Rhc2tSZXN1bHQAU3lzdGVtLldpbmRv
+d3MuRm9ybXMATWVzc2FnZUJveABEaWFsb2dSZXN1bHQAU2hvdwBDb25zb2xlAFdyaXRlTGluZQBT
+VF80MjYwYTQ5MTE3NGM0NzNjOWJhZGZkNmNiMGJmNDRiOS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5y
+ZXNvdXJjZXMAAHFTAFQAXwA0ADIANgAwAGEANAA5ADEAMQA3ADQAYwA0ADcAMwBjADkAYgBhAGQA
+ZgBkADYAYwBiADAAYgBmADQANABiADkALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
+AHIAYwBlAHMAACdVAHMAZQByADoAOgBwAGEAYwBrAGEAZwBlAEYAbwBsAGQAZQByAAAxXAA5ADkA
+OQBfAEYAVABQAF8ARABBAFQAQQBfAFAAVQBUAF8AMgAuAGQAdABzAHgAABFmAGkAbABlAE4AYQBt
+AGUAACNVAHMAZQByADoAOgBmAHQAcABGAGkAbABlAE4AYQBtAGUAAAt0AG8AZABhAHkAABdVAHMA
+ZQByADoAOgB0AG8AZABhAHkAABdwAGEAYwBrAGEAZwBlAEMAbwBkAGUAACdTAHkAcwB0AGUAbQA6
+ADoAUABhAGMAawBhAGcAZQBOAGEAbQBlAAATRgBUAFAA1zDDMMgwvzC5MK8wAR/VMKEwpDDrMPt5
+1VJnME0wfjBbMJMwZzBXMF8wAjABAywAAC1FAHIAcgBvAHIAIABpAG4AIAB7ADAAfQAvAHsAMQB9
+ACAAOgAgAHsAMgB9AAAAAADjGgYqdV+7SZMtNhAPM+9sAAi3elxWGTTgiQiJhF3NgIDMkQMgAAED
+BhIZAwYSHQQAABIZBAAAEh0FAAEBEh0ECAASGQQIABIdAwYSEAQAABIQBAgAEhACBggDBhEYBAAA
+AAAEAQAAAAsgBwISIQgODg4IDgQgAQEOBCABAQgGAAESWRFdBCAAEmEGIAIBDhJhBAcBEhkFIAEB
+EWkIAQACAAAAAAADAAABBCAAEnkEIAASfQYgARKAgRwDIAAcAyAADgUAAg4ODgkgAhKAiQ4SgI0E
+IAEBHAUgAg4ICBEgBRGAmRKAnRJ9EoCNEoChHAUgABKApQIGDgggBQIIDg4OCA0HBRJ1EoCJEhwO
+EYCZBgADDg4ODgYAARGArQ4HAAQBDhwcHEcBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuMAEA
+VA4URnJhbWV3b3JrRGlzcGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNCgBACNTVF80MjYwYTQ5MTE3
+NGM0NzNjOWJhZGZkNmNiMGJmNDRiOQAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDE2AAAIAQAI
+AAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBAHQzAAAAAAAAAAAAAI4zAAAAIAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAACAMwAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxs
+AAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAACwAwAAAAAAAAAAAACwAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEA72MLGQAAAQDvYwsZPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAEEAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAA7AIAAAEAMAAwADAA
+MAAwADQAYgAwAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABf
+ADQAMgA2ADAAYQA0ADkAMQAxADcANABjADQANwAzAGMAOQBiAGEAZABmAGQANgBjAGIAMABiAGYA
+NAA0AGIAOQAAAEAADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA2ADQAMQAx
+AC4AMgA1ADUAOAAzAAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfAGYA
+ZgBmAGYAZQAzADYANQA3AGUAMQBhADQAYgBmAGMAYgBiADcAOQA3ADIANQA3ADYAOABjAGYAMABl
+ADkANwAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAAIAAyADAAMQA2AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBs
+AGUAbgBhAG0AZQAAAFMAVABfAGYAZgBmAGYAZQAzADYANQA3AGUAMQBhADQAYgBmAGMAYgBiADcA
+OQA3ADIANQA3ADYAOABjAGYAMABlADkANwAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABO
+AGEAbQBlAAAAAABTAFQAXwA0ADIANgAwAGEANAA5ADEAMQA3ADQAYwA0ADcAMwBjADkAYgBhAGQA
+ZgBkADYAYwBiADAAYgBmADQANABiADkAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBv
+AG4AAAAxAC4AMAAuADYANAAxADEALgAyADUANQA4ADMAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwA
+eQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADYANAAxADEALgAyADUANQA4ADMAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAoDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\R016ファイル作成"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="データ フロー タスク"
+      DTS:DTSID="{12F1797B-1C6B-445C-83AD-72AADA5BC5B3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="R016ファイル作成"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\R016ファイル作成\OLE DB ソース 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB ソース;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB ソース"
+              name="OLE DB ソース 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="コマンドがタイムアウトするまでの秒数。値 0 はタイムアウトしないことを表します。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="行セットを開くために使用するデータベース オブジェクトの名前を指定します。"
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="行セットを開くために使用するデータベース オブジェクトの名前を含む変数を指定します。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="実行する SQL コマンド。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    店舗コード,
+    CONVERT(VARCHAR(8),売上伝票日付,112) AS 伝票日付,
+    '' AS [通貨コ－ド],
+    'EANN' AS [識別子-後続項目],
+    SKUコード AS 品目コード,
+    '' AS 販売促進,
+    CASE WHEN 勘定コード='801' THEN '' ELSE '-' END AS [プラス/マイナス_1],
+    RIGHT('000000000000000000' + CAST(売上数 AS varchar),18) AS 販売数量,
+    '' AS [プラス/マイナス_2],
+    売上売価 AS 売上金額,
+    '' AS [条件のプラス/マイナス_1],
+    CASE WHEN 売上割引 &gt; 0 THEN 'ZB00' ELSE '' END AS [条件/割引タイプ_2],
+    売上割引 AS 販売割引,
+    '' AS 条件タイプID,
+    '' AS [20文字式条件タイプID],
+    '' AS 項目CONDIDの識別子,
+    '' AS ボーナスバイテキスト,
+    '' AS 税コード,
+    '' AS 税額_1,
+    '' AS [条件のプラス/マイナス],
+    '' AS 税タイプ,
+    '' AS 税額_2,
+    '' AS 項目グループ,
+    '' AS 項目名,
+    '' AS 項目値
+FROM D_URIAGE_DENPYOU_MEISAI
+WHERE 発生日 BETWEEN ? AND ? 
+AND 店舗コード='8011'</property>
+                <property
+                  dataType="System.String"
+                  description="実行する SQL コマンドを含む変数です。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="データ ソースからコード ページ情報を利用できないときに使用する列コード ページを指定します。"
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="文字データを説明するときに、DefaultCodePage プロパティの値を強制的に使用します。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="データベースへのアクセスに使用するモードを指定します。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="SQL コマンドのパラメーターと変数間のマッピングです。"
+                  name="ParameterMapping">"Parameter0:Input",{A3D64A42-0BE8-4BA1-8D9C-06ABA5B04138};"Parameter1:Input",{28B81BBE-8D9F-4876-8374-39EEDAC09C3F};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\R016ファイル作成\OLE DB ソース 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="データベースへのアクセスに使用する OLE DB ランタイム接続。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力]"
+                  name="OLE DB ソースの出力">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[店舗コード]"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[店舗コード]"
+                      name="店舗コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[伝票日付]"
+                      length="8"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[伝票日付]"
+                      name="伝票日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[通貨コ－ド]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[通貨コ－ド]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[通貨コ－ド]"
+                      name="通貨コ－ド"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[識別子-後続項目]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[識別子-後続項目]"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[識別子-後続項目]"
+                      name="識別子-後続項目"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[品目コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[品目コード]"
+                      length="13"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[品目コード]"
+                      name="品目コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売促進]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売促進]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売促進]"
+                      name="販売促進"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[プラス/マイナス_1]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_1]"
+                      name="プラス/マイナス_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売数量]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売数量]"
+                      length="36"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売数量]"
+                      name="販売数量"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_2]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[プラス/マイナス_2]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_2]"
+                      name="プラス/マイナス_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[売上金額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[売上金額]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[売上金額]"
+                      name="売上金額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件のプラス/マイナス_1]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス_1]"
+                      name="条件のプラス/マイナス_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件/割引タイプ_2]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件/割引タイプ_2]"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件/割引タイプ_2]"
+                      name="条件/割引タイプ_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売割引]"
+                      dataType="i8"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売割引]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売割引]"
+                      name="販売割引"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件タイプID]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件タイプID]"
+                      name="条件タイプID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[20文字式条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[20文字式条件タイプID]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[20文字式条件タイプID]"
+                      name="20文字式条件タイプID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目CONDIDの識別子]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目CONDIDの識別子]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目CONDIDの識別子]"
+                      name="項目CONDIDの識別子"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[ボーナスバイテキスト]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[ボーナスバイテキスト]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[ボーナスバイテキスト]"
+                      name="ボーナスバイテキスト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税コード]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税コード]"
+                      name="税コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_1]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税額_1]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_1]"
+                      name="税額_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件のプラス/マイナス]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス]"
+                      name="条件のプラス/マイナス"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税タイプ]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税タイプ]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税タイプ]"
+                      name="税タイプ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_2]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税額_2]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_2]"
+                      name="税額_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目グループ]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目グループ]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目グループ]"
+                      name="項目グループ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目名]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目名]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目名]"
+                      name="項目名"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目値]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目値]"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目値]"
+                      name="項目値"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      name="伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[通貨コ－ド]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="通貨コ－ド" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[識別子-後続項目]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="識別子-後続項目" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[品目コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      name="品目コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売促進]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="販売促進" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[プラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="プラス/マイナス_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売数量]"
+                      codePage="932"
+                      dataType="str"
+                      length="36"
+                      name="販売数量" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[プラス/マイナス_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="プラス/マイナス_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[売上金額]"
+                      dataType="i8"
+                      name="売上金額" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件のプラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件のプラス/マイナス_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件/割引タイプ_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="条件/割引タイプ_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[販売割引]"
+                      dataType="i8"
+                      name="販売割引" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件タイプID" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[20文字式条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="20文字式条件タイプID" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目CONDIDの識別子]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目CONDIDの識別子" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[ボーナスバイテキスト]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="ボーナスバイテキスト" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税額_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税額_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[条件のプラス/マイナス]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件のプラス/マイナス" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税タイプ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税タイプ" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[税額_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税額_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目グループ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目グループ" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目名]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目名" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].ExternalColumns[項目値]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目値" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力]"
+                  isErrorOut="true"
+                  name="OLE DB ソースのエラー出力">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[店舗コード]"
+                      name="店舗コード" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[伝票日付]"
+                      name="伝票日付" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[通貨コ－ド]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[通貨コ－ド]"
+                      name="通貨コ－ド" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[識別子-後続項目]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[識別子-後続項目]"
+                      name="識別子-後続項目" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[品目コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[品目コード]"
+                      name="品目コード" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売促進]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売促進]"
+                      name="販売促進" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[プラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[プラス/マイナス_1]"
+                      name="プラス/マイナス_1" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売数量]"
+                      codePage="932"
+                      dataType="str"
+                      length="36"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売数量]"
+                      name="販売数量" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[プラス/マイナス_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[プラス/マイナス_2]"
+                      name="プラス/マイナス_2" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[売上金額]"
+                      dataType="i8"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[売上金額]"
+                      name="売上金額" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件のプラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件のプラス/マイナス_1]"
+                      name="条件のプラス/マイナス_1" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件/割引タイプ_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件/割引タイプ_2]"
+                      name="条件/割引タイプ_2" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売割引]"
+                      dataType="i8"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[販売割引]"
+                      name="販売割引" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件タイプID]"
+                      name="条件タイプID" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[20文字式条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[20文字式条件タイプID]"
+                      name="20文字式条件タイプID" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目CONDIDの識別子]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目CONDIDの識別子]"
+                      name="項目CONDIDの識別子" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ボーナスバイテキスト]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ボーナスバイテキスト]"
+                      name="ボーナスバイテキスト" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税コード]"
+                      name="税コード" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税額_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税額_1]"
+                      name="税額_1" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件のプラス/マイナス]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[条件のプラス/マイナス]"
+                      name="条件のプラス/マイナス" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税タイプ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税タイプ]"
+                      name="税タイプ" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税額_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[税額_2]"
+                      name="税額_2" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目グループ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目グループ]"
+                      name="項目グループ" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目名]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目名]"
+                      name="項目名" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目値]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[項目値]"
+                      name="項目値" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースのエラー出力].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\R016ファイル作成\フラット ファイル変換先"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="フラット ファイル変換先;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="フラット ファイル変換先"
+              localeId="1041"
+              name="フラット ファイル変換先">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="対象ファイルにデータを上書きするか、追加するかを指定します。"
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="他のデータが書き込まれる前に、対象のファイルに書き込むテキストを指定します。"
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\R016ファイル作成\フラット ファイル変換先.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[R016_File]"
+                  connectionManagerRefId="Package.ConnectionManagers[R016_File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力]"
+                  hasSideEffects="true"
+                  name="フラット ファイル変換先の入力">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[店舗コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="店舗コード"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[店舗コード]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[店舗コード]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[伝票日付]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="伝票日付"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[伝票日付]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[伝票日付]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[通貨コ－ド]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="通貨コ－ド"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[通貨コ－ド]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[通貨コ－ド]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[識別子-後続項目]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="識別子-後続項目"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[識別子-後続項目]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[識別子-後続項目]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[品目コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="品目コード"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[品目コード]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[品目コード]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[販売促進]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="販売促進"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売促進]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売促進]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[プラス/マイナス_1]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="プラス/マイナス_1"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[プラス/マイナス_1]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_1]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[販売数量]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="36"
+                      cachedName="販売数量"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売数量]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売数量]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[プラス/マイナス_2]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="プラス/マイナス_2"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[プラス/マイナス_2]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[プラス/マイナス_2]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[売上金額]"
+                      cachedDataType="i8"
+                      cachedName="売上金額"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[売上金額]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[売上金額]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[条件のプラス/マイナス_1]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="条件のプラス/マイナス_1"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件のプラス/マイナス_1]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス_1]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[条件/割引タイプ_2]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="条件/割引タイプ_2"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件/割引タイプ_2]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件/割引タイプ_2]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[販売割引]"
+                      cachedDataType="i8"
+                      cachedName="販売割引"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売割引]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[販売割引]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[条件タイプID]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="条件タイプID"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件タイプID]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件タイプID]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[20文字式条件タイプID]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="20文字式条件タイプID"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[20文字式条件タイプID]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[20文字式条件タイプID]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[項目CONDIDの識別子]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="項目CONDIDの識別子"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目CONDIDの識別子]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目CONDIDの識別子]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[ボーナスバイテキスト]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ボーナスバイテキスト"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[ボーナスバイテキスト]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[ボーナスバイテキスト]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[税コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="税コード"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税コード]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税コード]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[税額_1]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="税額_1"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税額_1]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_1]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[条件のプラス/マイナス]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="条件のプラス/マイナス"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件のプラス/マイナス]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[条件のプラス/マイナス]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[税タイプ]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="税タイプ"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税タイプ]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税タイプ]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[税額_2]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="税額_2"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税額_2]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[税額_2]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[項目グループ]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="項目グループ"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目グループ]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目グループ]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[項目名]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="項目名"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目名]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目名]" />
+                    <inputColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].Columns[項目値]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="項目値"
+                      externalMetadataColumnId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目値]"
+                      lineageId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力].Columns[項目値]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      name="伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[通貨コ－ド]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="通貨コ－ド" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[識別子-後続項目]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="識別子-後続項目" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[品目コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      name="品目コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売促進]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="販売促進" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[プラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="プラス/マイナス_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売数量]"
+                      codePage="932"
+                      dataType="str"
+                      length="36"
+                      name="販売数量" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[プラス/マイナス_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="プラス/マイナス_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[売上金額]"
+                      dataType="i8"
+                      name="売上金額" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件のプラス/マイナス_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件のプラス/マイナス_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件/割引タイプ_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="条件/割引タイプ_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[販売割引]"
+                      dataType="i8"
+                      name="販売割引" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件タイプID" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[20文字式条件タイプID]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="20文字式条件タイプID" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目CONDIDの識別子]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目CONDIDの識別子" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[ボーナスバイテキスト]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="ボーナスバイテキスト" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税コード" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税額_1]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税額_1" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[条件のプラス/マイナス]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="条件のプラス/マイナス" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税タイプ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税タイプ" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[税額_2]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="税額_2" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目グループ]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目グループ" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目名]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目名" />
+                    <externalMetadataColumn
+                      refId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力].ExternalColumns[項目値]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="項目値" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\R016ファイル作成.Paths[OLE DB ソースの出力]"
+              endId="Package\R016ファイル作成\フラット ファイル変換先.Inputs[フラット ファイル変換先の入力]"
+              name="OLE DB ソースの出力"
+              startId="Package\R016ファイル作成\OLE DB ソース 1.Outputs[OLE DB ソースの出力]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8196B87E-1735-4FA2-9E9F-55326ABFA922}"
+      DTS:From="Package\R016ファイル作成"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\FTP PUT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\FTP PUT"
+          TopLeft="213,197" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\R016ファイル作成"
+          TopLeft="216,95" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="293.5,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="作成者: Irfan Mansuri&#xA;作成日: 2017/07/14&#xA;出力ファイル名: R016"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="152,70"
+          Id="467ac441-e7bd-4706-b1b8-5fc53a1434d6"
+          TopLeft="939,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\R016ファイル作成">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\R016ファイル作成\OLE DB ソース 1"
+          TopLeft="372,60" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\R016ファイル作成\フラット ファイル変換先"
+          TopLeft="363,161" />
+        <EdgeLayout
+          Id="Package\R016ファイル作成.Paths[OLE DB ソースの出力]"
+          TopLeft="448.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\R016ファイル作成\OLE DB ソース 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,2280 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/13/2017 5:08:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{A8C577C9-398C-4B5B-8091-924FCE350A98}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="888_MD_KENSHOU_DATA_IMPORT_TOOL9"
+  DTS:PackageType="5"
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{83515D73-C651-49E8-80CF-147DE31D92BC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MD_TSV_File]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="TSV_File"
+      DTS:DTSID="{E589E81B-D8D7-471D-90CF-358F3EBFCB01}"
+      DTS:ObjectName="MD_TSV_File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileFolder] + "\\" +  @[User::mdFileName] + "_" +  @[User::today] +".TSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="C:\Users\999982\Desktop\import\T_MONTH_UKEHARAI_MATCH_20170731.TSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票日付"
+              DTS:DTSID="{D83C91AA-C2C8-4375-B725-7776A75FDA48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="買取受託"
+              DTS:DTSID="{B00B52C5-03FA-459C-9981-FECC8DA66A24}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="勘定コード"
+              DTS:DTSID="{6AEE8B26-62E3-49C0-8F02-AA6932164B84}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票数量"
+              DTS:DTSID="{2A8EC150-1203-454D-B425-968B05B31F32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票原価"
+              DTS:DTSID="{6CB2193C-79B2-4657-B4EA-0F912D9750E5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票売価"
+              DTS:DTSID="{FB02F504-2457-42A5-81EE-E9C4457F8B20}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MD_ZAIKO_File]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="MD_ZAIKO_File"
+      DTS:DTSID="{A2BA7458-B5CC-4426-A7E3-3B4A41984374}"
+      DTS:ObjectName="MD_ZAIKO_File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileFolder] + "\\" +  @[User::mdZaikoFileName] + "_" +  @[User::today] +".TSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="C:\Users\999982\Desktop\import\T_MONTH_ZAIKO_MATCH_20170731.TSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{AD543F1B-D84A-4A98-94CC-FC9BBCDA9810}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{C676448A-9050-4881-A4AA-B31CE6FC12CA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{E7DCB470-9FD9-48AE-B835-5737BA2FE6BD}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E728AAE0-6B38-4A1E-A338-67473D94DE64}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi8keQ+723USXFCAUh5mH1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABtX+C2fkJ0Y1kLTduFK03IAAAAAASAAACgAAAAEAAAAPW0Ib/TIENsNX1/wIV2R7QYAAAAxDWcIu2BlAnlwZXQYWkD5Vf5Lfe508wwFAAAAHNm9hpot0uLCCq2svF4ypbz/Uwz</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C2A3D1AF-05B1-4A3C-97AF-E354B57ACA4C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\999982\Desktop\import</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6215E9E4-38A1-43AC-A331-86E0E2590A0F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mdFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">T_MONTH_UKEHARAI_MATCH</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B095EDCB-6CA2-4066-8BB2-60E9C6990D31}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mdZaikoFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">T_MONTH_ZAIKO_MATCH</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CEFA3F9-9909-4EF2-ABD8-4F3853878F80}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0, GETDATE() )) + RIGHT(&quot;00&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0, GETDATE() )),2) +  (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0, GETDATE() )),2))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="8">20170731</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\MD在庫検証ファイルインポート"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9afa6441-095d-4b0b-bf1b-81c86c1d9fee}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MD在庫検証ファイルインポート"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MD在庫検証ファイルインポート\Flat File Source 1"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1041"
+              name="Flat File Source 1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MD_ZAIKO_File]"
+                  connectionManagerRefId="Package.ConnectionManagers[MD_ZAIKO_File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 0]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="6"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 1]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      length="4"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 1]"
+                      name="Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 2]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 2]"
+                      name="Column 2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="Column 0" />
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 1]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="Column 1" />
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Column 2]"
+                      dataType="i8"
+                      name="Column 2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="932"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_ZAIKO_KENSHOU_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Column 0]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[年度月度]"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 0]" />
+                    <inputColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Column 1]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Column 1"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 1]" />
+                    <inputColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Column 2]"
+                      cachedDataType="i8"
+                      cachedName="Column 2"
+                      externalMetadataColumnId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
+                      lineageId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output].Columns[Column 2]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[年度月度]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="年度月度" />
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
+                      dataType="i8"
+                      name="在庫数量" />
+                    <externalMetadataColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MD在庫検証ファイルインポート.Paths[Flat File Source Output]"
+              endId="Package\MD在庫検証ファイルインポート\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\MD在庫検証ファイルインポート\Flat File Source 1.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MD検証ファイルインポート"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{073F2E5D-7B0D-49CA-9222-09C8C92A997D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MD検証ファイルインポート"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MD検証ファイルインポート\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input].Columns[伝票日付]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="伝票日付"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付_New]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付_New]"
+                      name="日付_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)#{Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)[伝票日付]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MD検証ファイルインポート\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1041"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MD_TSV_File]"
+                  connectionManagerRefId="Package.ConnectionManagers[MD_TSV_File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票日付]"
+                      length="10"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]"
+                      name="伝票日付"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[買取受託]"
+                      length="1"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]"
+                      name="買取受託"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[勘定コード]"
+                      length="5"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]"
+                      name="勘定コード"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票数量]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]"
+                      name="伝票数量"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票原価]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]"
+                      name="伝票原価"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票売価]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]"
+                      name="伝票売価"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票数量]"
+                      dataType="i8"
+                      name="伝票数量" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票原価]"
+                      dataType="i8"
+                      name="伝票原価" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票売価]"
+                      dataType="i8"
+                      name="伝票売価" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="932"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MD検証ファイルインポート\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_SHIME_KENSHOU_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[買取受託]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="買取受託"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[勘定コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="勘定コード"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票数量]"
+                      cachedDataType="i8"
+                      cachedName="伝票数量"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票原価]"
+                      cachedDataType="i8"
+                      cachedName="伝票原価"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票売価]"
+                      cachedDataType="i8"
+                      cachedName="伝票売価"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[日付_New]"
+                      cachedDataType="dbDate"
+                      cachedName="日付_New"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付_New]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      dataType="dbDate"
+                      name="MD伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      dataType="i8"
+                      name="実績数量" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      dataType="i8"
+                      name="実績原価額" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      dataType="i8"
+                      name="実績売価額" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MD検証ファイルインポート.Paths[Derived Column Output]"
+              endId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\MD検証ファイルインポート.Paths[Flat File Source Output]"
+              endId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATEテーブル"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5D41C4DB-1F39-4F7B-B758-16500735EA6F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATEテーブル"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E728AAE0-6B38-4A1E-A338-67473D94DE64}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE MD_DATA_SHIME_KENSHOU_TEMP;&#xA;&#xA;GO&#xA;&#xA;TRUNCATE TABLE MD_DATA_ZAIKO_KENSHOU_TEMP;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\削除ーSAME DATA"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{496D2A83-A4C4-4740-BBA2-7ACD1E46B346}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="削除ーSAME DATA"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E728AAE0-6B38-4A1E-A338-67473D94DE64}"
+          SQLTask:SqlStatementSource="/*ALL GYOM DATA REMOVE*/&#xA;DELETE MAIN FROM MD_DATA_SHIME_KENSHOU AS MAIN&#xA;INNER JOIN MD_DATA_SHIME_KENSHOU_TEMP AS TEMP&#xA;ON MAIN.MD伝票日付 = TEMP.MD伝票日付&#xA;WHERE TEMP.MD伝票日付 IS NOT NULL&#xA;&#xA;GO&#xA;&#xA;/*ZAIKO DATA REMOVE*/&#xA;DELETE MAIN FROM MD_DATA_ZAIKO_KENSHOU AS MAIN&#xA;INNER JOIN MD_DATA_ZAIKO_KENSHOU_TEMP AS TEMP&#xA;ON MAIN.年度月度 = TEMP.年度月度&#xA;WHERE TEMP.年度月度 IS NOT NULL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\在庫検証データ_TEMP➜MAIN"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6c4e9e24-5627-4934-85b4-cce2910fb3f6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="在庫検証データ_TEMP➜MAIN"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_ZAIKO_KENSHOU]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[年度月度]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="年度月度"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[年度月度]"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[年度月度]" />
+                    <inputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[店舗コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="店舗コード"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[店舗コード]" />
+                    <inputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[在庫数量]"
+                      cachedDataType="i8"
+                      cachedName="在庫数量"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[在庫数量]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[年度月度]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="年度月度" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
+                      dataType="i8"
+                      name="在庫数量" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_ZAIKO_KENSHOU_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[年度月度]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[年度月度]"
+                      length="6"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[年度月度]"
+                      name="年度月度"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      length="4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      name="店舗コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[在庫数量]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[在庫数量]"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[在庫数量]"
+                      name="在庫数量"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[登録時刻]"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[登録時刻]"
+                      name="登録時刻"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[年度月度]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="年度月度" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[在庫数量]"
+                      dataType="i8"
+                      name="在庫数量" />
+                    <externalMetadataColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[年度月度]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[年度月度]"
+                      name="年度月度" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      name="店舗コード" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[在庫数量]"
+                      dataType="i8"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[在庫数量]"
+                      name="在庫数量" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[登録時刻]"
+                      name="登録時刻" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\在庫検証データ_TEMP➜MAIN.Paths[OLE DB Source Output]"
+              endId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\検証データ_TEMP➜MAIN"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4C5CAD41-0263-4971-BBB5-040832246426}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="検証データ_TEMP➜MAIN"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_SHIME_KENSHOU]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[MD伝票日付]"
+                      cachedDataType="dbDate"
+                      cachedName="MD伝票日付"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[MD伝票日付]" />
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[買取受託]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="買取受託"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[買取受託]" />
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[勘定コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="勘定コード"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[勘定コード]" />
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[実績数量]"
+                      cachedDataType="i8"
+                      cachedName="実績数量"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績数量]" />
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[実績原価額]"
+                      cachedDataType="i8"
+                      cachedName="実績原価額"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績原価額]" />
+                    <inputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[実績売価額]"
+                      cachedDataType="i8"
+                      cachedName="実績売価額"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績売価額]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      dataType="dbDate"
+                      name="MD伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      dataType="i8"
+                      name="実績数量" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      dataType="i8"
+                      name="実績原価額" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      dataType="i8"
+                      name="実績売価額" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\検証データ_TEMP➜MAIN\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_SHIME_KENSHOU_TEMP]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[MD伝票日付]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MD伝票日付]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[MD伝票日付]"
+                      name="MD伝票日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[買取受託]"
+                      length="1"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[買取受託]"
+                      name="買取受託"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      length="5"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      name="勘定コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績数量]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績数量]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績数量]"
+                      name="実績数量"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績原価額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績原価額]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績原価額]"
+                      name="実績原価額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績売価額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績売価額]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[実績売価額]"
+                      name="実績売価額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[登録時刻]"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].Columns[登録時刻]"
+                      name="登録時刻"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MD伝票日付]"
+                      dataType="dbDate"
+                      name="MD伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績数量]"
+                      dataType="i8"
+                      name="実績数量" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績原価額]"
+                      dataType="i8"
+                      name="実績原価額" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[実績売価額]"
+                      dataType="i8"
+                      name="実績売価額" />
+                    <externalMetadataColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MD伝票日付]"
+                      dataType="dbDate"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MD伝票日付]"
+                      name="MD伝票日付" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[買取受託]"
+                      name="買取受託" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      name="勘定コード" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績数量]"
+                      dataType="i8"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績数量]"
+                      name="実績数量" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績原価額]"
+                      dataType="i8"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績原価額]"
+                      name="実績原価額" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績売価額]"
+                      dataType="i8"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[実績売価額]"
+                      name="実績売価額" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[登録時刻]"
+                      name="登録時刻" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\検証データ_TEMP➜MAIN.Paths[OLE DB Source Output]"
+              endId="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\検証データ_TEMP➜MAIN\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{881BDDEC-301A-432B-B72D-B0630136FE52}"
+      DTS:From="Package\TRUNCATEテーブル"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\MD検証ファイルインポート" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F6159422-C40C-4F05-A22F-7FFD4C2ADF74}"
+      DTS:From="Package\MD検証ファイルインポート"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\MD在庫検証ファイルインポート" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{10A79196-3E60-4201-9F87-59681D998045}"
+      DTS:From="Package\削除ーSAME DATA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\検証データ_TEMP➜MAIN" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2E6BF638-583D-49A7-A733-FF2E5C900760}"
+      DTS:From="Package\MD在庫検証ファイルインポート"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\削除ーSAME DATA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{65F4AE73-C2A4-46CD-A4E6-14EA46EC8453}"
+      DTS:From="Package\検証データ_TEMP➜MAIN"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\在庫検証データ_TEMP➜MAIN" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\MD検証ファイルインポート"
+          TopLeft="328,205" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\MD在庫検証ファイルインポート"
+          TopLeft="328,285" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\TRUNCATEテーブル"
+          TopLeft="328,126" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\検証データ_TEMP➜MAIN"
+          TopLeft="327,461" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\在庫検証データ_TEMP➜MAIN"
+          TopLeft="330,548" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\削除ーSAME DATA"
+          TopLeft="328,371" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="431,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="431,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="430.5,413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="431,327">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="433.25,503">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MD検証ファイルインポート">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\MD検証ファイルインポート\Flat File Source"
+          TopLeft="225,85" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MD検証ファイルインポート\OLE DB Destination"
+          TopLeft="215,281" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\MD検証ファイルインポート\Derived Column"
+          TopLeft="219,181" />
+        <EdgeLayout
+          Id="Package\MD検証ファイルインポート.Paths[Flat File Source Output]"
+          TopLeft="298.25,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MD検証ファイルインポート.Paths[Derived Column Output]"
+          TopLeft="298.25,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MD検証ファイルインポート\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MD在庫検証ファイルインポート">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\MD在庫検証ファイルインポート\OLE DB Destination 1"
+          TopLeft="283,214" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\MD在庫検証ファイルインポート\Flat File Source 1"
+          TopLeft="291,102" />
+        <EdgeLayout
+          Id="Package\MD在庫検証ファイルインポート.Paths[Flat File Source Output]"
+          TopLeft="372,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MD在庫検証ファイルインポート\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\検証データ_TEMP➜MAIN">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\検証データ_TEMP➜MAIN\OLE DB Source"
+          TopLeft="335,73" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1"
+          TopLeft="313,172" />
+        <EdgeLayout
+          Id="Package\検証データ_TEMP➜MAIN.Paths[OLE DB Source Output]"
+          TopLeft="406.5,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\検証データ_TEMP➜MAIN\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\検証データ_TEMP➜MAIN\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\在庫検証データ_TEMP➜MAIN">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source"
+          TopLeft="237,60" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination"
+          TopLeft="231,172" />
+        <EdgeLayout
+          Id="Package\在庫検証データ_TEMP➜MAIN.Paths[OLE DB Source Output]"
+          TopLeft="314.25,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\在庫検証データ_TEMP➜MAIN\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\在庫検証データ_TEMP➜MAIN\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

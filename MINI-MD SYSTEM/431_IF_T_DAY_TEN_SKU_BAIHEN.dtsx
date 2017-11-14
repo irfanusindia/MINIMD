@@ -1,0 +1,1268 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/10/2017 10:43:53 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{DC5F3B50-1521-44C8-816E-E04D1BF4AEAB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="431_IF_T_DAY_TEN_SKU_BAIHEN"
+  DTS:PackageType="5"
+  DTS:VersionBuild="464"
+  DTS:VersionGUID="{D175AF35-0E33-4476-8F29-224A72D3CD94}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BAIHEN_TSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="BAIHEN_TSV"
+      DTS:DTSID="{DB2DE268-19DF-4095-BC6A-ED200DD6B847}"
+      DTS:ObjectName="BAIHEN_TSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::fileFolder] + "\\" + @[User::ftpFileName]  +"_" +  ((DT_WSTR, 10) @[User::today]) + ".TSV"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="D:\public\IM_FILES\T_DAY_TEN_SKU_BAIHEN_20170718.TSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="売変伝票日付"
+              DTS:DTSID="{59BEF81B-6C80-4089-B067-C64C2BDEEF7D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="売変サイト"
+              DTS:DTSID="{EF914B86-E074-4322-AF35-57673C34D164}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="13"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SKUコード"
+              DTS:DTSID="{B6A87CCB-1DDA-4880-8854-62A932127A8C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="買取受託"
+              DTS:DTSID="{5D2CC1EE-4F3E-4418-8520-C8E933AD837D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="売変金額"
+              DTS:DTSID="{27718661-58A2-4B32-ADC8-286E9AD735C4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C06E1633-3A19-4C45-AAF4-F9BA5751337A}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\431_IF_T_DAY_TEN_SKU_BAIHEN_20170718" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9E690C23-B625-4281-AE2B-45B55889C06A}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAb4Spc8952U6stg6+UIa24QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADVFVYQDpjxAdL43IhKn6MKOheZbZffFSGtM9I9v0KdXAAAAAAOgAAAAAIAACAAAACEtKkUSMpCqyzKzm634WO+9Pnu/qKYl8gih11pKtnJDyAAAABHIc+VL7TwqlVEDYm+cU0ad/HRViq2kfgMHfPTkwdrzEAAAABvLom6/XT1KBNSPhVLvFTNh5Ez/i4vgCVwmSU9ZzinJiuN9kn0GujzpHheAvyLzdk/9pZQINtKv0sxG7fsg6nB</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{F6A6A3CA-073F-4754-B766-BBD5B7E0892C}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D2EE81C-0DE2-47FC-BB0D-D8171D54615D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{50F8B9C4-D4B3-479C-B3DA-6A71C4A741F3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\IM_FILES</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41FB599B-711A-42C0-8A5D-0A9E017B90F3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ftpFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">T_DAY_TEN_SKU_BAIHEN</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B958CB48-BE69-47CE-9905-8E632F9266CF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="DATEADD(&quot;d&quot;,-1,GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="maxDate">
+      <DTS:VariableValue
+        DTS:DataType="7">7/17/2017 8:26:02 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{276033F5-1A88-4CAD-BF07-01D065997CF2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="DATEADD(&quot;d&quot;,-1,GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="minDate">
+      <DTS:VariableValue
+        DTS:DataType="7">7/17/2017 8:26:02 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{73AEA210-6B9C-4F38-85ED-AD6AF7947917}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="packageFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projects\Source Code\Release Area\MINI-MD SYSTEM\MINI-MD SYSTEM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C8C3D6D-0BE2-4A52-83F2-8E35607CE620}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0, GETDATE() )) + RIGHT(&quot;00&quot;+ (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0, GETDATE() )),2) + (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0, GETDATE() )),2))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="8">20170718</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{F6A6A3CA-073F-4754-B766-BBD5B7E0892C}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FTP PUT"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{F6CA4F26-DA09-4457-984B-DB444686396D}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP PUT"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_ffffe3657e1a4bfcbb79725768cf0e97"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::ftpFileName,User::packageFolder,System::PackageName">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Settings.get_Default():ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Sett" +
+    "ings")]
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_ffffe3657e1a4bfcbb79725768cf0e97.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{B1E9EC81-E9E1-485A-8532-1509F58C8AD3}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_4260a491174c473c9badfd6cb0bf44b9</RootNamespace><AssemblyName>ST_ffffe3657e1a4bfcbb79725768cf0e97</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Program.cs" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\InstallDir#\devenv.exe" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Namespaces
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
+#endregion
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9
+{
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+		public void Main()
+		{
+            Microsoft.SqlServer.Dts.Runtime.Application app;
+            Package packageRun;
+            app = new Microsoft.SqlServer.Dts.Runtime.Application();
+            MyEventListener eventListener = new MyEventListener();
+            string strPackageFullPath = Dts.Variables["User::packageFolder"].Value.ToString() + @"\999_FTP_DATA_PUT_2.dtsx";
+            packageRun = app.LoadPackage(strPackageFullPath, eventListener);
+            packageRun.Variables["fileName"].Value = Dts.Variables["User::ftpFileName"].Value.ToString();
+            packageRun.Variables["packageCode"].Value = Dts.Variables["System::PackageName"].Value.ToString().Substring(0,3);
+            DTSExecResult results = packageRun.Execute(null, null, eventListener, null, null);
+            if (results == DTSExecResult.Failure)
+            {
+                Dts.Events.FireError(0, "FTPプットタスク", "ファイル移動できませんでした。", String.Empty, 0);
+            }
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+
+    class MyEventListener : DefaultEvents
+    {
+        public override bool OnError(DtsObject source, int errorCode, string subComponent,
+          string description, string helpFile, int helpContext, string idofInterfaceWithError)
+        {
+
+            MessageBox.Show(subComponent + "," + description);
+            Console.WriteLine("Error in {0}/{1} : {2}", source, subComponent, description);
+            return false;
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_4260a491174c473c9badfd6cb0bf44b9</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_4260a491174c473c9badfd6cb0bf44b9</msb:DisplayName>
+		<msb:ProjectId>{A0244974-DFD3-4E54-AC54-A7A0F3200C3D}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_ffffe3657e1a4bfcbb79725768cf0e97.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="Program.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Program.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9
+{
+    class Program
+    {
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_747c4e6e8a384a729730f38d632f4135.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAA45i1gAAAAAAAAAAOAAAiELAQsAABQAAAAIAAAAAAAATjMA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPgyAABTAAAAAEAAAAgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAVBMAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAw
+MwAAAAAAAEgAAAACAAUAsCIAAEgQAAABAAAAAAAAAPghAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA0AAAoqHgIoDQAACioTMAIALQAAAAEAABF+AQAABC0g
+cgEAAHDQAwAAAigPAAAKbxAAAApzEQAACgoGgAEAAAR+AQAABCoafgIAAAQqHgKAAgAABCoafgMA
+AAQqLnMHAAAGgAMAAAQqHgIoFAAACioAEzAGAO8AAAACAAARcxYAAAoKcwwAAAYMAigXAAAKbxgA
+AApycwAAcG8ZAAAKbxoAAApvGwAACnKbAABwKBwAAAoNBgkIbx0AAAoLB28eAAAKcs0AAHBvGQAA
+CgIoFwAACm8YAAAKct8AAHBvGQAACm8aAAAKbxsAAApvHwAACgdvHgAACnIDAQBwbxkAAAoCKBcA
+AApvGAAACnIbAQBwbxkAAApvGgAACm8bAAAKFhlvIAAACm8fAAAKBxQUCBQUbyEAAAoTBBEEFzMi
+AigXAAAKbyIAAAoWckMBAHByVwEAcH4jAAAKFm8kAAAKJgIoFwAAChZvJQAACioeAigmAAAKKo4F
+cncBAHAOBCgnAAAKKCgAAAomcnsBAHADBQ4EKCkAAAoWKh4CKCoAAAoqAAAAAAC0AAAAzsrvvgEA
+AACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9u
+PTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
+OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0
+AAAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA8AQAACN+AABcBQAAZAcAACNT
+dHJpbmdzAAAAAMAMAACsAQAAI1VTAGwOAAAQAAAAI0dVSUQAAAB8DgAAzAEAACNCbG9iAAAAAAAA
+AAIAAAFXHaIBCQMAAAD6JTMAFgAAAQAAACwAAAAHAAAABgAAAAwAAAAIAAAAKgAAAAIAAAAPAAAA
+AgAAAAIAAAADAAAABAAAAAEAAAAFAAAAAQAAAAEAAAAAAAoAAQAAAAAABgDZANIACgD1AOAADgBV
+ASwBBgBxAdIAEgC1AZUBBgDaAckBBgALAvYBEgCcApUBBgAkAwoDBgBPAz0DBgBmAz0DBgCDAz0D
+BgCiAz0DBgC7Az0DBgDUAz0DBgDvAz0DBgAKBD0DBgAjBD0DBgBcBDwEBgB8BDwEBgDRBL4EBgDu
+BNIABgDzBNIABgAXBT0DCgBDBS0FCgBcBS0FBgBxBTwEDgCTBSwBEgC1BZUBDgDBBSwBEgDbBZUB
+EgDzBZUBBgAYBtIAEgAmBpUBEgAuBpUBEgBFBpUBEgBmBpUBEgBxBpUBEgB/BpUBEgCLBpUBDgCf
+BiwBFgDyBt0GFgD9Bt0GBgAPB9IAAAAAAAEAAAAAAAEAAQAAABAAMgA6AAUAAQABAAAAEABeAGgA
+BQABAAIAAAEQAJcAaAAJAAMABgABABAAoAA6AA0ABAAJAAMBAACrAAAAEQAEAAsAAAAQALkAOgAV
+AAcACwARAOoBFwARABcCGwARAFsCOQAGBoQCRwBWgIwCSgBWgJQCSgBQIAAAAACGGMMBEwABAFgg
+AAAAAIMYwwETAAEAYCAAAAAAkwgnAh8AAQCZIAAAAACTCDsCJAABAKAgAAAAAJMIRwIpAAEAqCAA
+AAAAlghrAj0AAgC7IAAAAACGGMMBEwACAK8gAAAAAJEYjAWVAAIAxCAAAAAAhgB/AhMAAgC/IQAA
+AACGGMMBEwACAMchAAAAAMYApgJYAAIA6yEAAAAAhhjDARMACQAAAAEArgIAAAEAtAIAAAIAuwIA
+AAMAxQIAAAQA0gIAAAUA3gIAAAYA5wIAAAcA8wJJAMMBZABRAMMBZABZAMMBZABhAMMBZABpAMMB
+ZABxAMMBZAB5AMMBZACBAMMBZACJAMMBZACRAMMBZACZAMMBaQChAMMBEwAJAMMBEwCpAMMBEwCx
+AAUFbgCxACAFdQAxAMMBegDJAMMBhgDZAMMBEwARAMMBEwDhAMMBEwDpAMMBEwAZANMFmQDxAOUF
+ngD5APwFowABAQUGqgAJAA8GrgAJAR8GsgDpADkGuAAhAeUFngABAVIGwgAJAVwGxwApAZcGzQDx
+ALMG3wAJAb4G5QBJAcQG6ADxAM4GaQAZAMMBEwAJAR8G/wBRAQoHBgFhARcHDQEpAMMBEwAIABQA
+TgAIABgAUwApAJMAjAAuABsAhgEuACMAhgEuAGMArAEuAAsAFQEuABMAXQEuACsAhgEuADMAXQEu
+ADsAjAEuAEMAhgEuAFsAowFJAJMAjABhAJsAUwBjAHMAUwCjAKsAUwCBAPEAAwABAAQAAwAAANoB
+LwAAAFMCNAAAAHcCQgACAAMAAwACAAQABQABAAUABQACAAYABwAEgAAAAQAAAFwYD5UAAAAAAACa
+BAAABAAAAAAAAAAAAAAAAQDJAAAAAAAEAAAAAAAAAAAAAAABANIAAAAAAAwAAAAAAAAAAAAAAAoA
+DQEAAAAADAAAAAAAAAAAAAAACgB2AQAAAAAEAAAAAAAAAAAAAAABAN0GAAAAAAAAAAABAAAAIQcA
+AAYABQAAAAA8TW9kdWxlPgBTVF83NDdjNGU2ZThhMzg0YTcyOTczMGYzOGQ2MzJmNDEzNS5kbGwA
+UHJvZ3JhbQBTVF80MjYwYTQ5MTE3NGM0NzNjOWJhZGZkNmNiMGJmNDRiOQBSZXNvdXJjZXMAU1Rf
+NDI2MGE0OTExNzRjNDczYzliYWRmZDZjYjBiZjQ0YjkuUHJvcGVydGllcwBTZXR0aW5ncwBTY3Jp
+cHRNYWluAFNjcmlwdFJlc3VsdHMATXlFdmVudExpc3RlbmVyAG1zY29ybGliAFN5c3RlbQBPYmpl
+Y3QAU3lzdGVtLkNvbmZpZ3VyYXRpb24AQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UATWljcm9zb2Z0
+LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlw
+dFRhc2sAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEVudW0ATWljcm9zb2Z0LlNxbFNlcnZl
+ci5NYW5hZ2VkRFRTAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUARGVmYXVsdEV2ZW50
+cwAuY3RvcgBTeXN0ZW0uUmVzb3VyY2VzAFJlc291cmNlTWFuYWdlcgByZXNvdXJjZU1hbgBTeXN0
+ZW0uR2xvYmFsaXphdGlvbgBDdWx0dXJlSW5mbwByZXNvdXJjZUN1bHR1cmUAZ2V0X1Jlc291cmNl
+TWFuYWdlcgBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBDdWx0dXJlAGRlZmF1bHRJbnN0YW5jZQBn
+ZXRfRGVmYXVsdABEZWZhdWx0AE1haW4AdmFsdWVfXwBTdWNjZXNzAEZhaWx1cmUARHRzT2JqZWN0
+AE9uRXJyb3IAdmFsdWUAc291cmNlAGVycm9yQ29kZQBzdWJDb21wb25lbnQAZGVzY3JpcHRpb24A
+aGVscEZpbGUAaGVscENvbnRleHQAaWRvZkludGVyZmFjZVdpdGhFcnJvcgBTeXN0ZW0uUnVudGlt
+ZS5WZXJzaW9uaW5nAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBB
+c3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1i
+bHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJs
+eVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFk
+ZW1hcmtBdHRyaWJ1dGUAQXNzZW1ibHlDdWx0dXJlQXR0cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0
+dHJpYnV0ZQBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhh
+dGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAU1RfNzQ3YzRlNmU4
+YTM4NGE3Mjk3MzBmMzhkNjMyZjQxMzUAU3lzdGVtLkRpYWdub3N0aWNzAERlYnVnZ2VyTm9uVXNl
+ckNvZGVBdHRyaWJ1dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBB
+c3NlbWJseQBnZXRfQXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJs
+ZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0
+ZQAuY2N0b3IAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFwcGxpY2F0aW9uAFNj
+cmlwdE9iamVjdE1vZGVsAGdldF9EdHMAVmFyaWFibGVzAGdldF9WYXJpYWJsZXMAVmFyaWFibGUA
+Z2V0X0l0ZW0AZ2V0X1ZhbHVlAFRvU3RyaW5nAFN0cmluZwBDb25jYXQAUGFja2FnZQBJRFRTRXZl
+bnRzAExvYWRQYWNrYWdlAER0c0NvbnRhaW5lcgBzZXRfVmFsdWUAU3Vic3RyaW5nAEV4ZWN1dGFi
+bGUARFRTRXhlY1Jlc3VsdABDb25uZWN0aW9ucwBJRFRTTG9nZ2luZwBFeGVjdXRlAEV2ZW50c09i
+amVjdFdyYXBwZXIAZ2V0X0V2ZW50cwBFbXB0eQBGaXJlRXJyb3IAc2V0X1Rhc2tSZXN1bHQAU3lz
+dGVtLldpbmRvd3MuRm9ybXMATWVzc2FnZUJveABEaWFsb2dSZXN1bHQAU2hvdwBDb25zb2xlAFdy
+aXRlTGluZQBTVF80MjYwYTQ5MTE3NGM0NzNjOWJhZGZkNmNiMGJmNDRiOS5Qcm9wZXJ0aWVzLlJl
+c291cmNlcy5yZXNvdXJjZXMAAHFTAFQAXwA0ADIANgAwAGEANAA5ADEAMQA3ADQAYwA0ADcAMwBj
+ADkAYgBhAGQAZgBkADYAYwBiADAAYgBmADQANABiADkALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4A
+UgBlAHMAbwB1AHIAYwBlAHMAACdVAHMAZQByADoAOgBwAGEAYwBrAGEAZwBlAEYAbwBsAGQAZQBy
+AAAxXAA5ADkAOQBfAEYAVABQAF8ARABBAFQAQQBfAFAAVQBUAF8AMgAuAGQAdABzAHgAABFmAGkA
+bABlAE4AYQBtAGUAACNVAHMAZQByADoAOgBmAHQAcABGAGkAbABlAE4AYQBtAGUAABdwAGEAYwBr
+AGEAZwBlAEMAbwBkAGUAACdTAHkAcwB0AGUAbQA6ADoAUABhAGMAawBhAGcAZQBOAGEAbQBlAAAT
+RgBUAFAA1zDDMMgwvzC5MK8wAR/VMKEwpDDrMPt51VJnME0wfjBbMJMwZzBXMF8wAjABAywAAC1F
+AHIAcgBvAHIAIABpAG4AIAB7ADAAfQAvAHsAMQB9ACAAOgAgAHsAMgB9AAAAAABJWwFvjgfFQork
+0WE0YYZMAAi3elxWGTTgiQiJhF3NgIDMkQMgAAEDBhIZAwYSHQQAABIZBAAAEh0FAAEBEh0ECAAS
+GQQIABIdAwYSEAQAABIQBAgAEhACBggDBhEYBAAAAAAEAQAAAAsgBwISIQgODg4IDgQgAQEOBCAB
+AQgGAAESWRFdBCAAEmEGIAIBDhJhBAcBEhkFIAEBEWkIAQACAAAAAAADAAABBCAAEnkEIAASfQYg
+ARKAgRwDIAAcAyAADgUAAg4ODgkgAhKAiQ4SgI0EIAEBHAUgAg4ICBEgBRGAmRKAnRJ9EoCNEoCh
+HAUgABKApQIGDgggBQIIDg4OCA0HBRJ1EoCJEhwOEYCZBgADDg4ODgYAARGArQ4HAAQBDhwcHEcB
+ABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuMAEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUQLk5F
+VCBGcmFtZXdvcmsgNCgBACNTVF80MjYwYTQ5MTE3NGM0NzNjOWJhZGZkNmNiMGJmNDRiOQAABQEA
+AAAAFgEAEUNvcHlyaWdodCBAICAyMDE2AAAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRp
+b25UaHJvd3MBACAzAAAAAAAAAAAAAD4zAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMwAAAAAA
+AAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAACwAwAAAAAAAAAAAACwAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAD5VcGAAAAQAPlVwYPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAEEAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAA7AIAAAEAMAAwADAA
+MAAwADQAYgAwAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABf
+ADQAMgA2ADAAYQA0ADkAMQAxADcANABjADQANwAzAGMAOQBiAGEAZABmAGQANgBjAGIAMABiAGYA
+NAA0AGIAOQAAAEAADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA2ADIAMwA2
+AC4AMwA4ADEANQA5AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADcA
+NAA3AGMANABlADYAZQA4AGEAMwA4ADQAYQA3ADIAOQA3ADMAMABmADMAOABkADYAMwAyAGYANAAx
+ADMANQAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAAIAAyADAAMQA2AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBs
+AGUAbgBhAG0AZQAAAFMAVABfADcANAA3AGMANABlADYAZQA4AGEAMwA4ADQAYQA3ADIAOQA3ADMA
+MABmADMAOABkADYAMwAyAGYANAAxADMANQAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABO
+AGEAbQBlAAAAAABTAFQAXwA0ADIANgAwAGEANAA5ADEAMQA3ADQAYwA0ADcAMwBjADkAYgBhAGQA
+ZgBkADYAYwBiADAAYgBmADQANABiADkAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBv
+AG4AAAAxAC4AMAAuADYAMgAzADYALgAzADgAMQA1ADkAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwA
+eQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADYAMgAzADYALgAzADgAMQA1ADkAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAUDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TSVファイル作成"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3F1688B3-CC0E-474C-9211-1361E4257BBE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TSVファイル作成"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TSVファイル作成\OLE DB ソース"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB ソース;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB ソース"
+              name="OLE DB ソース"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="コマンドがタイムアウトするまでの秒数。値 0 はタイムアウトしないことを表します。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="行セットを開くために使用するデータベース オブジェクトの名前を指定します。"
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="行セットを開くために使用するデータベース オブジェクトの名前を含む変数を指定します。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="実行する SQL コマンド。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CONVERT(VARCHAR(8),売変伝票日付,112) AS 売変伝票日付,
+       売変サイト,
+       SKUコード,
+       買取受託,
+       SUM( 売変金額 )
+AS 売変金額
+FROM D_BAIHEN_DENPYOU_MEISAI
+WHERE 発生日 BETWEEN ? AND ? 
+GROUP BY 売変伝票日付,
+         売変サイト,
+         SKUコード,
+         買取受託
+ORDER BY 売変伝票日付,
+         売変サイト;</property>
+                <property
+                  dataType="System.String"
+                  description="実行する SQL コマンドを含む変数です。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="データ ソースからコード ページ情報を利用できないときに使用する列コード ページを指定します。"
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="文字データを説明するときに、DefaultCodePage プロパティの値を強制的に使用します。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="データベースへのアクセスに使用するモードを指定します。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="SQL コマンドのパラメーターと変数間のマッピングです。"
+                  name="ParameterMapping">"Parameter0:Input",{276033F5-1A88-4CAD-BF07-01D065997CF2};"Parameter1:Input",{B958CB48-BE69-47CE-9905-8E632F9266CF};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TSVファイル作成\OLE DB ソース.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="データベースへのアクセスに使用する OLE DB ランタイム接続。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力]"
+                  name="OLE DB ソースの出力">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変伝票日付]"
+                      length="8"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変伝票日付]"
+                      name="売変伝票日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変サイト]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変サイト]"
+                      length="4"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変サイト]"
+                      name="売変サイト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[SKUコード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[SKUコード]"
+                      length="13"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[SKUコード]"
+                      name="SKUコード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[買取受託]"
+                      length="1"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[買取受託]"
+                      name="買取受託"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変金額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="変換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変金額]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変金額]"
+                      name="売変金額"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      name="売変伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変サイト]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="売変サイト" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[SKUコード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      name="SKUコード" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].ExternalColumns[売変金額]"
+                      dataType="i8"
+                      name="売変金額" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力]"
+                  isErrorOut="true"
+                  name="OLE DB ソースのエラー出力">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変伝票日付]"
+                      name="売変伝票日付" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変サイト]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変サイト]"
+                      name="売変サイト" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[SKUコード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[SKUコード]"
+                      name="SKUコード" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[買取受託]"
+                      name="買取受託" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変金額]"
+                      dataType="i8"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[売変金額]"
+                      name="売変金額" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースのエラー出力].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TSVファイル作成\売変ファイル作成"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="フラット ファイル変換先;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="フラット ファイル変換先"
+              localeId="1041"
+              name="売変ファイル作成">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="対象ファイルにデータを上書きするか、追加するかを指定します。"
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="他のデータが書き込まれる前に、対象のファイルに書き込むテキストを指定します。"
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TSVファイル作成\売変ファイル作成.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BAIHEN_TSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[BAIHEN_TSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力]"
+                  hasSideEffects="true"
+                  name="フラット ファイル変換先の入力">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].Columns[売変伝票日付]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="売変伝票日付"
+                      externalMetadataColumnId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変伝票日付]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変伝票日付]" />
+                    <inputColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].Columns[売変サイト]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="売変サイト"
+                      externalMetadataColumnId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変サイト]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変サイト]" />
+                    <inputColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].Columns[SKUコード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="SKUコード"
+                      externalMetadataColumnId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[SKUコード]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[SKUコード]" />
+                    <inputColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].Columns[買取受託]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="買取受託"
+                      externalMetadataColumnId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[買取受託]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[買取受託]" />
+                    <inputColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].Columns[売変金額]"
+                      cachedDataType="i8"
+                      cachedName="売変金額"
+                      externalMetadataColumnId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変金額]"
+                      lineageId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力].Columns[売変金額]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="8"
+                      name="売変伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変サイト]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="売変サイト" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[SKUコード]"
+                      codePage="932"
+                      dataType="str"
+                      length="13"
+                      name="SKUコード" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力].ExternalColumns[売変金額]"
+                      dataType="i8"
+                      name="売変金額" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TSVファイル作成.Paths[OLE DB ソースの出力]"
+              endId="Package\TSVファイル作成\売変ファイル作成.Inputs[フラット ファイル変換先の入力]"
+              name="OLE DB ソースの出力"
+              startId="Package\TSVファイル作成\OLE DB ソース.Outputs[OLE DB ソースの出力]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{39A517BD-91B6-47F4-9A0F-1709F2F3EBFC}"
+      DTS:From="Package\TSVファイル作成"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\FTP PUT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\FTP PUT"
+          TopLeft="201,207" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\TSVファイル作成"
+          TopLeft="200,130" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="302.5,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="T_DAY_TEN_SKU_BAIHEN"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="185,39"
+          Id="427855a1-44af-4c4b-84a1-5bc10c530ae5"
+          TopLeft="19,48" />
+        <AnnotationLayout
+          Text="作成者: Irfan Mansuri&#xA;作成日: 2017/07/11&#xA;説明: This Package aim to create daily basis 売変 Data for BMW"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="398,70"
+          Id="467ac441-e7bd-4706-b1b8-5fc53a1434d6"
+          TopLeft="939,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TSVファイル作成">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\TSVファイル作成\売変ファイル作成"
+          TopLeft="152,166" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\TSVファイル作成\OLE DB ソース"
+          TopLeft="172,62" />
+        <EdgeLayout
+          Id="Package\TSVファイル作成.Paths[OLE DB ソースの出力]"
+          TopLeft="243.5,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,62"
+              Start="0,0"
+              End="-15.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-11.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,31"
+                    Point2="-15.5,31"
+                    Point3="-15.5,35" />
+                  <mssgle:LineSegment
+                    End="-15.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TSVファイル作成\OLE DB ソース">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

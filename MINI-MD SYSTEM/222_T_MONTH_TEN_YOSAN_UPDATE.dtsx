@@ -1,0 +1,707 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/3/2016 6:13:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{13637EFC-C23E-4C16-89DE-1FA3B5151138}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="222_T_MONTH_TEN_YOSAN_UPDATE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="157"
+  DTS:VersionGUID="{381FE53F-8DE2-4F8F-94D0-871CB779FB36}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5DAB3C2B-A73D-4A81-8CB1-0F7A4D7DFD12}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\public\dailyLog\222_T_MONTH_TEN_YOSAN_UPDATE_20170207" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAqksJR7yiSkuMdzop9pg7GwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADYYBqz5TMN0fFRgkOfuuqBroD5MBB1FUAzgM9u8kavaQAAAAAOgAAAAAIAACAAAADVRtDau4Nzjl2x96huQoi67oUvJGatm8wuJeg66I+QwiAAAABPRrIQC/B1YWN9qj+c3+n7Vyu5syWcX+6rtMgSh4aTLEAAAAB1OKx/OJMgTRDVRjpqnNJPjZqNgc416HQ+h4ynQYSGZmP/tgKzKh1wFJuFXZ3T3f+mPCMXRBPNxsnEuzSdbUg6</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{2B948367-1010-4D3E-84B0-8CEA1BE3F811}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DCF62A85-560F-4BFB-ADFB-F65DFD4B062F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{21022482-A8E7-4544-B278-6B90C7A902A4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="bumRecords">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3964BCDC-F960-45EA-ACBF-E692791166AA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="tenRecords">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B540169B-0194-4144-8B8B-7F56D4E40D4D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_WSTR,4)YEAR( GETDATE()  )+ RIGHT(&quot;00&quot;+(DT_WSTR,2)MONTH( GETDATE()  ),2)+ RIGHT(&quot;00&quot;+(DT_WSTR,2)DAY( GETDATE()  ),2)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="8">20170207</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{2B948367-1010-4D3E-84B0-8CEA1BE3F811}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{725C0EAC-C396-46A2-B96D-51179EB635DA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="UPDATE TEN_YOSAN&#xA;SET TEN_YOSAN.期首在庫数量 = (TEN_YOSAN.期首在庫数量 + NEW_0800.期首在庫数量),&#xA;TEN_YOSAN.売上金額9月度 = (TEN_YOSAN.売上金額9月度  + NEW_0800.売上金額9月度 ),&#xA;TEN_YOSAN.売上金額10月度= (TEN_YOSAN.売上金額10月度 + NEW_0800.売上金額10月度),&#xA;TEN_YOSAN.売上金額11月度= (TEN_YOSAN.売上金額11月度 + NEW_0800.売上金額11月度),&#xA;TEN_YOSAN.売上金額12月度= (TEN_YOSAN.売上金額12月度 + NEW_0800.売上金額12月度),&#xA;TEN_YOSAN.売上金額1月度 = (TEN_YOSAN.売上金額1月度  + NEW_0800.売上金額1月度 ),&#xA;TEN_YOSAN.売上金額2月度 = (TEN_YOSAN.売上金額2月度  + NEW_0800.売上金額2月度 ),&#xA;TEN_YOSAN.売上金額3月度 = (TEN_YOSAN.売上金額3月度  + NEW_0800.売上金額3月度 ),&#xA;TEN_YOSAN.売上金額4月度 = (TEN_YOSAN.売上金額4月度  + NEW_0800.売上金額4月度 ),&#xA;TEN_YOSAN.売上金額5月度 = (TEN_YOSAN.売上金額5月度  + NEW_0800.売上金額5月度 ),&#xA;TEN_YOSAN.売上金額6月度 = (TEN_YOSAN.売上金額6月度  + NEW_0800.売上金額6月度 ),&#xA;TEN_YOSAN.売上金額7月度 = (TEN_YOSAN.売上金額7月度  + NEW_0800.売上金額7月度 ),&#xA;TEN_YOSAN.売上金額8月度 = (TEN_YOSAN.売上金額8月度  + NEW_0800.売上金額8月度 ),&#xA;TEN_YOSAN.仕入原価9月度 = (TEN_YOSAN.仕入原価9月度  + NEW_0800.仕入原価9月度 ),&#xA;TEN_YOSAN.仕入原価10月度= (TEN_YOSAN.仕入原価10月度 + NEW_0800.仕入原価10月度),&#xA;TEN_YOSAN.仕入原価11月度= (TEN_YOSAN.仕入原価11月度 + NEW_0800.仕入原価11月度),&#xA;TEN_YOSAN.仕入原価12月度= (TEN_YOSAN.仕入原価12月度 + NEW_0800.仕入原価12月度),&#xA;TEN_YOSAN.仕入原価1月度=  (TEN_YOSAN.仕入原価1月度  + NEW_0800.仕入原価1月度 ),&#xA;TEN_YOSAN.仕入原価2月度=  (TEN_YOSAN.仕入原価2月度  + NEW_0800.仕入原価2月度 ),&#xA;TEN_YOSAN.仕入原価3月度=  (TEN_YOSAN.仕入原価3月度  + NEW_0800.仕入原価3月度 ),&#xA;TEN_YOSAN.仕入原価4月度=  (TEN_YOSAN.仕入原価4月度  + NEW_0800.仕入原価4月度 ),&#xA;TEN_YOSAN.仕入原価5月度=  (TEN_YOSAN.仕入原価5月度  + NEW_0800.仕入原価5月度 ),&#xA;TEN_YOSAN.仕入原価6月度=  (TEN_YOSAN.仕入原価6月度  + NEW_0800.仕入原価6月度 ),&#xA;TEN_YOSAN.仕入原価7月度=  (TEN_YOSAN.仕入原価7月度  + NEW_0800.仕入原価7月度 ),&#xA;TEN_YOSAN.仕入原価8月度=  (TEN_YOSAN.仕入原価8月度  + NEW_0800.仕入原価8月度 ),&#xA;TEN_YOSAN.期首在庫原価 =  (TEN_YOSAN.期首在庫原価   + NEW_0800.期首在庫原価 ),&#xA;TEN_YOSAN.在庫原価9月度=  (TEN_YOSAN.在庫原価9月度  + NEW_0800.在庫原価9月度),&#xA;TEN_YOSAN.在庫原価10月度= (TEN_YOSAN.在庫原価10月度 + NEW_0800.在庫原価10月度),&#xA;TEN_YOSAN.在庫原価11月度= (TEN_YOSAN.在庫原価11月度 + NEW_0800.在庫原価11月度),&#xA;TEN_YOSAN.在庫原価12月度= (TEN_YOSAN.在庫原価12月度 + NEW_0800.在庫原価12月度),&#xA;TEN_YOSAN.在庫原価1月度 = (TEN_YOSAN.在庫原価1月度  + NEW_0800.在庫原価1月度 ),&#xA;TEN_YOSAN.在庫原価2月度 = (TEN_YOSAN.在庫原価2月度  + NEW_0800.在庫原価2月度 ),&#xA;TEN_YOSAN.在庫原価3月度 = (TEN_YOSAN.在庫原価3月度  + NEW_0800.在庫原価3月度 ),&#xA;TEN_YOSAN.在庫原価4月度 = (TEN_YOSAN.在庫原価4月度  + NEW_0800.在庫原価4月度 ),&#xA;TEN_YOSAN.在庫原価5月度 = (TEN_YOSAN.在庫原価5月度  + NEW_0800.在庫原価5月度 ),&#xA;TEN_YOSAN.在庫原価6月度 = (TEN_YOSAN.在庫原価6月度  + NEW_0800.在庫原価6月度 ),&#xA;TEN_YOSAN.在庫原価7月度 = (TEN_YOSAN.在庫原価7月度  + NEW_0800.在庫原価7月度 ),&#xA;TEN_YOSAN.在庫原価8月度 = (TEN_YOSAN.在庫原価8月度  + NEW_0800.在庫原価8月度 )&#xA;FROM T_MONTH_TEN_YOSAN AS TEN_YOSAN&#xA;LEFT JOIN (&#xA;&#x9;&#x9;&#x9;SELECT ISNULL(年度B,年度T) AS 年度,&#xA;&#x9;&#x9;&#x9;&#x9;期首在庫数量B- 期首在庫数量T AS 期首在庫数量,&#xA;&#x9;&#x9;&#x9;&#x9;期首在庫原価B- 期首在庫原価T AS 期首在庫原価,期首在庫売価B- 期首在庫売価T AS 期首在庫売価,売上数量9月度B- 売上数量9月度T AS 売上数量9月度,売上金額9月度B- 売上金額9月度T AS 売上金額9月度,&#xA;&#x9;&#x9;&#x9;&#x9;売上値引9月度B- 売上値引9月度T AS 売上値引9月度,仕入数量9月度B- 仕入数量9月度T AS 仕入数量9月度,仕入原価9月度B- 仕入原価9月度T AS 仕入原価9月度,仕入売価9月度B- 仕入売価9月度T AS 仕入売価9月度,&#xA;&#x9;&#x9;&#x9;&#x9;売変9月度B- 売変9月度T AS 売変9月度,値入率9月度B- 値入率9月度T AS 値入率9月度,売変率9月度B- 売変率9月度T AS 売変率9月度,&#x9;ロス率9月度B- ロス率9月度T AS ロス率9月度,&#x9;粗利率9月度B- 粗利率9月度T AS 粗利率9月度,&#xA;&#x9;&#x9;&#x9;&#x9;粗利金額9月度B- 粗利金額9月度T AS 粗利金額9月度,&#x9;商品回転率9月度B- 商品回転率9月度T AS 商品回転率9月度,&#x9;ロス数量9月度B- ロス数量9月度T AS ロス数量9月度,&#x9;ロス金額9月度B- ロス金額9月度T AS ロス金額9月度,&#xA;&#x9;&#x9;&#x9;&#x9;在庫数量9月度B- 在庫数量9月度T AS 在庫数量9月度,&#x9;在庫原価9月度B- 在庫原価9月度T AS 在庫原価9月度,&#x9;在庫売価9月度B- 在庫売価9月度T AS 在庫売価9月度,&#x9;売上数量10月度B- 売上数量10月度T AS 売上数量10月度,&#xA;&#x9;&#x9;&#x9;&#x9;売上金額10月度B- 売上金額10月度T AS 売上金額10月度,&#x9;売上値引10月度B- 売上値引10月度T AS 売上値引10月度,&#x9;仕入数量10月度B- 仕入数量10月度T AS 仕入数量10月度,&#x9;仕入原価10月度B- 仕入原価10月度T AS 仕入原価10月度,&#xA;&#x9;&#x9;&#x9;&#x9;仕入売価10月度B- 仕入売価10月度T AS 仕入売価10月度,&#x9;売変10月度B- 売変10月度T AS 売変10月度,&#x9;値入率10月度B- 値入率10月度T AS 値入率10月度,&#x9;売変率10月度B- 売変率10月度T AS 売変率10月度,&#x9;ロス率10月度B- ロス率10月度T AS ロス率10月度,&#x9;粗利率10月度B- 粗利率10月度T AS 粗利率10月度,&#x9;粗利金額10月度B- 粗利金額10月度T AS 粗利金額10月度,&#x9;商品回転率10月度B- 商品回転率10月度T AS 商品回転率10月度,&#x9;ロス数量10月度B- ロス数量10月度T AS ロス数量10月度,&#x9;ロス金額10月度B- ロス金額10月度T AS ロス金額10月度,&#x9;在庫数量10月度B- 在庫数量10月度T AS 在庫数量10月度,&#x9;在庫原価10月度B- 在庫原価10月度T AS 在庫原価10月度,&#x9;在庫売価10月度B- 在庫売価10月度T AS 在庫売価10月度,&#x9;売上数量11月度B- 売上数量11月度T AS 売上数量11月度,&#x9;売上金額11月度B- 売上金額11月度T AS 売上金額11月度,&#x9;売上値引11月度B- 売上値引11月度T AS 売上値引11月度,&#x9;仕入数量11月度B- 仕入数量11月度T AS 仕入数量11月度,&#x9;仕入原価11月度B- 仕入原価11月度T AS 仕入原価11月度,&#x9;仕入売価11月度B- 仕入売価11月度T AS 仕入売価11月度,&#x9;売変11月度B- 売変11月度T AS 売変11月度,&#x9;値入率11月度B- 値入率11月度T AS 値入率11月度,&#x9;売変率11月度B- 売変率11月度T AS 売変率11月度,&#x9;ロス率11月度B- ロス率11月度T AS ロス率11月度,&#x9;粗利率11月度B- 粗利率11月度T AS 粗利率11月度,&#x9;粗利金額11月度B- 粗利金額11月度T AS 粗利金額11月度,&#x9;商品回転率11月度B- 商品回転率11月度T AS 商品回転率11月度,&#x9;ロス数量11月度B- ロス数量11月度T AS ロス数量11月度,&#x9;ロス金額11月度B- ロス金額11月度T AS ロス金額11月度,&#x9;在庫数量11月度B- 在庫数量11月度T AS 在庫数量11月度,&#x9;在庫原価11月度B- 在庫原価11月度T AS 在庫原価11月度,&#x9;在庫売価11月度B- 在庫売価11月度T AS 在庫売価11月度,&#x9;売上数量12月度B- 売上数量12月度T AS 売上数量12月度,&#x9;売上金額12月度B- 売上金額12月度T AS 売上金額12月度,&#x9;売上値引12月度B- 売上値引12月度T AS 売上値引12月度,&#x9;仕入数量12月度B- 仕入数量12月度T AS 仕入数量12月度,&#x9;仕入原価12月度B- 仕入原価12月度T AS 仕入原価12月度,&#x9;仕入売価12月度B- 仕入売価12月度T AS 仕入売価12月度,&#x9;売変12月度B- 売変12月度T AS 売変12月度,&#x9;値入率12月度B- 値入率12月度T AS 値入率12月度,&#x9;売変率12月度B- 売変率12月度T AS 売変率12月度,&#x9;ロス率12月度B- ロス率12月度T AS ロス率12月度,&#x9;粗利率12月度B- 粗利率12月度T AS 粗利率12月度,&#x9;粗利金額12月度B- 粗利金額12月度T AS 粗利金額12月度,&#x9;商品回転率12月度B- 商品回転率12月度T AS 商品回転率12月度,&#x9;ロス数量12月度B- ロス数量12月度T AS ロス数量12月度,&#x9;ロス金額12月度B- ロス金額12月度T AS ロス金額12月度,&#x9;在庫数量12月度B- 在庫数量12月度T AS 在庫数量12月度,&#x9;在庫原価12月度B- 在庫原価12月度T AS 在庫原価12月度,&#x9;在庫売価12月度B- 在庫売価12月度T AS 在庫売価12月度,&#x9;売上数量1月度B- 売上数量1月度T AS 売上数量1月度,&#x9;売上金額1月度B- 売上金額1月度T AS 売上金額1月度,&#x9;売上値引1月度B- 売上値引1月度T AS 売上値引1月度,&#x9;仕入数量1月度B- 仕入数量1月度T AS 仕入数量1月度,&#x9;仕入原価1月度B- 仕入原価1月度T AS 仕入原価1月度,&#x9;仕入売価1月度B- 仕入売価1月度T AS 仕入売価1月度,&#x9;売変1月度B- 売変1月度T AS 売変1月度,&#x9;値入率1月度B- 値入率1月度T AS 値入率1月度,&#x9;売変率1月度B- 売変率1月度T AS 売変率1月度,&#x9;ロス率1月度B- ロス率1月度T AS ロス率1月度,&#x9;粗利率1月度B- 粗利率1月度T AS 粗利率1月度,&#x9;粗利金額1月度B- 粗利金額1月度T AS 粗利金額1月度,&#x9;商品回転率1月度B- 商品回転率1月度T AS 商品回転率1月度,&#x9;ロス数量1月度B- ロス数量1月度T AS ロス数量1月度,&#x9;ロス金額1月度B- ロス金額1月度T AS ロス金額1月度,&#x9;在庫数量1月度B- 在庫数量1月度T AS 在庫数量1月度,&#x9;在庫原価1月度B- 在庫原価1月度T AS 在庫原価1月度,&#x9;在庫売価1月度B- 在庫売価1月度T AS 在庫売価1月度,&#x9;売上数量2月度B- 売上数量2月度T AS 売上数量2月度,&#x9;売上金額2月度B- 売上金額2月度T AS 売上金額2月度,&#x9;売上値引2月度B- 売上値引2月度T AS 売上値引2月度,&#x9;仕入数量2月度B- 仕入数量2月度T AS 仕入数量2月度,&#x9;仕入原価2月度B- 仕入原価2月度T AS 仕入原価2月度,&#x9;仕入売価2月度B- 仕入売価2月度T AS 仕入売価2月度,&#x9;売変2月度B- 売変2月度T AS 売変2月度,&#x9;値入率2月度B- 値入率2月度T AS 値入率2月度,&#x9;売変率2月度B- 売変率2月度T AS 売変率2月度,&#x9;ロス率2月度B- ロス率2月度T AS ロス率2月度,&#x9;粗利率2月度B- 粗利率2月度T AS 粗利率2月度,&#x9;粗利金額2月度B- 粗利金額2月度T AS 粗利金額2月度,&#x9;商品回転率2月度B- 商品回転率2月度T AS 商品回転率2月度,&#x9;ロス数量2月度B- ロス数量2月度T AS ロス数量2月度,&#x9;ロス金額2月度B- ロス金額2月度T AS ロス金額2月度,&#x9;在庫数量2月度B- 在庫数量2月度T AS 在庫数量2月度,&#x9;在庫原価2月度B- 在庫原価2月度T AS 在庫原価2月度,&#x9;在庫売価2月度B- 在庫売価2月度T AS 在庫売価2月度,&#x9;売上数量3月度B- 売上数量3月度T AS 売上数量3月度,&#x9;売上金額3月度B- 売上金額3月度T AS 売上金額3月度,&#x9;売上値引3月度B- 売上値引3月度T AS 売上値引3月度,&#x9;仕入数量3月度B- 仕入数量3月度T AS 仕入数量3月度,&#x9;仕入原価3月度B- 仕入原価3月度T AS 仕入原価3月度,&#x9;仕入売価3月度B- 仕入売価3月度T AS 仕入売価3月度,&#x9;売変3月度B- 売変3月度T AS 売変3月度,&#x9;値入率3月度B- 値入率3月度T AS 値入率3月度,&#x9;売変率3月度B- 売変率3月度T AS 売変率3月度,&#x9;ロス率3月度B- ロス率3月度T AS ロス率3月度,&#x9;粗利率3月度B- 粗利率3月度T AS 粗利率3月度,&#x9;粗利金額3月度B- 粗利金額3月度T AS 粗利金額3月度,&#x9;商品回転率3月度B- 商品回転率3月度T AS 商品回転率3月度,&#x9;ロス数量3月度B- ロス数量3月度T AS ロス数量3月度,&#x9;ロス金額3月度B- ロス金額3月度T AS ロス金額3月度,&#x9;在庫数量3月度B- 在庫数量3月度T AS 在庫数量3月度,&#x9;在庫原価3月度B- 在庫原価3月度T AS 在庫原価3月度,&#x9;在庫売価3月度B- 在庫売価3月度T AS 在庫売価3月度,&#x9;売上数量4月度B- 売上数量4月度T AS 売上数量4月度,&#x9;売上金額4月度B- 売上金額4月度T AS 売上金額4月度,&#x9;売上値引4月度B- 売上値引4月度T AS 売上値引4月度,&#x9;仕入数量4月度B- 仕入数量4月度T AS 仕入数量4月度,&#x9;仕入原価4月度B- 仕入原価4月度T AS 仕入原価4月度,&#x9;仕入売価4月度B- 仕入売価4月度T AS 仕入売価4月度,&#x9;売変4月度B- 売変4月度T AS 売変4月度,&#x9;値入率4月度B- 値入率4月度T AS 値入率4月度,&#x9;売変率4月度B- 売変率4月度T AS 売変率4月度,&#x9;ロス率4月度B- ロス率4月度T AS ロス率4月度,&#x9;粗利率4月度B- 粗利率4月度T AS 粗利率4月度,&#x9;粗利金額4月度B- 粗利金額4月度T AS 粗利金額4月度,&#x9;商品回転率4月度B- 商品回転率4月度T AS 商品回転率4月度,&#x9;ロス数量4月度B- ロス数量4月度T AS ロス数量4月度,&#x9;ロス金額4月度B- ロス金額4月度T AS ロス金額4月度,&#x9;在庫数量4月度B- 在庫数量4月度T AS 在庫数量4月度,&#x9;在庫原価4月度B- 在庫原価4月度T AS 在庫原価4月度,&#x9;在庫売価4月度B- 在庫売価4月度T AS 在庫売価4月度,&#x9;売上数量5月度B- 売上数量5月度T AS 売上数量5月度,&#x9;売上金額5月度B- 売上金額5月度T AS 売上金額5月度,&#x9;売上値引5月度B- 売上値引5月度T AS 売上値引5月度,&#x9;仕入数量5月度B- 仕入数量5月度T AS 仕入数量5月度,&#x9;仕入原価5月度B- 仕入原価5月度T AS 仕入原価5月度,&#x9;仕入売価5月度B- 仕入売価5月度T AS 仕入売価5月度,&#x9;売変5月度B- 売変5月度T AS 売変5月度,&#x9;値入率5月度B- 値入率5月度T AS 値入率5月度,&#x9;売変率5月度B- 売変率5月度T AS 売変率5月度,&#x9;ロス率5月度B- ロス率5月度T AS ロス率5月度,&#x9;粗利率5月度B- 粗利率5月度T AS 粗利率5月度,&#x9;粗利金額5月度B- 粗利金額5月度T AS 粗利金額5月度,&#x9;商品回転率5月度B- 商品回転率5月度T AS 商品回転率5月度,&#x9;ロス数量5月度B- ロス数量5月度T AS ロス数量5月度,&#x9;ロス金額5月度B- ロス金額5月度T AS ロス金額5月度,&#x9;在庫数量5月度B- 在庫数量5月度T AS 在庫数量5月度,&#x9;在庫原価5月度B- 在庫原価5月度T AS 在庫原価5月度,&#x9;在庫売価5月度B- 在庫売価5月度T AS 在庫売価5月度,&#x9;売上数量6月度B- 売上数量6月度T AS 売上数量6月度,&#x9;売上金額6月度B- 売上金額6月度T AS 売上金額6月度,&#x9;売上値引6月度B- 売上値引6月度T AS 売上値引6月度,&#x9;仕入数量6月度B- 仕入数量6月度T AS 仕入数量6月度,&#x9;仕入原価6月度B- 仕入原価6月度T AS 仕入原価6月度,&#x9;仕入売価6月度B- 仕入売価6月度T AS 仕入売価6月度,&#x9;売変6月度B- 売変6月度T AS 売変6月度,&#x9;値入率6月度B- 値入率6月度T AS 値入率6月度,&#x9;売変率6月度B- 売変率6月度T AS 売変率6月度,&#x9;ロス率6月度B- ロス率6月度T AS ロス率6月度,&#x9;粗利率6月度B- 粗利率6月度T AS 粗利率6月度,&#x9;粗利金額6月度B- 粗利金額6月度T AS 粗利金額6月度,&#x9;商品回転率6月度B- 商品回転率6月度T AS 商品回転率6月度,&#x9;ロス数量6月度B- ロス数量6月度T AS ロス数量6月度,&#x9;ロス金額6月度B- ロス金額6月度T AS ロス金額6月度,&#x9;在庫数量6月度B- 在庫数量6月度T AS 在庫数量6月度,&#x9;在庫原価6月度B- 在庫原価6月度T AS 在庫原価6月度,&#x9;在庫売価6月度B- 在庫売価6月度T AS 在庫売価6月度,&#x9;売上数量7月度B- 売上数量7月度T AS 売上数量7月度,&#x9;売上金額7月度B- 売上金額7月度T AS 売上金額7月度,&#x9;売上値引7月度B- 売上値引7月度T AS 売上値引7月度,&#x9;仕入数量7月度B- 仕入数量7月度T AS 仕入数量7月度,&#x9;仕入原価7月度B- 仕入原価7月度T AS 仕入原価7月度,&#x9;仕入売価7月度B- 仕入売価7月度T AS 仕入売価7月度,&#x9;売変7月度B- 売変7月度T AS 売変7月度,&#x9;値入率7月度B- 値入率7月度T AS 値入率7月度,&#x9;売変率7月度B- 売変率7月度T AS 売変率7月度,&#x9;ロス率7月度B- ロス率7月度T AS ロス率7月度,&#x9;粗利率7月度B- 粗利率7月度T AS 粗利率7月度,&#x9;粗利金額7月度B- 粗利金額7月度T AS 粗利金額7月度,&#x9;商品回転率7月度B- 商品回転率7月度T AS 商品回転率7月度,&#x9;ロス数量7月度B- ロス数量7月度T AS ロス数量7月度,&#x9;ロス金額7月度B- ロス金額7月度T AS ロス金額7月度,&#x9;在庫数量7月度B- 在庫数量7月度T AS 在庫数量7月度,&#x9;在庫原価7月度B- 在庫原価7月度T AS 在庫原価7月度,&#x9;在庫売価7月度B- 在庫売価7月度T AS 在庫売価7月度,&#x9;売上数量8月度B- 売上数量8月度T AS 売上数量8月度,&#x9;売上金額8月度B- 売上金額8月度T AS 売上金額8月度,&#x9;売上値引8月度B- 売上値引8月度T AS 売上値引8月度,&#x9;仕入数量8月度B- 仕入数量8月度T AS 仕入数量8月度,&#x9;仕入原価8月度B- 仕入原価8月度T AS 仕入原価8月度,&#x9;仕入売価8月度B- 仕入売価8月度T AS 仕入売価8月度,&#x9;売変8月度B- 売変8月度T AS 売変8月度,&#x9;値入率8月度B- 値入率8月度T AS 値入率8月度,&#x9;売変率8月度B- 売変率8月度T AS 売変率8月度,&#x9;ロス率8月度B- ロス率8月度T AS ロス率8月度,&#x9;粗利率8月度B- 粗利率8月度T AS 粗利率8月度,&#x9;粗利金額8月度B- 粗利金額8月度T AS 粗利金額8月度,&#x9;商品回転率8月度B- 商品回転率8月度T AS 商品回転率8月度,&#x9;ロス数量8月度B- ロス数量8月度T AS ロス数量8月度,&#x9;ロス金額8月度B- ロス金額8月度T AS ロス金額8月度,&#x9;在庫数量8月度B- 在庫数量8月度T AS 在庫数量8月度,&#x9;在庫原価8月度B- 在庫原価8月度T AS 在庫原価8月度,&#x9;在庫売価8月度B- 在庫売価8月度T AS 在庫売価8月度&#xA;&#x9;&#x9;&#x9;FROM &#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT MIN(年度) AS 年度B,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(期首在庫数量) AS 期首在庫数量B&#x9;,SUM(期首在庫原価) AS 期首在庫原価B&#x9;,SUM(期首在庫売価) AS 期首在庫売価B&#x9;,SUM(売上数量9月度) AS 売上数量9月度B&#x9;,SUM(売上金額9月度) AS 売上金額9月度B&#x9;,SUM(売上値引9月度) AS 売上値引9月度B&#x9;,SUM(仕入数量9月度) AS 仕入数量9月度B&#x9;,SUM(仕入原価9月度) AS 仕入原価9月度B&#x9;,SUM(仕入売価9月度) AS 仕入売価9月度B&#x9;,SUM(売変9月度) AS 売変9月度B&#x9;,SUM(値入率9月度) AS 値入率9月度B&#x9;,SUM(売変率9月度) AS 売変率9月度B&#x9;,SUM(ロス率9月度) AS ロス率9月度B&#x9;,SUM(粗利率9月度) AS 粗利率9月度B&#x9;,SUM(粗利金額9月度) AS 粗利金額9月度B&#x9;,SUM(商品回転率9月度) AS 商品回転率9月度B&#x9;,SUM(ロス数量9月度) AS ロス数量9月度B&#x9;,SUM(ロス金額9月度) AS ロス金額9月度B&#x9;,SUM(在庫数量9月度) AS 在庫数量9月度B&#x9;,SUM(在庫原価9月度) AS 在庫原価9月度B&#x9;,SUM(在庫売価9月度) AS 在庫売価9月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売上数量10月度) AS 売上数量10月度B&#x9;,SUM(売上金額10月度) AS 売上金額10月度B&#x9;,SUM(売上値引10月度) AS 売上値引10月度B&#x9;,SUM(仕入数量10月度) AS 仕入数量10月度B&#x9;,SUM(仕入原価10月度) AS 仕入原価10月度B&#x9;,SUM(仕入売価10月度) AS 仕入売価10月度B&#x9;,SUM(売変10月度) AS 売変10月度B&#x9;,SUM(値入率10月度) AS 値入率10月度B&#x9;,SUM(売変率10月度) AS 売変率10月度B&#x9;,SUM(ロス率10月度) AS ロス率10月度B&#x9;,SUM(粗利率10月度) AS 粗利率10月度B&#x9;,SUM(粗利金額10月度) AS 粗利金額10月度B&#x9;,SUM(商品回転率10月度) AS 商品回転率10月度B&#x9;,SUM(ロス数量10月度) AS ロス数量10月度B&#x9;,SUM(ロス金額10月度) AS ロス金額10月度B&#x9;,SUM(在庫数量10月度) AS 在庫数量10月度B&#x9;,SUM(在庫原価10月度) AS 在庫原価10月度B&#x9;,SUM(在庫売価10月度) AS 在庫売価10月度B&#x9;,SUM(売上数量11月度) AS 売上数量11月度B&#x9;,SUM(売上金額11月度) AS 売上金額11月度B&#x9;,SUM(売上値引11月度) AS 売上値引11月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(仕入数量11月度) AS 仕入数量11月度B&#x9;,SUM(仕入原価11月度) AS 仕入原価11月度B&#x9;,SUM(仕入売価11月度) AS 仕入売価11月度B&#x9;,SUM(売変11月度) AS 売変11月度B&#x9;,SUM(値入率11月度) AS 値入率11月度B&#x9;,SUM(売変率11月度) AS 売変率11月度B&#x9;,SUM(ロス率11月度) AS ロス率11月度B&#x9;,SUM(粗利率11月度) AS 粗利率11月度B&#x9;,SUM(粗利金額11月度) AS 粗利金額11月度B&#x9;,SUM(商品回転率11月度) AS 商品回転率11月度B&#x9;,SUM(ロス数量11月度) AS ロス数量11月度B&#x9;,SUM(ロス金額11月度) AS ロス金額11月度B&#x9;,SUM(在庫数量11月度) AS 在庫数量11月度B&#x9;,SUM(在庫原価11月度) AS 在庫原価11月度B&#x9;,SUM(在庫売価11月度) AS 在庫売価11月度B&#x9;,SUM(売上数量12月度) AS 売上数量12月度B&#x9;,SUM(売上金額12月度) AS 売上金額12月度B&#x9;,SUM(売上値引12月度) AS 売上値引12月度B&#x9;,SUM(仕入数量12月度) AS 仕入数量12月度B&#x9;,SUM(仕入原価12月度) AS 仕入原価12月度B&#x9;,SUM(仕入売価12月度) AS 仕入売価12月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売変12月度) AS 売変12月度B&#x9;,SUM(値入率12月度) AS 値入率12月度B&#x9;,SUM(売変率12月度) AS 売変率12月度B&#x9;,SUM(ロス率12月度) AS ロス率12月度B&#x9;,SUM(粗利率12月度) AS 粗利率12月度B&#x9;,SUM(粗利金額12月度) AS 粗利金額12月度B&#x9;,SUM(商品回転率12月度) AS 商品回転率12月度B&#x9;,SUM(ロス数量12月度) AS ロス数量12月度B&#x9;,SUM(ロス金額12月度) AS ロス金額12月度B&#x9;,SUM(在庫数量12月度) AS 在庫数量12月度B&#x9;,SUM(在庫原価12月度) AS 在庫原価12月度B&#x9;,SUM(在庫売価12月度) AS 在庫売価12月度B&#x9;,SUM(売上数量1月度) AS 売上数量1月度B&#x9;,SUM(売上金額1月度) AS 売上金額1月度B&#x9;,SUM(売上値引1月度) AS 売上値引1月度B&#x9;,SUM(仕入数量1月度) AS 仕入数量1月度B&#x9;,SUM(仕入原価1月度) AS 仕入原価1月度B&#x9;,SUM(仕入売価1月度) AS 仕入売価1月度B&#x9;,SUM(売変1月度) AS 売変1月度B&#x9;,SUM(値入率1月度) AS 値入率1月度B&#x9;,SUM(売変率1月度) AS 売変率1月度B&#x9;,SUM(ロス率1月度) AS ロス率1月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(粗利率1月度) AS 粗利率1月度B&#x9;,SUM(粗利金額1月度) AS 粗利金額1月度B&#x9;,SUM(商品回転率1月度) AS 商品回転率1月度B&#x9;,SUM(ロス数量1月度) AS ロス数量1月度B&#x9;,SUM(ロス金額1月度) AS ロス金額1月度B&#x9;,SUM(在庫数量1月度) AS 在庫数量1月度B&#x9;,SUM(在庫原価1月度) AS 在庫原価1月度B&#x9;,SUM(在庫売価1月度) AS 在庫売価1月度B&#x9;,SUM(売上数量2月度) AS 売上数量2月度B&#x9;,SUM(売上金額2月度) AS 売上金額2月度B&#x9;,SUM(売上値引2月度) AS 売上値引2月度B&#x9;,SUM(仕入数量2月度) AS 仕入数量2月度B&#x9;,SUM(仕入原価2月度) AS 仕入原価2月度B&#x9;,SUM(仕入売価2月度) AS 仕入売価2月度B&#x9;,SUM(売変2月度) AS 売変2月度B&#x9;,SUM(値入率2月度) AS 値入率2月度B&#x9;,SUM(売変率2月度) AS 売変率2月度B&#x9;,SUM(ロス率2月度) AS ロス率2月度B&#x9;,SUM(粗利率2月度) AS 粗利率2月度B&#x9;,SUM(粗利金額2月度) AS 粗利金額2月度B&#x9;,SUM(商品回転率2月度) AS 商品回転率2月度B&#x9;,SUM(ロス数量2月度) AS ロス数量2月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(ロス金額2月度) AS ロス金額2月度B&#x9;,SUM(在庫数量2月度) AS 在庫数量2月度B&#x9;,SUM(在庫原価2月度) AS 在庫原価2月度B&#x9;,SUM(在庫売価2月度) AS 在庫売価2月度B&#x9;,SUM(売上数量3月度) AS 売上数量3月度B&#x9;,SUM(売上金額3月度) AS 売上金額3月度B&#x9;,SUM(売上値引3月度) AS 売上値引3月度B&#x9;,SUM(仕入数量3月度) AS 仕入数量3月度B&#x9;,SUM(仕入原価3月度) AS 仕入原価3月度B&#x9;,SUM(仕入売価3月度) AS 仕入売価3月度B&#x9;,SUM(売変3月度) AS 売変3月度B&#x9;,SUM(値入率3月度) AS 値入率3月度B&#x9;,SUM(売変率3月度) AS 売変率3月度B&#x9;,SUM(ロス率3月度) AS ロス率3月度B&#x9;,SUM(粗利率3月度) AS 粗利率3月度B&#x9;,SUM(粗利金額3月度) AS 粗利金額3月度B&#x9;,SUM(商品回転率3月度) AS 商品回転率3月度B&#x9;,SUM(ロス数量3月度) AS ロス数量3月度B&#x9;,SUM(ロス金額3月度) AS ロス金額3月度B&#x9;,SUM(在庫数量3月度) AS 在庫数量3月度B&#x9;,SUM(在庫原価3月度) AS 在庫原価3月度B&#x9;,SUM(在庫売価3月度) AS 在庫売価3月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売上数量4月度) AS 売上数量4月度B&#x9;,SUM(売上金額4月度) AS 売上金額4月度B&#x9;,SUM(売上値引4月度) AS 売上値引4月度B&#x9;,SUM(仕入数量4月度) AS 仕入数量4月度B&#x9;,SUM(仕入原価4月度) AS 仕入原価4月度B&#x9;,SUM(仕入売価4月度) AS 仕入売価4月度B&#x9;,SUM(売変4月度) AS 売変4月度B&#x9;,SUM(値入率4月度) AS 値入率4月度B&#x9;,SUM(売変率4月度) AS 売変率4月度B&#x9;,SUM(ロス率4月度) AS ロス率4月度B&#x9;,SUM(粗利率4月度) AS 粗利率4月度B&#x9;,SUM(粗利金額4月度) AS 粗利金額4月度B&#x9;,SUM(商品回転率4月度) AS 商品回転率4月度B&#x9;,SUM(ロス数量4月度) AS ロス数量4月度B&#x9;,SUM(ロス金額4月度) AS ロス金額4月度B&#x9;,SUM(在庫数量4月度) AS 在庫数量4月度B&#x9;,SUM(在庫原価4月度) AS 在庫原価4月度B&#x9;,SUM(在庫売価4月度) AS 在庫売価4月度B&#x9;,SUM(売上数量5月度) AS 売上数量5月度B&#x9;,SUM(売上金額5月度) AS 売上金額5月度B&#x9;,SUM(売上値引5月度) AS 売上値引5月度B&#x9;,SUM(仕入数量5月度) AS 仕入数量5月度B&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(仕入原価5月度) AS 仕入原価5月度B&#x9;,SUM(仕入売価5月度) AS 仕入売価5月度B&#x9;,SUM(売変5月度) AS 売変5月度B&#x9;,SUM(値入率5月度) AS 値入率5月度B&#x9;,SUM(売変率5月度) AS 売変率5月度B&#x9;,SUM(ロス率5月度) AS ロス率5月度B&#x9;,SUM(粗利率5月度) AS 粗利率5月度B&#x9;,SUM(粗利金額5月度) AS 粗利金額5月度B&#x9;,SUM(商品回転率5月度) AS 商品回転率5月度B&#x9;,SUM(ロス数量5月度) AS ロス数量5月度B&#x9;,SUM(ロス金額5月度) AS ロス金額5月度B&#x9;,SUM(在庫数量5月度) AS 在庫数量5月度B&#x9;,SUM(在庫原価5月度) AS 在庫原価5月度B&#x9;,SUM(在庫売価5月度) AS 在庫売価5月度B&#x9;,SUM(売上数量6月度) AS 売上数量6月度B&#x9;,SUM(売上金額6月度) AS 売上金額6月度B&#x9;,SUM(売上値引6月度) AS 売上値引6月度B&#x9;,SUM(仕入数量6月度) AS 仕入数量6月度B&#x9;,SUM(仕入原価6月度) AS 仕入原価6月度B&#x9;,SUM(仕入売価6月度) AS 仕入売価6月度B&#x9;,SUM(売変6月度) AS 売変6月度B&#x9;,SUM(値入率6月度) AS 値入率6月度B&#x9;,SUM(売変率6月度) AS 売変率6月度B&#x9;,SUM(ロス率6月度) AS ロス率6月度B&#x9;,SUM(粗利率6月度) AS 粗利率6月度B&#x9;,SUM(粗利金額6月度) AS 粗利金額6月度B&#x9;,SUM(商品回転率6月度) AS 商品回転率6月度B&#x9;,SUM(ロス数量6月度) AS ロス数量6月度B&#x9;,SUM(ロス金額6月度) AS ロス金額6月度B&#x9;,SUM(在庫数量6月度) AS 在庫数量6月度B&#x9;,SUM(在庫原価6月度) AS 在庫原価6月度B&#x9;,SUM(在庫売価6月度) AS 在庫売価6月度B&#x9;,SUM(売上数量7月度) AS 売上数量7月度B&#x9;,SUM(売上金額7月度) AS 売上金額7月度B&#x9;,SUM(売上値引7月度) AS 売上値引7月度B&#x9;,SUM(仕入数量7月度) AS 仕入数量7月度B&#x9;,SUM(仕入原価7月度) AS 仕入原価7月度B&#x9;,SUM(仕入売価7月度) AS 仕入売価7月度B&#x9;,SUM(売変7月度) AS 売変7月度B&#x9;,SUM(値入率7月度) AS 値入率7月度B&#x9;,SUM(売変率7月度) AS 売変率7月度B&#x9;,SUM(ロス率7月度) AS ロス率7月度B&#x9;,SUM(粗利率7月度) AS 粗利率7月度B&#x9;,SUM(粗利金額7月度) AS 粗利金額7月度B&#x9;,SUM(商品回転率7月度) AS 商品回転率7月度B&#x9;,SUM(ロス数量7月度) AS ロス数量7月度B&#x9;,SUM(ロス金額7月度) AS ロス金額7月度B&#x9;,SUM(在庫数量7月度) AS 在庫数量7月度B&#x9;,SUM(在庫原価7月度) AS 在庫原価7月度B&#x9;,SUM(在庫売価7月度) AS 在庫売価7月度B&#x9;,SUM(売上数量8月度) AS 売上数量8月度B&#x9;,SUM(売上金額8月度) AS 売上金額8月度B&#x9;,SUM(売上値引8月度) AS 売上値引8月度B&#x9;,SUM(仕入数量8月度) AS 仕入数量8月度B&#x9;,SUM(仕入原価8月度) AS 仕入原価8月度B&#x9;,SUM(仕入売価8月度) AS 仕入売価8月度B&#x9;,SUM(売変8月度) AS 売変8月度B&#x9;,SUM(値入率8月度) AS 値入率8月度B&#x9;,SUM(売変率8月度) AS 売変率8月度B&#x9;,SUM(ロス率8月度) AS ロス率8月度B&#x9;,SUM(粗利率8月度) AS 粗利率8月度B&#x9;,SUM(粗利金額8月度) AS 粗利金額8月度B&#x9;,SUM(商品回転率8月度) AS 商品回転率8月度B&#x9;,SUM(ロス数量8月度) AS ロス数量8月度B&#x9;,SUM(ロス金額8月度) AS ロス金額8月度B&#x9;,SUM(在庫数量8月度) AS 在庫数量8月度B&#x9;,SUM(在庫原価8月度) AS 在庫原価8月度B&#x9;,SUM(在庫売価8月度) AS 在庫売価8月度B&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;FROM T_MONTH_BUMON_YOSAN&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--GROUP BY 年度&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;) AS BUMON&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FULL OUTER JOIN (&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT MIN(年度) AS 年度T,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(期首在庫数量) AS 期首在庫数量T&#x9;,SUM(期首在庫原価) AS 期首在庫原価T&#x9;,SUM(期首在庫売価) AS 期首在庫売価T&#x9;,SUM(売上数量9月度) AS 売上数量9月度T&#x9;,SUM(売上金額9月度) AS 売上金額9月度T&#x9;,SUM(売上値引9月度) AS 売上値引9月度T&#x9;,SUM(仕入数量9月度) AS 仕入数量9月度T&#x9;,SUM(仕入原価9月度) AS 仕入原価9月度T&#x9;,SUM(仕入売価9月度) AS 仕入売価9月度T&#x9;,SUM(売変9月度) AS 売変9月度T&#x9;,SUM(値入率9月度) AS 値入率9月度T&#x9;,SUM(売変率9月度) AS 売変率9月度T&#x9;,SUM(ロス率9月度) AS ロス率9月度T&#x9;,SUM(粗利率9月度) AS 粗利率9月度T&#x9;,SUM(粗利金額9月度) AS 粗利金額9月度T&#x9;,SUM(商品回転率9月度) AS 商品回転率9月度T&#x9;,SUM(ロス数量9月度) AS ロス数量9月度T&#x9;,SUM(ロス金額9月度) AS ロス金額9月度T&#x9;,SUM(在庫数量9月度) AS 在庫数量9月度T&#x9;,SUM(在庫原価9月度) AS 在庫原価9月度T&#x9;,SUM(在庫売価9月度) AS 在庫売価9月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売上数量10月度) AS 売上数量10月度T&#x9;,SUM(売上金額10月度) AS 売上金額10月度T&#x9;,SUM(売上値引10月度) AS 売上値引10月度T&#x9;,SUM(仕入数量10月度) AS 仕入数量10月度T&#x9;,SUM(仕入原価10月度) AS 仕入原価10月度T&#x9;,SUM(仕入売価10月度) AS 仕入売価10月度T&#x9;,SUM(売変10月度) AS 売変10月度T&#x9;,SUM(値入率10月度) AS 値入率10月度T&#x9;,SUM(売変率10月度) AS 売変率10月度T&#x9;,SUM(ロス率10月度) AS ロス率10月度T&#x9;,SUM(粗利率10月度) AS 粗利率10月度T&#x9;,SUM(粗利金額10月度) AS 粗利金額10月度T&#x9;,SUM(商品回転率10月度) AS 商品回転率10月度T&#x9;,SUM(ロス数量10月度) AS ロス数量10月度T&#x9;,SUM(ロス金額10月度) AS ロス金額10月度T&#x9;,SUM(在庫数量10月度) AS 在庫数量10月度T&#x9;,SUM(在庫原価10月度) AS 在庫原価10月度T&#x9;,SUM(在庫売価10月度) AS 在庫売価10月度T&#x9;,SUM(売上数量11月度) AS 売上数量11月度T&#x9;,SUM(売上金額11月度) AS 売上金額11月度T&#x9;,SUM(売上値引11月度) AS 売上値引11月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(仕入数量11月度) AS 仕入数量11月度T&#x9;,SUM(仕入原価11月度) AS 仕入原価11月度T&#x9;,SUM(仕入売価11月度) AS 仕入売価11月度T&#x9;,SUM(売変11月度) AS 売変11月度T&#x9;,SUM(値入率11月度) AS 値入率11月度T&#x9;,SUM(売変率11月度) AS 売変率11月度T&#x9;,SUM(ロス率11月度) AS ロス率11月度T&#x9;,SUM(粗利率11月度) AS 粗利率11月度T&#x9;,SUM(粗利金額11月度) AS 粗利金額11月度T&#x9;,SUM(商品回転率11月度) AS 商品回転率11月度T&#x9;,SUM(ロス数量11月度) AS ロス数量11月度T&#x9;,SUM(ロス金額11月度) AS ロス金額11月度T&#x9;,SUM(在庫数量11月度) AS 在庫数量11月度T&#x9;,SUM(在庫原価11月度) AS 在庫原価11月度T&#x9;,SUM(在庫売価11月度) AS 在庫売価11月度T&#x9;,SUM(売上数量12月度) AS 売上数量12月度T&#x9;,SUM(売上金額12月度) AS 売上金額12月度T&#x9;,SUM(売上値引12月度) AS 売上値引12月度T&#x9;,SUM(仕入数量12月度) AS 仕入数量12月度T&#x9;,SUM(仕入原価12月度) AS 仕入原価12月度T&#x9;,SUM(仕入売価12月度) AS 仕入売価12月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売変12月度) AS 売変12月度T&#x9;,SUM(値入率12月度) AS 値入率12月度T&#x9;,SUM(売変率12月度) AS 売変率12月度T&#x9;,SUM(ロス率12月度) AS ロス率12月度T&#x9;,SUM(粗利率12月度) AS 粗利率12月度T&#x9;,SUM(粗利金額12月度) AS 粗利金額12月度T&#x9;,SUM(商品回転率12月度) AS 商品回転率12月度T&#x9;,SUM(ロス数量12月度) AS ロス数量12月度T&#x9;,SUM(ロス金額12月度) AS ロス金額12月度T&#x9;,SUM(在庫数量12月度) AS 在庫数量12月度T&#x9;,SUM(在庫原価12月度) AS 在庫原価12月度T&#x9;,SUM(在庫売価12月度) AS 在庫売価12月度T&#x9;,SUM(売上数量1月度) AS 売上数量1月度T&#x9;,SUM(売上金額1月度) AS 売上金額1月度T&#x9;,SUM(売上値引1月度) AS 売上値引1月度T&#x9;,SUM(仕入数量1月度) AS 仕入数量1月度T&#x9;,SUM(仕入原価1月度) AS 仕入原価1月度T&#x9;,SUM(仕入売価1月度) AS 仕入売価1月度T&#x9;,SUM(売変1月度) AS 売変1月度T&#x9;,SUM(値入率1月度) AS 値入率1月度T&#x9;,SUM(売変率1月度) AS 売変率1月度T&#x9;,SUM(ロス率1月度) AS ロス率1月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(粗利率1月度) AS 粗利率1月度T&#x9;,SUM(粗利金額1月度) AS 粗利金額1月度T&#x9;,SUM(商品回転率1月度) AS 商品回転率1月度T&#x9;,SUM(ロス数量1月度) AS ロス数量1月度T&#x9;,SUM(ロス金額1月度) AS ロス金額1月度T&#x9;,SUM(在庫数量1月度) AS 在庫数量1月度T&#x9;,SUM(在庫原価1月度) AS 在庫原価1月度T&#x9;,SUM(在庫売価1月度) AS 在庫売価1月度T&#x9;,SUM(売上数量2月度) AS 売上数量2月度T&#x9;,SUM(売上金額2月度) AS 売上金額2月度T&#x9;,SUM(売上値引2月度) AS 売上値引2月度T&#x9;,SUM(仕入数量2月度) AS 仕入数量2月度T&#x9;,SUM(仕入原価2月度) AS 仕入原価2月度T&#x9;,SUM(仕入売価2月度) AS 仕入売価2月度T&#x9;,SUM(売変2月度) AS 売変2月度T&#x9;,SUM(値入率2月度) AS 値入率2月度T&#x9;,SUM(売変率2月度) AS 売変率2月度T&#x9;,SUM(ロス率2月度) AS ロス率2月度T&#x9;,SUM(粗利率2月度) AS 粗利率2月度T&#x9;,SUM(粗利金額2月度) AS 粗利金額2月度T&#x9;,SUM(商品回転率2月度) AS 商品回転率2月度T&#x9;,SUM(ロス数量2月度) AS ロス数量2月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(ロス金額2月度) AS ロス金額2月度T&#x9;,SUM(在庫数量2月度) AS 在庫数量2月度T&#x9;,SUM(在庫原価2月度) AS 在庫原価2月度T&#x9;,SUM(在庫売価2月度) AS 在庫売価2月度T&#x9;,SUM(売上数量3月度) AS 売上数量3月度T&#x9;,SUM(売上金額3月度) AS 売上金額3月度T&#x9;,SUM(売上値引3月度) AS 売上値引3月度T&#x9;,SUM(仕入数量3月度) AS 仕入数量3月度T&#x9;,SUM(仕入原価3月度) AS 仕入原価3月度T&#x9;,SUM(仕入売価3月度) AS 仕入売価3月度T&#x9;,SUM(売変3月度) AS 売変3月度T&#x9;,SUM(値入率3月度) AS 値入率3月度T&#x9;,SUM(売変率3月度) AS 売変率3月度T&#x9;,SUM(ロス率3月度) AS ロス率3月度T&#x9;,SUM(粗利率3月度) AS 粗利率3月度T&#x9;,SUM(粗利金額3月度) AS 粗利金額3月度T&#x9;,SUM(商品回転率3月度) AS 商品回転率3月度T&#x9;,SUM(ロス数量3月度) AS ロス数量3月度T&#x9;,SUM(ロス金額3月度) AS ロス金額3月度T&#x9;,SUM(在庫数量3月度) AS 在庫数量3月度T&#x9;,SUM(在庫原価3月度) AS 在庫原価3月度T&#x9;,SUM(在庫売価3月度) AS 在庫売価3月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売上数量4月度) AS 売上数量4月度T&#x9;,SUM(売上金額4月度) AS 売上金額4月度T&#x9;,SUM(売上値引4月度) AS 売上値引4月度T&#x9;,SUM(仕入数量4月度) AS 仕入数量4月度T&#x9;,SUM(仕入原価4月度) AS 仕入原価4月度T&#x9;,SUM(仕入売価4月度) AS 仕入売価4月度T&#x9;,SUM(売変4月度) AS 売変4月度T&#x9;,SUM(値入率4月度) AS 値入率4月度T&#x9;,SUM(売変率4月度) AS 売変率4月度T&#x9;,SUM(ロス率4月度) AS ロス率4月度T&#x9;,SUM(粗利率4月度) AS 粗利率4月度T&#x9;,SUM(粗利金額4月度) AS 粗利金額4月度T&#x9;,SUM(商品回転率4月度) AS 商品回転率4月度T&#x9;,SUM(ロス数量4月度) AS ロス数量4月度T&#x9;,SUM(ロス金額4月度) AS ロス金額4月度T&#x9;,SUM(在庫数量4月度) AS 在庫数量4月度T&#x9;,SUM(在庫原価4月度) AS 在庫原価4月度T&#x9;,SUM(在庫売価4月度) AS 在庫売価4月度T&#x9;,SUM(売上数量5月度) AS 売上数量5月度T&#x9;,SUM(売上金額5月度) AS 売上金額5月度T&#x9;,SUM(売上値引5月度) AS 売上値引5月度T&#x9;,SUM(仕入数量5月度) AS 仕入数量5月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(仕入原価5月度) AS 仕入原価5月度T&#x9;,SUM(仕入売価5月度) AS 仕入売価5月度T&#x9;,SUM(売変5月度) AS 売変5月度T&#x9;,SUM(値入率5月度) AS 値入率5月度T&#x9;,SUM(売変率5月度) AS 売変率5月度T&#x9;,SUM(ロス率5月度) AS ロス率5月度T&#x9;,SUM(粗利率5月度) AS 粗利率5月度T&#x9;,SUM(粗利金額5月度) AS 粗利金額5月度T&#x9;,SUM(商品回転率5月度) AS 商品回転率5月度T&#x9;,SUM(ロス数量5月度) AS ロス数量5月度T&#x9;,SUM(ロス金額5月度) AS ロス金額5月度T&#x9;,SUM(在庫数量5月度) AS 在庫数量5月度T&#x9;,SUM(在庫原価5月度) AS 在庫原価5月度T&#x9;,SUM(在庫売価5月度) AS 在庫売価5月度T&#x9;,SUM(売上数量6月度) AS 売上数量6月度T&#x9;,SUM(売上金額6月度) AS 売上金額6月度T&#x9;,SUM(売上値引6月度) AS 売上値引6月度T&#x9;,SUM(仕入数量6月度) AS 仕入数量6月度T&#x9;,SUM(仕入原価6月度) AS 仕入原価6月度T&#x9;,SUM(仕入売価6月度) AS 仕入売価6月度T&#x9;,SUM(売変6月度) AS 売変6月度T&#x9;,SUM(値入率6月度) AS 値入率6月度T&#x9;,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SUM(売変率6月度) AS 売変率6月度T&#x9;,SUM(ロス率6月度) AS ロス率6月度T&#x9;,SUM(粗利率6月度) AS 粗利率6月度T&#x9;,SUM(粗利金額6月度) AS 粗利金額6月度T&#x9;,SUM(商品回転率6月度) AS 商品回転率6月度T&#x9;,SUM(ロス数量6月度) AS ロス数量6月度T&#x9;,SUM(ロス金額6月度) AS ロス金額6月度T&#x9;,SUM(在庫数量6月度) AS 在庫数量6月度T&#x9;,SUM(在庫原価6月度) AS 在庫原価6月度T&#x9;,SUM(在庫売価6月度) AS 在庫売価6月度T&#x9;,SUM(売上数量7月度) AS 売上数量7月度T&#x9;,SUM(売上金額7月度) AS 売上金額7月度T&#x9;,SUM(売上値引7月度) AS 売上値引7月度T&#x9;,SUM(仕入数量7月度) AS 仕入数量7月度T&#x9;,SUM(仕入原価7月度) AS 仕入原価7月度T&#x9;,SUM(仕入売価7月度) AS 仕入売価7月度T&#x9;,SUM(売変7月度) AS 売変7月度T&#x9;,SUM(値入率7月度) AS 値入率7月度T&#x9;,SUM(売変率7月度) AS 売変率7月度T&#x9;,SUM(ロス率7月度) AS ロス率7月度T&#x9;,SUM(粗利率7月度) AS 粗利率7月度T&#x9;,SUM(粗利金額7月度) AS 粗利金額7月度T&#x9;,SUM(商品回転率7月度) AS 商品回転率7月度T&#x9;,SUM(ロス数量7月度) AS ロス数量7月度T&#x9;,SUM(ロス金額7月度) AS ロス金額7月度T&#x9;,SUM(在庫数量7月度) AS 在庫数量7月度T&#x9;,SUM(在庫原価7月度) AS 在庫原価7月度T&#x9;,SUM(在庫売価7月度) AS 在庫売価7月度T&#x9;,SUM(売上数量8月度) AS 売上数量8月度T&#x9;,SUM(売上金額8月度) AS 売上金額8月度T&#x9;,SUM(売上値引8月度) AS 売上値引8月度T&#x9;,SUM(仕入数量8月度) AS 仕入数量8月度T&#x9;,SUM(仕入原価8月度) AS 仕入原価8月度T&#x9;,SUM(仕入売価8月度) AS 仕入売価8月度T&#x9;,SUM(売変8月度) AS 売変8月度T&#x9;,SUM(値入率8月度) AS 値入率8月度T&#x9;,SUM(売変率8月度) AS 売変率8月度T&#x9;,SUM(ロス率8月度) AS ロス率8月度T&#x9;,SUM(粗利率8月度) AS 粗利率8月度T&#x9;,SUM(粗利金額8月度) AS 粗利金額8月度T&#x9;,SUM(商品回転率8月度) AS 商品回転率8月度T&#x9;,SUM(ロス数量8月度) AS ロス数量8月度T&#x9;,SUM(ロス金額8月度) AS ロス金額8月度T&#x9;,SUM(在庫数量8月度) AS 在庫数量8月度T&#x9;,SUM(在庫原価8月度) AS 在庫原価8月度T&#x9;,SUM(在庫売価8月度) AS 在庫売価8月度T&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;FROM T_MONTH_TEN_YOSAN&#xA;&#x9;&#x9;&#x9;&#x9;--GROUP BY 年度&#xA;&#x9;&#x9;&#x9;&#x9;) AS TEN&#xA;&#x9;&#x9;&#x9;ON BUMON.年度B =  TEN.年度T&#xA;) NEW_0800&#xA;ON NEW_0800.年度 = TEN_YOSAN.年度&#xA;WHERE TEN_YOSAN.店舗コード = '0800'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get BUMON_YOSAN Count"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0D530B70-3869-4C8D-99BA-FDA66C3B440A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get BUMON_YOSAN Count"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="SELECT COUNT(*) AS BCNT FROM T_MONTH_BUMON_YOSAN;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="BCNT"
+            SQLTask:DtsVariableName="User::bumRecords" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get TEN_YOSAN Count"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CFB0927C-3E87-4A15-B63E-E86C3AAC6238}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get TEN_YOSAN Count"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="SELECT COUNT(*) AS TCNT FROM T_MONTH_TEN_YOSAN;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="TCNT"
+            SQLTask:DtsVariableName="User::tenRecords" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションコミット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{3dc2371f-15b7-4dd2-a99b-91d864e56300}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションコミット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションロールバック"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{b3927658-c761-496d-86d2-ba1b94e678c4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションロールバック"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="ROLLBACK TRANSACTION" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクション開始"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{4F4A1DC5-3746-4130-99BF-7D53AC26B777}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクション開始"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\会社さんフォマット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0413EE14-3AAF-42D5-BCF5-B1807ADBE47C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="会社さんフォマット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2BAAF4A1-C5B0-44CE-99DF-64312983CE3C}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE IF_KAIKEI_YOSAN_DATA_TEMP;&#xA;GO&#xA;INSERT INTO IF_KAIKEI_YOSAN_DATA_TEMP (CORP_CODE,VERSION_CODE,B_TERM_CODE,SECTION_CODE,B_ITEM_CODE,H_SECTION_CODE,BALANCE)&#xA;SELECT&#xA;'1000' AS CORP_CODE,&#xA;T.年度 + 'PL01' AS VERSION_CODE,&#xA;X.YEARTIME AS B_TERM_CODE,&#xA;RIGHT('00000' + T.店舗コード,5) AS SECTION_CODE,&#xA;X.KANJO AS B_ITEM_CODE,&#xA;'91200' AS H_SECTION_CODE,&#xA;X.BALANCE AS BALANCE&#xA;FROM T_MONTH_TEN_YOSAN AS T CROSS APPLY (&#xA;VALUES&#xA;(T.年度 + '001',T.売上金額9月度,'8010500'),&#xA;(T.年度 + '002',T.売上金額10月度,'8010500'),&#xA;(T.年度 + '003',T.売上金額11月度,'8010500'),&#xA;(T.年度 + '004',T.売上金額12月度,'8010500'),&#xA;(T.年度 + '005',T.売上金額1月度,'8010500'),&#xA;(T.年度 + '006',T.売上金額2月度,'8010500'),&#xA;(T.年度 + '007',T.売上金額3月度,'8010500'),&#xA;(T.年度 + '008',T.売上金額4月度,'8010500'),&#xA;(T.年度 + '009',T.売上金額5月度,'8010500'),&#xA;(T.年度 + '010',T.売上金額6月度,'8010500'),&#xA;(T.年度 + '011',T.売上金額7月度,'8010500'),&#xA;(T.年度 + '012',T.売上金額8月度,'8010500'),&#xA;(T.年度 + '001',T.仕入原価9月度,'8120500'),&#xA;(T.年度 + '002',T.仕入原価10月度,'8120500'),&#xA;(T.年度 + '003',T.仕入原価11月度,'8120500'),&#xA;(T.年度 + '004',T.仕入原価12月度,'8120500'),&#xA;(T.年度 + '005',T.仕入原価1月度,'8120500'),&#xA;(T.年度 + '006',T.仕入原価2月度,'8120500'),&#xA;(T.年度 + '007',T.仕入原価3月度,'8120500'),&#xA;(T.年度 + '008',T.仕入原価4月度,'8120500'),&#xA;(T.年度 + '009',T.仕入原価5月度,'8120500'),&#xA;(T.年度 + '010',T.仕入原価6月度,'8120500'),&#xA;(T.年度 + '011',T.仕入原価7月度,'8120500'),&#xA;(T.年度 + '012',T.仕入原価8月度,'8120500'),&#xA;(T.年度 + '001',T.期首在庫原価 - T.在庫原価9月度, '8294300'),&#xA;(T.年度 + '002',T.在庫原価9月度 - T.在庫原価10月度,'8294300'),&#xA;(T.年度 + '003',T.在庫原価10月度 - T.在庫原価11月度,'8294300'),&#xA;(T.年度 + '004',T.在庫原価11月度 - T.在庫原価12月度,'8294300'),&#xA;(T.年度 + '005',T.在庫原価12月度 - T.在庫原価1月度 ,'8294300'),&#xA;(T.年度 + '006',T.在庫原価1月度 - T.在庫原価2月度 ,'8294300'),&#xA;(T.年度 + '007',T.在庫原価2月度 - T.在庫原価3月度 ,'8294300'),&#xA;(T.年度 + '008',T.在庫原価3月度 - T.在庫原価4月度 ,'8294300'),&#xA;(T.年度 + '009',T.在庫原価4月度 - T.在庫原価5月度 ,'8294300'),&#xA;(T.年度 + '010',T.在庫原価5月度 - T.在庫原価6月度 ,'8294300'),&#xA;(T.年度 + '011',T.在庫原価6月度 - T.在庫原価7月度 ,'8294300'),&#xA;(T.年度 + '012',T.在庫原価7月度 - T.在庫原価8月度 ,'8294300'),&#xA;(T.年度 + '001',T.期首在庫売価, '8114000'),&#xA;(T.年度 + '002',0,'8114000'),&#xA;(T.年度 + '003',0,'8114000'),&#xA;(T.年度 + '004',0,'8114000'),&#xA;(T.年度 + '005',0,'8114000'),&#xA;(T.年度 + '006',0,'8114000'),&#xA;(T.年度 + '007',0,'8114000'),&#xA;(T.年度 + '008',0,'8114000'),&#xA;(T.年度 + '009',0,'8114000'),&#xA;(T.年度 + '010',0,'8114000'),&#xA;(T.年度 + '011',0,'8114000'),&#xA;(T.年度 + '012',0,'8114000')&#xA;) AS X (YEARTIME,BALANCE,KANJO)&#xA;ORDER BY X.YEARTIME;&#xA;&#xA;GO&#xA;&#xA;DELETE MAIN&#xA;FROM &#xA;IF_KAIKEI_YOSAN_DATA AS MAIN&#xA;LEFT JOIN &#xA;IF_KAIKEI_YOSAN_DATA_TEMP AS TEMP&#xA;ON &#xA;LEFT(TEMP.VERSION_CODE,4) = LEFT(MAIN.VERSION_CODE,4)&#xA;GO&#xA;&#xA;INSERT INTO IF_KAIKEI_YOSAN_DATA&#xA;SELECT * FROM IF_KAIKEI_YOSAN_DATA_TEMP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3E172327-5D99-47B3-9672-A802F7C41236}"
+      DTS:From="Package\Get TEN_YOSAN Count"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Get BUMON_YOSAN Count" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1A2FB434-5A53-45EE-9888-CD3C03A617D7}"
+      DTS:From="Package\トランザクション開始"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Get TEN_YOSAN Count" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{ED56D296-A927-4E8C-8904-3570A77D35F9}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\会社さんフォマット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{C191551C-FA36-408E-850E-F5F33699C7D7}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\トランザクションロールバック"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{DB573B9D-27BA-4B60-8504-A9A790231DA7}"
+      DTS:From="Package\会社さんフォマット"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\トランザクションロールバック"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{28B1B17B-04A4-42B8-952F-67E515BDEF69}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::bumRecords] != &quot;0&quot; &amp;&amp; @[User::tenRecords] != &quot;0&quot;"
+      DTS:From="Package\Get BUMON_YOSAN Count"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{DEE337EA-0EDC-41FB-A431-D02510DFDD5E}"
+      DTS:From="Package\会社さんフォマット"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\トランザクションコミット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4F47651-41A2-4907-85A1-C96950DB90F1}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::bumRecords] == &quot;0&quot; &amp;&amp; @[User::tenRecords] == &quot;0&quot;"
+      DTS:From="Package\Get BUMON_YOSAN Count"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\トランザクションコミット" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="555,228" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Get BUMON_YOSAN Count"
+          TopLeft="243,230" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Get TEN_YOSAN Count"
+          TopLeft="253,139" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\トランザクションコミット"
+          TopLeft="239,456" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\トランザクションロールバック"
+          TopLeft="718.25,459" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\トランザクション開始"
+          TopLeft="252,65" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\会社さんフォマット"
+          TopLeft="554,347" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="346.25,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="332.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,32"
+              Start="0,0"
+              End="14.5,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="10.5,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,16"
+                    Point2="14.5,16"
+                    Point3="14.5,20" />
+                  <mssgle:LineSegment
+                    End="14.5,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="646,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="675,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.75,189"
+              Start="0,0"
+              End="137.75,181.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5882352941177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,72.5882352941177"
+                    Point2="0,76.5882352941177"
+                    Point3="4,76.5882352941177" />
+                  <mssgle:LineSegment
+                    End="133.75,76.5882352941177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.75,76.5882352941177"
+                    Point2="137.75,76.5882352941177"
+                    Point3="137.75,80.5882352941177" />
+                  <mssgle:LineSegment
+                    End="137.75,181.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="53.63365234375,81.5882352941177,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="675.333333333333,389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.416666666667,70"
+              Start="0,0"
+              End="137.416666666667,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3620689655172" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3620689655172"
+                    Point2="0,28.3620689655172"
+                    Point3="4,28.3620689655172" />
+                  <mssgle:LineSegment
+                    End="133.416666666667,28.3620689655172" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.416666666667,28.3620689655172"
+                    Point2="137.416666666667,28.3620689655172"
+                    Point3="137.416666666667,32.3620689655172" />
+                  <mssgle:LineSegment
+                    End="137.416666666667,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="53.4669856770833,33.3620689655172,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="448,250">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107,0"
+              Start="0,0"
+              End="99.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.75,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="616.666666666667,389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-280.666666666667,67"
+              Start="0,0"
+              End="-280.666666666667,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1465517241379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1465517241379"
+                    Point2="0,27.1465517241379"
+                    Point3="-4,27.1465517241379" />
+                  <mssgle:LineSegment
+                    End="-276.666666666667,27.1465517241379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-276.666666666667,27.1465517241379"
+                    Point2="-280.666666666667,27.1465517241379"
+                    Point3="-280.666666666667,31.1465517241379" />
+                  <mssgle:LineSegment
+                    End="-280.666666666667,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="345.5,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-40.5,184"
+              Start="0,0"
+              End="-40.5,176.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.496932515337" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,105.496932515337"
+                    Point2="0,109.496932515337"
+                    Point3="-4,109.496932515337" />
+                  <mssgle:LineSegment
+                    End="-36.5,109.496932515337" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.5,109.496932515337"
+                    Point2="-40.5,109.496932515337"
+                    Point3="-40.5,113.496932515337" />
+                  <mssgle:LineSegment
+                    End="-40.5,176.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.25,114.496932515337,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="会社さんフォマットにデータインポート"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="217,39"
+          Id="79778dc1-af02-4dea-b0a4-356affdee9dc"
+          TopLeft="538,311" />
+        <AnnotationLayout
+          Text="Get &amp; Update Difference of R022&amp;R023 for 0800店舗"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="370,39"
+          Id="9a13d542-14f0-406d-8c30-f013060b7891"
+          TopLeft="546,190" />
+        <AnnotationLayout
+          Text="説明: This Package is to Get difference between &#xA;T_MONTH_BUMON_YOSAN &amp; T_MONTH_TEN_YOSAN&#xA;and update it as 0800 店舗 in T_MONTH_TEN_YOSAN Table&#xA;作成者: Irfan Mansuri&#xA;リリス日付: 2017/01/05"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="379,100"
+          Id="416b91ab-9285-4ff7-81d8-14967c6a2001"
+          TopLeft="1169,23" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

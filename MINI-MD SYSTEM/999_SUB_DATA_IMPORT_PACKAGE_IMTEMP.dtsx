@@ -1,0 +1,2674 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/16/2015 10:28:18 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN03"
+  DTS:CreatorName="WIN03\Administrator"
+  DTS:DTSID="{1E5C4C34-881A-482E-AF6F-714FDCEAF781}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1041"
+  DTS:MaxErrorCount="50"
+  DTS:ObjectName="999_SUB_DATA_IMPORT_PACKAGE_IMTEMP"
+  DTS:PackageType="5"
+  DTS:VersionBuild="747"
+  DTS:VersionGUID="{A7C7DF78-967E-4F50-80C8-9ED069A09B8A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5A39CA29-0621-44F3-B45C-C7CD3DA921E6}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\999_SUB_DATA_IMPORT_PACKAGE_IMTEMP_20170913" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{82E36F89-1B45-4D72-ADBE-597F79415D8F}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー1">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C2EBED75-46A6-498D-A2F6-836151047E02}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D141A848-D9D6-48E8-9727-923F5F5A5AA2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="connectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Persist Security Info=False;User ID=sa;Initial Catalog=mini_md_db;Password=Minimd@0123;Data Source=10.130.105.16,1435</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{22419273-7F26-4FD6-8616-07EB80477E10}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/22/2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{38D257E3-C160-4C78-9FA1-8678C764735F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filePath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\receive\data</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E046ED1B-A27C-45F3-BF7F-ADFE20EAF143}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailFromId">
+      <DTS:VariableValue
+        DTS:DataType="8">minimd.ro@gmail.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C9399B72-807B-4CE1-B721-2D599E644DC2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailFromName">
+      <DTS:VariableValue
+        DTS:DataType="8">MINIMD</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F86D6708-E246-40D5-AF30-F0CDB2FCE3A4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailServer">
+      <DTS:VariableValue
+        DTS:DataType="8">smtp.gmail.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6ED6EF52-6A9D-4866-A1A2-BED98FA93DC6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="needToSleep">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5A43ED5-8986-4AE6-A4CC-1DC734669EBA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="packagePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Projects\Source Code\Release Area\MINI-MD SYSTEM\MINI-MD SYSTEM\bin\Deployment</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9FB95943-BA4E-421B-933A-45ABC7CB4EE6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="sleepMinutes">
+      <DTS:VariableValue
+        DTS:DataType="3">10</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1698766C-43E9-49AD-AD0E-2E87F187B047}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sysDate">
+      <DTS:VariableValue
+        DTS:DataType="7">9/13/2017 8:51:30 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{82E36F89-1B45-4D72-ADBE-597F79415D8F}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For ループ コンテナ"
+      DTS:DTSID="{495B4B2E-8425-47E2-B60A-A3044DE1B114}"
+      DTS:EvalExpression="@[User::needToSleep]==True"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:LocaleID="1041"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\ファイルを待ちます(SLEEP)"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="スクリプト タスク"
+          DTS:Disabled="True"
+          DTS:DTSID="{C3235750-A6C1-4E5A-BBBE-F380AA5911DA}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="1041"
+          DTS:ObjectName="ファイルを待ちます(SLEEP)"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_7be5186c8fcb4267ab6672ceeb3bbda1"
+              VSTAMajorVersion="3"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="User::needToSleep,User::sleepMinutes">
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_9bef6c4deafb424fb02adfd298797f2f.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("right-on")]
+[assembly: AssemblyProduct("ST_9bef6c4deafb424fb02adfd298797f2f.csproj")]
+[assembly: AssemblyCopyright("Copyright @ right-on 2015")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Settings.get_Default():ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[using System;
+
+namespace ST_9bef6c4deafb424fb02adfd298797f2f.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        public void Main()
+        {
+            // TODO: Add your code here
+            if (Convert.ToBoolean(Dts.Variables["User::needToSleep"].Value) == true)
+            {
+                double min = Convert.ToDouble(Dts.Variables["User::sleepMinutes"].Value) * 60;
+                int ms = Convert.ToInt32(min * 1000);
+                System.Threading.Thread.Sleep(ms);
+            }
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>st_9bef6c4deafb424fb02adfd298797f2f</msb:CodeName>
+		<msb:DisplayName>st_9bef6c4deafb424fb02adfd298797f2f</msb:DisplayName>
+		<msb:ProjectId>{0E8B541A-E5CE-47ED-8ECE-C2D9472CBFF4}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_7be5186c8fcb4267ab6672ceeb3bbda1.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="ST_7be5186c8fcb4267ab6672ceeb3bbda1.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  --><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><OutputType>Library</OutputType><NoStandardLibraries>false</NoStandardLibraries><RootNamespace>ST_9bef6c4deafb424fb02adfd298797f2f.csproj</RootNamespace><AssemblyName>ST_7be5186c8fcb4267ab6672ceeb3bbda1</AssemblyName><ProjectGuid>{A4661C1F-125F-4970-B713-B0F00A02410E}</ProjectGuid><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  --><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup><!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  --><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup><!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  --><PropertyGroup><PreBuildEvent></PreBuildEvent><PostBuildEvent></PostBuildEvent></PropertyGroup><!-- This sections specifies references for the project. --><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  --><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile><!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    --></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\9.0\InstallDir#\devenv.exe" /><Host Name="SSIS_ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_9bef6c4deafb424fb02adfd298797f2f.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_7be5186c8fcb4267ab6672ceeb3bbda1.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPgSCFgAAAAAAAAAAOAAAiELAQsAABAAAAAIAAAAAAAAHi8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMwuAABPAAAAAEAAAHAEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAJA8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHAEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAA
+LwAAAAAAAEgAAAACAAUA+CEAANQMAAABAAAAAAAAAEAhAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqABMwAgBvAAAAAgAAEQIoFgAACm8XAAAKcoEAAHBvGAAACm8ZAAAKKBoA
+AAosQQIoFgAACm8XAAAKcqUAAHBvGAAACm8ZAAAKKBsAAAojAAAAAAAATkBaCgYjAAAAAABAj0Ba
+KBwAAAoLBygdAAAKAigWAAAKFm8eAAAKKh4CKB8AAAoqALQAAADOyu++AQAAAJEAAABsU3lzdGVt
+LlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs
+dHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNv
+dXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABCU0pCAQABAAAA
+AAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAADcAwAAI34AAEgEAAAgBgAAI1N0cmluZ3MAAAAAaAoA
+AMwAAAAjVVMANAsAABAAAAAjR1VJRAAAAEQLAACQAQAAI0Jsb2IAAAAAAAAAAgAAAVcdogEJAwAA
+APolMwAWAAABAAAAHwAAAAUAAAAGAAAACQAAAAEAAAAfAAAAAgAAAA8AAAACAAAAAgAAAAMAAAAE
+AAAAAQAAAAQAAAABAAAAAQAAAAAACgABAAAAAAAGAM8AyAAKAOsA1gAOAEsBIgEGAGcByAAGAH0B
+bAEGAK4BmQEGAGUCSwIGAJACfgIGAKcCfgIGAMQCfgIGAOMCfgIGAPwCfgIGABUDfgIGADADfgIG
+AEsDfgIGAGQDfgIGAJ0DfQMGAL0DfQMGABIE/wMGAC8EyAAGADQEyAAGAFgEfgIKAIQEbgQKAJ0E
+bgQGALIEfQMOANQEIgEOAPYEIgESAE8FLwUSAGcFLwUGAIMFyAAGALcFpgUAAAAAAQAAAAAAAQAB
+AAAAEAAyADwABQABAAEAAAEQAHIAPAAJAAMABQABABAAewCGAA0ABAAIAAMBAACxAAAAEQAEAAoA
+EQCNARMAEQC6ARcAEQAEAjkABgYtAkcAVoA1AkoAVoA9AkoAUCAAAAAAgxjKARsAAQBYIAAAAACT
+CNABHwABAJEgAAAAAJMI5AEkAAEAmCAAAAAAkwjwASkAAQCgIAAAAACWCBQCPQACALMgAAAAAIYY
+ygEbAAIApyAAAAAAkRjNBIkAAgC8IAAAAACGACgCGwACADchAAAAAIYYygEbAAIAAAABAEUCOQDK
+AVgAQQDKAVgASQDKAVgAUQDKAVgAWQDKAVgAYQDKAVgAaQDKAVgAcQDKAVgAeQDKAVgAgQDKAVgA
+iQDKAV0AkQDKARsAmQDKARsACQDKARsAoQBGBGIAoQBhBGkAKQDKAW4AuQDKAXoAyQDKARsAEQDK
+ARsA0QDKARsAGQAIBY0A2QBZBZIA4QBwBZcA6QB5BZ0A8QCLBaEA8QCVBaYA8QCeBasA+QC+BbAA
+2QDEBV0AGQDKARsACAAUAE4ACAAYAFMAKQCTAIAALgAbADIBLgAjADIBLgBjAG4BLgALALoALgAT
+AAIBLgAzAAIBLgArADgBLgA7AEYBLgBDADIBLgBbAGUBQwBrAFMASQCTAIAAYQCbAFMAgwCrAFMA
+dQC1AAIAAQADAAMAAAB9AS8AAAD8ATQAAAAgAkIAAgACAAMAAgADAAUAAQAEAAUAAgAFAAcABIAA
+AAEAAAD5F0REAAAAAAAA2wMAAAQAAAAAAAAAAAAAAAEAvwAAAAAABAAAAAAAAAAAAAAAAQDIAAAA
+AAAMAAAAAAAAAAAAAAAKAAMBAAAAAAwAAAAAAAAAAAAAAAoAEAUAAAAAAAAAAAEAAADTBQAABQAE
+AAAAADxNb2R1bGU+AFNUXzdiZTUxODZjOGZjYjQyNjdhYjY2NzJjZWViM2JiZGExLmRsbABSZXNv
+dXJjZXMAU1RfOWJlZjZjNGRlYWZiNDI0ZmIwMmFkZmQyOTg3OTdmMmYuY3Nwcm9qLlByb3BlcnRp
+ZXMAU2V0dGluZ3MAU2NyaXB0TWFpbgBTVF85YmVmNmM0ZGVhZmI0MjRmYjAyYWRmZDI5ODc5N2Yy
+Zi5jc3Byb2oAU2NyaXB0UmVzdWx0cwBtc2NvcmxpYgBTeXN0ZW0AT2JqZWN0AFN5c3RlbS5Db25m
+aWd1cmF0aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2Ny
+aXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFZTVEFSVFNj
+cmlwdE9iamVjdE1vZGVsQmFzZQBFbnVtAFN5c3RlbS5SZXNvdXJjZXMAUmVzb3VyY2VNYW5hZ2Vy
+AHJlc291cmNlTWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZvAHJlc291cmNlQ3Vs
+dHVyZQAuY3RvcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAEN1
+bHR1cmUAZGVmYXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQATWFpbgB2YWx1ZV9fAFN1
+Y2Nlc3MARmFpbHVyZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRhcmdldEZyYW1l
+d29ya0F0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFz
+c2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
+AEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1i
+bHlDb3B5cmlnaHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAQXNzZW1ibHlD
+dWx0dXJlQXR0cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0dHJpYnV0ZQBTeXN0ZW0uUnVudGltZS5D
+b21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNv
+bXBhdGliaWxpdHlBdHRyaWJ1dGUAU1RfN2JlNTE4NmM4ZmNiNDI2N2FiNjY3MmNlZWIzYmJkYTEA
+U3lzdGVtLkRpYWdub3N0aWNzAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUAVHlwZQBSdW50
+aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBBc3NlbWJseQBnZXRfQXNzZW1ibHkAU3lz
+dGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2Fi
+bGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQAuY2N0b3IAU1NJU1NjcmlwdFRhc2tF
+bnRyeVBvaW50QXR0cmlidXRlAFNjcmlwdE9iamVjdE1vZGVsAGdldF9EdHMATWljcm9zb2Z0LlNx
+bFNlcnZlci5NYW5hZ2VkRFRTAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAVmFyaWFi
+bGVzAGdldF9WYXJpYWJsZXMAVmFyaWFibGUAZ2V0X0l0ZW0AZ2V0X1ZhbHVlAENvbnZlcnQAVG9C
+b29sZWFuAFRvRG91YmxlAFRvSW50MzIAU3lzdGVtLlRocmVhZGluZwBUaHJlYWQAU2xlZXAAc2V0
+X1Rhc2tSZXN1bHQAU1RfOWJlZjZjNGRlYWZiNDI0ZmIwMmFkZmQyOTg3OTdmMmYuY3Nwcm9qLlBy
+b3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwAAAAAAf1MAVABfADkAYgBlAGYANgBjADQAZABl
+AGEAZgBiADQAMgA0AGYAYgAwADIAYQBkAGYAZAAyADkAOAA3ADkANwBmADIAZgAuAGMAcwBwAHIA
+bwBqAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAjVQBzAGUAcgA6
+ADoAbgBlAGUAZABUAG8AUwBsAGUAZQBwAAAlVQBzAGUAcgA6ADoAcwBsAGUAZQBwAE0AaQBuAHUA
+dABlAHMAAAD4Y6PQRBbXQYjNsjZYCdHNAAi3elxWGTTgiQiJhF3NgIDMkQMGEhUDBhIZAyAAAQQA
+ABIVBAAAEhkFAAEBEhkECAASFQQIABIZAwYSDAQAABIMBAgAEgwCBggDBhEUBAAAAAAEAQAAAAQg
+AQEOBCABAQgGAAESURFVBCAAElkGIAIBDhJZBAcBEhUFIAEBEWEIAQACAAAAAAADAAABBCAAEm0E
+IAAScQUgARJ1HAMgABwEAAECHAQAAQ0cBAABCA0EAAEBCAQHAg0IRwEAGi5ORVRGcmFtZXdvcmss
+VmVyc2lvbj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1ld29yayA0LwEA
+KlNUXzliZWY2YzRkZWFmYjQyNGZiMDJhZGZkMjk4Nzk3ZjJmLmNzcHJvagAABQEAAAAADQEACHJp
+Z2h0LW9uAAAeAQAZQ29weXJpZ2h0IEAgcmlnaHQtb24gMjAxNQAACAEACAAAAAAAHgEAAQBUAhZX
+cmFwTm9uRXhjZXB0aW9uVGhyb3dzAQAAAPQuAAAAAAAAAAAAAA4vAAAAIAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAALwAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAABQEAAAAAAAAAAAAABQENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQBERPkXAAABAERE+Rc/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAR0AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABQAwAAAQAwADAA
+MAAwADAANABiADAAAAA0AAkAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAHIAaQBnAGgAdAAt
+AG8AbgAAAAAAgAArAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABfADkA
+YgBlAGYANgBjADQAZABlAGEAZgBiADQAMgA0AGYAYgAwADIAYQBkAGYAZAAyADkAOAA3ADkANwBm
+ADIAZgAuAGMAcwBwAHIAbwBqAAAAAABAAA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEA
+LgAwAC4ANgAxADMANwAuADEANwA0ADcANgAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBt
+AGUAAABTAFQAXwA3AGIAZQA1ADEAOAA2AGMAOABmAGMAYgA0ADIANgA3AGEAYgA2ADYANwAyAGMA
+ZQBlAGIAMwBiAGIAZABhADEALgBkAGwAbAAAAFgAGgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBn
+AGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgAHIAaQBnAGgAdAAtAG8AbgAgADIAMAAxADUA
+AAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBUAF8ANwBiAGUANQAx
+ADgANgBjADgAZgBjAGIANAAyADYANwBhAGIANgA2ADcAMgBjAGUAZQBiADMAYgBiAGQAYQAxAC4A
+ZABsAGwAAAB4ACsAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfADkAYgBlAGYANgBj
+ADQAZABlAGEAZgBiADQAMgA0AGYAYgAwADIAYQBkAGYAZAAyADkAOAA3ADkANwBmADIAZgAuAGMA
+cwBwAHIAbwBqAAAAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAu
+ADYAMQAzADcALgAxADcANAA3ADYAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMA
+aQBvAG4AAAAxAC4AMAAuADYAMQAzADcALgAxADcANAA3ADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAAAgPwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\全体パッケージの実行とエラーチェック"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="スクリプト タスク"
+          DTS:DTSID="{76A5C04B-DFFF-4853-8D43-464A9DD4716E}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="1041"
+          DTS:ObjectName="全体パッケージの実行とエラーチェック"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_1859322962114838ad8f52fef57f1263"
+              VSTAMajorVersion="3"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="User::connectionString,User::currentDate,User::filePath,User::mailFromId,User::mailFromName,User::mailServer,System::PackageName,User::packagePath,User::sysDate"
+              ReadWriteVariables="User::needToSleep">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Settings.get_Default():ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Sett" +
+    "ings")]
+
+namespace ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties
+{
+
+
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+
+        public static Settings Default
+        {
+            get
+            {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[using Microsoft.SqlServer.Dts.Runtime;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Net.Mail;
+using System.Text;
+using System.Net;
+namespace ST_6676d8b7187342a79cc73e50019b7690.csproj
+{
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        // パッケージ実行ステータス管理用
+        Dictionary<string, string> dependantPckgSts = new Dictionary<string, string>();
+
+        #region VSTA generated code
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+        public int intExecutedFileCount = 0;    //This variable set in Universally to Maintain How much file originally been executed
+                                                //Whether it has ERROR(エラー) or SUCCESS(済).
+        public int intFileToBeExecuteCount = 0; //This is DataTable Count to GET 'How Many Packages' came first time for Execution
+        #region "Main Method"
+        public void Main()
+        {
+            #region variable declaration and initialisation
+            string strConnectionString = Dts.Variables["User::connectionString"].Value.ToString();
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            DataTable DT_PackageAllSel = new DataTable();
+            StringBuilder strBuildQry;
+            string strQuery = string.Empty;
+            StringBuilder strERRQuery = new StringBuilder();
+            #endregion variable declaration and initialisation
+            try
+            {
+                _connectionOpen(myConnection);
+                strBuildQry = new StringBuilder();
+                #region Select Package Details
+                //Created On: 29-05-2016
+                //Description: This Query will Get All the Packages which are as.
+                strBuildQry.Append(" SELECT ");
+                strBuildQry.Append(" mst.パッケージコード,mst.パッケージ名, ");
+                strBuildQry.Append(" mst.ファイル名,mst.データ検証,mst.業務チェック, ");
+                strBuildQry.Append(" mst.完了時間,mst.依存パッケージコード, mst.DONEファイル ");
+                strBuildQry.Append(" FROM KANSHI_PKG_TRN_DETAILS trn  ");
+                strBuildQry.Append(" JOIN KANSHI_PKG_MST_DETAILS mst  ");
+                strBuildQry.Append(" ON mst.パッケージコード=trn.パッケージコード  ");
+                strBuildQry.Append(" WHERE mst.削除フラグ='false' AND trn.実行ステータス IN ('未','中') AND trn.削除フラグ='FALSE' ");
+                strBuildQry.Append(" ORDER BY mst.実行順番,mst.依存パッケージコード;");
+                strQuery = strBuildQry.ToString();
+                DT_PackageAllSel.Reset();
+                DT_PackageAllSel = _getDataTable(strQuery, myConnection);
+                #endregion
+                if (DT_PackageAllSel.Rows.Count > 0)
+                {
+                    intFileToBeExecuteCount = DT_PackageAllSel.Rows.Count;  //This is DataTable Count to GET 'How Many Packages' came first time for Execution
+                    _runPackage(DT_PackageAllSel, myConnection); //実行パッケージ
+                }
+                else
+                {
+                    //If all the Packages are already '済' or No packages to be Run.
+                    Dts.Variables["User::needToSleep"].Value = false;  //It will break WAIT MODE.
+                }
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            #region "CATCH/FINALLY"
+            catch (Exception ex)
+            {
+                try
+                {
+                strERRQuery.Clear();
+                strERRQuery.Append("INSERT INTO ");
+                strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                strERRQuery.Append("VALUES('S999','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+            }
+            finally
+            {
+                _connectionClose(myConnection);
+                DT_PackageAllSel = null;
+                strBuildQry = null;
+                strQuery = null;
+                strERRQuery = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Run of Packages"
+        /// <summary>
+        /// 作成人: イルファンマンスリー
+        /// 説明: 
+        /// </summary>
+        /// <param name="DT_PackageAllSel"></param>
+        protected void _runPackage(DataTable DT_PackageAllSel, SqlConnection myConnection)
+        {
+            #region Variable Declaration
+            string strFilePath = Dts.Variables["User::filePath"].Value.ToString();  //ファイルパス。
+            string strPackagePath = Dts.Variables["User::packagePath"].Value.ToString();    //パッケージパス。
+            DateTime dtCurDate = Convert.ToDateTime(Dts.Variables["User::currentDate"].Value);
+            StringBuilder strERRQuery = new StringBuilder();
+            string[] strArrDepenPack;
+            DataTable dtTemp = new DataTable();
+            string strCurrentTime;
+            string strEndTime;
+            string strPackageId = string.Empty;
+            string strPackageName;
+            string strFlatFileName;
+            string strDependentPackage;
+            string strFullFileName;
+            bool boolDataCheckFlag;
+            bool boolBusinessDataCheckFlag;
+            bool boolDoneFileCheckFlag;
+            bool boolExecuteCheckFlag;
+            bool boolErrorCheckErr = true;
+            string strErrorPackagePath; //ERROR Check Package. データ検証 flag is '1'.
+            Application app;
+            Package packageRun;
+            string strJikkouStatus = string.Empty; //Variable is to store 実行ステータス of package which occured for execution.
+            string strQryTemp = string.Empty; //Variable is to store any of the query at run time and clear to use again & again.
+            #endregion
+            try
+            {
+                _connectionOpen(myConnection);
+                #region Run Actual Flow Packages
+                for (int intI = 0; intI <= DT_PackageAllSel.Rows.Count - 1; intI++)
+                {
+                    //initialising time and pakg_id variables
+                    strCurrentTime = DateTime.Now.ToString("HH:mm");
+                    strEndTime = DT_PackageAllSel.Rows[intI]["完了時間"].ToString();
+                    strPackageId = DT_PackageAllSel.Rows[intI]["パッケージコード"].ToString();
+                    strPackageName = DT_PackageAllSel.Rows[intI]["パッケージ名"].ToString();
+                    strFlatFileName = DT_PackageAllSel.Rows[intI]["ファイル名"].ToString();
+                    strDependentPackage = DT_PackageAllSel.Rows[intI]["依存パッケージコード"].ToString();
+                    boolDoneFileCheckFlag = Convert.ToBoolean(DT_PackageAllSel.Rows[intI]["DONEファイル"]);
+                    boolDataCheckFlag = Convert.ToBoolean(DT_PackageAllSel.Rows[intI]["データ検証"]);    //ERROR Check Package need to run or not. When FLAT_file not needed to check STEP①.
+                    boolBusinessDataCheckFlag = Convert.ToBoolean(DT_PackageAllSel.Rows[intI]["業務チェック"]);   //ERROR Check Business Checking needed or not. STEP②.
+                    strFullFileName = strFilePath + @"\" + strFlatFileName + "_" + dtCurDate.ToString("yyyyMMdd") + "_DONE";  //GET _DONE file path without extension to check.
+
+                    // CHECK PCK STATUS
+                    if (dependantPckgSts.ContainsKey(strPackageId))
+                    {
+                        if (dependantPckgSts[strPackageId].ToString() == "済")
+                        {
+                            continue;
+                        }
+                    }
+
+                    #region _DONE file needed
+                    if (boolDoneFileCheckFlag == true)
+                    {
+                        //更新日:2017/06/20
+                        //作成者: Irfan Mansuri
+                        //説明: This change is to perform "中" flag information. Whether flag is "中" or "未" of package, then start its 受信 check if required
+                        //中 means: File's 受信 check is done just needs to perform its other operation and file would be already shifted to "\backup\" folder.
+                        //未 means: Yet this package not occured for its execution, so needs to perform its 受信 check first and file would be available in "\data\" folder
+                        //エラー means: Due to some technical issue only package got failed and it would not come for its next execution cycle.
+                        //済 means: This package's all the operations are finished and it would not come for its next exection cycle.
+                        strJikkouStatus = string.Empty;
+                        strQryTemp = string.Empty;
+                        strQryTemp = "SELECT 実行ステータス FROM KANSHI_PKG_TRN_DETAILS WHERE 削除フラグ='false' AND パッケージコード='" + strPackageId + "';";
+                        dtTemp.Reset();
+                        dtTemp = _getDataTable(strQryTemp, myConnection);
+                        strJikkouStatus = dtTemp.Rows[0]["実行ステータス"].ToString(); //Only if package is 未 or 中, then only perform its basic required operations.
+
+                        #region WHEN '_DONE' FILE EXISTS or "中"
+                        //Only if Package's DONE file available in its "\data" folder or if it is not in "\data" folder 
+                        //then it should  be as "中"(means 受信 check already performed and its file shifted to "\backup" folder).
+                        //未 should not be allowed because if file is not in its both the folder means file is yet to come and throw error if its waiting time exceed
+                        if (File.Exists(strFullFileName) || strJikkouStatus == "中")
+                        {
+                            #region ERROR CHECK PACKAGE
+                            //Run JUSHIN_ERROR Check package in each condition
+                            //Except its check flag is FALSE.
+                            if (boolDataCheckFlag == true)
+                            {
+                                //Change 1: Start
+                                if (strJikkouStatus == "未") //If its 実行ステータス='未' then only allow for 受信 check
+                                {
+                                    app = new Application();
+                                    strErrorPackagePath = strPackagePath + @"\999_JUSHIN_ERROR_CHECK.dtsx";
+                                    MyEventListener eventListener = new MyEventListener();
+                                    strFullFileName = strFlatFileName + "_" + dtCurDate.ToString("yyyyMMdd");
+                                    packageRun = app.LoadPackage(strErrorPackagePath, eventListener);
+                                    //
+                                    packageRun.Variables["packageCode"].Value = strPackageId;
+                                    packageRun.Variables["connectionString"].Value = Dts.Variables["User::connectionString"].Value.ToString();
+                                    packageRun.Variables["currentDate"].Value = Dts.Variables["User::currentDate"].Value.ToString();
+                                    packageRun.Variables["fileFolder"].Value = Dts.Variables["User::filePath"].Value.ToString();
+                                    packageRun.Variables["fileName"].Value = strFlatFileName;
+
+                                    //Execute ERROR Check package
+                                    DTSExecResult results_err = packageRun.Execute(null, null, eventListener, null, null);
+                                    if (results_err == DTSExecResult.Failure)
+                                    {
+                                        boolErrorCheckErr = false;
+                                        strERRQuery.Clear();
+                                        strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                                        strERRQuery.Append("SET 実行ステータス='エラー', エラー日=GETDATE() ");
+                                        strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false' ");
+                                        _updateInsert(strERRQuery.ToString(), myConnection);  //Update Function Call
+                                        strERRQuery.Clear();
+                                        dtTemp.Reset();
+                                        strERRQuery.Append("SELECT * ");
+                                        strERRQuery.Append(" FROM KANSHI_PACKAGE_ERROR ");
+                                        strERRQuery.Append(" WHERE パッケージコード='" + strPackageId + "' AND データ日付='" + dtCurDate + "';");
+                                        dtTemp = _getDataTable(strERRQuery.ToString(), myConnection);
+                                        if (dtTemp.Rows.Count == 0)
+                                        {
+                                            //IF ERROR for SAME file is not inserted then Only Write New row.
+                                            strERRQuery.Clear();
+                                            strERRQuery.Append(" INSERT INTO KANSHI_PACKAGE_ERROR ");
+                                            strERRQuery.Append(" (パッケージコード,データ日付,エラー日時,ファイル名,エラー内容,エラーフラグ) ");
+                                            strERRQuery.Append(" VALUES('" + strPackageId + "','" + dtCurDate + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + strFullFileName + "','エラーパッケージでエラーが発生しました。','2');");
+                                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Insert FUNCTION
+                                        }
+                                    }
+                                    else
+                                    {
+                                        strERRQuery.Clear();
+                                        strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                                        strERRQuery.Append(" SET 実行ステータス='中' ");
+                                        strERRQuery.Append(" WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false' ");
+                                        _updateInsert(strERRQuery.ToString(), myConnection);  //Update Function Call
+                                    }
+                                }
+                                //Change 1: End
+                            }
+                            #endregion
+                            if (boolErrorCheckErr == true)
+                            {
+                                #region Package Found Dependency
+                                if (!string.IsNullOrEmpty(strDependentPackage))
+                                {
+                                    boolExecuteCheckFlag = true;     // Dependant Pacakge Run Status Flg
+                                    //If Package is Dependent on Another
+                                    string strPackStatus;
+                                    string strQuery;
+                                    strArrDepenPack = strDependentPackage.Split(',');
+                                    for (int intJ = 0; intJ < strArrDepenPack.Length; intJ++)
+                                    {
+                                        strPackStatus = string.Empty;
+                                        strQuery = string.Empty;
+                                        strQuery = "SELECT 実行ステータス FROM KANSHI_PKG_TRN_DETAILS WHERE 削除フラグ='false' AND パッケージコード='" + strArrDepenPack[intJ] + "';";
+                                        dtTemp.Reset();
+                                        dtTemp = _getDataTable(strQuery, myConnection);
+                                        strPackStatus = dtTemp.Rows[0]["実行ステータス"].ToString();
+                                        if (strPackStatus == "未" || strPackStatus == "中")   //Package status is "Not Yet Execute"
+                                        {
+                                            dtTemp.Reset();
+                                            strQuery = string.Empty;
+                                            strQuery = "SELECT  mst.パッケージコード,mst.パッケージ名,  mst.ファイル名,mst.データ検証,mst.業務チェック,  mst.完了時間,mst.依存パッケージコード, mst.DONEファイル ";
+                                            strQuery = strQuery + "FROM KANSHI_PKG_TRN_DETAILS trn   JOIN KANSHI_PKG_MST_DETAILS mst ON mst.パッケージコード=trn.パッケージコード  ";
+                                            strQuery = strQuery + "WHERE mst.削除フラグ='false' AND trn.実行ステータス IN ('未','中')  AND mst.パッケージコード = '" + strArrDepenPack[intJ] + "' ";
+                                            strQuery = strQuery + "ORDER BY mst.実行順番,mst.依存パッケージコード;";
+                                            dtTemp = _getDataTable(strQuery, myConnection);
+                                            //Recursive Function.
+                                            _runPackage(dtTemp, myConnection);
+                                            dtTemp.Reset();
+                                            strQuery = string.Empty;
+                                            strQuery = "SELECT 実行ステータス FROM KANSHI_PKG_TRN_DETAILS WHERE 削除フラグ='false' AND パッケージコード='" + strArrDepenPack[intJ] + "';";
+                                            dtTemp = _getDataTable(strQuery, myConnection);
+                                            strPackStatus = dtTemp.Rows[0]["実行ステータス"].ToString();
+                                            if (strPackStatus != "済")
+                                            {
+                                                boolExecuteCheckFlag = false;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                dependantPckgSts.Add(strArrDepenPack[intJ], "済");
+                                            }
+                                        }
+                                        else if (strPackStatus == "エラー")
+                                        {
+                                            boolExecuteCheckFlag = false;
+                                            break;
+                                        }
+                                    }
+                                    //Start: Run GYOM_Check & GYOM Package for current Package
+                                    if (boolExecuteCheckFlag == true)
+                                    {
+                                        _runGyoumuPackage(strPackageId, strPackageName, strFlatFileName, boolDataCheckFlag, boolBusinessDataCheckFlag, strFlatFileName, myConnection);
+                                    }
+                                    //End: Run GYOM_Check & GYOM Package for current Package        
+                                }
+                                #endregion
+
+                                #region Package Find No Dependency.
+                                //If the Current Package Do not have its Parent Dependent package.
+                                else
+                                {
+                                    //Actual Run ERROR Check & GYOUMU Package.
+                                    _runGyoumuPackage(strPackageId, strPackageName, strFlatFileName, boolDataCheckFlag, boolBusinessDataCheckFlag, strFlatFileName,myConnection);
+                                }
+                                #endregion
+                            }
+                            if (intExecutedFileCount == intFileToBeExecuteCount)
+                            {
+                                Dts.Variables["User::needToSleep"].Value = false;  //It will break WAIT MODE.
+                                break;   //This will stop Execution of FOR LOOP
+                            }
+                            else
+                            {
+                                Dts.Variables["User::needToSleep"].Value = true;  //It will be in WAIT MODE for Defined Minute.
+                            }
+                        }
+                        #endregion
+                        #region WHEN '_DONE' FILE DO NOT EXISTS
+                        else
+                        {
+                            if (strCurrentTime.CompareTo(strEndTime) >= 0) //WHEN TIME's UP.
+                            {
+                                dtTemp.Reset();
+                                strERRQuery.Clear();
+                                strERRQuery.Append("SELECT * ");
+                                strERRQuery.Append(" FROM KANSHI_PACKAGE_ERROR ");
+                                strERRQuery.Append(" WHERE パッケージコード='" + strPackageId + "' AND データ日付='" + dtCurDate + "';");
+                                dtTemp = _getDataTable(strERRQuery.ToString(),myConnection);
+                                if (dtTemp.Rows.Count == 0)
+                                {
+                                    //IF ERROR for SAME file is not inserted then Only Write New row.
+                                    strERRQuery.Clear();
+                                    strERRQuery.Append(" INSERT INTO KANSHI_PACKAGE_ERROR ");
+                                    strERRQuery.Append(" (パッケージコード,データ日付,エラー日時,ファイル名,エラー内容,エラーフラグ) ");
+                                    strERRQuery.Append(" VALUES('" + strPackageId + "','" + dtCurDate + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + Path.GetFileName(strFullFileName) + "','DONEファイルが見つかりません。','2');");
+                                    _updateInsert(strERRQuery.ToString(), myConnection);  //Call Insert FUNCTION
+                                    strERRQuery.Clear();
+                                    strERRQuery.Append(" UPDATE KANSHI_PKG_TRN_DETAILS ");
+                                    strERRQuery.Append(" SET 実行ステータス='エラー' ");
+                                    strERRQuery.Append(" WHERE パッケージコード='" + strPackageId + "' AND インポート日='" + dtCurDate + "' AND 削除フラグ='FALSE'; ");
+                                    _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update FUNCTION
+                                    _Logging(Dts.Variables["User::filePath"].Value.ToString(), strPackageName.Substring(4, strPackageName.Length - 4), "DONEファイルが見つかりません。", string.Empty);
+                                    _sendMail(strPackageName.Substring(4, strPackageName.Length - 9), strPackageId, dtCurDate, Convert.ToString(Dts.Variables["User::filePath"].Value).Replace(@"receive\data", "Error"), myConnection);
+                                }
+                                //This count is to Stop waiting for this Package. Because waiting Logic is dependent on same count
+                                intExecutedFileCount = intExecutedFileCount + 1;
+                            }
+                            else
+                            {
+                                Dts.Variables["User::needToSleep"].Value = true;  //It will be in WAIT MODE for Defined Minute.
+                            }
+                        }
+                        #endregion
+                    }
+                    #endregion
+                    #region _DONE file not needed
+                    else
+                    {
+                        #region Package Found Dependency
+                        if (!string.IsNullOrEmpty(strDependentPackage))
+                        {
+                            boolExecuteCheckFlag = true;     // Dependant Pacakge Run Status Flg
+                            //If Package is Dependent on Another
+                            strArrDepenPack = strDependentPackage.Split(',');
+                            string strPackStatus;
+                            string strQuery;
+                            for (int intJ = 0; intJ < strArrDepenPack.Length; intJ++)
+                            {
+                                strPackStatus = string.Empty;
+                                strQuery = string.Empty;
+                                strQuery = "SELECT 実行ステータス FROM KANSHI_PKG_TRN_DETAILS WHERE 削除フラグ='false' AND パッケージコード='" + strArrDepenPack[intJ] + "';";
+                                dtTemp.Reset();
+                                dtTemp = _getDataTable(strQuery, myConnection);
+                                strPackStatus = dtTemp.Rows[0]["実行ステータス"].ToString();
+                                if (strPackStatus == "未")   //Package status is "Not Yet Execute"
+                                {
+                                    dtTemp.Reset();
+                                    strQuery = string.Empty;
+                                    strQuery = "SELECT  mst.パッケージコード,mst.パッケージ名,  mst.ファイル名,mst.データ検証,mst.業務チェック,  mst.完了時間,mst.依存パッケージコード, mst.DONEファイル ";
+                                    strQuery = strQuery + "FROM KANSHI_PKG_TRN_DETAILS trn   JOIN KANSHI_PKG_MST_DETAILS mst ON mst.パッケージコード=trn.パッケージコード  ";
+                                    strQuery = strQuery + "WHERE mst.削除フラグ='false' AND trn.実行ステータス='未'  AND mst.パッケージコード = '" + strArrDepenPack[intJ] + "' ";
+                                    strQuery = strQuery + "ORDER BY mst.実行順番,mst.依存パッケージコード;";
+                                    dtTemp = _getDataTable(strQuery, myConnection);
+                                    //Recursive Function.
+                                    _runPackage(dtTemp, myConnection);
+                                    dtTemp.Reset();
+                                    strQuery = string.Empty;
+                                    strQuery = "SELECT 実行ステータス FROM KANSHI_PKG_TRN_DETAILS WHERE 削除フラグ='false' AND パッケージコード='" + strArrDepenPack[intJ] + "';";
+                                    dtTemp = _getDataTable(strQuery, myConnection);
+                                    strPackStatus = dtTemp.Rows[0]["実行ステータス"].ToString();
+                                    if (strPackStatus != "済")
+                                    {
+                                        boolExecuteCheckFlag = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        dependantPckgSts.Add(strArrDepenPack[intJ], "済");
+                                    }
+                                }
+                                else if(strPackStatus == "エラー")
+                                {
+                                    //This count is to Stop waiting for this Package. Because waiting Logic is dependent on same count
+                                    intExecutedFileCount = intExecutedFileCount + 1;
+
+                                    boolExecuteCheckFlag = false;
+                                    break;
+                                }
+                            }
+                            //Start: Run GYOM_Check & GYOM Package for current Package
+                            if (boolExecuteCheckFlag == true)
+                            {
+                                _runGyoumuPackage(strPackageId, strPackageName, strFlatFileName, boolDataCheckFlag, boolBusinessDataCheckFlag, strFlatFileName, myConnection);
+                            }
+                            //End: Run GYOM_Check & GYOM Package for current Package 
+                        }
+                        #endregion
+                        #region Package Find No Dependency.
+                        //If the Current Package Do not have its Parent Dependent package.
+                        else
+                        {
+                            //Actual Run ERROR Check & GYOUMU Package.
+                            _runGyoumuPackage(strPackageId, strPackageName, strFlatFileName, boolDataCheckFlag, boolBusinessDataCheckFlag, strFlatFileName, myConnection);
+                        }
+                        #endregion
+
+                        if (intExecutedFileCount == intFileToBeExecuteCount)
+                        {
+                            Dts.Variables["User::needToSleep"].Value = false;  //It will break WAIT MODE.
+                            break;   //This will stop Execution of FOR LOOP
+                        }
+                        else
+                        {
+                            Dts.Variables["User::needToSleep"].Value = true;  //It will be in WAIT MODE for Defined Minute.
+                        }
+                    }
+                    #endregion
+                    strCurrentTime = string.Empty;
+                    strEndTime = string.Empty;
+                    strPackageId = string.Empty;
+                    strPackageName = string.Empty;
+                    strFlatFileName = string.Empty;
+                    strDependentPackage = string.Empty;
+                    strFullFileName = string.Empty;
+                    strJikkouStatus = string.Empty;
+                    strQryTemp = string.Empty;
+                }
+                #endregion
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                try
+                {
+                strERRQuery.Clear();
+                strERRQuery.Append("INSERT INTO ");
+                strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+            }
+            finally
+            {
+                strPackageName = null;
+                strFilePath = null;
+                strPackagePath = null;
+                strERRQuery = null;
+                DT_PackageAllSel = null;
+                dtTemp = null;
+                strCurrentTime = null;
+                strEndTime = null;
+                strPackageId = null;
+                strFlatFileName = null;
+                strDependentPackage = null;
+                strFullFileName = null;
+                strJikkouStatus = null;
+                strQryTemp = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "GYOMU Check & GYOUMU Package"
+        //作成人: Irfan Mansuri
+        //作成日付: 2016-06-23
+        //説明: This Function will change the package status before execution as 実行中 
+        //      & after the execution set package status as 済｜エラー.
+        //      Between that ERROR Check & Actual 業務 package will be execute.
+        protected void _runGyoumuPackage(string strPackageId, string strGyomPackageName, string strFlatFileName, bool boolErrorCheckFlag, bool boolBusinessDataCheckFlag, string strGyomName, SqlConnection myConnection)
+        {
+            string strFilePath = Dts.Variables["User::filePath"].Value.ToString();  //ファイルパス。
+            string strPackageFolder = Dts.Variables["User::packagePath"].Value.ToString();    //パッケージパス。
+            DateTime dtCurDate = Convert.ToDateTime(Dts.Variables["User::currentDate"].Value.ToString());
+            string strFullFileName = strFlatFileName + "_" + dtCurDate.ToString("yyyyMMdd");
+            string strGyomCheckPackageName;  //GYOUMU Data Check Package. 業務チェック flag is '1'.
+            StringBuilder strERRQuery = new StringBuilder();
+            Application app;
+            Package packageRun;
+            DataTable dtTemp;
+            try
+            {
+                _connectionOpen(myConnection);
+                dtTemp = new DataTable();
+                //Start: Update Package status as 実行中
+                strERRQuery.Clear();
+                strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                strERRQuery.Append("SET 実行ステータス='実行中', 開始時間=GETDATE(), インポート日='" + dtCurDate + "' ");
+                strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 実行ステータス IN ('未','中') AND 削除フラグ='false'; ");
+                _updateInsert(strERRQuery.ToString(), myConnection);  //Update Function Call
+                //End: Update Package status as 実行中
+                app = new Application();
+                MyEventListener eventListener = new MyEventListener();
+                strGyomCheckPackageName = "999_GYOUMU_CHECK.dtsx";
+                #region "No Flat File/No ErrorCheck Package"
+                if (boolBusinessDataCheckFlag == true)  //業務チェック flag Check.
+                {
+                    //GYOUMU CHECK PAckage RUN
+                    //This function Call will handle Its Actual GYOUMU Package as well.
+                    _runGyoumuCheck(strPackageId, strGyomCheckPackageName, strGyomPackageName, strPackageFolder, strGyomName, myConnection);
+                }
+                else
+                {
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    intExecutedFileCount = intExecutedFileCount + 1;    //Increase count from All the file which are executed.///
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    #region run gyoumu_pkg
+                    strGyomPackageName = strPackageFolder + @"\" + strGyomPackageName;
+                    if (File.Exists(strGyomPackageName))
+                    {
+                        eventListener = null;
+                        app = null;
+                        eventListener = new MyEventListener();
+                        app = new Application();
+                        packageRun = app.LoadPackage(strGyomPackageName, eventListener);
+                        DTSExecResult results;
+                        try
+                        {
+                            packageRun.Variables["connectionString"].Value = Dts.Variables["User::connectionString"].Value.ToString();
+                            results = packageRun.Execute(null, null, eventListener, null, null);
+                        }
+                        catch (Exception)
+                        {
+                            results = packageRun.Execute(null, null, eventListener, null, null);
+                        }
+                        if (results == DTSExecResult.Failure)
+                        {
+                            //When Any ERROR Occur in 業務 package.
+                            strERRQuery.Clear();
+                            strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                            strERRQuery.Append("SET 実行ステータス='エラー', エラー日=GETDATE()");
+                            strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false';");
+                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update function.
+                            //Insert into PACKAGE ERROR table
+                            strERRQuery.Clear();
+                            strERRQuery.Append(" INSERT INTO KANSHI_PACKAGE_ERROR ");
+                            strERRQuery.Append(" (パッケージコード,データ日付,エラー日時,エラー内容,エラーフラグ) ");
+                            strERRQuery.Append(" VALUES('" + strPackageId + "','" + dtCurDate + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + eventListener.errDescription.Replace("'", "-") + "。','2');");
+                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Insert FUNCTION
+                            try
+                            {
+                                //Write the Error Log in text
+                                //_Logging(Dts.Variables["User::filePath"].Value.ToString(),Path.GetFileName(strGyomPackageName), eventListener.errDescription, string.Empty);
+                                _Logging(Dts.Variables["User::filePath"].Value.ToString(), Path.GetFileName(strGyomPackageName).Substring(4, Path.GetFileName(strGyomPackageName).Length - 9), eventListener.errDescription.Replace("'", "-"), string.Empty);
+                                //Send mail to report 業務パッケージ failure
+                                _sendMail(Path.GetFileName(strGyomPackageName).Substring(4, Path.GetFileName(strGyomPackageName).Length - 9), strPackageId, dtCurDate, Convert.ToString(Dts.Variables["User::filePath"].Value).Replace(@"receive\data", "Error"), myConnection);
+                            }
+                            catch
+                            {
+                                //Nothing to Do.. Just Skip it, because log is already written in Db Table.
+                                //There are just Mail log in text and mail, which should not be allowed to stop other packages execution.
+                                //So better it make its catch so it cant affect its normal flow.
+                            }
+                        }
+                        else
+                        {
+                            //When 業務 package executed successfully.
+                            strERRQuery.Clear();
+                            strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                            strERRQuery.Append("SET 実行ステータス='済', 終了時間=GETDATE()");
+                            strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false';");
+                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update function.
+                        }
+                    }
+                    else
+                    {
+                        //業務パッケージが見つかりませんでしたの場合。
+                        strERRQuery.Clear();
+                        strERRQuery.Append("INSERT INTO ");
+                        strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                        strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + eventListener.errDescription.Replace("'", "-") + "。','2');");
+                        _updateInsert(strERRQuery.ToString(), myConnection);
+                    }
+                    #endregion
+                }
+                #endregion
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                try
+                {
+                    strERRQuery.Clear();
+                    strERRQuery.Append("INSERT INTO ");
+                    strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                    strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                    _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+            }
+            finally
+            {
+                strPackageId = null;
+                strGyomPackageName = null;
+                strFlatFileName = null;
+                app = null;
+                packageRun = null;
+                strERRQuery = null;
+                strFilePath = null;
+                strPackageFolder = null;
+                strGyomCheckPackageName = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Run GYOUMU CHECK Package"
+        /// <summary>
+        /// 作成人: イルファンマンスリー
+        /// 説明: This Will run the Gyoumu check Package(ERROR Check Step②) & Actual Gyoumu Package.
+        /// 作成日: 2016-07-15
+        /// </summary>
+        /// <arg 1> strGyomCheckPackageName = GYOM Check package name only.
+        /// <arg 2> strGyomPackageName = Actual GYOM Package name only.
+        /// <arg 3> strPackageFolder = Folder name without last SLASH(\), where All the packages saved.
+        /// <arg 4> strGyomName = For which GYOM current package will be run. e.g: T_DAY_TENKAN_IDO. Where is actual the MAIN table name as well.
+        private void _runGyoumuCheck(string strPackageId, string strGyomCheckPackageName, string strGyomPackageName, string strPackageFolder, string strGyomName, SqlConnection myConnection)
+        {
+            StringBuilder strERRQuery = new StringBuilder();
+            Application app;
+            Package packageRun;
+            string strGyomCheckFullPath = strPackageFolder + @"\" + strGyomCheckPackageName;    //GYOM Check Package & full path
+            string strGyomFullPath = strPackageFolder + @"\" + strGyomPackageName;  //Actual GYOM Package & full path
+            MyEventListener eventListener = new MyEventListener();
+            try
+            {
+                _connectionOpen(myConnection);
+                app = new Application();
+                #region Run GYOM Check Package
+                packageRun = app.LoadPackage(strGyomCheckFullPath, eventListener);
+                packageRun.Variables["checkType"].Value = strGyomName;
+                packageRun.Variables["connectionString"].Value = Dts.Variables["User::connectionString"].Value.ToString();
+                packageRun.Variables["currentDate"].Value = Convert.ToDateTime(Dts.Variables["User::currentDate"].Value);
+                packageRun.Variables["packageCode"].Value = strPackageId;
+                //Execute GYOM Check package
+                DTSExecResult results_err = packageRun.Execute(null, null, eventListener, null, null);
+                if (results_err == DTSExecResult.Failure)
+                {
+                    //This will be FAIL Only when any System ERROR Occurs.
+                    //When Any ERROR Occur in 業務 package.
+
+                    strERRQuery.Clear();
+                    strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                    strERRQuery.Append("SET 実行ステータス='エラー', エラー日=GETDATE()");
+                    strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false';");
+                    _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update function.
+                    strERRQuery.Clear();
+                    strERRQuery.Append("INSERT INTO ");
+                    strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                    strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','"+eventListener.errDescription+"。','2');");
+                    _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                #endregion
+                #region Run GYOM Package 
+                else
+                {
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    intExecutedFileCount = intExecutedFileCount + 1;    //Increase count from All the file which are executed.///
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //If no ERROR(System Error) then RUN its GYOM Package to be Data Import.
+                    app = null;
+                    packageRun = null;
+                    app = new Application();
+                    if (File.Exists(strGyomFullPath))
+                    {
+                        packageRun = app.LoadPackage(strGyomFullPath, eventListener);
+                        DTSExecResult result_err1;
+                        try
+                        {
+                            packageRun.Variables["connectionString"].Value = Dts.Variables["User::connectionString"].Value.ToString();
+                            result_err1 = packageRun.Execute(null, null, eventListener, null, null);
+                        }
+                        catch (Exception)
+                        {
+                            result_err1 = packageRun.Execute(null, null, eventListener, null, null);
+                        }
+                        if (result_err1 == DTSExecResult.Failure)
+                        {
+                            //When Any ERROR Occur in 業務 package.
+                            strERRQuery.Clear();
+                            strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                            strERRQuery.Append("SET 実行ステータス='エラー', エラー日=GETDATE()");
+                            strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false';");
+                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update function.
+                            //If GYOM Package throw any System ERROR.
+                            strERRQuery.Clear();
+                            strERRQuery.Append("INSERT INTO KANSHI_PACKAGE_ERROR");
+                            strERRQuery.Append("([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                            strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + eventListener.errDescription + "。','2');");
+                            _updateInsert(strERRQuery.ToString(), myConnection);
+                            //Write the Error Log in text
+                            try
+                            {
+                                _Logging(Dts.Variables["User::filePath"].Value.ToString(), strGyomPackageName.Substring(4, strGyomPackageName.Length - 9), eventListener.errDescription, string.Empty);
+                                //Send mail to report 業務パッケージ failure
+                                _sendMail(strGyomPackageName.Substring(4, strGyomPackageName.Length - 9), strPackageId, Convert.ToDateTime(Dts.Variables["User::currentDate"].Value), Dts.Variables["User::filePath"].Value.ToString().Replace(@"receive\data", "Error"), myConnection);
+                            }
+                            catch
+                            {
+                                //Nothing to Do.. Just Skip it, because log is already written in Db Table.
+                                //There are just Mail log in text and mail, which should not be allowed to stop other packages execution.
+                                //So better it make its catch so it cant affect its normal flow.
+                            }
+                        }
+                        else
+                        {
+                            //Update Success Status as '済'
+                            strERRQuery.Clear();
+                            strERRQuery.Append("UPDATE KANSHI_PKG_TRN_DETAILS ");
+                            strERRQuery.Append("SET 実行ステータス='済', 終了時間=GETDATE()");
+                            strERRQuery.Append("WHERE パッケージコード='" + strPackageId + "' AND 削除フラグ='false';");
+                            _updateInsert(strERRQuery.ToString(), myConnection);  //Call Update function.
+                        }
+                    }
+                    else
+                    {
+                        strERRQuery.Clear();
+                        strERRQuery.Append("INSERT INTO ");
+                        strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                        strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','" + eventListener.errDescription + "。','2');");
+                        _updateInsert(strERRQuery.ToString(), myConnection);
+                    }
+                }
+                #endregion
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                try
+                {
+                    strERRQuery.Clear();
+                    strERRQuery.Append("INSERT INTO ");
+                    strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                    strERRQuery.Append("VALUES('S" + strPackageId + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                    _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+                
+            }
+            finally
+            {
+                strGyomCheckPackageName = null;
+                strGyomPackageName = null;
+                strPackageFolder = null;
+                strGyomName = null;
+                strERRQuery = null;
+                app = null;
+                packageRun = null;
+                strGyomCheckFullPath = null;
+                strGyomFullPath = null;
+                eventListener = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Get DataTable"
+        //Created On: 19-05-2016
+        //Description: Aim to Return DataTable from the Query.
+        public DataTable _getDataTable(string strQuery, SqlConnection myConnection)
+        {
+            StringBuilder strERRQuery = new StringBuilder();
+            DataTable objDT = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter sqlSelectData;
+            try
+            {
+                _connectionOpen(myConnection);
+                myCommand = new SqlCommand(strQuery, myConnection);
+                myCommand.CommandType = CommandType.Text;
+                sqlSelectData = new SqlDataAdapter();
+                sqlSelectData.SelectCommand = myCommand;
+                sqlSelectData.Fill(objDT);
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    strERRQuery.Clear();
+                    strERRQuery.Append("INSERT INTO ");
+                    strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                    strERRQuery.Append("VALUES('S999','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                    _updateInsert(strERRQuery.ToString(), myConnection);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+            }
+            finally
+            {
+                myConnection = null;
+                strQuery = null;
+                myCommand = null;
+                sqlSelectData = null;
+                strERRQuery = null;
+            }
+            return objDT;
+        }
+        #endregion
+
+        #region "Update/Insert Query in Db"
+        protected void _updateInsert(string strQuery, SqlConnection myConnection)
+        {
+            StringBuilder strERRQuery = new StringBuilder();
+            SqlCommand myCommand;
+            try
+            {
+                myCommand = new SqlCommand(strQuery, myConnection);
+                _connectionOpen(myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                strERRQuery = null;
+                myConnection = null;
+                myCommand = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Logging"
+        /// <summary>
+        /// 説明: This function writes Log in Text file log in specified folder.
+        /// 作成日: 2016/10/19
+        /// </summary>
+        /// <param name="strFilePath">Where TSV files belongs</param>
+        /// <param name="strErrorMsg">Error message that we want to insert</param>
+        /// <param name="strExceptionMsg">Exception if occured in CATCH blog.</param>
+        public void _Logging(string strFilePath, string strGyomPackageName,　string strErrorMsg, string strExceptionMsg)
+        {
+            string strLogFolder = strFilePath.Replace(@"receive\data", "Error");
+            string strLogPath = string.Empty;
+            if (string.IsNullOrEmpty(strGyomPackageName))
+            {
+                strLogPath = strLogFolder + @"\PACKAGE_" + Dts.Variables["System::PackageName"].Value.ToString().Replace(".dtsx", "_") + "_" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            }
+            else
+            {
+                strLogPath = strLogFolder + @"\PACKAGE_" + strGyomPackageName.Replace(".dtsx", "") + "_" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            }
+            StreamWriter stream = null;
+            try
+            {
+                if (!File.Exists(strLogPath))
+                {
+                    File.Create(strLogPath).Close();
+                }
+                stream = new StreamWriter(strLogPath, true);
+                stream.WriteLine(DateTime.Now + "\t" + strErrorMsg + "\n" + DateTime.Now + "\t" + strExceptionMsg);
+            }
+            catch (Exception)
+            {
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Flush();
+                    stream.Close();
+                    stream = null;
+                }
+            }
+        }
+        #endregion
+
+        #region "Send Mail"
+        /// <summary>
+        /// 開発者: イルファン　マンスリー
+        /// 説明: This function aim to send mail if error found for same Data date and Gyom Type.
+        /// 作成日: 2016-10-19
+        /// </summary>
+        /// <param name="strGyomType">For which gyom it is. </param>
+        /// <param name="strPackageCode">Package id</param>
+        /// <param name="dtCurDate">Data Date</param>
+        /// <param name="dtSysDate">System Date when this package is been started to be execute.</param>
+        /// <param name="myConnection"></param>
+        private void _sendMail(string strGyomType, string strPackageCode, DateTime dtCurDate, string strLogFullPath, SqlConnection myConnection)
+        {
+            string strMailFromId = string.Empty;
+            string strMailFromName = string.Empty;
+            string strMailServer = string.Empty;
+            StringBuilder strBuildQuery;
+            string strTo = string.Empty;
+            MailAddress mailFrom;
+            MailMessage mailMsg;
+            DataTable dtDetails;
+            SmtpClient emailClient;
+            StringBuilder strERRQuery = new StringBuilder();
+            try
+            {
+                strGyomType = strGyomType.Replace(".dtsx", "");
+                strLogFullPath = strLogFullPath + @"\PACKAGE_" + strGyomType + "_" + dtCurDate.ToString("yyyyMMdd") + ".log";
+
+                _connectionOpen(myConnection);  //Open SQL Connection
+                strMailFromId = Dts.Variables["User::mailFromId"].Value.ToString(); //From Which Email-Id mail will go through
+                strMailFromName = Dts.Variables["User::mailFromName"].Value.ToString(); //Sender name to show.
+                strMailServer = Dts.Variables["User::mailServer"].Value.ToString(); //Server Name/Address to send the mail.
+                strBuildQuery = new StringBuilder();
+                dtDetails = new DataTable();
+
+                #region Create Mail Body And Send Mail
+                emailClient = new SmtpClient(strMailServer);
+                emailClient.Port = 587;
+                emailClient.Credentials = new NetworkCredential(strMailFromId, "righton0123");
+                emailClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                emailClient.EnableSsl = true;
+                mailFrom = new MailAddress(strMailFromId, strMailFromName);
+                mailMsg = new MailMessage();
+                mailMsg.From = mailFrom;
+
+                //Start: 電子メールアドレス,who will recieve the ERROR_Log mail
+                strBuildQuery.Clear();
+                strBuildQuery.Append("SELECT 電子メール FROM [KANSHI_MAIL_ADDRESS]");
+                strBuildQuery.AppendLine("WHERE ユーザグループ='ERROR' AND 削除フラグ='0'");
+                dtDetails.Reset();
+                dtDetails = _getDataTable(strBuildQuery.ToString(), myConnection);
+                strTo = string.Empty;
+                if (dtDetails.Rows.Count > 0)
+                {
+                    strTo = dtDetails.Rows[0]["電子メール"].ToString();
+                    dtDetails.Reset(); //リセットデータテーブル。
+                }
+                //End: 電子メールアドレス,who will recieve the ERROR_Log mail
+
+                #region メールボディーにエラーログ内容
+                strBuildQuery.Clear();
+                strBuildQuery.Append("本メールは、MINIMDシステムからのお知らせです。<br /> <br />");
+                strBuildQuery.Append("【" + strGyomType + "】のパッケージでエラーが発生しました。<br />");
+                strBuildQuery.Append("エラーの内容が添付ファイルで送りいたします。<br /> <br />");
+                strBuildQuery.Append(" ご確認お願い致します。<br /><br />");
+                strBuildQuery.Append(" 以上です。<br />");
+                strBuildQuery.Append(" 宜しくお願い致します。");
+                #endregion メールボディーとエラーログ内容
+
+                mailMsg.To.Add(strTo);
+                if (File.Exists(strLogFullPath))
+                {
+                    mailMsg.Attachments.Add(new Attachment(strLogFullPath));    //Attachment
+                }
+                mailMsg.Body = strBuildQuery.ToString();
+                mailMsg.BodyEncoding = Encoding.UTF8;
+                mailMsg.Subject = "【MINI-MD】パッケージエラー_" + strGyomType + "_" + dtCurDate.ToString("yyyyMMdd");
+                mailMsg.SubjectEncoding = Encoding.UTF8;
+                mailMsg.IsBodyHtml = true;
+                emailClient.Send(mailMsg);
+                #endregion
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            #region "CATCH/FINALLY"
+            catch (Exception ex)
+            {
+                //システムエラーの場合。
+                try
+                {
+                    strERRQuery.Clear();
+                    strERRQuery.Append("INSERT INTO ");
+                    strERRQuery.Append("KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                    strERRQuery.Append("VALUES('S" + strPackageCode + "','" + Dts.Variables["User::currentDate"].Value.ToString() + "','" + Dts.Variables["User::sysDate"].Value.ToString() + "','システムエラー:" + ex.Message.Replace("'", "-") + "','2');");
+                    _updateInsert(strERRQuery.ToString(), myConnection);
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, string.Empty);
+                }
+                catch (Exception sqlException)
+                {
+                    _Logging(Dts.Variables["User::filePath"].Value.ToString(),string.Empty, ex.Message, sqlException.Message);
+                }
+            }
+            finally
+            {
+                strERRQuery = null;
+                strGyomType = null;
+                strPackageCode = null;
+                strMailFromId = null;
+                strMailFromName = null;
+                strMailServer = null;
+                myConnection = null;
+                strBuildQuery = null;
+                strTo = null;
+                mailFrom = null;
+                mailMsg = null;
+                dtDetails = null;
+                emailClient = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region Connection Open
+        private void _connectionOpen(SqlConnection myConnection)
+        {
+            if (myConnection.State != ConnectionState.Open)
+            {
+                myConnection.Open();
+            }
+        }
+        #endregion
+
+        #region Connection Close
+        private void _connectionClose(SqlConnection myConnection)
+        {
+            if (myConnection.State != ConnectionState.Closed)
+            {
+                myConnection.Close();
+            }
+        }
+        #endregion
+    }
+    class MyEventListener : DefaultEvents
+    {
+        public string errDescription;
+        public override bool OnError(DtsObject source, int errorCode, string subComponent,
+          string description, string helpFile, int helpContext, string idofInterfaceWithError)
+        {
+
+            errDescription = description;
+            return false;
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ST_1859322962114838ad8f52fef57f1263.csproj"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  --><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><OutputType>Library</OutputType><NoStandardLibraries>false</NoStandardLibraries><RootNamespace>ST_6676d8b7187342a79cc73e50019b7690.csproj</RootNamespace><AssemblyName>ST_1859322962114838ad8f52fef57f1263</AssemblyName><ProjectGuid>{A0CFAB5E-6A3C-4852-A599-C6F278938F02}</ProjectGuid><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  --><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup><!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  --><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup><!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  --><PropertyGroup><PreBuildEvent></PreBuildEvent><PostBuildEvent></PostBuildEvent></PropertyGroup><!-- This sections specifies references for the project. --><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  --><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile><!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    --></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><!-- This section defines VSTA properties that describe the host-changable project properties. --><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\9.0\InstallDir#\devenv.exe" /><Host Name="SSIS_ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>st_6676d8b7187342a79cc73e50019b7690</msb:CodeName>
+		<msb:DisplayName>st_6676d8b7187342a79cc73e50019b7690</msb:DisplayName>
+		<msb:ProjectId>{3A4BDCA8-2EDC-4699-B6FC-7D334B235149}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_1859322962114838ad8f52fef57f1263.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_6676d8b7187342a79cc73e50019b7690.csproj")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("right-on")]
+[assembly: AssemblyProduct("ST_6676d8b7187342a79cc73e50019b7690.csproj")]
+[assembly: AssemblyCopyright("Copyright @ right-on 2015")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties
+{
+
+
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources
+    {
+
+        private static global::System.Resources.ResourceManager resourceMan;
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources()
+        {
+        }
+
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_6676d8b7187342a79cc73e50019b7690.csproj.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
+                return resourceCulture;
+            }
+            set
+            {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_1859322962114838ad8f52fef57f1263.dll">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
+AAoRCBEGb2cAAAoCKBYAAAoWbyQAAArdUwEAABMKEQlvJQAACiYRCXJcAwBwbx8AAAomEQlydgMA
+cG8fAAAKJhEJHwmNJAAAARMNEQ0Wcp4NAHCiEQ0XBKIRDRhyQQQAcKIRDRkCKBYAAApvFwAACnId
+BABwbxgAAApvGQAACm8aAAAKohENGnJBBABwohENGwIoFgAACm8XAAAKckkEAHBvGAAACm8ZAAAK
+bxoAAAqiEQ0ccmUEAHCiEQ0dEQpvJgAACnJ9BABwcoEEAHBvJwAACqIRDR5yhQQAcKIRDSgoAAAK
+bx8AAAomAhEJbxoAAAoOBSgNAAAGAgIoFgAACm8XAAAKcpUEAHBvGAAACm8ZAAAKbxoAAAp+HQAA
+ChEKbyYAAAp+HQAACigOAAAG3jwTCwICKBYAAApvFwAACnKVBABwbxgAAApvGQAACm8aAAAKfh0A
+AAoRCm8mAAAKEQtvJgAACigOAAAG3gDeAN4kFBMJFBABFBACFAoUCxQMFBAFFA0UEwQUEwUUEwYU
+EwcUEwjcKgAAQUwAAAAAAACeAgAAEwEAALEDAAA8AAAAKQAAAQAAAAAgAAAAfAIAAJwCAABTAQAA
+KQAAAQIAAAAgAAAA0QMAAPEDAAAkAAAAAAAAAEIDb2gAAAoXLgYDb2kAAAoqPgNvaAAACiwGA29q
+AAAKKkoCc2sAAAp9BAAABAIobAAACioqAg4EfQoAAAQWKh4CKG0AAAoqAAAAAAC0AAAAzsrvvgEA
+AACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9u
+PTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
+OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0
+AAAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAiAgAACN+AAD0CAAAKA0AACNT
+dHJpbmdzAAAAABwWAAA0EwAAI1VTAFApAAAQAAAAI0dVSUQAAABgKQAAGAQAACNCbG9iAAAAAAAA
+AAIAAAFXHaIJCQMAAAD6JTMAFgAAAQAAAEwAAAAGAAAACgAAABQAAAAmAAAAbQAAAAIAAAAPAAAA
+CQAAAAIAAAADAAAABAAAAAIAAAABAAAABQAAAAEAAAABAAAAAAAKAAEAAAAAAAYA3wDYAAoA+wDm
+AA4AWwEyAQYAdwHYABIAuwGbAQYA2gHJAQYACwL2AQYAoAKFAhYA/ALwAhYAHAMGAwYAfQPYABIA
+2AObAQYAdQVbBQYAoAWOBQYAtwWOBQYA1AWOBQYA8wWOBQYADAaOBQYAJQaOBQYAQAaOBQYAWwaO
+BQYAdAaOBQYArQaNBgYAzQaNBgYAIgcPBwYAPwfYAAYARAfYAAYAaAeOBQoAlAd+BwoArQd+BwYA
+wgeNBg4A5AcyAQ4ABggyARIAIAibARIAOAibAQYAXQjYAAYAdghqCBYAkQjwAhYArAjwAgYA0QjY
+AAYA+AjYAAYAHQnYABYAOAnwAgYAbAliCRIAeAmbARIAhAmbARIAjAmbARIAowmbARIAsAmbARIA
+uwmbARIAyQmbARIA1QmbAQYA9wnYAAYAHgpiCRYARAoGAxYAYgpPChYAbArwAhYAiAoGAxYAqQpP
+CgYAzApiCQYA3gpiCQYA6wpiCQYA+ApiCQoAIwsTCwoAQgs3CwoAVAs3CwoAdwsTCwoAqwsTCwoA
+twsTCwoA1wsTCwoA9AsTCwoAGQwTCwYAQwwkDAYAWQxqCBYAsAxPChYAvQzwAgAAAAABAAAAAAAB
+AAEAAAAQADIAPAAFAAEAAQAAARAAcgA8AAkAAwAFAAEAEAB7AIYADQAEAAgAAwEAALEAAAARAAcA
+EwAAABAAvwCGABUACgATABEA6gETABEAFwIXABEAYQI5AAEArQJHAAYAvgJPAAYA0wJPAAYGsQNP
+AFaAuQOZAFaAwQOZAAYAyQOnAFAgAAAAAIMYJwIbAAEAWCAAAAAAkwgtAh8AAQCRIAAAAACTCEEC
+JAABAJggAAAAAJMITQIpAAEAoCAAAAAAlghxAj0AAgCzIAAAAACGGCcCGwACAKcgAAAAAJEY3Qfn
+AAIAvCAAAAAAhgDrAhsAAgBcIwAAAACEACoDUgACAIQxAAAAAIQANgNaAAQA0DcAAAAAgQBIA2YA
+CwDwPgAAAACGAFgDcQARAKBAAAAAAIQAZgN5ABMA9EAAAAAAhgB0A4AAFQCkQgAAAACBAIYDiAAZ
+ABRHAAAAAIEAkAOTAB4AJUcAAAAAgQCgA5MAHwA1RwAAAACGGCcCGwAgAEhHAAAAAMYA4gOqACAA
+U0cAAAAAhhgnAhsAJwAAAAEA6gMAAAEA8AMAAAIAAQQAAAEADgQAAAIAGwQAAAMALgQAAAQAPgQA
+AAUAUQQAAAYAawQAAAcAAQQAAAEADgQAAAIAdwQAAAMAGwQAAAQAjwQAAAUAawQAAAYAAQQAAAEA
+oAQAAAIAAQQAAAEAoAQAAAIAAQQAAAEAqQQAAAIAGwQAAAMAtQQAAAQAwQQAAAEA0QQAAAIA3QQA
+AAMA7AQAAAQA9gQAAAUAAQQAAAEAAQQAAAEAAQQAAAEABQUAAAIADAUAAAMAFgUAAAQAIwUAAAUA
+LwUAAAYAOAUAAAcARAVpACcCtgBxACcCtgB5ACcCtgCBACcCtgCJACcCtgCRACcCtgCZACcCtgCh
+ACcCtgCpACcCtgCxACcCtgC5ACcCuwDBACcCGwDJACcCGwAJACcCGwDRAFYHwADRAHEHxwAxACcC
+zADpACcC2AD5ACcCGwARACcCGwABAScCGwAZABgI6wAJASoI8QARAUEI9wAZAUoI/gAJAFQIAgFR
+ACcCtgBJACcCGwAhAWQIpwApAScCGwApAYQIBgFJAIsIGwBJAKMIDQE5AccIEwEZAdkIFwEJAeMI
+uwApAfIIHAFJAQIJAgEhAQ4JIgEhARYJKAFRASUJRQFZADAJSwFZAFQIUAExAUEIVQFZAUEIXAFR
+AUAJYQEMAEoJbQEMAEEIcwEhAVYJegEhARYJgAFhAXEJhwFpAScCGwAhARYJjAFpAZcJkgGBASoI
+8QCJAeEJnAEhARYJrwEhAekJhwEhAfwJtQEhARYJvAEhAQIKegEMABAKxAEhARQKzAGxASMK0QEh
+AS8KEwEhAToK1gFRAVQI3AFRASUJKgIhARYJMAK5AScCeQDBAXgKfALRAScCGwDRAZcKgwLZAbcK
+igLBAbwKEwFhAdcKrwLpAeUKGwDxAScCtgL5AQMLtgD5AQ0LGwD5AeUKGwABAicCtgABAi4LuwAJ
+AicCzgIBAmcL1AIBAooL2wIBAp0L4gIhAicCzgIpAicCGwApAsML5wIpAcwLBgEpAu0L7gIxAhAK
+tgApAgkM9AJBAicCtgAUABAKAwMpAlAMtgBRAmIMCQMpAmsMDwMpAnwMtgApAogMDwMpApwM4gIB
+AqsMFgNZAs0MPwNZAtcMGwBZAuUKGwAMACcCGwAZACcCGwApACcCGwAIACAAnQAIACQAogApAJMA
+3gAuABsAvQMuACMAvQMuAGMA+QMuAAsARQMuABMAjQMuADMAjQMuACsAwwMuADsA0QMuAEMAvQMu
+AFsA8ANDAGsAogBJAJMA3gBhAJsAogCDAKsAogDTAC4B4QE3AlgCkAKmArwCHQMCAAEAAwADAAAA
+2gEvAAAAWQI0AAAAfQJCAAIAAgADAAIAAwAFAAEABAAFAAIABQAHAGYB+gIEgAAAAQAAAAIZ7HAA
+AAAAAADrBgAABAAAAAAAAAAAAAAAAQDPAAAAAAAEAAAAAAAAAAAAAAABANgAAAAAAAwAAAAAAAAA
+AAAAAAoAEwEAAAAADAAAAAAAAAAAAAAACgB8AQAAAAAEAAAAAAAAAAAAAAABAPACAAAAAAAAAAAB
+AAAA3AwAAAUABAAAAAAAADxNb2R1bGU+AFNUXzE4NTkzMjI5NjIxMTQ4MzhhZDhmNTJmZWY1N2Yx
+MjYzLmRsbABSZXNvdXJjZXMAU1RfNjY3NmQ4YjcxODczNDJhNzljYzczZTUwMDE5Yjc2OTAuY3Nw
+cm9qLlByb3BlcnRpZXMAU2V0dGluZ3MAU2NyaXB0TWFpbgBTVF82Njc2ZDhiNzE4NzM0MmE3OWNj
+NzNlNTAwMTliNzY5MC5jc3Byb2oAU2NyaXB0UmVzdWx0cwBNeUV2ZW50TGlzdGVuZXIAbXNjb3Js
+aWIAU3lzdGVtAE9iamVjdABTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNhdGlvblNldHRpbmdz
+QmFzZQBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5E
+dHMuVGFza3MuU2NyaXB0VGFzawBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UARW51bQBNaWNy
+b3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGlt
+ZQBEZWZhdWx0RXZlbnRzAFN5c3RlbS5SZXNvdXJjZXMAUmVzb3VyY2VNYW5hZ2VyAHJlc291cmNl
+TWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZvAHJlc291cmNlQ3VsdHVyZQAuY3Rv
+cgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAEN1bHR1cmUAZGVm
+YXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQAU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVy
+aWMARGljdGlvbmFyeWAyAGRlcGVuZGFudFBja2dTdHMAaW50RXhlY3V0ZWRGaWxlQ291bnQAaW50
+RmlsZVRvQmVFeGVjdXRlQ291bnQATWFpbgBTeXN0ZW0uRGF0YQBEYXRhVGFibGUAU3lzdGVtLkRh
+dGEuU3FsQ2xpZW50AFNxbENvbm5lY3Rpb24AX3J1blBhY2thZ2UAX3J1bkd5b3VtdVBhY2thZ2UA
+X3J1bkd5b3VtdUNoZWNrAF9nZXREYXRhVGFibGUAX3VwZGF0ZUluc2VydABfTG9nZ2luZwBEYXRl
+VGltZQBfc2VuZE1haWwAX2Nvbm5lY3Rpb25PcGVuAF9jb25uZWN0aW9uQ2xvc2UAdmFsdWVfXwBT
+dWNjZXNzAEZhaWx1cmUAZXJyRGVzY3JpcHRpb24ARHRzT2JqZWN0AE9uRXJyb3IAdmFsdWUARFRf
+UGFja2FnZUFsbFNlbABteUNvbm5lY3Rpb24Ac3RyUGFja2FnZUlkAHN0ckd5b21QYWNrYWdlTmFt
+ZQBzdHJGbGF0RmlsZU5hbWUAYm9vbEVycm9yQ2hlY2tGbGFnAGJvb2xCdXNpbmVzc0RhdGFDaGVj
+a0ZsYWcAc3RyR3lvbU5hbWUAc3RyR3lvbUNoZWNrUGFja2FnZU5hbWUAc3RyUGFja2FnZUZvbGRl
+cgBzdHJRdWVyeQBzdHJGaWxlUGF0aABzdHJFcnJvck1zZwBzdHJFeGNlcHRpb25Nc2cAc3RyR3lv
+bVR5cGUAc3RyUGFja2FnZUNvZGUAZHRDdXJEYXRlAHN0ckxvZ0Z1bGxQYXRoAHNvdXJjZQBlcnJv
+ckNvZGUAc3ViQ29tcG9uZW50AGRlc2NyaXB0aW9uAGhlbHBGaWxlAGhlbHBDb250ZXh0AGlkb2ZJ
+bnRlcmZhY2VXaXRoRXJyb3IAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUYXJnZXRGcmFtZXdv
+cmtBdHRyaWJ1dGUAU3lzdGVtLlJlZmxlY3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3Nl
+bWJseURlc2NyaXB0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBB
+c3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5
+Q29weXJpZ2h0QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3Vs
+dHVyZUF0dHJpYnV0ZQBBc3NlbWJseVZlcnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29t
+cGlsZXJTZXJ2aWNlcwBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21w
+YXRpYmlsaXR5QXR0cmlidXRlAFNUXzE4NTkzMjI5NjIxMTQ4MzhhZDhmNTJmZWY1N2YxMjYzAFN5
+c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAFR5cGUAUnVudGlt
+ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQXNzZW1ibHkAZ2V0X0Fzc2VtYmx5AFN5c3Rl
+bS5Db21wb25lbnRNb2RlbABFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxl
+U3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9yAFNTSVNTY3JpcHRUYXNrRW50
+cnlQb2ludEF0dHJpYnV0ZQBTY3JpcHRPYmplY3RNb2RlbABnZXRfRHRzAFZhcmlhYmxlcwBnZXRf
+VmFyaWFibGVzAFZhcmlhYmxlAGdldF9JdGVtAGdldF9WYWx1ZQBUb1N0cmluZwBTdHJpbmcARW1w
+dHkAU3lzdGVtLlRleHQAU3RyaW5nQnVpbGRlcgBBcHBlbmQAUmVzZXQARGF0YVJvd0NvbGxlY3Rp
+b24AZ2V0X1Jvd3MASW50ZXJuYWxEYXRhQ29sbGVjdGlvbkJhc2UAZ2V0X0NvdW50AEJvb2xlYW4A
+c2V0X1ZhbHVlAHNldF9UYXNrUmVzdWx0AENsZWFyAEV4Y2VwdGlvbgBnZXRfTWVzc2FnZQBSZXBs
+YWNlAENvbmNhdABDb252ZXJ0AFRvRGF0ZVRpbWUAZ2V0X05vdwBEYXRhUm93AFRvQm9vbGVhbgBD
+b250YWluc0tleQBvcF9FcXVhbGl0eQBTeXN0ZW0uSU8ARmlsZQBFeGlzdHMAQXBwbGljYXRpb24A
+UGFja2FnZQBJRFRTRXZlbnRzAExvYWRQYWNrYWdlAER0c0NvbnRhaW5lcgBFeGVjdXRhYmxlAERU
+U0V4ZWNSZXN1bHQAQ29ubmVjdGlvbnMASURUU0xvZ2dpbmcARXhlY3V0ZQBJc051bGxPckVtcHR5
+AENoYXIAU3BsaXQAb3BfSW5lcXVhbGl0eQBBZGQAQ29tcGFyZVRvAFBhdGgAR2V0RmlsZU5hbWUA
+Z2V0X0xlbmd0aABTdWJzdHJpbmcAU3FsQ29tbWFuZABTeXN0ZW0uRGF0YS5Db21tb24ARGJDb21t
+YW5kAENvbW1hbmRUeXBlAHNldF9Db21tYW5kVHlwZQBTcWxEYXRhQWRhcHRlcgBzZXRfU2VsZWN0
+Q29tbWFuZABEYkRhdGFBZGFwdGVyAEZpbGwARXhlY3V0ZU5vblF1ZXJ5AEZpbGVTdHJlYW0AQ3Jl
+YXRlAFN0cmVhbQBDbG9zZQBTdHJlYW1Xcml0ZXIAVGV4dFdyaXRlcgBXcml0ZUxpbmUARmx1c2gA
+U3lzdGVtLk5ldC5NYWlsAFNtdHBDbGllbnQAc2V0X1BvcnQAU3lzdGVtLk5ldABOZXR3b3JrQ3Jl
+ZGVudGlhbABJQ3JlZGVudGlhbHNCeUhvc3QAc2V0X0NyZWRlbnRpYWxzAFNtdHBEZWxpdmVyeU1l
+dGhvZABzZXRfRGVsaXZlcnlNZXRob2QAc2V0X0VuYWJsZVNzbABNYWlsQWRkcmVzcwBNYWlsTWVz
+c2FnZQBzZXRfRnJvbQBBcHBlbmRMaW5lAE1haWxBZGRyZXNzQ29sbGVjdGlvbgBnZXRfVG8AQXR0
+YWNobWVudENvbGxlY3Rpb24AZ2V0X0F0dGFjaG1lbnRzAEF0dGFjaG1lbnQAU3lzdGVtLkNvbGxl
+Y3Rpb25zLk9iamVjdE1vZGVsAENvbGxlY3Rpb25gMQBzZXRfQm9keQBFbmNvZGluZwBnZXRfVVRG
+OABzZXRfQm9keUVuY29kaW5nAHNldF9TdWJqZWN0AHNldF9TdWJqZWN0RW5jb2RpbmcAc2V0X0lz
+Qm9keUh0bWwAU2VuZABEYkNvbm5lY3Rpb24AQ29ubmVjdGlvblN0YXRlAGdldF9TdGF0ZQBPcGVu
+AFNUXzY2NzZkOGI3MTg3MzQyYTc5Y2M3M2U1MDAxOWI3NjkwLmNzcHJvai5Qcm9wZXJ0aWVzLlJl
+c291cmNlcy5yZXNvdXJjZXMAAAAAf1MAVABfADYANgA3ADYAZAA4AGIANwAxADgANwAzADQAMgBh
+ADcAOQBjAGMANwAzAGUANQAwADAAMQA5AGIANwA2ADkAMAAuAGMAcwBwAHIAbwBqAC4AUAByAG8A
+cABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAtVQBzAGUAcgA6ADoAYwBvAG4AbgBl
+AGMAdABpAG8AbgBTAHQAcgBpAG4AZwAAESAAUwBFAEwARQBDAFQAIAAANSAAbQBzAHQALgDRMMMw
+sTD8MLgwszD8MMkwLABtAHMAdAAuANEwwzCxMPwwuDANVCwAIAABQyAAbQBzAHQALgDVMKEwpDDr
+MA1ULABtAHMAdAAuAMcw/DC/MBxpPIosAG0AcwB0AC4AbWnZUsEwpzDDMK8wLAAgAAFPIABtAHMA
+dAAuAIxbhk5CZpOVLABtAHMAdAAuAJ1PWFvRMMMwsTD8MLgwszD8MMkwLAAgAG0AcwB0AC4ARABP
+AE4ARQDVMKEwpDDrMCAAAUUgAEYAUgBPAE0AIABLAEEATgBTAEgASQBfAFAASwBHAF8AVABSAE4A
+XwBEAEUAVABBAEkATABTACAAdAByAG4AIAAgAABFIABKAE8ASQBOACAASwBBAE4AUwBIAEkAXwBQ
+AEsARwBfAE0AUwBUAF8ARABFAFQAQQBJAEwAUwAgAG0AcwB0ACAAIAAAPyAATwBOACAAbQBzAHQA
+LgDRMMMwsTD8MLgwszD8MMkwPQB0AHIAbgAuANEwwzCxMPwwuDCzMPwwyTAgACAAAYCZIABXAEgA
+RQBSAEUAIABtAHMAdAAuAEpSZJbVMOkwsDA9ACcAZgBhAGwAcwBlACcAIABBAE4ARAAgAHQAcgBu
+AC4An1tMiLkwxjD8ML8wuTAgAEkATgAgACgAJwAqZycALAAnAC1OJwApACAAQQBOAEQAIAB0AHIA
+bgAuAEpSZJbVMOkwsDA9ACcARgBBAEwAUwBFACcAIAABRSAATwBSAEQARQBSACAAQgBZACAAbQBz
+AHQALgCfW0yIBphqdSwAbQBzAHQALgCdT1hb0TDDMLEw/DC4MLMw/DDJMDsAASNVAHMAZQByADoA
+OgBuAGUAZQBkAFQAbwBTAGwAZQBlAHAAABlJAE4AUwBFAFIAVAAgAEkATgBUAE8AIAAAgIVLAEEA
+TgBTAEgASQBfAFAAQQBDAEsAQQBHAEUAXwBFAFIAUgBPAFIAKABbANEwwzCxMPwwuDCzMPwwyTBd
+ACwAWwDHMPwwvzDlZdhOXQAsAFsAqDDpMPww5WVCZl0ALABbAKgw6TD8MIVRuVtdACwAWwCoMOkw
+/DDVMOkwsDBdACkAIAABH1YAQQBMAFUARQBTACgAJwBTADkAOQA5ACcALAAnAAEjVQBzAGUAcgA6
+ADoAYwB1AHIAcgBlAG4AdABEAGEAdABlAAAHJwAsACcAARtVAHMAZQByADoAOgBzAHkAcwBEAGEA
+dABlAAAXJwAsACcAtzC5MMYw4DCoMOkw/DA6AAEDJwABAy0AAQ8nACwAJwAyACcAKQA7AAEdVQBz
+AGUAcgA6ADoAZgBpAGwAZQBQAGEAdABoAAAjVQBzAGUAcgA6ADoAcABhAGMAawBhAGcAZQBQAGEA
+dABoAAALSABIADoAbQBtAAAJjFuGTkJmk5UBEdEwwzCxMPwwuDCzMPwwyTABDdEwwzCxMPwwuDAN
+VAEL1TChMKQw6zANVAEVnU9YW9EwwzCxMPwwuDCzMPwwyTABEUQATwBOAEUA1TChMKQw6zABC8cw
+/DC/MBxpPIoBDW1p2VLBMKcwwzCvMAEDXAAAA18AABF5AHkAeQB5AE0ATQBkAGQAAAtfAEQATwBO
+AEUAAAMIbgGAm1MARQBMAEUAQwBUACAAn1tMiLkwxjD8ML8wuTAgAEYAUgBPAE0AIABLAEEATgBT
+AEgASQBfAFAASwBHAF8AVABSAE4AXwBEAEUAVABBAEkATABTACAAVwBIAEUAUgBFACAASlJkltUw
+6TCwMD0AJwBmAGEAbABzAGUAJwAgAEEATgBEACAA0TDDMLEw/DC4MLMw/DDJMD0AJwABBScAOwAB
+D59bTIi5MMYw/DC/MLkwAQMtTgEDKmcBOVwAOQA5ADkAXwBKAFUAUwBIAEkATgBfAEUAUgBSAE8A
+UgBfAEMASABFAEMASwAuAGQAdABzAHgAABdwAGEAYwBrAGEAZwBlAEMAbwBkAGUAACFjAG8AbgBu
+AGUAYwB0AGkAbwBuAFMAdAByAGkAbgBnAAAXYwB1AHIAcgBlAG4AdABEAGEAdABlAAAVZgBpAGwA
+ZQBGAG8AbABkAGUAcgAAEWYAaQBsAGUATgBhAG0AZQAAPVUAUABEAEEAVABFACAASwBBAE4AUwBI
+AEkAXwBQAEsARwBfAFQAUgBOAF8ARABFAFQAQQBJAEwAUwAgAABFUwBFAFQAIACfW0yIuTDGMPww
+vzC5MD0AJwCoMOkw/DAnACwAIACoMOkw/DDlZT0ARwBFAFQARABBAFQARQAoACkAIAABIVcASABF
+AFIARQAgANEwwzCxMPwwuDCzMPwwyTA9ACcAASknACAAQQBOAEQAIABKUmSW1TDpMLAwPQAnAGYA
+YQBsAHMAZQAnACAAARNTAEUATABFAEMAVAAgACoAIAAANyAARgBSAE8ATQAgAEsAQQBOAFMASABJ
+AF8AUABBAEMASwBBAEcARQBfAEUAUgBSAE8AUgAgAAAjIABXAEgARQBSAEUAIADRMMMwsTD8MLgw
+szD8MMkwPQAnAAEbJwAgAEEATgBEACAAxzD8ML8w5WXYTj0AJwABRSAASQBOAFMARQBSAFQAIABJ
+AE4AVABPACAASwBBAE4AUwBIAEkAXwBQAEEAQwBLAEEARwBFAF8ARQBSAFIATwBSACAAAFcgACgA
+0TDDMLEw/DC4MLMw/DDJMCwAxzD8ML8w5WXYTiwAqDDpMPww5WVCZiwA1TChMKQw6zANVCwAqDDp
+MPwwhVG5WywAqDDpMPww1TDpMLAwKQAgAAETIABWAEEATABVAEUAUwAoACcAAT0nACwAJwCoMOkw
+/DDRMMMwsTD8MLgwZzCoMOkw/DBMMHp2H3VXMH4wVzBfMAIwJwAsACcAMgAnACkAOwABIyAAUwBF
+AFQAIACfW0yIuTDGMPwwvzC5MD0AJwAtTicAIAABgNNTAEUATABFAEMAVAAgACAAbQBzAHQALgDR
+MMMwsTD8MLgwszD8MMkwLABtAHMAdAAuANEwwzCxMPwwuDANVCwAIAAgAG0AcwB0AC4A1TChMKQw
+6zANVCwAbQBzAHQALgDHMPwwvzAcaTyKLABtAHMAdAAuAG1p2VLBMKcwwzCvMCwAIAAgAG0AcwB0
+AC4AjFuGTkJmk5UsAG0AcwB0AC4AnU9YW9EwwzCxMPwwuDCzMPwwyTAsACAAbQBzAHQALgBEAE8A
+TgBFANUwoTCkMOswIAABgMFGAFIATwBNACAASwBBAE4AUwBIAEkAXwBQAEsARwBfAFQAUgBOAF8A
+RABFAFQAQQBJAEwAUwAgAHQAcgBuACAAIAAgAEoATwBJAE4AIABLAEEATgBTAEgASQBfAFAASwBH
+AF8ATQBTAFQAXwBEAEUAVABBAEkATABTACAAbQBzAHQAIABPAE4AIABtAHMAdAAuANEwwzCxMPww
+uDCzMPwwyTA9AHQAcgBuAC4A0TDDMLEw/DC4MLMw/DDJMCAAIAABgJVXAEgARQBSAEUAIABtAHMA
+dAAuAEpSZJbVMOkwsDA9ACcAZgBhAGwAcwBlACcAIABBAE4ARAAgAHQAcgBuAC4An1tMiLkwxjD8
+ML8wuTAgAEkATgAgACgAJwAqZycALAAnAC1OJwApACAAIABBAE4ARAAgAG0AcwB0AC4A0TDDMLEw
+/DC4MLMw/DDJMCAAPQAgACcAAQUnACAAAUNPAFIARABFAFIAIABCAFkAIABtAHMAdAAuAJ9bTIgG
+mGp1LABtAHMAdAAuAJ1PWFvRMMMwsTD8MLgwszD8MMkwOwABB6gw6TD8MAE3JwAsACcARABPAE4A
+RQDVMKEwpDDrMEwwi4lkMEswijB+MFswkzACMCcALAAnADIAJwApADsAAT8gAFUAUABEAEEAVABF
+ACAASwBBAE4AUwBIAEkAXwBQAEsARwBfAFQAUgBOAF8ARABFAFQAQQBJAEwAUwAgAAAnIABTAEUA
+VAAgAJ9bTIi5MMYw/DC/MLkwPQAnAKgw6TD8MCcAIAABHScAIABBAE4ARAAgAKQw8zDdMPwwyDDl
+ZT0AJwABKycAIABBAE4ARAAgAEpSZJbVMOkwsDA9ACcARgBBAEwAUwBFACcAOwAgAAEjRABPAE4A
+RQDVMKEwpDDrMEwwi4lkMEswijB+MFswkzACMAEZcgBlAGMAZQBpAHYAZQBcAGQAYQB0AGEAAAtF
+AHIAcgBvAHIAAICDVwBIAEUAUgBFACAAbQBzAHQALgBKUmSW1TDpMLAwPQAnAGYAYQBsAHMAZQAn
+ACAAQQBOAEQAIAB0AHIAbgAuAJ9bTIi5MMYw/DC/MLkwPQAnACpnJwAgACAAQQBOAEQAIABtAHMA
+dAAuANEwwzCxMPwwuDCzMPwwyTAgAD0AIAAnAAETVgBBAEwAVQBFAFMAKAAnAFMAAVdTAEUAVAAg
+AJ9bTIi5MMYw/DC/MLkwPQAnAJ9bTIgtTicALAAgAIuVy1lCZpOVPQBHAEUAVABEAEEAVABFACgA
+KQAsACAApDDzMN0w/DDIMOVlPQAnAAFdJwAgAEEATgBEACAAn1tMiLkwxjD8ML8wuTAgAEkATgAg
+ACgAJwAqZycALAAnAC1OJwApACAAQQBOAEQAIABKUmSW1TDpMLAwPQAnAGYAYQBsAHMAZQAnADsA
+IAABKzkAOQA5AF8ARwBZAE8AVQBNAFUAXwBDAEgARQBDAEsALgBkAHQAcwB4AABDUwBFAFQAIACf
+W0yIuTDGMPwwvzC5MD0AJwCoMOkw/DAnACwAIACoMOkw/DDlZT0ARwBFAFQARABBAFQARQAoACkA
+ASknACAAQQBOAEQAIABKUmSW1TDpMLAwPQAnAGYAYQBsAHMAZQAnADsAAUsgACgA0TDDMLEw/DC4
+MLMw/DDJMCwAxzD8ML8w5WXYTiwAqDDpMPww5WVCZiwAqDDpMPwwhVG5WywAqDDpMPww1TDpMLAw
+KQAgAAERAjAnACwAJwAyACcAKQA7AAE/UwBFAFQAIACfW0yIuTDGMPwwvzC5MD0AJwAIbicALAAg
+AEJ9hk5CZpOVPQBHAEUAVABEAEEAVABFACgAKQABE2MAaABlAGMAawBUAHkAcABlAABBSQBOAFMA
+RQBSAFQAIABJAE4AVABPACAASwBBAE4AUwBIAEkAXwBQAEEAQwBLAEEARwBFAF8ARQBSAFIATwBS
+AABdKABbANEwwzCxMPwwuDCzMPwwyTBdACwAWwDHMPwwvzDlZdhOXQAsAFsAqDDpMPww5WVCZl0A
+LABbAKgw6TD8MIVRuVtdACwAWwCoMOkw/DDVMOkwsDBdACkAIAABE1wAUABBAEMASwBBAEcARQBf
+AAAnUwB5AHMAdABlAG0AOgA6AFAAYQBjAGsAYQBnAGUATgBhAG0AZQAACy4AZAB0AHMAeAAACS4A
+bABvAGcAAAEAAwkAAAMKAAAhVQBzAGUAcgA6ADoAbQBhAGkAbABGAHIAbwBtAEkAZAAAJVUAcwBl
+AHIAOgA6AG0AYQBpAGwARgByAG8AbQBOAGEAbQBlAAAhVQBzAGUAcgA6ADoAbQBhAGkAbABTAGUA
+cgB2AGUAcgAAF3IAaQBnAGgAdABvAG4AMAAxADIAMwAAT1MARQBMAEUAQwBUACAA+5ZQW+Ew/DDr
+MCAARgBSAE8ATQAgAFsASwBBAE4AUwBIAEkAXwBNAEEASQBMAF8AQQBEAEQAUgBFAFMAUwBdAAFH
+VwBIAEUAUgBFACAA5jD8MLYwsDDrMPww1zA9ACcARQBSAFIATwBSACcAIABBAE4ARAAgAEpSZJbV
+MOkwsDA9ACcAMAAnAAEL+5ZQW+Ew/DDrMAFPLGfhMPww6zBvMAEwTQBJAE4ASQBNAEQAtzC5MMYw
+4DBLMIkwbjBKMOV3iTBbMGcwWTACMDwAYgByACAALwA+ACAAPABiAHIAIAAvAD4AAQMQMAEzETBu
+MNEwwzCxMPwwuDBnMKgw6TD8MEwwenYfdVcwfjBXMF8wAjA8AGIAcgAgAC8APgABR6gw6TD8MG4w
+hVG5W0ww+23YTtUwoTCkMOswZzABkIowRDBfMFcwfjBZMAIwPABiAHIAIAAvAD4AIAA8AGIAcgAg
+AC8APgABMSAAVDC6eI2KSjBYmEQw9IFXMH4wWTACMDwAYgByACAALwA+ADwAYgByACAALwA+AAEZ
+IADlTgpOZzBZMAIwPABiAHIAIAAvAD4AARkgAJxbVzBPMEowWJhEMPSBVzB+MFkwAjABJRAwTQBJ
+AE4ASQAtAE0ARAARMNEwwzCxMPwwuDCoMOkw/DBfAAEAAO1bAZ1nnKhHpOojh1Jhz8gACLd6XFYZ
+NOCJCImEXc2AgMyRAwYSGQMGEh0DIAABBAAAEhkEAAASHQUAAQESHQQIABIZBAgAEh0DBhIMBAAA
+EgwECAASDAcGFRIhAg4OAgYIByACARIlEikLIAcBDg4OAgIOEikKIAYBDg4ODg4SKQcgAhIlDhIp
+BiACAQ4SKQcgBAEODg4OCiAFAQ4OES0OEikFIAEBEikDBhEUBAAAAAAEAQAAAAIGDgsgBwISMQgO
+Dg4IDgQgAQEOBCABAQgGAAESaRFtBCAAEnEGIAIBDhJxBAcBEhkFIAEBEXkIAQACAAAAAAADAAAB
+BSAAEoCFBSAAEoCJBiABEoCNHAMgABwDIAAOBiABEoCVDgUgABKAmQMgAAgEIAEBHAUgABKAlQUg
+Ag4ODgUAAQ4dDhYHCQ4SKRIlEoCVDhKAlRKApRKApR0OBQABES0cBAAAES0EIAEODgYgARKArQgE
+IAEcDgQAAQIcBhUSIQIODgUgAQITAAYgARMBEwAFAAICDg4GAAMODg4OBAABAg4FAAIODg4JIAIS
+gLkOEoC9EiAFEYDJEoDNEoCJEoC9EoDRHAUAAQ4dHAYgAR0OHQMHAAQODg4ODgcgAgETABMBBCAB
+CA4EAAEODgUgAg4ICAQAAQ4cSAcsDg4RLRKAlR0OEiUODg4ODg4OAgICAgIOEoC1EoC5Dg4IEhgR
+gMkODggODggSgKUSgKURLR0OHRwdHB0DHRwdHB0cHQMdDgUAAREtDgYAAw4cHBwgBw0OES0OEoCV
+EoC1EoC5EhgRgMkSgKUSgKUdHB0OHQ4jBw4SgJUSgLUSgLkODhIYEYDJEYDJEoClEoClHQ4dDh0O
+HQ4GIAEBEYDlBiABARKA3QUgAQgSJRUHBxKAlRIlEoDdEoDpEoClEoClHQ4IBwISgN0SgKUGAAES
+gPEOBSACAQ4CEQcIDg4SgPkdDhEtHQ4RLR0cBSACAQ4OBiABARKBCQYgAQERgQ0EIAEBAgYgAQES
+gREFIAASgRkFIAASgR0IFRKBJQESgSEFIAEBEwAFAAASgSkGIAEBEoEpBiABARKBFSEHDg4ODhKA
+lQ4SgRESgRUSJRKBARKAlRKApRKApR0OHQ4FIAARgTFHAQAaLk5FVEZyYW1ld29yayxWZXJzaW9u
+PXY0LjABAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEC5ORVQgRnJhbWV3b3JrIDQvAQAqU1RfNjY3
+NmQ4YjcxODczNDJhNzljYzczZTUwMDE5Yjc2OTAuY3Nwcm9qAAAFAQAAAAANAQAIcmlnaHQtb24A
+AB4BABlDb3B5cmlnaHQgQCByaWdodC1vbiAyMDE1AAAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25F
+eGNlcHRpb25UaHJvd3MBuHUAAAAAAAAAAAAAznUAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMB1
+AAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAA
+MAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFiAAAAUBAAAAAAAAAAAAAAUBDQAAABWAFMAXwBW
+AEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAAAQAAAAEA7HACGQAAAQDscAIZPwAAAAAA
+AAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAE
+AAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAEdAMAAAEAUwB0AHIAaQBuAGcARgBpAGwA
+ZQBJAG4AZgBvAAAAUAMAAAEAMAAwADAAMAAwADQAYgAwAAAANAAJAAEAQwBvAG0AcABhAG4AeQBO
+AGEAbQBlAAAAAAByAGkAZwBoAHQALQBvAG4AAAAAAIAAKwABAEYAaQBsAGUARABlAHMAYwByAGkA
+cAB0AGkAbwBuAAAAAABTAFQAXwA2ADYANwA2AGQAOABiADcAMQA4ADcAMwA0ADIAYQA3ADkAYwBj
+ADcAMwBlADUAMAAwADEAOQBiADcANgA5ADAALgBjAHMAcAByAG8AagAAAAAAQAAPAAEARgBpAGwA
+ZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADYANAAwADIALgAyADgAOQAwADgAAAAAAHAAKAAB
+AEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AMQA4ADUAOQAzADIAMgA5ADYAMgAxADEA
+NAA4ADMAOABhAGQAOABmADUAMgBmAGUAZgA1ADcAZgAxADIANgAzAC4AZABsAGwAAABYABoAAQBM
+AGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAByAGkA
+ZwBoAHQALQBvAG4AIAAyADAAMQA1AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAVABfADEAOAA1ADkAMwAyADIAOQA2ADIAMQAxADQAOAAzADgAYQBkADgAZgA1ADIA
+ZgBlAGYANQA3AGYAMQAyADYAMwAuAGQAbABsAAAAeAArAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
+AAAAAABTAFQAXwA2ADYANwA2AGQAOABiADcAMQA4ADcAMwA0ADIAYQA3ADkAYwBjADcAMwBlADUA
+MAAwADEAOQBiADcANgA5ADAALgBjAHMAcAByAG8AagAAAAAARAAPAAEAUAByAG8AZAB1AGMAdABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA2ADQAMAAyAC4AMgA4ADkAMAA4AAAAAABIAA8AAQBBAHMA
+cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA2ADQAMAAyAC4AMgA4ADkAMAA4
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAABwAAAMAAAA4DUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAA</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA).PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2A4823C7-D2D0-47DB-A627-A63D8EB38D97}"
+          DTS:From="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\全体パッケージの実行とエラーチェック"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\ファイルを待ちます(SLEEP)" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\ファイルを待ちます(SLEEP)"
+          TopLeft="132.905660377359,117.792452830189" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)\全体パッケージの実行とエラーチェック"
+          TopLeft="118,30" />
+        <EdgeLayout
+          Id="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA).PrecedenceConstraints[Constraint]"
+          TopLeft="234.70283018868,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.792452830189"
+              Start="0,0"
+              End="0,38.292452830189">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.292452830189" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="453,215"
+          Size="453,259"
+          Id="Package\CHECK FILE EXISTS OR NOT (IF EXISTS THEN IMPORT DATA)"
+          TopLeft="272,46" />
+        <AnnotationLayout
+          Text="作成人: Irfan Mansuri&#xA;説明: Package will be call from MAIN_DATA &#xA;Package &amp; this will handle all the 業務 packages &#xA;with its verification and importing by calling its &#xA;required packages from here only."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="313,104"
+          Id="a70696b7-53c6-429a-bb48-a212cc6626a7"
+          TopLeft="907,28" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

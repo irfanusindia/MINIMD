@@ -1,0 +1,3017 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/20/2017 10:26:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{2E0C0C07-3421-42E7-8972-9DD271EF0AEE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="223_T_GIFT_NYUKIN_SHORI"
+  DTS:PackageType="5"
+  DTS:VersionBuild="117"
+  DTS:VersionGUID="{11EFFC2E-C129-4C1D-81D8-C24AD5D093F4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2C2ECD5C-A4B8-41D3-9949-A82AC2FB02CB}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())) +  (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\223_T_GIFT_NYUKIN_SHORI_20171025" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DE8ED2C4-4990-4AD9-9376-5BE051486D0A}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{62B6F695-C5EE-47EB-A3B7-E82190C003FD}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A5F52679-D857-4D40-93BE-9DB3A3DF0410}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{153405A4-9240-479C-AE18-03E776A85792}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="connectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Persist Security Info=False;User ID=sa;Initial Catalog=mini_md_db;Password=Minimd@0123;Data Source=10.130.105.16,1435</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BC39AEB6-8226-468B-AC4A-90BD0C344FA7}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/25/2017 3:02:58 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0EBBBB62-7916-48AB-ABFD-32549D4AD027}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\Error</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B997E4F8-7469-497E-A6EA-02EEC809B11E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailFromId">
+      <DTS:VariableValue
+        DTS:DataType="8">minimd.ro@gmail.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C525E96-BA8D-4876-B4C0-F4621F0D6502}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailFromName">
+      <DTS:VariableValue
+        DTS:DataType="8">MINIMD</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{636A696A-99D0-400C-BEE6-BC6756F85C9F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="mailServer">
+      <DTS:VariableValue
+        DTS:DataType="8">smtp.gmail.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B7F2BBE7-DBCE-44E8-9B7D-D535C9435295}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="qryKakuninCheck">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1988E19E-6598-424F-9692-10E1C8F16C8A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="qryOldRecords">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8265B1C5-5B76-4AFA-BF09-725E077DAF39}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0,GETDATE())))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="today">
+      <DTS:VariableValue
+        DTS:DataType="7">10/25/2017</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{62B6F695-C5EE-47EB-A3B7-E82190C003FD}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\GIFT_NYUKIN_SHORIデータ作成"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8C03EB8D-B6FC-40B8-B3B9-E9476C1A2803}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GIFT_NYUKIN_SHORIデータ作成"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="T_DAY_TEN_REIGI_SEISAN_REPORTデータ"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	店舗コード,営業日,店舗名,本部ギフト,SCギフト
+FROM T_DAY_TEN_REIGI_SEISAN_REPORT AS REPORT
+WHERE CONVERT(DATE,更新日) = CONVERT(DATE, ? )
+--AND NOT EXISTS (SELECT 利益センタ FROM M_SC_SAIKEN_MASTER MASTER WHERE MASTER.利益センタ =  REPORT.店舗コード)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{8265B1C5-5B76-4AFA-BF09-725E077DAF39};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      length="4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      name="店舗コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[営業日]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[営業日]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[営業日]"
+                      name="営業日"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗名]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[店舗名]"
+                      length="100"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗名]"
+                      name="店舗名"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[本部ギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]"
+                      name="本部ギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[SCギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]"
+                      name="SCギフト"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[営業日]"
+                      dataType="dbDate"
+                      name="営業日" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[店舗名]"
+                      dataType="wstr"
+                      length="100"
+                      name="店舗名" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[本部ギフト]"
+                      dataType="i8"
+                      name="本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].ExternalColumns[SCギフト]"
+                      dataType="i8"
+                      name="SCギフト" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      name="店舗コード" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[営業日]"
+                      dataType="dbDate"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[営業日]"
+                      name="営業日" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[店舗名]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[店舗名]"
+                      name="店舗名" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[本部ギフト]"
+                      dataType="i8"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[本部ギフト]"
+                      name="本部ギフト" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[SCギフト]"
+                      dataType="i8"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[SCギフト]"
+                      name="SCギフト" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="T_GIFT_NYUKIN_SHORISにインポート"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_gift_nyukin_shoris_temp]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[営業日]"
+                      cachedDataType="dbDate"
+                      cachedName="営業日"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[営業日]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[営業日]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[店舗名]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="店舗名"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[店舗名]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗名]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[本部ギフト]"
+                      cachedDataType="i8"
+                      cachedName="本部ギフト"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[本部ギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[SCギフト]"
+                      cachedDataType="i8"
+                      cachedName="SCギフト"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[SCギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[POS本部ギフト]"
+                      cachedDataType="i8"
+                      cachedName="POS本部ギフト"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POS本部ギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POS本部ギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[POSSCギフト]"
+                      cachedDataType="i8"
+                      cachedName="POSSCギフト"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POSSCギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSSCギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[EDY金額]"
+                      cachedDataType="i4"
+                      cachedName="EDY金額"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[Edy金額]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[EDY金額]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[POSギフト]"
+                      cachedDataType="i8"
+                      cachedName="POSギフト"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POSギフト]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[差異]"
+                      cachedDataType="i4"
+                      cachedName="差異"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[差異]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[差異]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[過不足金]"
+                      cachedDataType="i4"
+                      cachedName="過不足金"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[過不足金]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[過不足金]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[その他]"
+                      cachedDataType="i4"
+                      cachedName="その他"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[その他]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[その他]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[調整後差異]"
+                      cachedDataType="i4"
+                      cachedName="調整後差異"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[調整後差異]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[調整後差異]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[修正番号]"
+                      cachedDataType="i4"
+                      cachedName="修正番号"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[修正番号]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[修正番号]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[確認チェック]"
+                      cachedDataType="i4"
+                      cachedName="確認チェック"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[確認チェック]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[確認チェック]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[処理済フラグ]"
+                      cachedDataType="i4"
+                      cachedName="処理済フラグ"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[処理済フラグ]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[処理済フラグ]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].Columns[店舗コードN]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="店舗コードN"
+                      externalMetadataColumnId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[店舗コードN]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      dataType="wstr"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[営業日]"
+                      dataType="dbDate"
+                      name="営業日" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[店舗名]"
+                      dataType="wstr"
+                      length="150"
+                      name="店舗名" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[締切日付]"
+                      dataType="dbDate"
+                      name="締切日付" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[Edy金額]"
+                      dataType="i8"
+                      name="Edy金額" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[本部ギフト]"
+                      dataType="i8"
+                      name="本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[SCギフト]"
+                      dataType="i8"
+                      name="SCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POS本部ギフト]"
+                      dataType="i8"
+                      name="POS本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POSSCギフト]"
+                      dataType="i8"
+                      name="POSSCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[POSギフト]"
+                      dataType="i8"
+                      name="POSギフト" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[差異]"
+                      dataType="i8"
+                      name="差異" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[過不足金]"
+                      dataType="i8"
+                      name="過不足金" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[その他]"
+                      dataType="i8"
+                      name="その他" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[調整後差異]"
+                      dataType="i8"
+                      name="調整後差異" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[修正番号]"
+                      dataType="i4"
+                      name="修正番号" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[確認チェック]"
+                      dataType="bool"
+                      name="確認チェック" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[処理済フラグ]"
+                      dataType="bool"
+                      name="処理済フラグ" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="新列作成"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input].Columns[本部ギフト]"
+                      cachedDataType="i8"
+                      cachedName="本部ギフト"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input].Columns[SCギフト]"
+                      cachedDataType="i8"
+                      cachedName="SCギフト"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]" />
+                    <inputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input].Columns[店舗コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="店舗コード"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗コード]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POS本部ギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POS本部ギフト]"
+                      name="POS本部ギフト"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[本部ギフト]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSSCギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSSCギフト]"
+                      name="POSSCギフト"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[SCギフト]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[EDY金額]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[EDY金額]"
+                      name="EDY金額"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[POSギフト]"
+                      name="POSギフト"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[本部ギフト]} + #{Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[SCギフト]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[本部ギフト] + [SCギフト]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[差異]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[差異]"
+                      name="差異"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[過不足金]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[過不足金]"
+                      name="過不足金"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[その他]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[その他]"
+                      name="その他"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[調整後差異]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[調整後差異]"
+                      name="調整後差異"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[修正番号]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[修正番号]"
+                      name="修正番号"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[確認チェック]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[確認チェック]"
+                      name="確認チェック"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[処理済フラグ]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[処理済フラグ]"
+                      name="処理済フラグ"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[店舗コードN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output].Columns[店舗コードN]"
+                      name="店舗コードN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,4)#{Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output].Columns[店舗コード]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,4)[店舗コード]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GIFT_NYUKIN_SHORIデータ作成.Paths[Derived Column Output]"
+              endId="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\GIFT_NYUKIN_SHORIデータ作成.Paths[OLE DB Source Output]"
+              endId="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TEMPからメインテーブル入る"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E0D7625A-3401-4CD0-89D7-842A015A7700}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TEMPからメインテーブル入る"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TEMPからメインテーブル入る\TEMPテーブル"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TEMPテーブル"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TEMP.店舗コード,TEMP.営業日,TEMP.店舗名,TEMP.締切日付,TEMP.Edy金額,TEMP.本部ギフト,TEMP.SCギフト,TEMP.POS本部ギフト,TEMP.POSSCギフト,TEMP.POSギフト,TEMP.差異,TEMP.過不足金,
+TEMP.その他,TEMP.調整後差異,TEMP.修正番号,TEMP.確認チェック,TEMP.処理済フラグ
+FROM T_GIFT_NYUKIN_SHORIS_TEMP AS TEMP
+LEFT JOIN T_GIFT_NYUKIN_SHORIS AS MAIN
+ON MAIN.店舗コード = TEMP.店舗コード
+AND MAIN.営業日 = TEMP.営業日
+WHERE MAIN.店舗コード IS NULL
+ANd MAIN.営業日 IS NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      length="4"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗コード]"
+                      name="店舗コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[営業日]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[営業日]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[営業日]"
+                      name="営業日"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗名]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[店舗名]"
+                      length="150"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗名]"
+                      name="店舗名"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[締切日付]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[締切日付]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[締切日付]"
+                      name="締切日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[Edy金額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[Edy金額]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[Edy金額]"
+                      name="Edy金額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[本部ギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[本部ギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[本部ギフト]"
+                      name="本部ギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[SCギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[SCギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[SCギフト]"
+                      name="SCギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POS本部ギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POS本部ギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POS本部ギフト]"
+                      name="POS本部ギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSSCギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POSSCギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSSCギフト]"
+                      name="POSSCギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSギフト]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POSギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSギフト]"
+                      name="POSギフト"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[差異]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[差異]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[差異]"
+                      name="差異"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[過不足金]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[過不足金]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[過不足金]"
+                      name="過不足金"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[その他]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[その他]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[その他]"
+                      name="その他"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[調整後差異]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[調整後差異]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[調整後差異]"
+                      name="調整後差異"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[修正番号]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[修正番号]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[修正番号]"
+                      name="修正番号"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[確認チェック]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[確認チェック]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[確認チェック]"
+                      name="確認チェック"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[処理済フラグ]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[処理済フラグ]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[処理済フラグ]"
+                      name="処理済フラグ"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[店舗コード]"
+                      dataType="wstr"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[営業日]"
+                      dataType="dbDate"
+                      name="営業日" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[店舗名]"
+                      dataType="wstr"
+                      length="150"
+                      name="店舗名" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[締切日付]"
+                      dataType="dbDate"
+                      name="締切日付" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[Edy金額]"
+                      dataType="i8"
+                      name="Edy金額" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[本部ギフト]"
+                      dataType="i8"
+                      name="本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[SCギフト]"
+                      dataType="i8"
+                      name="SCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POS本部ギフト]"
+                      dataType="i8"
+                      name="POS本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POSSCギフト]"
+                      dataType="i8"
+                      name="POSSCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[POSギフト]"
+                      dataType="i8"
+                      name="POSギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[差異]"
+                      dataType="i8"
+                      name="差異" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[過不足金]"
+                      dataType="i8"
+                      name="過不足金" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[その他]"
+                      dataType="i8"
+                      name="その他" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[調整後差異]"
+                      dataType="i8"
+                      name="調整後差異" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[修正番号]"
+                      dataType="i4"
+                      name="修正番号" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[確認チェック]"
+                      dataType="bool"
+                      name="確認チェック" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].ExternalColumns[処理済フラグ]"
+                      dataType="bool"
+                      name="処理済フラグ" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[店舗コード]"
+                      name="店舗コード" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[営業日]"
+                      dataType="dbDate"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[営業日]"
+                      name="営業日" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[店舗名]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[店舗名]"
+                      name="店舗名" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[締切日付]"
+                      dataType="dbDate"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[締切日付]"
+                      name="締切日付" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[Edy金額]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[Edy金額]"
+                      name="Edy金額" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[本部ギフト]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[本部ギフト]"
+                      name="本部ギフト" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[SCギフト]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[SCギフト]"
+                      name="SCギフト" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POS本部ギフト]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POS本部ギフト]"
+                      name="POS本部ギフト" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POSSCギフト]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POSSCギフト]"
+                      name="POSSCギフト" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POSギフト]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[POSギフト]"
+                      name="POSギフト" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[差異]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[差異]"
+                      name="差異" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[過不足金]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[過不足金]"
+                      name="過不足金" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[その他]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[その他]"
+                      name="その他" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[調整後差異]"
+                      dataType="i8"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[調整後差異]"
+                      name="調整後差異" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[修正番号]"
+                      dataType="i4"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[修正番号]"
+                      name="修正番号" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[確認チェック]"
+                      dataType="bool"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[確認チェック]"
+                      name="確認チェック" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[処理済フラグ]"
+                      dataType="bool"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[処理済フラグ]"
+                      name="処理済フラグ" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TEMPからメインテーブル入る\メインテーブル"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="メインテーブル"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_gift_nyukin_shoris]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TEMPからメインテーブル入る\メインテーブル.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[店舗コード]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="店舗コード"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗コード]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[営業日]"
+                      cachedDataType="dbDate"
+                      cachedName="営業日"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[営業日]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[営業日]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[店舗名]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="店舗名"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[店舗名]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[店舗名]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[締切日付]"
+                      cachedDataType="dbDate"
+                      cachedName="締切日付"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[締切日付]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[締切日付]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[Edy金額]"
+                      cachedDataType="i8"
+                      cachedName="Edy金額"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[Edy金額]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[Edy金額]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[本部ギフト]"
+                      cachedDataType="i8"
+                      cachedName="本部ギフト"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[本部ギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[本部ギフト]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[SCギフト]"
+                      cachedDataType="i8"
+                      cachedName="SCギフト"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[SCギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[SCギフト]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[POS本部ギフト]"
+                      cachedDataType="i8"
+                      cachedName="POS本部ギフト"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POS本部ギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POS本部ギフト]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[POSSCギフト]"
+                      cachedDataType="i8"
+                      cachedName="POSSCギフト"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POSSCギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSSCギフト]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[POSギフト]"
+                      cachedDataType="i8"
+                      cachedName="POSギフト"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POSギフト]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[POSギフト]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[差異]"
+                      cachedDataType="i8"
+                      cachedName="差異"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[差異]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[差異]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[過不足金]"
+                      cachedDataType="i8"
+                      cachedName="過不足金"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[過不足金]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[過不足金]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[その他]"
+                      cachedDataType="i8"
+                      cachedName="その他"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[その他]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[その他]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[調整後差異]"
+                      cachedDataType="i8"
+                      cachedName="調整後差異"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[調整後差異]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[調整後差異]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[修正番号]"
+                      cachedDataType="i4"
+                      cachedName="修正番号"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[修正番号]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[修正番号]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[確認チェック]"
+                      cachedDataType="bool"
+                      cachedName="確認チェック"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[確認チェック]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[確認チェック]" />
+                    <inputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].Columns[処理済フラグ]"
+                      cachedDataType="bool"
+                      cachedName="処理済フラグ"
+                      externalMetadataColumnId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[処理済フラグ]"
+                      lineageId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output].Columns[処理済フラグ]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[店舗コード]"
+                      dataType="wstr"
+                      length="4"
+                      name="店舗コード" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[営業日]"
+                      dataType="dbDate"
+                      name="営業日" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[店舗名]"
+                      dataType="wstr"
+                      length="150"
+                      name="店舗名" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[締切日付]"
+                      dataType="dbDate"
+                      name="締切日付" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[Edy金額]"
+                      dataType="i8"
+                      name="Edy金額" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[本部ギフト]"
+                      dataType="i8"
+                      name="本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[SCギフト]"
+                      dataType="i8"
+                      name="SCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POS本部ギフト]"
+                      dataType="i8"
+                      name="POS本部ギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POSSCギフト]"
+                      dataType="i8"
+                      name="POSSCギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[POSギフト]"
+                      dataType="i8"
+                      name="POSギフト" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[差異]"
+                      dataType="i8"
+                      name="差異" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[過不足金]"
+                      dataType="i8"
+                      name="過不足金" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[その他]"
+                      dataType="i8"
+                      name="その他" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[調整後差異]"
+                      dataType="i8"
+                      name="調整後差異" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[修正番号]"
+                      dataType="i4"
+                      name="修正番号" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[確認チェック]"
+                      dataType="bool"
+                      name="確認チェック" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[処理済フラグ]"
+                      dataType="bool"
+                      name="処理済フラグ" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TEMPからメインテーブル入る\メインテーブル.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TEMPからメインテーブル入る\メインテーブル.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TEMPからメインテーブル入る\メインテーブル.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TEMPからメインテーブル入る\メインテーブル.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TEMPからメインテーブル入る.Paths[OLE DB Source Output]"
+              endId="Package\TEMPからメインテーブル入る\メインテーブル.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\TEMPからメインテーブル入る\TEMPテーブル.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE テーブル"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4336B061-F825-48D8-8A6B-88562085FAD3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE テーブル"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DE8ED2C4-4990-4AD9-9376-5BE051486D0A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE T_GIFT_NYUKIN_SHORIS_TEMP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\古いレーコド削除"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{89B5C785-0EB2-4D20-B61E-1937A1C7415D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="古いレーコド削除"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DE8ED2C4-4990-4AD9-9376-5BE051486D0A}"
+          SQLTask:SqlStatementSource="delete main&#xA;from t_gift_nyukin_shoris as main&#xA;inner join t_gift_nyukin_shoris_temp as temp&#xA;on temp.店舗コード = main.店舗コード and temp.営業日 = main.営業日&#xA;where main.確認チェック = '0'&#xA;GO&#xA;delete temp&#xA;from t_gift_nyukin_shoris as main&#xA;inner join t_gift_nyukin_shoris_temp as temp&#xA;on temp.店舗コード = main.店舗コード and temp.営業日 = main.営業日&#xA;where main.確認チェック = '1'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\確認チェックステータスのメール"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{57bdb520-ab82-45de-962d-3c2b0666cc27}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="確認チェックステータスのメール"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_2c4ad0ab94ac456b8eb7221fb4fce016"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::connectionString,User::currentDate,User::LogFilePath,User::mailFromId,User::mailFromName,User::mailServer,System::PackageName">
+          <ProjectItem
+            Name="ST_2c4ad0ab94ac456b8eb7221fb4fce016.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{0413ee00-2ad6-447e-bd99-5d5a0c8b6f4c}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_f3b9c524f8394f62847824ce73cf6703</RootNamespace><AssemblyName>ST_2c4ad0ab94ac456b8eb7221fb4fce016</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_f3b9c524f8394f62847824ce73cf6703")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_f3b9c524f8394f62847824ce73cf6703")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Namespaces
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Net.Mail;
+using System.Text;
+using System.Net;
+#endregion
+
+namespace ST_f3b9c524f8394f62847824ce73cf6703
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+		/// <summary>
+        /// Main Package will decide whether the Error been occured or not. 
+        /// Only if error is occured then and then only mail will be send to appropriate users.
+        /// </summary>
+		public void Main()
+		{
+            string strConnectionString = Dts.Variables["User::connectionString"].Value.ToString();
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            string strPackageCode = string.Empty;
+            string strLogFilePath = string.Empty;
+            DateTime dtSysDate = DateTime.Now;   //System date which is generated while package execution started.
+            DateTime dtCurDate = Convert.ToDateTime(Dts.Variables["User::currentDate"].Value);   //Data Date of the gyom package to be check
+            DataTable dtDetails;
+            StringBuilder strBuildQuery = new StringBuilder();
+            StringBuilder strBuildErrorLog;
+            try
+            {
+                _connectionOpen(myConnection);
+                dtDetails = new DataTable();
+                strBuildErrorLog = new StringBuilder();
+
+                strLogFilePath = Dts.Variables["User::LogFilePath"].Value.ToString();
+                strPackageCode = Dts.Variables["System::PackageName"].Value.ToString().Substring(0,3);   //Package Code or id.
+                
+                #region KANSHI_PACKAGE_ERRORテーブルからエラー内容
+                strBuildQuery.Clear();
+                strBuildQuery.Append(" select CAST(main.店舗コード as varchar)+' '+ CAST(main.営業日 as varchar) + ' ' + CAST(main.本部ギフト as varchar) + ' ' + CAST(main.SCギフト as varchar) as ERROR_DATA ");
+                strBuildQuery.AppendLine(" from t_gift_nyukin_shoris as main ");
+                strBuildQuery.AppendLine(" inner join t_gift_nyukin_shoris_temp as temp ");
+                strBuildQuery.AppendLine(" on temp.店舗コード = main.店舗コード and temp.営業日 = main.営業日 ");
+                strBuildQuery.AppendLine(" where main.確認チェック = '1'; ");
+                dtDetails.Reset();
+                dtDetails = _getDataTable(strBuildQuery.ToString(), myConnection);
+                #region If ERROR Found for same Gyom.
+                if (dtDetails.Rows.Count > 0)
+                {
+                    for (int intI = 0; intI < dtDetails.Rows.Count; intI++)
+                    {
+                        //strBuildErrorLog.Append(dtDetails.Rows[intI]["パッケージコード"] + " " + dtDetails.Rows[intI]["データ日付"] + " ");
+                        strBuildErrorLog.Append(dtDetails.Rows[intI]["ERROR_DATA"] + Environment.NewLine);
+                    }
+                    
+                    #region Create Log file
+                    if (Directory.Exists(strLogFilePath))
+                    {
+                        if (File.Exists(strLogFilePath + @"\GIFTKEN_NYUKIN_ERROR_" + dtCurDate.ToString("yyyyMMdd") + ".txt"))
+                        {
+                            File.Delete(strLogFilePath + @"\GIFTKEN_NYUKIN_ERROR_" + dtCurDate.ToString("yyyyMMdd") + ".txt");
+                        }
+                        File.Create(strLogFilePath + @"\GIFTKEN_NYUKIN_ERROR_" + dtCurDate.ToString("yyyyMMdd") + ".txt").Close();
+
+                        System.IO.StreamWriter file = new System.IO.StreamWriter(strLogFilePath + @"\GIFTKEN_NYUKIN_ERROR_" + dtCurDate.ToString("yyyyMMdd") + ".txt");
+                        file.WriteLine(strBuildErrorLog.ToString());
+                        file.Close();
+                    }
+                    #endregion
+                    
+                    //Only if ERROR occured send the mail.
+                    _sendMail(strPackageCode, dtCurDate, strLogFilePath + @"\GIFTKEN_NYUKIN_ERROR_" + dtCurDate.ToString("yyyyMMdd") + ".txt", myConnection); //If any Error been found calling mail function.
+                }
+                #endregion
+                #endregion
+                
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                strBuildQuery.Clear();
+                strBuildQuery.Append("INSERT INTO ");
+                strBuildQuery.Append(" KANSHI_PACKAGE_ERROR([パッケージコード],[データ日付],[エラー日時],[エラー内容],[エラーフラグ]) ");
+                strBuildQuery.Append(" VALUES('" + strPackageCode + "','" + dtCurDate.ToString() + "','" + dtSysDate.ToString() + "','" + ex.Message.Replace("'", "-") + "','3');");
+                _updateInsert(strBuildQuery.ToString(), myConnection);
+            }
+            finally
+            {
+                _connectionClose(myConnection);
+                strConnectionString = null;
+                myConnection = null;
+                strPackageCode = null;
+                dtDetails = null;
+                strBuildQuery = null;
+                strBuildErrorLog = null;
+            }
+            #endregion
+        }
+
+        #region "Send Mail"
+        /// <summary>
+        /// 開発者: イルファン　マンスリー
+        /// 説明: This function aim to send mail if error found for same Data date and Gyom Type.
+        /// 作成日: 2016-03-17
+        /// </summary>
+        /// <param name="strGyomType">for which gyom is currently checking </param>
+        /// <param name="strPackageCode">Package id</param>
+        /// <param name="dtCurDate">Data Date</param>
+        /// <param name="dtSysDate">System Date when this package is been started to be execute.</param>
+        /// <param name="myConnection"></param>
+        private void _sendMail(string strPackageCode, DateTime dtCurDate, string strLogFullPath, SqlConnection myConnection)
+        {
+            string strMailFromId = string.Empty;
+            string strMailFromName = string.Empty;
+            string strMailServer = string.Empty;
+            StringBuilder strBuildQuery;
+            string strTo = string.Empty;
+            MailAddress mailFrom;
+            MailMessage mailMsg;
+            DataTable dtDetails;
+            SmtpClient emailClient;
+            try
+            {
+                _connectionOpen(myConnection);  //Open SQL Connection
+                strMailFromId = Dts.Variables["User::mailFromId"].Value.ToString(); //From Which Email-Id mail will go through
+                strMailFromName = Dts.Variables["User::mailFromName"].Value.ToString(); //Sender name to show.
+                strMailServer = Dts.Variables["User::mailServer"].Value.ToString(); //Server Name/Address to send the mail.
+                strBuildQuery = new StringBuilder();
+                dtDetails = new DataTable();
+
+                #region Create Mail Body And Send Mail
+                emailClient = new SmtpClient(strMailServer);
+                emailClient.Port = 587;
+                emailClient.Credentials = new NetworkCredential(strMailFromId, "righton0123");
+                emailClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                emailClient.EnableSsl = true;
+                mailFrom = new MailAddress(strMailFromId, strMailFromName);
+                mailMsg = new MailMessage();
+                mailMsg.From = mailFrom;
+
+                //Start: 電子メールアドレス,who will recieve the ERROR_Log mail
+                strBuildQuery.Clear();
+                strBuildQuery.Append("SELECT 電子メール FROM [KANSHI_MAIL_ADDRESS]");
+                strBuildQuery.AppendLine("WHERE ユーザグループ='GIFTKEN' AND 削除フラグ='0'");
+                dtDetails.Reset();
+                dtDetails = _getDataTable(strBuildQuery.ToString(), myConnection);
+                strTo = string.Empty;
+                if (dtDetails.Rows.Count > 0)
+                {
+                    strTo = dtDetails.Rows[0]["電子メール"].ToString();
+                    dtDetails.Reset(); //リセットデータテーブル。
+                }
+                //End: 電子メールアドレス,who will recieve the ERROR_Log mail
+
+                //Start: メールボディーにエラーログ内容。
+                strBuildQuery.Clear();
+                strBuildQuery.Append("本メールは、MINIMDシステムからのお知らせです。<br /> <br />");
+                strBuildQuery.Append("『レジ精算→ギフト券作成』のリカバリチェックでエラーが発生しました。<br />");
+                strBuildQuery.Append("エラーの内容とエラーデータが添付ファイルで送りいたします。<br /> <br />");
+                strBuildQuery.Append(" ご確認お願い致します。<br /><br />");
+                strBuildQuery.Append(" 以上です。<br />");
+                strBuildQuery.Append(" 宜しくお願い致します。");
+                
+                //End: メールボディーとエラーログ内容。
+                mailMsg.To.Add(strTo);
+                mailMsg.Attachments.Add(new Attachment(strLogFullPath));    //Attachment
+                mailMsg.Body = strBuildQuery.ToString();
+                mailMsg.BodyEncoding = Encoding.UTF8;
+                mailMsg.Subject = "【MINI-MD】ギフト券リカバリチェックエラー_" + dtCurDate.ToString("yyyyMMdd");
+                mailMsg.SubjectEncoding = Encoding.UTF8;
+                mailMsg.IsBodyHtml = true;
+                emailClient.Send(mailMsg);
+                #endregion
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            #region "CATCH/FINALLY"
+            catch (Exception ex)
+            {
+                //システムエラーの場合。
+                throw ex;
+            }
+            finally
+            {
+                strPackageCode = null;
+                strMailFromId = null;
+                strMailFromName = null;
+                strMailServer = null;
+                myConnection = null;
+                strBuildQuery = null;
+                strTo = null;
+                mailFrom = null;
+                mailMsg = null;
+                dtDetails = null;
+                emailClient = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Get DataTable"
+        //作成日付: 2016-03-17
+        //説明: Aim to Return DataTable from the Query.
+        public DataTable _getDataTable(string strQuery, SqlConnection myConnection)
+        {
+            StringBuilder strERRQuery = new StringBuilder();
+            DataTable objDT = new DataTable();
+            SqlCommand myCommand;
+            SqlDataAdapter sqlSelectData;
+            try
+            {
+                _connectionOpen(myConnection);
+                myCommand = new SqlCommand(strQuery, myConnection);
+                myCommand.CommandType = CommandType.Text;
+                sqlSelectData = new SqlDataAdapter();
+                sqlSelectData.SelectCommand = myCommand;
+                myCommand.CommandTimeout = 600; //Increases Query execution timeout.
+                sqlSelectData.Fill(objDT);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                strQuery = null;
+                myCommand = null;
+                sqlSelectData = null;
+                strERRQuery = null;
+            }
+            return objDT;
+        }
+        #endregion
+
+        #region "Update/Insert Query in Db"
+        /// <summary>
+        /// 作成日付: 2016-09-05
+        /// 説明: Insert/Update Query will be run on specified connection.
+        /// </summary>
+        protected void _updateInsert(string strQuery, SqlConnection myConnection)
+        {
+            SqlCommand myCommand;
+            try
+            {
+                _connectionOpen(myConnection);
+                myCommand = new SqlCommand(strQuery, myConnection);
+                myCommand.ExecuteNonQuery();
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            #region CATCH/FINALLY
+            catch (Exception ex)
+            {
+                //Dts.TaskResult = (int)ScriptResults.Failure;
+                throw ex;
+            }
+            finally
+            {
+                myCommand = null;
+            }
+            #endregion
+        }
+        #endregion
+
+        #region "Connection Open"
+        private void _connectionOpen(SqlConnection myConnection)
+        {
+            try
+            {
+                if (myConnection.State == ConnectionState.Closed)
+                {
+                    myConnection.Open();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region "Connection Close"
+        private void _connectionClose(SqlConnection myConnection)
+        {
+            try
+            {
+                if (myConnection.State == ConnectionState.Open)
+                {
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_f3b9c524f8394f62847824ce73cf6703</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_f3b9c524f8394f62847824ce73cf6703</msb:DisplayName>
+		<msb:ProjectId>{C4CD6A87-81C0-4BCD-BBA2-CA445127D4B6}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_2c4ad0ab94ac456b8eb7221fb4fce016.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f3b9c524f8394f62847824ce73cf6703.Properties.Settings.get_Default():ST_f3b9c524f8394f62847824ce73cf6703.Properties.Sett" +
+    "ings")]
+
+namespace ST_f3b9c524f8394f62847824ce73cf6703.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f3b9c524f8394f62847824ce73cf6703.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f3b9c524f8394f62847824ce73cf6703.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f3b9c524f8394f62847824ce73cf6703.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_f3b9c524f8394f62847824ce73cf6703.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_f3b9c524f8394f62847824ce73cf6703.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_2c4ad0ab94ac456b8eb7221fb4fce016.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAP6Hy1gAAAAAAAAAAOAAAiELAQsAACYAAAAIAAAAAAAAjkQA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACgAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAEBEAABLAAAAAGAAAAgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAlCQAAAAgAAAAJgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAAgEAAAAYAAAAAYAAAAoAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAALgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABw
+RAAAAAAAAEgAAAACAAUAqCgAAJgbAAABAAAAAAAAAPAnAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqABswBwAtAwAAAgAAEQIoFgAACm8XAAAKcnMAAHBvGAAACm8ZAAAKbxoA
+AAoKBnMbAAAKC34cAAAKDH4cAAAKDSgdAAAKEwQCKBYAAApvFwAACnKhAABwbxgAAApvGQAACige
+AAAKEwVzHwAAChMHAgcoDAAABnMgAAAKEwZzHwAAChMIAigWAAAKbxcAAApyxQAAcG8YAAAKbxkA
+AApvGgAACg0CKBYAAApvFwAACnLpAABwbxgAAApvGQAACm8aAAAKFhlvIQAACgwRB28iAAAKJhEH
+chEBAHBvIwAACiYRB3JGAgBwbyQAAAomEQdyjgIAcG8kAAAKJhEHcuwCAHBvJAAACiYRB3JWAwBw
+byQAAAomEQZvJQAACgIRB28aAAAKBygKAAAGEwYRBm8mAAAKbycAAAoWPhgBAAAWEwkrMBEIEQZv
+JgAAChEJbygAAApyjAMAcG8pAAAKKCoAAAooKwAACm8jAAAKJhEJF1gTCREJEQZvJgAACm8nAAAK
+MsAJKCwAAAo5ogAAAAlyogMAcBIFctADAHAoLQAACnLiAwBwKC4AAAooLwAACiwhCXKiAwBwEgVy
+0AMAcCgtAAAKcuIDAHAoLgAACigwAAAKCXKiAwBwEgVy0AMAcCgtAAAKcuIDAHAoLgAACigxAAAK
+bzIAAAoJcqIDAHASBXLQAwBwKC0AAApy4gMAcCguAAAKczMAAAoTChEKEQhvGgAACm80AAAKEQpv
+NQAACgIIEQUJcqIDAHASBXLQAwBwKC0AAApy4gMAcCguAAAKBygJAAAGAigWAAAKFm82AAAK3boA
+AAATCxEHbyIAAAomEQdy7AMAcG8jAAAKJhEHcgYEAHBvIwAACiYRBx8JjSEAAAETDBEMFnKPBABw
+ohEMFwiiEQwYcqMEAHCiEQwZEgX+FgcAAAFvGgAACqIRDBpyowQAcKIRDBsSBP4WBwAAAW8aAAAK
+ohEMHHKjBABwohEMHRELbzcAAApyqwQAcHKvBABwbzgAAAqiEQwecrMEAHCiEQwoOQAACm8jAAAK
+JgIRB28aAAAKBygLAAAG3gDeFwIHKA0AAAYUChQLFAwUEwYUEwcUEwjcKgAAAEE0AAAAAAAAYgAA
+APcBAABZAgAAugAAAC4AAAECAAAAYgAAALMCAAAVAwAAFwAAAAAAAAAbMAQARAIAAAMAABF+HAAA
+Cgp+HAAACgt+HAAACgx+HAAAChMEAg4EKAwAAAYCKBYAAApvFwAACnLDBABwbxgAAApvGQAACm8a
+AAAKCgIoFgAACm8XAAAKcuUEAHBvGAAACm8ZAAAKbxoAAAoLAigWAAAKbxcAAApyCwUAcG8YAAAK
+bxkAAApvGgAACgxzHwAACg1zIAAAChMHCHM6AAAKEwgRCCBLAgAAbzsAAAoRCAZyLQUAcHM8AAAK
+bz0AAAoRCBZvPgAAChEIF28/AAAKBgdzQAAAChMFc0EAAAoTBhEGEQVvQgAACglvIgAACiYJckUF
+AHBvIwAACiYJcpUFAHBvJAAACiYRB28lAAAKAglvGgAACg4EKAoAAAYTB34cAAAKEwQRB28mAAAK
+bycAAAoWMSURB28mAAAKFm8oAAAKcuEFAHBvKQAACm8aAAAKEwQRB28lAAAKCW8iAAAKJgly7QUA
+cG8jAAAKJglyPQYAcG8jAAAKJglyjwYAcG8jAAAKJgly5QYAcG8jAAAKJglyFwcAcG8jAAAKJgly
+MQcAcG8jAAAKJhEGb0MAAAoRBG9EAAAKEQZvRQAACgVzRgAACm9HAAAKEQYJbxoAAApvSAAAChEG
+KEkAAApvSgAAChEGcksHAHAPAnLQAwBwKC0AAAooSwAACm9MAAAKEQYoSQAACm9NAAAKEQYXb04A
+AAoRCBEGb08AAAoCKBYAAAoWbzYAAAreBRMJEQl63h4UEAEUChQLFAwUEAQUDRQTBBQTBRQTBhQT
+BxQTCNwqQTQAAAAAAAAZAAAABQIAAB4CAAAFAAAALgAAAQIAAAAZAAAADAIAACUCAAAeAAAAAAAA
+ABswAgBTAAAABAAAEXMfAAAKJnMgAAAKCgIEKAwAAAYDBHNQAAAKCwcXb1EAAApzUgAACgwIB29T
+AAAKByBYAgAAb1QAAAoIBm9VAAAKJt4DDQl63ggUEAEUCxQM3AYqAAEcAAAAAAwAOEQAAy4AAAEC
+AAwAPUkACAAAAAAbMAIALQAAAAUAABECBCgMAAAGAwRzUAAACgoGb1YAAAomAigWAAAKFm82AAAK
+3gMLB3reAxQK3CoAAAABHAAAAAAAACQkAAMuAAABAgAAACkpAAMAAAAAGzABABQAAAAGAAARA29X
+AAAKLQYDb1gAAAreAwoGeioBEAAAAAAAABAQAAMuAAABGzACABUAAAAGAAARA29XAAAKFzMGA29Z
+AAAK3gMKBnoqAAAAARAAAAAAAAAREQADLgAAAR4CKFoAAAoqtAAAAM7K774BAAAAkQAAAGxTeXN0
+ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBD
+dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJl
+c291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAEJTSkIBAAEA
+AAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAKgGAAAjfgAAFAcAAEwKAAAjU3RyaW5ncwAAAABg
+EQAAgAcAACNVUwDgGAAAEAAAACNHVUlEAAAA8BgAAKgCAAAjQmxvYgAAAAAAAAACAAABVx2iCQkD
+AAAA+iUzABYAAAEAAABAAAAABQAAAAYAAAAOAAAACwAAAFoAAAACAAAADwAAAAYAAAACAAAAAwAA
+AAQAAAABAAAAAQAAAAUAAAABAAAAAQAAAAAACgABAAAAAAAGAMEAugAKAN0AyAAOAD0BFAEGAFkB
+ugAGAG8BXgEGAKABiwEGAB8CugASAEoCNAISAGICKAIGAB8DBQMGAEoDOAMGAGEDOAMGAH4DOAMG
+AJ0DOAMGALYDOAMGAM8DOAMGAOoDOAMGAAUEOAMGAB4EOAMGAFcENwQGAHcENwQGAMwEuQQGAOkE
+ugAGAO4EugAGABIFOAMKAD4FKAUKAFcFKAUGAGwFNwQOAI4FFAEOALAFFAEWAAkG6QUWACEG6QUG
+AEYGugAGAFsGugAGAHoGbgYSALAGKAISAMsGKAISAPAGKAIGAPgGugAGACEHFwcGADIHFwcGAD4H
+FwcGAFAHFwcGAF0HFwcGAGoHFwcGAI4HugAKALwHrAcKANsH0AcKAO0H0AcKABAIrAcKAEQIrAcK
+AFAIrAcKAGUIrAcKAIYIrAcKAKsIrAcGANUItggGAOsIbgYSAEIJNAISAGAJTQkSAGoJKAISAIYJ
+NAISALoJTQkSAN0JTQkSAOoJKAIAAAAAAQAAAAAAAQABAAAAEAAyADwABQABAAEAAAEQAGsAPAAJ
+AAMABQABABAAdAB/AA0ABAAIAAMBAACjAAAAEQAEAA8AEQB/ARMAEQCsARcAEQD2ATkABgapAmYA
+VoCxAmkAVoC5AmkAUCAAAAAAgxi8ARsAAQBYIAAAAACTCMIBHwABAJEgAAAAAJMI1gEkAAEAmCAA
+AAAAkwjiASkAAQCgIAAAAACWCAYCPQACALMgAAAAAIYYvAEbAAIApyAAAAAAkRiHBagAAgC8IAAA
+AACGABoCGwACACwkAAAAAIEAWAJHAAIAsCYAAAAAhgBsAlEABgAsJwAAAACEAHoCWQAIAIQnAAAA
+AIEAiAJgAAoAtCcAAAAAgQCYAmAACwDoJwAAAACGGLwBGwAMAAAAAQDBAgAAAQDHAgAAAgDWAgAA
+AwDgAgAABADvAgAAAQD8AgAAAgDvAgAAAQD8AgAAAgDvAgAAAQDvAgAAAQDvAlEAvAF3AFkAvAF3
+AGEAvAF3AGkAvAF3AHEAvAF3AHkAvAF3AIEAvAF3AIkAvAF3AJEAvAF3AJkAvAF3AKEAvAF8AKkA
+vAEbALEAvAEbAAkAvAEbALkAAAWBALkAGwWIACkAvAGNANEAvAGZAOEAvAEbABEAvAEbAOkAvAEb
+ABkAwgWsAPEAEwaxAPkAKga2AAEBMwa9AAkAPQbBAEEAvAF3AAkBTQbFADkAUwbIABEBYwbNABkB
+vAEbAEkAvAEbAAkBiAbTABkBkgbZABkBmAbfABkBnwbfAEkAqgYbAEkAwgbmACkB5gbsACEBKgbw
+ADEBKgb3ADkBBAf8AAkBEAcAAUEBKwcGATkAPQYLAQkBEAcQAUkBKwcGAUkBNwcYAUkBSQcdAVkB
+VwcbAGEBvAF3AGkBdQd3AGkBVwcbAPEAfwd8AHEBmAfBAAkBpAckAQkBEAcqAXkBvAF3AHkBxwd8
+AIEBvAFNAXkBAAhTAXkBIwhaAXkBNghhAZkBvAFNAaEBvAEbAKEBXAhmAaEBewhtAakBggh3AKEB
+mwhzAbkBvAF3AAwAggiCAaEB4gh3AMkB9AiIAaEB/QiOAQkBEAeVAaEBDgl3AKEBGgmOAaEBLglh
+AXkBPQmbAdEBvAFZANkBdgm6AekBvAEbAOkBlQnBAdkBpwl8APEByAnIAdkBzQnsAPkB+gnlAfkB
+BAobAPkBVwcbABkAvAEbAAgAFABtAAgAGAByACkAkwCfAC4AGwBiAi4AIwBiAi4AYwCIAi4ACwDx
+AS4AEwA5Ai4AMwA5Ai4AKwBiAi4AOwBoAi4AQwBiAi4AWwB/AkMAawByAEkAkwCfAGEAmwByAIMA
+qwByAJQAMAGiAc4B3AHrAQIAAQADAAMAAABvAS8AAADuATQAAAASAkIAAgACAAMAAgADAAUAAQAE
+AAUAAgAFAAcAeQEEgAAAAQAAAI0Yx28AAAAAAACVBAAABAAAAAAAAAAAAAAAAQCxAAAAAAAEAAAA
+AAAAAAAAAAABALoAAAAAAAwAAAAAAAAAAAAAAAoA9QAAAAAABAAAAAAAAAAAAAAAAQAoAgAAAAAM
+AAAAAAAAAAAAAAAKAMoFAAAAAAAAAAABAAAACQoAAAUABAAAAAA8TW9kdWxlPgBTVF8yYzRhZDBh
+Yjk0YWM0NTZiOGViNzIyMWZiNGZjZTAxNi5kbGwAUmVzb3VyY2VzAFNUX2YzYjljNTI0ZjgzOTRm
+NjI4NDc4MjRjZTczY2Y2NzAzLlByb3BlcnRpZXMAU2V0dGluZ3MAU2NyaXB0TWFpbgBTVF9mM2I5
+YzUyNGY4Mzk0ZjYyODQ3ODI0Y2U3M2NmNjcwMwBTY3JpcHRSZXN1bHRzAG1zY29ybGliAFN5c3Rl
+bQBPYmplY3QAU3lzdGVtLkNvbmZpZ3VyYXRpb24AQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UATWlj
+cm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tz
+LlNjcmlwdFRhc2sAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEVudW0AU3lzdGVtLlJlc291
+cmNlcwBSZXNvdXJjZU1hbmFnZXIAcmVzb3VyY2VNYW4AU3lzdGVtLkdsb2JhbGl6YXRpb24AQ3Vs
+dHVyZUluZm8AcmVzb3VyY2VDdWx0dXJlAC5jdG9yAGdldF9SZXNvdXJjZU1hbmFnZXIAZ2V0X0N1
+bHR1cmUAc2V0X0N1bHR1cmUAQ3VsdHVyZQBkZWZhdWx0SW5zdGFuY2UAZ2V0X0RlZmF1bHQARGVm
+YXVsdABNYWluAERhdGVUaW1lAFN5c3RlbS5EYXRhAFN5c3RlbS5EYXRhLlNxbENsaWVudABTcWxD
+b25uZWN0aW9uAF9zZW5kTWFpbABEYXRhVGFibGUAX2dldERhdGFUYWJsZQBfdXBkYXRlSW5zZXJ0
+AF9jb25uZWN0aW9uT3BlbgBfY29ubmVjdGlvbkNsb3NlAHZhbHVlX18AU3VjY2VzcwBGYWlsdXJl
+AHZhbHVlAHN0clBhY2thZ2VDb2RlAGR0Q3VyRGF0ZQBzdHJMb2dGdWxsUGF0aABteUNvbm5lY3Rp
+b24Ac3RyUXVlcnkAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUYXJnZXRGcmFtZXdvcmtBdHRy
+aWJ1dGUAU3lzdGVtLlJlZmxlY3Rpb24AQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseURl
+c2NyaXB0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJs
+eUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJp
+Z2h0QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q3VsdHVyZUF0
+dHJpYnV0ZQBBc3NlbWJseVZlcnNpb25BdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJT
+ZXJ2aWNlcwBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmls
+aXR5QXR0cmlidXRlAFNUXzJjNGFkMGFiOTRhYzQ1NmI4ZWI3MjIxZmI0ZmNlMDE2AFN5c3RlbS5E
+aWFnbm9zdGljcwBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAFR5cGUAUnVudGltZVR5cGVI
+YW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQXNzZW1ibHkAZ2V0X0Fzc2VtYmx5AFN5c3RlbS5Db21w
+b25lbnRNb2RlbABFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlU3RhdGUA
+Q29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUALmNjdG9yAFNTSVNTY3JpcHRUYXNrRW50cnlQb2lu
+dEF0dHJpYnV0ZQBTY3JpcHRPYmplY3RNb2RlbABnZXRfRHRzAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+TWFuYWdlZERUUwBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFZhcmlhYmxlcwBnZXRf
+VmFyaWFibGVzAFZhcmlhYmxlAGdldF9JdGVtAGdldF9WYWx1ZQBUb1N0cmluZwBTdHJpbmcARW1w
+dHkAZ2V0X05vdwBDb252ZXJ0AFRvRGF0ZVRpbWUAU3lzdGVtLlRleHQAU3RyaW5nQnVpbGRlcgBT
+dWJzdHJpbmcAQ2xlYXIAQXBwZW5kAEFwcGVuZExpbmUAUmVzZXQARGF0YVJvd0NvbGxlY3Rpb24A
+Z2V0X1Jvd3MASW50ZXJuYWxEYXRhQ29sbGVjdGlvbkJhc2UAZ2V0X0NvdW50AERhdGFSb3cARW52
+aXJvbm1lbnQAZ2V0X05ld0xpbmUAQ29uY2F0AFN5c3RlbS5JTwBEaXJlY3RvcnkARXhpc3RzAEZp
+bGUARGVsZXRlAEZpbGVTdHJlYW0AQ3JlYXRlAFN0cmVhbQBDbG9zZQBTdHJlYW1Xcml0ZXIAVGV4
+dFdyaXRlcgBXcml0ZUxpbmUAc2V0X1Rhc2tSZXN1bHQARXhjZXB0aW9uAGdldF9NZXNzYWdlAFJl
+cGxhY2UAU3lzdGVtLk5ldC5NYWlsAFNtdHBDbGllbnQAc2V0X1BvcnQAU3lzdGVtLk5ldABOZXR3
+b3JrQ3JlZGVudGlhbABJQ3JlZGVudGlhbHNCeUhvc3QAc2V0X0NyZWRlbnRpYWxzAFNtdHBEZWxp
+dmVyeU1ldGhvZABzZXRfRGVsaXZlcnlNZXRob2QAc2V0X0VuYWJsZVNzbABNYWlsQWRkcmVzcwBN
+YWlsTWVzc2FnZQBzZXRfRnJvbQBNYWlsQWRkcmVzc0NvbGxlY3Rpb24AZ2V0X1RvAEFkZABBdHRh
+Y2htZW50Q29sbGVjdGlvbgBnZXRfQXR0YWNobWVudHMAQXR0YWNobWVudABTeXN0ZW0uQ29sbGVj
+dGlvbnMuT2JqZWN0TW9kZWwAQ29sbGVjdGlvbmAxAHNldF9Cb2R5AEVuY29kaW5nAGdldF9VVEY4
+AHNldF9Cb2R5RW5jb2RpbmcAc2V0X1N1YmplY3QAc2V0X1N1YmplY3RFbmNvZGluZwBzZXRfSXNC
+b2R5SHRtbABTZW5kAFNxbENvbW1hbmQAU3lzdGVtLkRhdGEuQ29tbW9uAERiQ29tbWFuZABDb21t
+YW5kVHlwZQBzZXRfQ29tbWFuZFR5cGUAU3FsRGF0YUFkYXB0ZXIAc2V0X1NlbGVjdENvbW1hbmQA
+c2V0X0NvbW1hbmRUaW1lb3V0AERiRGF0YUFkYXB0ZXIARmlsbABFeGVjdXRlTm9uUXVlcnkARGJD
+b25uZWN0aW9uAENvbm5lY3Rpb25TdGF0ZQBnZXRfU3RhdGUAT3BlbgBTVF9mM2I5YzUyNGY4Mzk0
+ZjYyODQ3ODI0Y2U3M2NmNjcwMy5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMAAHFTAFQA
+XwBmADMAYgA5AGMANQAyADQAZgA4ADMAOQA0AGYANgAyADgANAA3ADgAMgA0AGMAZQA3ADMAYwBm
+ADYANwAwADMALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAC1VAHMA
+ZQByADoAOgBjAG8AbgBuAGUAYwB0AGkAbwBuAFMAdAByAGkAbgBnAAAjVQBzAGUAcgA6ADoAYwB1
+AHIAcgBlAG4AdABEAGEAdABlAAAjVQBzAGUAcgA6ADoATABvAGcARgBpAGwAZQBQAGEAdABoAAAn
+UwB5AHMAdABlAG0AOgA6AFAAYQBjAGsAYQBnAGUATgBhAG0AZQAAgTMgAHMAZQBsAGUAYwB0ACAA
+QwBBAFMAVAAoAG0AYQBpAG4ALgCXXheCszD8MMkwIABhAHMAIAB2AGEAcgBjAGgAYQByACkAKwAn
+ACAAJwArACAAQwBBAFMAVAAoAG0AYQBpAG4ALgC2VW1p5WUgAGEAcwAgAHYAYQByAGMAaABhAHIA
+KQAgACsAIAAnACAAJwAgACsAIABDAEEAUwBUACgAbQBhAGkAbgAuACxn6JCuMNUwyDAgAGEAcwAg
+AHYAYQByAGMAaABhAHIAKQAgACsAIAAnACAAJwAgACsAIABDAEEAUwBUACgAbQBhAGkAbgAuAFMA
+QwCuMNUwyDAgAGEAcwAgAHYAYQByAGMAaABhAHIAKQAgAGEAcwAgAEUAUgBSAE8AUgBfAEQAQQBU
+AEEAIAABRyAAZgByAG8AbQAgAHQAXwBnAGkAZgB0AF8AbgB5AHUAawBpAG4AXwBzAGgAbwByAGkA
+cwAgAGEAcwAgAG0AYQBpAG4AIAAAXSAAaQBuAG4AZQByACAAagBvAGkAbgAgAHQAXwBnAGkAZgB0
+AF8AbgB5AHUAawBpAG4AXwBzAGgAbwByAGkAcwBfAHQAZQBtAHAAIABhAHMAIAB0AGUAbQBwACAA
+AGkgAG8AbgAgAHQAZQBtAHAALgCXXheCszD8MMkwIAA9ACAAbQBhAGkAbgAuAJdeF4KzMPwwyTAg
+AGEAbgBkACAAdABlAG0AcAAuALZVbWnlZSAAPQAgAG0AYQBpAG4ALgC2VW1p5WUgAAE1IAB3AGgA
+ZQByAGUAIABtAGEAaQBuAC4AuniNisEwpzDDMK8wIAA9ACAAJwAxACcAOwAgAAEVRQBSAFIATwBS
+AF8ARABBAFQAQQAALVwARwBJAEYAVABLAEUATgBfAE4AWQBVAEsASQBOAF8ARQBSAFIATwBSAF8A
+ABF5AHkAeQB5AE0ATQBkAGQAAAkuAHQAeAB0AAAZSQBOAFMARQBSAFQAIABJAE4AVABPACAAAICH
+IABLAEEATgBTAEgASQBfAFAAQQBDAEsAQQBHAEUAXwBFAFIAUgBPAFIAKABbANEwwzCxMPwwuDCz
+MPwwyTBdACwAWwDHMPwwvzDlZdhOXQAsAFsAqDDpMPww5WVCZl0ALABbAKgw6TD8MIVRuVtdACwA
+WwCoMOkw/DDVMOkwsDBdACkAIAABEyAAVgBBAEwAVQBFAFMAKAAnAAEHJwAsACcAAQMnAAEDLQAB
+DycALAAnADMAJwApADsAASFVAHMAZQByADoAOgBtAGEAaQBsAEYAcgBvAG0ASQBkAAAlVQBzAGUA
+cgA6ADoAbQBhAGkAbABGAHIAbwBtAE4AYQBtAGUAACFVAHMAZQByADoAOgBtAGEAaQBsAFMAZQBy
+AHYAZQByAAAXcgBpAGcAaAB0AG8AbgAwADEAMgAzAABPUwBFAEwARQBDAFQAIAD7llBb4TD8MOsw
+IABGAFIATwBNACAAWwBLAEEATgBTAEgASQBfAE0AQQBJAEwAXwBBAEQARABSAEUAUwBTAF0AAUtX
+AEgARQBSAEUAIADmMPwwtjCwMOsw/DDXMD0AJwBHAEkARgBUAEsARQBOACcAIABBAE4ARAAgAEpS
+ZJbVMOkwsDA9ACcAMAAnAAEL+5ZQW+Ew/DDrMAFPLGfhMPww6zBvMAEwTQBJAE4ASQBNAEQAtzC5
+MMYw4DBLMIkwbjBKMOV3iTBbMGcwWTACMDwAYgByACAALwA+ACAAPABiAHIAIAAvAD4AAVEOMOww
+uDC+fJd7kiGuMNUwyDA4UlxPEGIPMG4w6jCrMNAw6jDBMKcwwzCvMGcwqDDpMPwwTDB6dh91VzB+
+MFcwXzACMDwAYgByACAALwA+AAFVqDDpMPwwbjCFUblbaDCoMOkw/DDHMPwwvzBMMPtt2E7VMKEw
+pDDrMGcwAZCKMEQwXzBXMH4wWTACMDwAYgByACAALwA+ACAAPABiAHIAIAAvAD4AATEgAFQwuniN
+ikowWJhEMPSBVzB+MFkwAjA8AGIAcgAgAC8APgA8AGIAcgAgAC8APgABGSAA5U4KTmcwWTACMDwA
+YgByACAALwA+AAEZIACcW1cwTzBKMFiYRDD0gVcwfjBZMAIwATMQME0ASQBOAEkALQBNAEQAETCu
+MNUwyDA4UuowqzDQMOowwTCnMMMwrzCoMOkw/DBfAAEASLaENuR9JEa7mfWxiZHC2AAIt3pcVhk0
+4IkIiYRdzYCAzJEDBhIVAwYSGQMgAAEEAAASFQQAABIZBQABARIZBAgAEhUECAASGQMGEgwEAAAS
+DAQIABIMCSAEAQ4RHQ4SIQcgAhIlDhIhBiACAQ4SIQUgAQESIQIGCAMGERQEAAAAAAQBAAAABCAB
+AQ4EIAEBCAYAARJdEWEEIAASZQYgAgEOEmUEBwESFQUgAQERbQgBAAIAAAAAAAMAAAEEIAASeQQg
+ABJ9BiABEoCBHAMgABwDIAAOAgYOBAAAER0FAAERHRwFIAIOCAgFIAASgI0GIAESgI0OBSAAEoCR
+AyAACAYgARKAmQgEIAEcDgMAAA4FAAIOHBwEAAECDgQgAQ4OBwAEDg4ODg4EAAEBDgYAARKAqQ4F
+IAIODg4FAAEOHQ4cBw0OEiEODhEdER0SJRKAjRKAjQgSgLESgLkdDgUgAgEODgYgAQESgMUGIAEB
+EYDJBCABAQIGIAEBEoDNBSAAEoDVBSAAEoDZCBUSgOEBEoDdBSABARMABQAAEoDlBiABARKA5QUA
+Ag4ODgYgAQESgNEXBwoODg4SgI0OEoDNEoDREiUSgL0SgLkGIAEBEYDxBiABARKA6QUgAQgSJQ0H
+BBIlEoDpEoD1EoC5CAcCEoDpEoC5BSAAEYEBBQcBEoC5RwEAGi5ORVRGcmFtZXdvcmssVmVyc2lv
+bj12NC4wAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRAuTkVUIEZyYW1ld29yayA0KAEAI1NUX2Yz
+YjljNTI0ZjgzOTRmNjI4NDc4MjRjZTczY2Y2NzAzAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIw
+MTYAAAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEAaEQAAAAAAAAAAAAA
+fkQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBEAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVl
+LmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAA
+GAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAACw
+AwAAAAAAAAAAAACwAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAA
+AQAAAAEAx2+NGAAAAQDHb40YPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQBy
+AEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAE
+EAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAA7AIAAAEAMAAwADAAMAAwADQAYgAw
+AAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAVABfAGYAMwBiADkA
+YwA1ADIANABmADgAMwA5ADQAZgA2ADIAOAA0ADcAOAAyADQAYwBlADcAMwBjAGYANgA3ADAAMwAA
+AEAADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgA2ADIAOAA1AC4AMgA4ADYA
+MQA1AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADIAYwA0AGEAZAAw
+AGEAYgA5ADQAYQBjADQANQA2AGIAOABlAGIANwAyADIAMQBmAGIANABmAGMAZQAwADEANgAuAGQA
+bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
+AHQAIABAACAAIAAyADAAMQA2AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0A
+ZQAAAFMAVABfADIAYwA0AGEAZAAwAGEAYgA5ADQAYQBjADQANQA2AGIAOABlAGIANwAyADIAMQBm
+AGIANABmAGMAZQAwADEANgAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAA
+AABTAFQAXwBmADMAYgA5AGMANQAyADQAZgA4ADMAOQA0AGYANgAyADgANAA3ADgAMgA0AGMAZQA3
+ADMAYwBmADYANwAwADMAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4A
+MAAuADYAMgA4ADUALgAyADgANgAxADUAAAAAAEgADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQBy
+AHMAaQBvAG4AAAAxAC4AMAAuADYAMgA4ADUALgAyADgANgAxADUAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAMAAAAkDQAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C5EBA31-7FB5-49E2-92A4-0FD0BF50BCC4}"
+      DTS:From="Package\TRUNCATE テーブル"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GIFT_NYUKIN_SHORIデータ作成" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{27551A40-5EB0-4218-9638-E1C9EC651421}"
+      DTS:From="Package\GIFT_NYUKIN_SHORIデータ作成"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\確認チェックステータスのメール" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{CCF5B5A3-D145-41BE-92E1-29BE1F82A1BE}"
+      DTS:From="Package\古いレーコド削除"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\TEMPからメインテーブル入る" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1D85AE27-DF23-48C0-BD5D-11BD962F0CDE}"
+      DTS:From="Package\確認チェックステータスのメール"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\古いレーコド削除" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="239,42"
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成"
+          TopLeft="251,243" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\TEMPからメインテーブル入る"
+          TopLeft="255,554" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\TRUNCATE テーブル"
+          TopLeft="251,133" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\確認チェックステータスのメール"
+          TopLeft="251,349" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\古いレーコド削除"
+          TopLeft="254,447" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="370.5,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="370.5,285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="374,489">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="372,391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="開発者: Irfan Mansuri&#xA;開発日: 2017/01/20&#xA;説明: This package aim to create GIFT_NYUKIN_SHORI data creation."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="390,85"
+          Id="16d6d9de-dd9f-446a-afa4-aa1d5439093d"
+          TopLeft="897,32" />
+        <AnnotationLayout
+          Text="TRUNCATE TEMP TABLE"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="171,39"
+          Id="791a9cdd-b21a-4cd7-b88f-8b6d827e8238"
+          TopLeft="288,97" />
+        <AnnotationLayout
+          Text="Today's Updated グフト兼 to TEMP"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="220,39"
+          Id="b1366ec4-0574-40b5-b4ea-7f545b5781d0"
+          TopLeft="264,206" />
+        <AnnotationLayout
+          Text="Send Mail if 確認 records' recovery found"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="267,39"
+          Id="15edb9ce-dfe6-4849-b9be-20fd10a3f8c6"
+          TopLeft="238,311" />
+        <AnnotationLayout
+          Text="Remove　確認 records from TEMP table"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="256,39"
+          Id="9c0712d5-d9f0-4055-9e3e-2cc5c10b7be6"
+          TopLeft="250,412" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\GIFT_NYUKIN_SHORIデータ作成">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="282,42"
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート"
+          TopLeft="340,264" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ"
+          TopLeft="340,54" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成\新列作成"
+          TopLeft="340,161" />
+        <EdgeLayout
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成.Paths[OLE DB Source Output]"
+          TopLeft="481.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\GIFT_NYUKIN_SHORIデータ作成.Paths[Derived Column Output]"
+          TopLeft="481,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\GIFT_NYUKIN_SHORIデータ作成\T_GIFT_NYUKIN_SHORISにインポート">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\GIFT_NYUKIN_SHORIデータ作成\T_DAY_TEN_REIGI_SEISAN_REPORTデータ">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TEMPからメインテーブル入る">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\TEMPからメインテーブル入る\メインテーブル"
+          TopLeft="210,214" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\TEMPからメインテーブル入る\TEMPテーブル"
+          TopLeft="212,100" />
+        <EdgeLayout
+          Id="Package\TEMPからメインテーブル入る.Paths[OLE DB Source Output]"
+          TopLeft="287.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TEMPからメインテーブル入る\TEMPテーブル">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TEMPからメインテーブル入る\メインテーブル">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

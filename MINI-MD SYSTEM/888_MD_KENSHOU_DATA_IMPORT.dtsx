@@ -1,0 +1,798 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/13/2017 5:08:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONDMA6400240"
+  DTS:CreatorName="RIGHT-ON\999982"
+  DTS:DTSID="{54843EBE-EFC0-4BCB-A415-8133B8AF23F5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="888_MD_KENSHOU_DATA_IMPORT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{022EB1F1-4B82-4E7D-AA61-B09C0DE1C230}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E728AAE0-6B38-4A1E-A338-67473D94DE64}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAW+kn65QogECPEkD8NRqzlQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD31V06A7FShLY7wZ/OH6aHAAAAAASAAACgAAAAEAAAAGdd43tpTD53mCegoCbZlnEYAAAAB/sVfwdjKdP3VeD/LttBIPQEVhPHmS2MFAAAAE+ini2/Hif45hDcQ9gdcCc6TFTd</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TSV_File]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="TSV_File"
+      DTS:DTSID="{E589E81B-D8D7-471D-90CF-358F3EBFCB01}"
+      DTS:ObjectName="TSV_File">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1041"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="932"
+          DTS:ConnectionString="C:\Users\999982\Desktop\import\MD_SAMPLE_DATA_20170613.tsv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票日付"
+              DTS:DTSID="{DA2575E7-1FAB-4054-B94C-E0D0582E99E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="買取受託"
+              DTS:DTSID="{1061752A-E8C4-4C14-8948-91524C509075}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="勘定コード"
+              DTS:DTSID="{B22A781B-679D-4977-9B2D-2E9C70FBAE50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票数量"
+              DTS:DTSID="{D44096E6-5A19-4DE0-A0BB-3B89C3ADA800}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票原価"
+              DTS:DTSID="{8AC3289D-89D7-4483-903E-C67AEF65DDB0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="20"
+              DTS:TextQualified="True"
+              DTS:ObjectName="伝票売価"
+              DTS:DTSID="{EE78FEA9-5F98-40BD-A59C-B7BAB2C268D2}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C2A3D1AF-05B1-4A3C-97AF-E354B57ACA4C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\999982\Desktop\import</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6215E9E4-38A1-43AC-A331-86E0E2590A0F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fileName">
+      <DTS:VariableValue
+        DTS:DataType="8">MD_SAMPLE_DATA_20170613.tsv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DD8ACAFF-2521-4ECA-8A46-96E2A8E3AC87}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::fileFolder] +&quot;\\&quot; +  @[User::fileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fullpath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\999982\Desktop\import\MD_SAMPLE_DATA_20170613.tsv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\MD検証ファイルインポート"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{073F2E5D-7B0D-49CA-9222-09C8C92A997D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MD検証ファイルインポート"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MD検証ファイルインポート\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input].Columns[伝票日付]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="伝票日付"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付1]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付1]"
+                      name="日付1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DATE)([LEFT](#{Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]},4) + "/" + [LEFT]([RIGHT](#{Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]},4),2) + "/" + [RIGHT](#{Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]},2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DATE)(LEFT([伝票日付],4) + "/" + LEFT(RIGHT([伝票日付],4),2) + "/" + RIGHT([伝票日付],2))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MD検証ファイルインポート\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1041"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[TSV_File]"
+                  connectionManagerRefId="Package.ConnectionManagers[TSV_File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票日付]"
+                      length="10"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票日付]"
+                      name="伝票日付"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[買取受託]"
+                      length="1"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]"
+                      name="買取受託"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[勘定コード]"
+                      length="5"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]"
+                      name="勘定コード"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票数量]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]"
+                      name="伝票数量"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票原価]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]"
+                      name="伝票原価"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票売価]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]"
+                      name="伝票売価"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票日付]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票数量]"
+                      dataType="i8"
+                      name="伝票数量" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票原価]"
+                      dataType="i8"
+                      name="伝票原価" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[伝票売価]"
+                      dataType="i8"
+                      name="伝票売価" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="932"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MD検証ファイルインポート\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MD_DATA_SHIME_KENSHOU]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">932</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[買取受託]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="買取受託"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[買取受託]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[勘定コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="勘定コード"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[勘定コード]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[日付1]"
+                      cachedDataType="date"
+                      cachedName="日付1"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      lineageId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output].Columns[日付1]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票数量]"
+                      cachedDataType="i8"
+                      cachedName="伝票数量"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票数量]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票原価]"
+                      cachedDataType="i8"
+                      cachedName="伝票原価"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票原価]" />
+                    <inputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[伝票売価]"
+                      cachedDataType="i8"
+                      cachedName="伝票売価"
+                      externalMetadataColumnId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      lineageId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output].Columns[伝票売価]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MD伝票日付]"
+                      dataType="dbDate"
+                      name="MD伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[買取受託]"
+                      codePage="932"
+                      dataType="str"
+                      length="1"
+                      name="買取受託" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="5"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績数量]"
+                      dataType="i8"
+                      name="実績数量" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績原価額]"
+                      dataType="i8"
+                      name="実績原価額" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[実績売価額]"
+                      dataType="i8"
+                      name="実績売価額" />
+                    <externalMetadataColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MD検証ファイルインポート\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MD検証ファイルインポート.Paths[Derived Column Output]"
+              endId="Package\MD検証ファイルインポート\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\MD検証ファイルインポート\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\MD検証ファイルインポート.Paths[Flat File Source Output]"
+              endId="Package\MD検証ファイルインポート\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\MD検証ファイルインポート\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATEテーブル"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5D41C4DB-1F39-4F7B-B758-16500735EA6F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATEテーブル"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E728AAE0-6B38-4A1E-A338-67473D94DE64}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE MD_DATA_SHIME_KENSHOU" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{881BDDEC-301A-432B-B72D-B0630136FE52}"
+      DTS:From="Package\TRUNCATEテーブル"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\MD検証ファイルインポート" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\TRUNCATEテーブル"
+          TopLeft="328,116" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\MD検証ファイルインポート"
+          TopLeft="328,213" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="420.5,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MD検証ファイルインポート">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\MD検証ファイルインポート\Flat File Source"
+          TopLeft="225,85" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\MD検証ファイルインポート\Derived Column"
+          TopLeft="219,181" />
+        <EdgeLayout
+          Id="Package\MD検証ファイルインポート.Paths[Flat File Source Output]"
+          TopLeft="298.25,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\MD検証ファイルインポート\OLE DB Destination"
+          TopLeft="215,281" />
+        <EdgeLayout
+          Id="Package\MD検証ファイルインポート.Paths[Derived Column Output]"
+          TopLeft="298.25,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MD検証ファイルインポート\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

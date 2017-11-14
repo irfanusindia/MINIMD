@@ -1,0 +1,304 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/22/2014 4:43:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="RONM27625"
+  DTS:CreatorName="RIGHT-ON\999986"
+  DTS:DTSID="{1FCDF1C2-AEC3-4773-A954-8503118AE999}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1041"
+  DTS:ObjectName="407_D_KAIKEI_DENPYOU_MEISAI"
+  DTS:PackageType="5"
+  DTS:VersionBuild="591"
+  DTS:VersionGUID="{39D384FD-F6ED-49D1-BAE8-7ACF4B862F2E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C11AD59A-98E3-4CEC-AE7A-2DDFC3C99B89}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVWXmF91oHEGPgotAgvPfnwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACuEunJeFhECqwY1zs+Wxu0AAAAAASAAACgAAAAEAAAAEwN6uS2OXmhl1bSBeDoPf0YAAAAPVJ+opgQ9lQ1EOE7YDgU2pEqAq436R9oFAAAAGAvxG4P4nD6SxrgmIvLJuZBKMPH</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CB210B1E-5F64-4455-B5DE-9561032F509B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="start_date">
+      <DTS:VariableValue
+        DTS:DataType="8">20130821</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCAB5906-5D02-452F-BA57-C3CE78C3FF1C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TSVInput">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\IRFAN\Desktop\KAIKEI_Denpyou\InPut\R055_</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションをコミット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="COMMIT TRANSACTION"
+      DTS:DTSID="{2F2EB7CC-5ADB-4A54-B57E-F4AC5235B77A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションをコミット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C11AD59A-98E3-4CEC-AE7A-2DDFC3C99B89}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションをロールバック"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="ROLLBACK TRANSACTION"
+      DTS:DTSID="{F72ACE95-919F-400A-995B-C1E2686154DD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションをロールバック"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C11AD59A-98E3-4CEC-AE7A-2DDFC3C99B89}"
+          SQLTask:SqlStatementSource="ROLLBACK TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションを開始"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="BEGIN TRANSACTION"
+      DTS:DTSID="{9C6B2989-4817-4C8D-BB45-A4F238F611F5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションを開始"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C11AD59A-98E3-4CEC-AE7A-2DDFC3C99B89}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\一致しない行を会計伝票明細に入"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{596f65c3-44ab-4e39-a1c3-74a0e1d5e36e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="一致しない行を会計伝票明細に入"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C11AD59A-98E3-4CEC-AE7A-2DDFC3C99B89}"
+          SQLTask:SqlStatementSource="INSERT INTO D_KAIKEI_DENPYOU_MEISAI&#xA;(会計伝票日付,会計伝票番号,会計伝票明細番号,勘定コード,ユーザ名,仕入先コード,店舗コード,店舗名称,品目,服種コード,部門コード,クラスコード,国内通貨額,税額,勘定科目,テキスト,トランゼクションID,税コード,発生日)&#xA;SELECT &#xA;CONVERT(DATE,会計伝票日付) AS 会計伝票日付,会計伝票番号,会計伝票明細番号,勘定コード,ユーザ名,仕入先コード,店舗コード,店舗名称,品目,服種コード,部門コード,クラスコード,国内通貨額,税額,勘定科目,テキスト,トランゼクションID,税コード,&#xA;CONVERT(DATE,発生日) AS 発生日&#xA;FROM D_KAIKEI_DENPYOU_MEISAI_TEMP TEMP&#xA;WHERE NOT EXISTS (SELECT *&#xA;    FROM D_KAIKEI_DENPYOU_MEISAI MAIN&#xA;    WHERE TEMP.会計伝票日付 = MAIN.会計伝票日付 AND&#xA;TEMP.会計伝票番号 = MAIN.会計伝票番号 AND&#xA;TEMP.会計伝票明細番号 = MAIN.会計伝票明細番号 AND&#xA;TEMP.仕入先コード = MAIN.仕入先コード AND&#xA;TEMP.店舗コード = MAIN.店舗コード);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{23DF6978-E3CF-44F8-92E4-FCF9896DF562}"
+      DTS:From="Package\トランザクションを開始"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\一致しない行を会計伝票明細に入" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{899D7C0D-0F27-4415-96C2-FA353FAC821F}"
+      DTS:From="Package\一致しない行を会計伝票明細に入"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\トランザクションをコミット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{098E9124-A09B-455A-9FC7-A2BB393CAAE9}"
+      DTS:From="Package\一致しない行を会計伝票明細に入"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\トランザクションをロールバック"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\トランザクションをコミット"
+          TopLeft="256.76082251082,300.057568366675" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\トランザクションをロールバック"
+          TopLeft="553.76082251082,298.14090182377" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\トランザクションを開始"
+          TopLeft="250,101.166666203903" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\一致しない行を会計伝票明細に入"
+          TopLeft="230,204" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="342.5,143.166666203903">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.833333796097"
+              Start="0,0"
+              End="0,53.333333796097">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.333333796097" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="343.5,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.26082251081999,54.057568366675"
+              Start="0,0"
+              End="8.26082251081999,46.557568366675">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0287841833375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.0287841833375"
+                    Point2="0,27.0287841833375"
+                    Point3="4,27.0287841833375" />
+                  <mssgle:LineSegment
+                    End="4.26082251081999,27.0287841833375" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.26082251081999,27.0287841833375"
+                    Point2="8.26082251081999,27.0287841833375"
+                    Point3="8.26082251081999,31.0287841833375" />
+                  <mssgle:LineSegment
+                    End="8.26082251081999,46.557568366675" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="380,246">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="280.26082251082,52.14090182377"
+              Start="0,0"
+              End="280.26082251082,44.64090182377">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.0753251466157" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.0753251466157"
+                    Point2="0,21.0753251466157"
+                    Point3="4,21.0753251466157" />
+                  <mssgle:LineSegment
+                    End="276.26082251082,21.0753251466157" />
+                  <mssgle:CubicBezierSegment
+                    Point1="276.26082251082,21.0753251466157"
+                    Point2="280.26082251082,21.0753251466157"
+                    Point3="280.26082251082,25.0753251466157" />
+                  <mssgle:LineSegment
+                    End="280.26082251082,44.64090182377" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="124.88906359916,26.0753251466157,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="一致しない行を会計伝票明細に入れる"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="235,40"
+          Id="d30e5a59-54a1-4e4c-b5a6-3e41169c2aa9"
+          TopLeft="240,170.499998547099" />
+        <AnnotationLayout
+          Text="トランザクションを開始"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="163,40"
+          Id="669cf3bb-8f9e-4e9c-a17f-60b0f05b6b1d"
+          TopLeft="261,62" />
+        <AnnotationLayout
+          Text="トランザクションをロールバック"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="211,40"
+          Id="682e49d7-099f-4ca6-87b7-4042f9491be4"
+          TopLeft="558,255.557569754966" />
+        <AnnotationLayout
+          Text="トランザクションをコミット"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="187,40"
+          Id="6c334667-c2b1-49a8-ba16-306c79ed085f"
+          TopLeft="258,268.724235700582" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2016 5:18:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UNIAD021"
+  DTS:CreatorName="UNIAD021\IRFAN"
+  DTS:DTSID="{CE942320-A4EB-4177-BD74-983FDE17FCBA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="308_D_SHIIRE_DENPYOU_HEADER"
+  DTS:PackageType="5"
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{4A6510AE-B421-4EA1-A006-78922F70E465}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{765E5A24-251C-47D7-A584-5D46892A7F26}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())) +  (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\308_D_SHIIRE_DENPYOU_HEADER_20161223" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1CB9A80-8027-4D1E-BA73-60724794ABC0}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAYZfPCXKnUKyTD3bJMwwYQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACfe32SBH1Vere8aUIiIz8012q11VgxjxxPXAKyBydo+QAAAAAOgAAAAAIAACAAAAD2jKgMft0aPm02yX7iOLFKaKUQEYQhFyeW3l5P/SrpOyAAAACSXSZyhJTKoSqRvo2hjgXzuI0cVGhMhvuKPgJKZNkni0AAAAB4lOjiDR4BY4MEtZoVADwIOzcDmpE5uKfcdCfIrWc74NSoGeKaGptheXRzLLGuvnp8uWWIqcHq7OrBNZwSkyv4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{13A2D43A-FA0F-49E4-83C8-F6B31E23B86F}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー1">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{64781D0B-3951-4C72-BAD5-9D4C49FDF5BF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5685BB40-5881-4338-81C4-66559F92E7BD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,-1,GETDATE())))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="end_date">
+      <DTS:VariableValue
+        DTS:DataType="7">12/22/2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{99ED276C-2455-41E7-AB27-F7EF925B463C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,-1,GETDATE())))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="start_date">
+      <DTS:VariableValue
+        DTS:DataType="7">12/22/2016</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{13A2D43A-FA0F-49E4-83C8-F6B31E23B86F}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SHIIRE_DENPYOU　テーブルにインポート"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1C7D00C8-3FF0-4B14-ABAF-DDCBA46D7C53}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SHIIRE_DENPYOU　テーブルにインポート"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SHIIRE_HEADERにデータインポート"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[D_SIIRE_DENPYOU_HEADER]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[仕入伝票日付]"
+                      cachedDataType="dbDate"
+                      cachedName="仕入伝票日付"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入伝票日付]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票日付]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[仕入伝票番号]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="仕入伝票番号"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入伝票番号]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票番号]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[仕入先コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="仕入先コード"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入先コード]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[勘定コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="勘定コード"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[勘定コード]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[訂正元購買伝票番号]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="訂正元購買伝票番号"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[訂正元購買伝票番号]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[訂正元購買伝票番号]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[実績数]"
+                      cachedDataType="i8"
+                      cachedName="実績数"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[実績数]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[実績数]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[原価額]"
+                      cachedDataType="i8"
+                      cachedName="原価額"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[原価額]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[原価額]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[売価額]"
+                      cachedDataType="i8"
+                      cachedName="売価額"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[売価額]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[売価額]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[税コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="税コード"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[税コード]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[税コード]" />
+                    <inputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[発生日]"
+                      cachedDataType="dbDate"
+                      cachedName="発生日"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[発生日]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[発生日]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入伝票日付]"
+                      dataType="dbDate"
+                      name="仕入伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="仕入伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="仕入先コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[訂正元購買伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="訂正元購買伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[実績数]"
+                      dataType="i8"
+                      name="実績数" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[原価額]"
+                      dataType="i8"
+                      name="原価額" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[売価額]"
+                      dataType="i8"
+                      name="売価額" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="税コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[発生日]"
+                      dataType="dbDate"
+                      name="発生日" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SHIIRE_MEISAIからデータ"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[D_SIIRE_DENPYOU_MEISAI]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	仕入伝票日付,
+	仕入伝票番号,
+	勘定コード,
+	仕入先コード,
+	訂正元購買伝票番号,
+	SUM(実績数) as 実績数,
+	SUM(原価額) as 原価額,
+	SUM(売価額) as 売価額,
+	税コード,
+	発生日
+FROM 
+	D_SIIRE_DENPYOU_MEISAI
+WHERE 
+	仕入伝票日付 
+		BETWEEN ? AND ?
+GROUP BY 
+	仕入伝票日付,仕入伝票番号,勘定コード,仕入先コード,訂正元購買伝票番号,税コード,発生日;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{99ED276C-2455-41E7-AB27-F7EF925B463C};"Parameter1:Input",{5685BB40-5881-4338-81C4-66559F92E7BD};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票日付]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入伝票日付]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票日付]"
+                      name="仕入伝票日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入伝票番号]"
+                      length="10"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入伝票番号]"
+                      name="仕入伝票番号"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      length="3"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      name="勘定コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入先コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
+                      length="6"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[仕入先コード]"
+                      name="仕入先コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[訂正元購買伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[訂正元購買伝票番号]"
+                      length="10"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[訂正元購買伝票番号]"
+                      name="訂正元購買伝票番号"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[実績数]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[実績数]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[実績数]"
+                      name="実績数"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[原価額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[原価額]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[原価額]"
+                      name="原価額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[売価額]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[売価額]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[売価額]"
+                      name="売価額"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[税コード]"
+                      length="4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[税コード]"
+                      name="税コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[発生日]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[発生日]"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].Columns[発生日]"
+                      name="発生日"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入伝票日付]"
+                      dataType="dbDate"
+                      name="仕入伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="仕入伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      name="仕入先コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[訂正元購買伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="訂正元購買伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[実績数]"
+                      dataType="i8"
+                      name="実績数" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[原価額]"
+                      dataType="i8"
+                      name="原価額" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[売価額]"
+                      dataType="i8"
+                      name="売価額" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      name="税コード" />
+                    <externalMetadataColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output].ExternalColumns[発生日]"
+                      dataType="dbDate"
+                      name="発生日" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入伝票日付]"
+                      dataType="dbDate"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入伝票日付]"
+                      name="仕入伝票日付" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入伝票番号]"
+                      name="仕入伝票番号" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      name="勘定コード" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
+                      name="仕入先コード" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[訂正元購買伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[訂正元購買伝票番号]"
+                      name="訂正元購買伝票番号" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[実績数]"
+                      dataType="i8"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[実績数]"
+                      name="実績数" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[原価額]"
+                      dataType="i8"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[原価額]"
+                      name="原価額" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[売価額]"
+                      dataType="i8"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[売価額]"
+                      name="売価額" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[税コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[税コード]"
+                      name="税コード" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[発生日]"
+                      dataType="dbDate"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[発生日]"
+                      name="発生日" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SHIIRE_DENPYOU　テーブルにインポート.Paths[OLE DB Source Output]"
+              endId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションのコミット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{253afdc6-534f-49a7-a2d1-920ece703b2b}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションのコミット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1CB9A80-8027-4D1E-BA73-60724794ABC0}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションを開始"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7e47a4b9-f9f1-47eb-8217-a5e6f2f2d3c1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションを開始"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1CB9A80-8027-4D1E-BA73-60724794ABC0}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ロールバック トランザクション"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f2696fed-709a-48c3-b310-206cfc259826}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ロールバック トランザクション"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1CB9A80-8027-4D1E-BA73-60724794ABC0}"
+          SQLTask:SqlStatementSource="ROLLBACK TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3BF732E0-74D7-4A9E-9695-DD91AC993382}"
+      DTS:From="Package\トランザクションを開始"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SHIIRE_DENPYOU　テーブルにインポート" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{439DF692-5847-4943-BA2D-2688B19BF10C}"
+      DTS:From="Package\SHIIRE_DENPYOU　テーブルにインポート"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\トランザクションのコミット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{7553F009-177E-48C8-8B5E-F9D5382BDE13}"
+      DTS:From="Package\SHIIRE_DENPYOU　テーブルにインポート"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\ロールバック トランザクション"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="257,42"
+          Id="Package\SHIIRE_DENPYOU　テーブルにインポート"
+          TopLeft="325,235" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\トランザクションのコミット"
+          TopLeft="362,346" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\トランザクションを開始"
+          TopLeft="363,117" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\ロールバック トランザクション"
+          TopLeft="666,345" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="451.25,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="412,277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39,69"
+              Start="0,0"
+              End="39,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8561484918794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8561484918794"
+                    Point2="0,27.8561484918794"
+                    Point3="4,27.8561484918794" />
+                  <mssgle:LineSegment
+                    End="35,27.8561484918794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35,27.8561484918794"
+                    Point2="39,27.8561484918794"
+                    Point3="39,31.8561484918794" />
+                  <mssgle:LineSegment
+                    End="39,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="495,277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="267.5,68"
+              Start="0,0"
+              End="267.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.4524361948956" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.4524361948956"
+                    Point2="0,27.4524361948956"
+                    Point3="4,27.4524361948956" />
+                  <mssgle:LineSegment
+                    End="263.5,27.4524361948956" />
+                  <mssgle:CubicBezierSegment
+                    Point1="263.5,27.4524361948956"
+                    Point2="267.5,27.4524361948956"
+                    Point3="267.5,31.4524361948956" />
+                  <mssgle:LineSegment
+                    End="267.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="118.50865234375,32.4524361948956,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="SHIIRE_MEISAIからSHIIRE_HEADERにデータインポート"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="353,39"
+          Id="d0682ff6-0e62-4727-8b46-aebb14388f72"
+          TopLeft="291,201" />
+        <AnnotationLayout
+          Text="エラーの場合ロールバック トランザクション"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="275,39"
+          Id="2451cd25-6ef0-49bf-83a5-917186f4360b"
+          TopLeft="645,374" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SHIIRE_DENPYOU　テーブルにインポート">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ"
+          TopLeft="248,52" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート"
+          TopLeft="230,194" />
+        <EdgeLayout
+          Id="Package\SHIIRE_DENPYOU　テーブルにインポート.Paths[OLE DB Source Output]"
+          TopLeft="346.5,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100"
+              Start="0,0"
+              End="0,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="SHIIRE_MEISAIテーブルから選択データ"
+          ParentId="Package\SHIIRE_DENPYOU　テーブルにインポート"
+          FontInfo="{assembly:Null}"
+          Size="255,NaN"
+          Id="1bacb9ec-2786-460f-ba27-888f62a31d5b"
+          TopLeft="278,19" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_HEADERにデータインポート">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SHIIRE_DENPYOU　テーブルにインポート\SHIIRE_MEISAIからデータ">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

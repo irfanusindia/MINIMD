@@ -1,0 +1,908 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2016 5:18:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UNIAD021"
+  DTS:CreatorName="UNIAD021\IRFAN"
+  DTS:DTSID="{441F9045-EB96-4690-A303-F8C93C93A5D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="306_D_ZAIKO_IDO_DENPYOU_HEADER"
+  DTS:PackageType="5"
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{436BB36D-1BB4-409A-A762-06ABBA6D5C66}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Logging.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0FA5C0C9-BE6C-4141-8240-A0D5668C7BEA}"
+      DTS:ObjectName="Logging.txt">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())) +  (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())))</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="D:\public\dailyLog\306_D_ZAIKO_IDO_DENPYOU_HEADER_20171025" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MINIMD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9451C0E6-71E8-400D-B60C-3EC8ACBE01C5}"
+      DTS:ObjectName="MINIMD">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="Logging.txt"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
+      DTS:DTSID="{F72A329B-EA37-4919-BA3B-5CA6CE8CBFBF}"
+      DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー1">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0CF98B5D-32DE-4DBF-A3FE-B87BCAA7164C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="autoLoggerPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\public\dailyLog</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41B5F567-04A7-4FD2-BDF0-1A1F5512D554}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,-1,GETDATE())))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="END_DATE">
+      <DTS:VariableValue
+        DTS:DataType="7">10/24/2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7FCC8758-8A1E-4165-9E9E-69D04CA453BA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,-1,GETDATE())) + &quot;-&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,-1,GETDATE())))"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="START_DATE">
+      <DTS:VariableValue
+        DTS:DataType="7">10/24/2017</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,12,OnTaskFailed,22,OnVariableValueChanged</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{F72A329B-EA37-4919-BA3B-5CA6CE8CBFBF}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションのコミット"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{65B0EC9A-EF63-4BED-A4B6-9DF50E881099}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションのコミット"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9451C0E6-71E8-400D-B60C-3EC8ACBE01C5}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\トランザクションを開始"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{41ADE9A6-35B6-40C1-A95F-704EE8981DD1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="トランザクションを開始"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9451C0E6-71E8-400D-B60C-3EC8ACBE01C5}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ロールバック トランザクション"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2282B010-119D-4F10-A45B-7A55B017C4A3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ロールバック トランザクション"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9451C0E6-71E8-400D-B60C-3EC8ACBE01C5}"
+          SQLTask:SqlStatementSource="ROLLBACK TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\在庫移動伝票テーブルインポート"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FC333F8E-47AE-406A-A785-0650D232740C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="在庫移動伝票テーブルインポート"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ZAIKO_IDO_DENP_からデータ"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+[移動伝票日付],[移動伝票番号],勘定コード,
+SUM(在庫移動数) as [在庫移動数],SUM(在庫移動原価) as 在庫移動原価,
+SUM(在庫移動売価) as 在庫移動売価,発生日
+FROM [D_ZAIKO_IDO_DENPYOU_MEISAI]
+WHERE 移動伝票日付 BETWEEN ? AND ?
+GROUP BY [移動伝票日付],[移動伝票番号],
+勘定コード,発生日</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0:Input",{7FCC8758-8A1E-4165-9E9E-69D04CA453BA};"Parameter1:Input",{41B5F567-04A7-4FD2-BDF0-1A1F5512D554};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票日付]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[移動伝票日付]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票日付]"
+                      name="移動伝票日付"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[移動伝票番号]"
+                      length="10"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票番号]"
+                      name="移動伝票番号"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      length="3"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[勘定コード]"
+                      name="勘定コード"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動数]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動数]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動数]"
+                      name="在庫移動数"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動原価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動原価]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動原価]"
+                      name="在庫移動原価"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動売価]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動売価]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動売価]"
+                      name="在庫移動売価"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[発生日]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[発生日]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[発生日]"
+                      name="発生日"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[移動伝票日付]"
+                      dataType="dbDate"
+                      name="移動伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[移動伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="移動伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動数]"
+                      dataType="i4"
+                      name="在庫移動数" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動原価]"
+                      dataType="i8"
+                      name="在庫移動原価" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[在庫移動売価]"
+                      dataType="i8"
+                      name="在庫移動売価" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].ExternalColumns[発生日]"
+                      dataType="dbDate"
+                      name="発生日" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[移動伝票日付]"
+                      dataType="dbDate"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[移動伝票日付]"
+                      name="移動伝票日付" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[移動伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[移動伝票番号]"
+                      name="移動伝票番号" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[勘定コード]"
+                      name="勘定コード" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動数]"
+                      dataType="i4"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動数]"
+                      name="在庫移動数" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動原価]"
+                      dataType="i8"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動原価]"
+                      name="在庫移動原価" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動売価]"
+                      dataType="i8"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[在庫移動売価]"
+                      name="在庫移動売価" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[発生日]"
+                      dataType="dbDate"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[発生日]"
+                      name="発生日" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ZAIKO_IDO_HEADERにデータインポート"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[D_ZAIKO_IDO_DENPYOU_HEADER]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                  connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[移動伝票日付]"
+                      cachedDataType="dbDate"
+                      cachedName="移動伝票日付"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[移動伝票日付]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票日付]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[移動伝票番号]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="移動伝票番号"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[移動伝票番号]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[移動伝票番号]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[勘定コード]"
+                      cachedCodepage="932"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="勘定コード"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[勘定コード]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[在庫移動数]"
+                      cachedDataType="i4"
+                      cachedName="在庫移動数"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動数]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動数]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[在庫移動原価]"
+                      cachedDataType="i8"
+                      cachedName="在庫移動原価"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動原価]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動原価]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[在庫移動売価]"
+                      cachedDataType="i8"
+                      cachedName="在庫移動売価"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動売価]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[在庫移動売価]" />
+                    <inputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].Columns[発生日]"
+                      cachedDataType="dbDate"
+                      cachedName="発生日"
+                      externalMetadataColumnId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[発生日]"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output].Columns[発生日]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[移動伝票日付]"
+                      dataType="dbDate"
+                      name="移動伝票日付" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[移動伝票番号]"
+                      codePage="932"
+                      dataType="str"
+                      length="10"
+                      name="移動伝票番号" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[勘定コード]"
+                      codePage="932"
+                      dataType="str"
+                      length="3"
+                      name="勘定コード" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動数]"
+                      dataType="i4"
+                      name="在庫移動数" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動原価]"
+                      dataType="i8"
+                      name="在庫移動原価" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[在庫移動売価]"
+                      dataType="i8"
+                      name="在庫移動売価" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[発生日]"
+                      dataType="dbDate"
+                      name="発生日" />
+                    <externalMetadataColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input].ExternalColumns[登録時刻]"
+                      dataType="dbTimeStamp"
+                      name="登録時刻" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\在庫移動伝票テーブルインポート.Paths[OLE DB Source Output]"
+              endId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2190903F-2AD0-4F41-8E06-482FF26F6975}"
+      DTS:From="Package\トランザクションを開始"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\在庫移動伝票テーブルインポート" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6687759F-D94B-4F9E-B282-75DFFD8026B0}"
+      DTS:From="Package\在庫移動伝票テーブルインポート"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\トランザクションのコミット" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B386F8F9-A9F0-42B1-B661-DC5C8A30B03C}"
+      DTS:From="Package\在庫移動伝票テーブルインポート"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\ロールバック トランザクション"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="217,50"
+          Id="Package\トランザクションのコミット"
+          TopLeft="324,367" />
+        <NodeLayout
+          Size="217,50"
+          Id="Package\トランザクションを開始"
+          TopLeft="325,126" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\ロールバック トランザクション"
+          TopLeft="768,373" />
+        <NodeLayout
+          Size="217,50"
+          Id="Package\在庫移動伝票テーブルインポート"
+          TopLeft="326,254" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="434,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="433.5,304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="469.333333333333,304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="395.166666666667,69"
+              Start="0,0"
+              End="395.166666666667,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9030192131747" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9030192131747"
+                    Point2="0,27.9030192131747"
+                    Point3="4,27.9030192131747" />
+                  <mssgle:LineSegment
+                    End="391.166666666667,27.9030192131747" />
+                  <mssgle:CubicBezierSegment
+                    Point1="391.166666666667,27.9030192131747"
+                    Point2="395.166666666667,27.9030192131747"
+                    Point3="395.166666666667,31.9030192131747" />
+                  <mssgle:LineSegment
+                    End="395.166666666667,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="182.341985677083,32.9030192131747,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ZAIKO_IDO_MEISAIからZAIKO_IDO_HEADERにデータインポート"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="406,39"
+          Id="d0682ff6-0e62-4727-8b46-aebb14388f72"
+          TopLeft="232,219" />
+        <AnnotationLayout
+          Text="エラーの場合ロールバック トランザクション"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="275,39"
+          Id="c90c00ff-1091-4bc0-bdc0-4ec450f21ad7"
+          TopLeft="732,335" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\在庫移動伝票テーブルインポート">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="255,42"
+          Id="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート"
+          TopLeft="250.5,174.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ"
+          TopLeft="250,56" />
+        <EdgeLayout
+          Id="Package\在庫移動伝票テーブルインポート.Paths[OLE DB Source Output]"
+          TopLeft="360,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,76.5"
+              Start="0,0"
+              End="18,69">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.25"
+                    Point2="0,38.25"
+                    Point3="4,38.25" />
+                  <mssgle:LineSegment
+                    End="14,38.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,38.25"
+                    Point2="18,38.25"
+                    Point3="18,42.25" />
+                  <mssgle:LineSegment
+                    End="18,69" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ZAIKO_IDO_MEISAIテーブルから選択データ"
+          ParentId="Package\在庫移動伝票テーブルインポート"
+          FontInfo="{assembly:Null}"
+          Size="281,NaN"
+          Id="1bacb9ec-2786-460f-ba27-888f62a31d5b"
+          TopLeft="278,19" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_DENP_からデータ">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\在庫移動伝票テーブルインポート\ZAIKO_IDO_HEADERにデータインポート">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
