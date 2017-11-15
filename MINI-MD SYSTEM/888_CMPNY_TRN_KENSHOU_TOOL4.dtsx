@@ -11,8 +11,8 @@
   DTS:LocaleID="1041"
   DTS:ObjectName="888_CMPNY_TRN_KENSHOU_TOOL4"
   DTS:PackageType="5"
-  DTS:VersionBuild="217"
-  DTS:VersionGUID="{DB7685E5-5621-4FDC-A6A5-184356DECC23}">
+  DTS:VersionBuild="205"
+  DTS:VersionGUID="{AE33664E-012B-4640-9EE3-E7DDF2CDCD8E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="932"
-          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_SIIRE_20170626.csv">
+          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_SIIRE_20170607.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -110,7 +110,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="932"
-          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_URIAGE_20170626.csv">
+          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_URIAGE_20170607.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -207,7 +207,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAW+kn65QogECPEkD8NRqzlQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB7llpW2OEsJQyBt+B+5r+3AAAAAASAAACgAAAAEAAAAOE9qcvq0lNARxgFSQbxZoQYAAAA7nK6GF9tRSDKnkG7yREEP1okOXDUT/H9FAAAAP6nQxMJY1lODA3knnMndpxSo1ae</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAW+kn65QogECPEkD8NRqzlQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABs2wcs99Lv/HlVfr5yTv9YAAAAAASAAACgAAAAEAAAAKk/VE515eVCxJGvcX4tgsgYAAAAxbEFepLa+rYk5wx7CexdTvO1laJ9n+nyFAAAAOe/xc9+dB2ZJhpOzx8dpMwwvGKG</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -228,7 +228,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="932"
-          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_SIIRE_検証結果_20170626.csv">
+          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_SIIRE_KENSHOU_20170607.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -284,7 +284,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="932"
-          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_URIAGE_検証結果_20170626.csv">
+          DTS:ConnectionString="C:\public\IM_FILES\kenshou\COMPANY_URIAGE_KENSHOU_20170607.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -391,12 +391,12 @@
       DTS:CreationName=""
       DTS:DTSID="{FDF72037-1117-4DE0-B286-B6DEFEAF8820}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::siireFilePath] + &quot;_検証結果_&quot; + ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0,GETDATE()))  + RIGHT(&quot;00&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0,GETDATE())),2) +  RIGHT(&quot;00&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0,GETDATE())),2)) + &quot;.csv&quot;"
+      DTS:Expression="@[User::siireFilePath] + &quot;_KENSHOU_&quot; + ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0,GETDATE()))  + RIGHT(&quot;00&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0,GETDATE())),2) +  RIGHT(&quot;00&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0,GETDATE())),2)) + &quot;.csv&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="siireOut">
       <DTS:VariableValue
-        DTS:DataType="8">C:\public\IM_FILES\kenshou\COMPANY_SIIRE_検証結果_20170626.csv</DTS:VariableValue>
+        DTS:DataType="8">C:\public\IM_FILES\kenshou\COMPANY_SIIRE_KENSHOU_20170607.csv</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -420,12 +420,12 @@
       DTS:CreationName=""
       DTS:DTSID="{85B56598-AFC3-4C8C-943C-BA1D31471306}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::uriageFilePath] + &quot;_検証結果_&quot; + ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0,GETDATE()))  + RIGHT(&quot;00&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0,GETDATE())),2) +  RIGHT(&quot;00&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0,GETDATE())),2)) + &quot;.csv&quot;"
+      DTS:Expression="@[User::uriageFilePath] + &quot;_KENSHOU_&quot; + ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0,GETDATE()))  + RIGHT(&quot;00&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0,GETDATE())),2) +  RIGHT(&quot;00&quot; + (DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0,GETDATE())),2)) + &quot;.csv&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="uriOut">
       <DTS:VariableValue
-        DTS:DataType="8">C:\public\IM_FILES\kenshou\COMPANY_URIAGE_検証結果_20170626.csv</DTS:VariableValue>
+        DTS:DataType="8">C:\public\IM_FILES\kenshou\COMPANY_URIAGE_KENSHOU_20170607.csv</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1558,7 +1558,6 @@
       DTS:refId="Package\TSV メールする"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:Disabled="True"
       DTS:DTSID="{06D309A6-9CC5-4524-8DCD-E5CD924416A1}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
@@ -1792,34 +1791,35 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
 //
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_9064457c464346a2be02d1c495beeec9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_9064457c464346a2be02d1c495beeec9")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9064457c464346a2be02d1c495beeec9.Properties.Settings.get_Default():ST_9064457c464346a2be02d1c495beeec9.Properties.Sett" +
-    "ings")]
-
-namespace ST_9064457c464346a2be02d1c495beeec9.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Namespaces
@@ -1993,35 +1993,34 @@ namespace ST_9064457c464346a2be02d1c495beeec9
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_9064457c464346a2be02d1c495beeec9")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_9064457c464346a2be02d1c495beeec9")]
-[assembly: AssemblyCopyright("Copyright @  2017")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_9064457c464346a2be02d1c495beeec9.Properties.Settings.get_Default():ST_9064457c464346a2be02d1c495beeec9.Properties.Sett" +
+    "ings")]
 
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+namespace ST_9064457c464346a2be02d1c495beeec9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -2260,7 +2259,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:refId="Package\仕入検証ファイル作成-出力"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{B2FBB874-EA1F-4821-999F-1AA5C2BFF877}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -2338,11 +2336,6 @@ GROUP BY 外部システム連携ID
 	FROM D_SIIRE_DENPYOU_MEISAI
 	WHERE 勘定コード IN ('172') AND 仕入伝票日付 BETWEEN  ? AND ? AND 実績数 &gt;= 0
 		AND 店舗コード NOT IN ('7802')
-  UNION ALL
-  SELECT 'MD7' AS IF_SYSTEM_FUNC_ID,SUM(原価額)
-    FROM D_SIIRE_DENPYOU_MEISAI
-    WHERE 仕入伝票日付 BETWEEN ? AND ? 
-    AND  勘定コード ='173' ANd 買取受託='0'
  UNION ALL
  SELECT 'MD14' AS ID,SUM(国内通貨額) AS 税抜き金額 FROM D_KAIKEI_DENPYOU_MEISAI
 	WHERE 会計伝票日付 BETWEEN ? AND  ? 
@@ -2378,7 +2371,7 @@ ON COMPNY.外部システム連携ID = SIIRE.ID</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping">"Parameter0:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter1:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter2:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter3:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter4:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter5:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter6:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter7:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter8:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter9:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter10:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter11:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter12:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter13:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter14:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter15:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter16:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter17:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};</property>
+                  name="ParameterMapping">"Parameter0:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter1:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter2:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter3:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter4:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter5:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter6:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter7:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter8:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter9:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter10:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter11:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter12:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter13:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};"Parameter14:Input",{6E8645A2-8257-4373-AA36-28CF5171824B};"Parameter15:Input",{651BE6FE-2922-4950-9658-F9A7100120C4};</property>
               </properties>
               <connections>
                 <connection
@@ -2595,7 +2588,6 @@ ON COMPNY.外部システム連携ID = SIIRE.ID</property>
       DTS:refId="Package\売上検証ファイル作成-出力"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{B1BD438F-E167-48AC-A9C4-14E2F41582DD}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3155,7 +3147,7 @@ ORDER BY CMP.伝票日付,REGI.売上計上日</property>
     design-time-name="Package\COMPANY 売上インポート">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="171,42"
           Id="Package\COMPANY 売上インポート\OLE DB Destination"
@@ -3183,9 +3175,7 @@ ORDER BY CMP.伝票日付,REGI.売上計上日</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3208,7 +3198,7 @@ ORDER BY CMP.伝票日付,REGI.売上計上日</property>
     design-time-name="Package\仕入検証ファイル作成-出力">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\仕入検証ファイル作成-出力\OLE DB Source"
@@ -3236,7 +3226,9 @@ ORDER BY CMP.伝票日付,REGI.売上計上日</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

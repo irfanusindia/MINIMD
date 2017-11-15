@@ -1,49 +1,54 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/13/2016 5:59:15 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="UNIAD18"
   DTS:CreatorName="UNIAD18\UNIAD18"
-  DTS:DTSID="{DE05DEF3-DDBF-43AC-826D-1714F767206D}"
+  DTS:DTSID="{2DBBB627-FDBD-4FF0-99CD-F8342AD5CCDC}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
   DTS:LocaleID="1041"
   DTS:ObjectName="423_IF_R051_2"
   DTS:PackageType="5"
   DTS:VersionBuild="370"
-  DTS:VersionGUID="{6645BD5F-65B2-4DA5-BC3E-552DE66F1A60}">
+  DTS:VersionGUID="{8CE74BAC-E13F-42CA-A516-79B544614C27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Logging.txt]"
       DTS:CreationName="FILE"
-      DTS:DTSID="{1F93B5D8-71F7-4FDF-97E1-9936A71A3D0B}"
+      DTS:DTSID="{2E07727C-DE39-4B5E-A375-AE719199DF4D}"
       DTS:ObjectName="Logging.txt">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="1"
-          DTS:ConnectionString="D:\public\dailyLog\423_IF_R051_2_20170731" />
+          DTS:ConnectionString="D:\public\dailyLog\423_IF_R051_2_20170508" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MINIMD]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{21DFF1E6-5A7F-46A7-9E84-67849EAE3664}"
+      DTS:DTSID="{EEF90544-AA74-458C-BE78-1BAC6BA68C73}"
       DTS:ObjectName="MINIMD">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=10.130.105.16,1435;User ID=sa;Initial Catalog=mini_md_db;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA32tYfgxgJkK7gRQWnfokdwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACY0H5K2M5X/njvwDI8+REKeYP4hPTR9eN+lBKhodeTCgAAAAAOgAAAAAIAACAAAAAVq/77ZR9u/Hi+Tz+QSouc/dYnPwKH8AK+IeUA4SmBYyAAAAB20qxK3jhm6bau1KTm6adaK/eioYqHenHqdjgN/y+L00AAAAB6Vc7IzOKREz0W8/qohT8prqQ2bwL8qQ3kq9csso3mrIF2B57olMbOvuXnscTCau23fcGgWEymevyYtOCfw1Q1</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[TSV Maker]"
       DTS:CreationName="FLATFILE"
       DTS:Description="TSV Maker"
-      DTS:DTSID="{819EC982-3DF9-4B61-8351-FE2ADF823F6A}"
+      DTS:DTSID="{7C08B9E4-B598-49D1-9F70-CC94DFBA823F}"
       DTS:ObjectName="TSV Maker">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::fileFolder] + "\\R051_" +  REPLACE( ((DT_STR, 10, 932) @[User::today] ), "/", "" ) + "_2.TSV"</DTS:PropertyExpression>
@@ -55,7 +60,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="932"
-          DTS:ConnectionString="D:\public\IM_FILES\R051_20170731_2.TSV">
+          DTS:ConnectionString="D:\public\IM_FILES\R051_20170508_2.TSV">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -64,7 +69,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="年度"
-              DTS:DTSID="{09DAEF16-72F0-4AC7-BECE-5975870701C1}"
+              DTS:DTSID="{03F95EF8-0807-498A-8B22-38E21A97F828}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +78,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="会計期間"
-              DTS:DTSID="{F28E2EEA-4E25-4ECE-94C6-12FFC12A65E7}"
+              DTS:DTSID="{41CBE72D-5273-437D-9495-98C3C04188B5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -82,7 +87,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="月度"
-              DTS:DTSID="{879C2AA0-B950-4E23-8A8B-3E440D54B185}"
+              DTS:DTSID="{197E9251-660B-4A3C-9839-7FD719A4C4A2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -91,7 +96,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="店舗コード"
-              DTS:DTSID="{EFCC8354-5F59-4658-AD75-E56ED132DC26}"
+              DTS:DTSID="{57A5794B-BC5D-4436-86CF-A9935AFA625D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -100,7 +105,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="部門コード"
-              DTS:DTSID="{5D0C858A-A5D0-4593-9704-8F1B01EFBC5E}"
+              DTS:DTSID="{5F96BE1C-7675-41ED-B23B-EA14BA8BA845}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -109,7 +114,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="クラスコード"
-              DTS:DTSID="{E5FFCC18-38B8-45B7-8C4A-30E4312A74CE}"
+              DTS:DTSID="{A32B1979-8CCF-42DB-A500-443075FB9F99}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -118,7 +123,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="商品コード"
-              DTS:DTSID="{4E9F1234-5582-4409-93D0-A21CAF070757}"
+              DTS:DTSID="{705C7EE6-7F07-4918-BE53-978AEB5D314E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -127,7 +132,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="国際商品コード (JAN/UPC)"
-              DTS:DTSID="{6F1E74E9-99C5-4969-BA8A-4414A85CF291}"
+              DTS:DTSID="{D2270BB2-75B8-408E-9B1D-D9143C82E023}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -136,7 +141,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="受託区分"
-              DTS:DTSID="{B9710A0A-E6BB-4BF6-B7EC-DAAD8F282074}"
+              DTS:DTSID="{21BC6069-11AC-498F-BB81-48FEEED004AC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -145,7 +150,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入先コード"
-              DTS:DTSID="{D6ED2962-4E38-4639-AE80-75635EE2BC73}"
+              DTS:DTSID="{B545E4CD-4C50-46A0-B7E6-03337B4876D4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -154,7 +159,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="自社品番"
-              DTS:DTSID="{23D3FC69-411E-4D8A-BC33-47AAD37A8463}"
+              DTS:DTSID="{B11E436B-645F-4DD8-B2F4-4D6244C70C32}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -163,7 +168,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="カラー"
-              DTS:DTSID="{B3334A04-96F6-4A88-A163-3918CC1372BA}"
+              DTS:DTSID="{0F14B232-EB1A-46E5-B038-78CBA8F27BFC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -172,7 +177,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="サイズ"
-              DTS:DTSID="{C0DA9A3F-BD78-4162-B470-AAC03D329A6F}"
+              DTS:DTSID="{3D7091CA-1694-489E-AE29-2BBF96DA0D73}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -181,7 +186,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="メーカー品番"
-              DTS:DTSID="{1988178A-FE08-4FF5-B4BD-8E64499C83C0}"
+              DTS:DTSID="{7D6893DF-DEFE-453B-950F-BF0C745D42A7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -190,7 +195,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="シーズンコード"
-              DTS:DTSID="{5018FE4B-6F30-4371-A6B9-189DC1C674DF}"
+              DTS:DTSID="{872E3CB2-1E2C-44D5-876C-3E419004E8DA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -199,7 +204,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ブランドコード"
-              DTS:DTSID="{BD992C37-8AED-4D10-A397-CF890B63CF06}"
+              DTS:DTSID="{C029BDBA-4271-4AF9-AB8C-7793B8531DC4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -208,7 +213,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="元上代"
-              DTS:DTSID="{2F369B17-98AC-414A-B50C-FB082BE824D4}"
+              DTS:DTSID="{38589E3F-A69C-4EFF-B09D-761D2661C31A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -216,7 +221,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="原単価"
-              DTS:DTSID="{6ACD2786-D3FF-48B8-8175-41000AD30BCF}"
+              DTS:DTSID="{10E55CD2-F795-46A9-A4D1-58748859D711}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -224,7 +229,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売単価"
-              DTS:DTSID="{F9E912CB-82FE-438F-9DBD-E982922312E0}"
+              DTS:DTSID="{83961CAC-8A2F-4A22-9FE1-37DFEF28EE52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -233,7 +238,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="希望小売価格"
-              DTS:DTSID="{4F6AD4D1-9BE0-48CE-B2AA-58693333D22C}"
+              DTS:DTSID="{A02DF1A3-44C7-4F0B-9A95-46BCEC63C824}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -242,7 +247,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="初回売変予定日"
-              DTS:DTSID="{FFEA8FED-9531-4FE3-8808-61AC40C719F3}"
+              DTS:DTSID="{472800AC-D09C-4FB3-8CFB-978E4B2395B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -251,7 +256,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="初回投入日"
-              DTS:DTSID="{CA97857E-ACBD-4C51-BAA0-78943457B5EF}"
+              DTS:DTSID="{B43B8753-45C6-4940-8499-AF9292FADCC2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -260,7 +265,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="販売終了予定日"
-              DTS:DTSID="{629230AA-6A59-49B2-97C3-F4722D044AB3}"
+              DTS:DTSID="{1B7A88D4-C207-41F9-B7B0-ACE8DF78A9FE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -268,7 +273,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上数量"
-              DTS:DTSID="{D7AE27F7-DC15-4FFA-9921-C3D6CF7879D1}"
+              DTS:DTSID="{F4A903B3-0E25-468E-B829-1778F4177AD4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -276,7 +281,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高原価"
-              DTS:DTSID="{7B225551-5663-475A-ADC8-5347DB9CE55E}"
+              DTS:DTSID="{C7BB3EC4-A15E-4219-9B18-413FCF9F381B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -284,7 +289,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高"
-              DTS:DTSID="{8CEA136C-0783-4E92-B7BB-CC9F75AE9E71}"
+              DTS:DTSID="{00EA4436-3D4B-4CF7-BBD1-DA73F1F39C1B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -292,7 +297,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品点数"
-              DTS:DTSID="{85AFEBF4-7829-40E6-A239-A4FE5569FDAC}"
+              DTS:DTSID="{8CA9A03D-982E-44E1-89CB-FAB5CCFE77F4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -300,7 +305,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品原価"
-              DTS:DTSID="{2CFC65AF-86C8-45CB-AA9E-91E9917F99E3}"
+              DTS:DTSID="{D6A068EF-2292-4426-ABB4-6A2BBBB7B256}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -308,7 +313,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品金額"
-              DTS:DTSID="{943BB086-4F32-4ECA-A69B-38B0087C46CA}"
+              DTS:DTSID="{65F87E7E-6595-4EEE-9810-99AB838C78CE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -316,7 +321,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上数量(受託分)"
-              DTS:DTSID="{D43F717F-72DA-407A-BBAB-B73BB9485681}"
+              DTS:DTSID="{5EA1CD33-385E-4621-8FC8-E2FC532B2848}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -324,7 +329,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高(受託分)"
-              DTS:DTSID="{A68CEB11-4E58-4E47-BE2F-AD3304E66A06}"
+              DTS:DTSID="{E01CCC36-C676-4F0E-92B6-4B803A31A666}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -332,7 +337,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高原価(受託分)"
-              DTS:DTSID="{623A5926-2D62-4191-BE91-A8646961648D}"
+              DTS:DTSID="{9A70ABA1-8D13-461B-BBF0-FEFAED289DB8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -340,7 +345,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品数量(受託分)"
-              DTS:DTSID="{EFADB6A9-FC94-4742-8766-E1215A543495}"
+              DTS:DTSID="{81612A46-CC5B-4B49-A4AF-6B6B5C3F17A7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -348,7 +353,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品原価(受託分)"
-              DTS:DTSID="{0FD08E37-9108-4628-84B7-02BED2501B00}"
+              DTS:DTSID="{399481F1-74B7-4616-8CC9-47A1EEE50262}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -356,7 +361,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品金額(受託分)"
-              DTS:DTSID="{2D4F6C42-AB61-4CA3-99BA-94C2A9FB6CCA}"
+              DTS:DTSID="{FEEA5DC4-E83B-4B7A-BFA7-1DCEEAC50E2F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -364,7 +369,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上値引金額"
-              DTS:DTSID="{50194AFC-500B-4948-AAFE-1FC9BEA1D645}"
+              DTS:DTSID="{A70B16A8-6B2D-478B-84BB-269829EB5E20}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -372,7 +377,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純売上高"
-              DTS:DTSID="{661EC8F6-84D4-4348-9FF0-9439B2E68A4E}"
+              DTS:DTSID="{4A50470D-59BA-40F4-9C14-6BD16DE40EC8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -380,7 +385,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(総在庫)"
-              DTS:DTSID="{2C2FF93E-0C5B-4492-99D0-5E2669061B4F}"
+              DTS:DTSID="{3A00C383-8787-460A-BECF-E0FDBA84078B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -388,7 +393,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入原価(総在庫)"
-              DTS:DTSID="{1788C615-CF23-4F71-9489-2B5CED5C178B}"
+              DTS:DTSID="{C941C5D5-D81A-403F-8462-E3D22238B2CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -396,7 +401,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入売価(総在庫)"
-              DTS:DTSID="{F70E91E2-70B0-4902-82E9-6A05AB7FBD86}"
+              DTS:DTSID="{9EEBF1AB-5B8A-4A94-AA21-44824F7BDB39}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -404,7 +409,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(受託分)"
-              DTS:DTSID="{0128465E-C933-431F-9168-63D8D7701ED0}"
+              DTS:DTSID="{286E291D-92F1-4FB0-A87A-8C7F7D66CF91}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -412,7 +417,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(純在庫)"
-              DTS:DTSID="{59A69CC8-EFDC-431D-B9D0-3A63A4308A6D}"
+              DTS:DTSID="{FDA9D951-C9EE-4D9F-9291-4A489EE03FA6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -420,7 +425,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入原価(純在庫)"
-              DTS:DTSID="{4EB6F6ED-5A23-4CF9-9F11-0A87A1E1D903}"
+              DTS:DTSID="{5E4330F4-4874-40FA-AB26-E43B86C1DEFC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -428,7 +433,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入売価(純在庫)"
-              DTS:DTSID="{E8FF8C7D-7281-4589-BB2A-82F9C0CB6759}"
+              DTS:DTSID="{9C692859-EF3F-45B2-A12C-972363582981}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -436,7 +441,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品数量"
-              DTS:DTSID="{D9186B91-8DB7-4563-BDE5-16D4BE172907}"
+              DTS:DTSID="{D8A7EE3D-B01B-4A86-931E-6170FFC48B2F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -444,7 +449,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品原価"
-              DTS:DTSID="{2275F804-5691-44E0-838C-B34E4AEDF181}"
+              DTS:DTSID="{8F67A48A-1D6A-4CBF-A88B-AD994800D303}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -452,7 +457,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品売価"
-              DTS:DTSID="{7575D7D9-37D5-4CF7-9BAA-5BA855BB66E4}"
+              DTS:DTSID="{7B5EEA4E-CED0-4416-85FD-A06484E2B5E7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -460,7 +465,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品数量(受託分)"
-              DTS:DTSID="{A0BFCFE7-921E-4092-AF7E-641BB6D36F9B}"
+              DTS:DTSID="{56ABCCBC-3E98-4957-ADB7-F9CBB8627FFB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -468,7 +473,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入数量"
-              DTS:DTSID="{B12147F7-2208-49E9-AF71-A0CF67DAA9D5}"
+              DTS:DTSID="{F748E6BB-D1A6-4DA9-98D2-3D6728E246E7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -476,7 +481,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入原価"
-              DTS:DTSID="{FEBEA4AC-BBAB-416D-BF4A-91391D378351}"
+              DTS:DTSID="{341159AF-9381-4B85-85A1-D3D0C3CB84E8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -484,7 +489,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入売価"
-              DTS:DTSID="{D49D7C86-BB94-4979-BC41-E0CA7A5F1605}"
+              DTS:DTSID="{BD1D8AFD-EBFC-4AD2-BA69-DD150E4319B4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -492,7 +497,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計数量"
-              DTS:DTSID="{DA7B59FB-7EC3-49CA-8667-82376A9A97FB}"
+              DTS:DTSID="{DB56D410-9377-4F9C-B6BF-F63F4AB80FE4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -500,7 +505,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計原価"
-              DTS:DTSID="{CB71EB04-1C6E-4A81-945B-40799895951D}"
+              DTS:DTSID="{A7886268-732A-4044-9B6A-A3B53BD15E2A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -508,7 +513,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計売価"
-              DTS:DTSID="{FF29238B-43BE-4149-A02D-CAE738092BBF}"
+              DTS:DTSID="{A6196F6F-10ED-4257-9EEF-E3CEFFBE18A8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -516,7 +521,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="リベート"
-              DTS:DTSID="{A0B63840-1C87-49F1-888B-D54CA76D6E1E}"
+              DTS:DTSID="{4C088DCD-11A6-42D5-B94E-A56A8A676788}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -524,7 +529,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロイヤリティ"
-              DTS:DTSID="{0E4ABC6D-1F99-458B-835F-6F2097AED921}"
+              DTS:DTSID="{9F2CCF83-EBD9-4268-BB5D-99CE5E8F60D8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -532,7 +537,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="為替差損益"
-              DTS:DTSID="{0CD4705D-9D81-4BB5-ACB6-D06C2C5FD765}"
+              DTS:DTSID="{D2A0662F-9415-44A3-AC1D-26BA6EBA0EED}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -540,7 +545,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入値引"
-              DTS:DTSID="{9AE11987-40FF-43B4-8776-46B162226504}"
+              DTS:DTSID="{D936A2B7-5268-4FCC-9C0A-5460F62930A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -548,7 +553,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入値引合計金額"
-              DTS:DTSID="{7B39C277-3EC8-4A63-98C8-D73F32BA2007}"
+              DTS:DTSID="{56EE9FB7-FEC8-4273-9B88-38ECD9EFD254}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -556,7 +561,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振入数量"
-              DTS:DTSID="{CEEFAAEA-78AE-4ABD-A313-C0C3C2802767}"
+              DTS:DTSID="{118C4C58-9BC7-496C-87B6-292AB3B76944}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -564,7 +569,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入原価(移)"
-              DTS:DTSID="{C674EBD2-A0C7-470E-8B90-BFAD7244BBBA}"
+              DTS:DTSID="{8811E129-E2E7-4DFF-9361-76F8B845A15B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -572,7 +577,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入売価"
-              DTS:DTSID="{2AF8CBFD-DCAF-4A40-AA90-9983F172CA25}"
+              DTS:DTSID="{4F7E0B1A-251C-40E1-B9D6-67939B9E20F6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -580,7 +585,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振出数量"
-              DTS:DTSID="{6EB66F1C-AC66-4239-A6E4-D142E44FC6C7}"
+              DTS:DTSID="{0A03501A-79F2-49DE-B269-734B3F546D77}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -588,7 +593,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出原価(移)"
-              DTS:DTSID="{8AE17ACC-87E1-413F-9861-3FB8E1A0464E}"
+              DTS:DTSID="{10F5C6B2-8375-4FD7-A4B0-FEC530240CB1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -596,7 +601,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出売価"
-              DTS:DTSID="{706BB516-6FAA-44B9-9926-79FBBA08DA6C}"
+              DTS:DTSID="{5643F6E6-DB0E-4E16-9AEE-35F12959956E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -604,7 +609,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)数量"
-              DTS:DTSID="{1E3EB88A-985B-4C91-91CD-39A6338CA669}"
+              DTS:DTSID="{C892DFAE-AAAC-420D-8766-D2BC73160FF4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -612,7 +617,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)原価(移)"
-              DTS:DTSID="{1A07455A-25FF-4262-886F-0756A909702E}"
+              DTS:DTSID="{ADFB3544-DD34-4EF5-81DF-75011DB00222}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -620,7 +625,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)売価"
-              DTS:DTSID="{68295ED5-F2B4-4514-B2CE-5E1067E266CD}"
+              DTS:DTSID="{0B8E9415-25C5-4520-95EB-F954AF66BB75}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -628,7 +633,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)数量"
-              DTS:DTSID="{6B9209EC-DF04-4715-B2AA-74C9D1426454}"
+              DTS:DTSID="{2765643F-DD2B-4341-9A92-BF13B137C345}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -636,7 +641,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)原価(移)"
-              DTS:DTSID="{19D5262D-A8DA-4CEB-8910-78FEE51A4489}"
+              DTS:DTSID="{F2F0A63D-D13A-43AB-A3F9-80042815A259}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -644,7 +649,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)売価"
-              DTS:DTSID="{948DCAAB-978C-411A-BD9E-A538A9CC0D64}"
+              DTS:DTSID="{AB84AFE8-971A-4503-87EA-7F734067773E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -652,7 +657,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入数量"
-              DTS:DTSID="{24E858BD-7252-43C1-8C9C-BB17C7FDC9CC}"
+              DTS:DTSID="{271B8BA0-0BCF-4E35-81FC-F6E817FFDB1A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -660,7 +665,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入原価(移)"
-              DTS:DTSID="{F438A71C-FBCF-4B54-A4F5-842EBFA4F368}"
+              DTS:DTSID="{B77F9053-08BF-410E-96F5-7F6E2732DF39}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -668,7 +673,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入売価"
-              DTS:DTSID="{BADE5836-E79F-4ACC-BD75-F2F77B5CD39E}"
+              DTS:DTSID="{5182381F-D218-4F58-82D5-2C41F75E1492}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -676,7 +681,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出数量"
-              DTS:DTSID="{65F01E1C-899D-4144-99B4-5A3440B9FEFD}"
+              DTS:DTSID="{A1E99079-1969-4756-9B62-5CAFE58C1C68}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -684,7 +689,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出原価(移)"
-              DTS:DTSID="{890DB2FE-0C20-4E1A-AEFA-0C76CC29F3B6}"
+              DTS:DTSID="{CE331353-C59F-4408-BB42-D1D3AA1F3740}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -692,7 +697,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出売価"
-              DTS:DTSID="{BCD6CE7D-04D8-4631-8DDB-031D31F3A1B3}"
+              DTS:DTSID="{AA1423D7-EB0A-4EFA-A265-3FE752ED61F0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -700,7 +705,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振入数量(受託分)"
-              DTS:DTSID="{9B9A0195-3739-4AB3-8EA4-43B22392079F}"
+              DTS:DTSID="{CEB7E02E-849B-439D-B9C9-49C516BFEE14}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -708,7 +713,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振出数量(受託分)"
-              DTS:DTSID="{F0C57F13-DC47-44D9-8F31-9B51B7B3EF62}"
+              DTS:DTSID="{F8458B36-F564-4364-9A3A-B07BF796DF91}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -716,7 +721,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)数量(受託分)"
-              DTS:DTSID="{E931DFB5-607A-4115-834E-BF60D1B37615}"
+              DTS:DTSID="{D1FD4EDA-C26C-401E-B02F-CBFB77CFCE16}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -724,7 +729,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)数量(受託分)"
-              DTS:DTSID="{1FA359ED-D090-42CC-A5F8-F8EE0E14004D}"
+              DTS:DTSID="{476FF2DD-C2BF-4B09-8740-291E45338EBD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -732,7 +737,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入数量(受託分)"
-              DTS:DTSID="{9F2DE314-4758-45A1-8EEB-E1F5A2783478}"
+              DTS:DTSID="{A70F7F72-588E-47D2-B021-CE4E14D8131D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -740,7 +745,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出数量(受託分)"
-              DTS:DTSID="{CD71911E-FFBA-4041-90CF-00DFD55670B7}"
+              DTS:DTSID="{E842C0A5-2246-484D-8D19-D4D7E9478B7C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -748,7 +753,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替数量"
-              DTS:DTSID="{93613BCF-E5C2-4B70-AD78-308B8BB9A586}"
+              DTS:DTSID="{DBDE8203-30D1-481A-872B-DBAA10C62550}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -756,7 +761,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替原価(移)"
-              DTS:DTSID="{9932DB31-1851-42E7-A8BF-3FF204CE151D}"
+              DTS:DTSID="{45F8702C-97D7-4FAD-AC88-14D7420BEA91}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -764,7 +769,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替売価"
-              DTS:DTSID="{A293EC2E-56D9-46CA-8583-B3DA40DF4A24}"
+              DTS:DTSID="{508FAAE2-666F-4004-92FD-1CA2746406BA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -772,7 +777,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄数量"
-              DTS:DTSID="{1D637DE9-E4E2-4686-B9B3-1BAD43177579}"
+              DTS:DTSID="{E34B387D-ACBD-4D23-82F3-7E385DCFB7FB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -780,7 +785,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄原価(移)"
-              DTS:DTSID="{181BBD84-9B60-498B-B646-5805B8323358}"
+              DTS:DTSID="{9EB5CEC8-93D2-4DB4-90BC-FA80C8194DD0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -788,7 +793,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄売価"
-              DTS:DTSID="{4C08F82F-B5C7-4916-87ED-8617F3E1BBDB}"
+              DTS:DTSID="{6FDA4B0E-CB22-41B7-9E6C-2D0C7EF725FE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -796,7 +801,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="調整数量"
-              DTS:DTSID="{F9396416-7829-42AB-B58E-6AC7E29AF482}"
+              DTS:DTSID="{41FB035E-2ADA-4AB2-9126-3927B6671BAF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -804,7 +809,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="調整原価(移)"
-              DTS:DTSID="{5E6E9C04-D6FF-4A9A-BC55-7660CC495082}"
+              DTS:DTSID="{ABD9D8F6-E318-4C6A-BBF5-35D5590D604C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -812,7 +817,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="調整売価"
-              DTS:DTSID="{FB742D75-670F-43FC-B39F-A46961EDBBA7}"
+              DTS:DTSID="{65B66028-A44A-422E-BF2F-09165B464C70}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -820,7 +825,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売変金額"
-              DTS:DTSID="{392378E5-9E48-4183-9CDD-D5589064683A}"
+              DTS:DTSID="{12E76EDB-7199-494A-8697-F46DED971404}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -828,7 +833,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売変金額(受託分)"
-              DTS:DTSID="{2C8374AD-A3FB-4BD7-97B1-BB2AC8B9357A}"
+              DTS:DTSID="{EE6A3F25-1CCA-45C6-BC9C-C6EA7AF3E8F6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -836,7 +841,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="評価差損益金額"
-              DTS:DTSID="{4A918CBF-F03A-4DEF-B6EA-B4F523FB474B}"
+              DTS:DTSID="{2CC63DE2-A297-40CD-B3E9-4DB5FA6A13C4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -844,7 +849,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫数量"
-              DTS:DTSID="{3DAD1C17-54B1-4411-9351-5ABBE283FA01}"
+              DTS:DTSID="{13BBB4D6-BD1D-42B2-A059-D2519FA6D864}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -852,7 +857,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫原価(移)"
-              DTS:DTSID="{5F10148E-BE84-45AC-859F-BCABAD742C27}"
+              DTS:DTSID="{A0AD84AB-FFCE-430E-ABD9-C94FADC2BCA7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -860,7 +865,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫売価"
-              DTS:DTSID="{0208252A-290C-47AD-99D3-C704F7F2BFDA}"
+              DTS:DTSID="{949C8688-CA76-4A88-9980-00B24BEB1654}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -868,7 +873,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫数量(受託分)"
-              DTS:DTSID="{8CB54A43-B438-49E9-8D11-960E03DE1E42}"
+              DTS:DTSID="{13AE253A-80F1-4EB0-9D7C-00A24D547F64}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -876,7 +881,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫原価(移)(受託分)"
-              DTS:DTSID="{3E65E7DF-5719-4B08-B852-629F6E587A50}"
+              DTS:DTSID="{3F72246E-7D45-42B5-ACEF-9A602E8D69A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -884,7 +889,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫売価(受託分)"
-              DTS:DTSID="{B6B72B12-3EAA-4612-A2C5-A8ADD7748266}"
+              DTS:DTSID="{A2BD4B74-21DB-4193-B850-2E1F34D46661}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -892,7 +897,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫数量"
-              DTS:DTSID="{1E3B05A7-0EC0-4859-AC49-A171A8782E79}"
+              DTS:DTSID="{CB7E6EB7-3303-4ABC-9A24-34F961681D78}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -900,7 +905,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫原価(移)"
-              DTS:DTSID="{D1BE6311-E0BE-495F-A3F0-770AE124D679}"
+              DTS:DTSID="{51CD5E48-E3EB-43D6-A134-4D53356C6869}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -908,7 +913,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫売価"
-              DTS:DTSID="{55EE28BF-E5C1-4B8C-8741-1185A0D2454C}"
+              DTS:DTSID="{76CC80BD-8271-4EB9-99F7-D78597FDCF0C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -916,7 +921,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫数量(受託分)"
-              DTS:DTSID="{BD84C58B-58DB-4A1C-8F12-C234405BEFD6}"
+              DTS:DTSID="{D524B930-740E-4EFE-B5AF-BD433D3EB4EB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -924,7 +929,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫原価(移)(受託分)"
-              DTS:DTSID="{438BB2E0-7B3C-4268-B20A-930C7CDDABE8}"
+              DTS:DTSID="{6326AD74-5CCA-43A3-9450-796FE7828316}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -932,7 +937,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫売価(受託分)"
-              DTS:DTSID="{322E8D1E-9ADC-4CCA-A096-F39C829E9797}"
+              DTS:DTSID="{4826D821-CB62-46F8-B678-F73D83006901}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -940,7 +945,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス数量"
-              DTS:DTSID="{C1325859-4572-4BEE-83AE-608139701739}"
+              DTS:DTSID="{1152FA59-540F-4C46-ADA7-BFBEE6538EDE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -948,7 +953,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(移)"
-              DTS:DTSID="{23A1445B-7E67-43B5-8D16-74622545572F}"
+              DTS:DTSID="{A850D216-A9C2-432C-BB07-D7AE704824B4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -956,7 +961,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(売還)"
-              DTS:DTSID="{303394B9-2AD4-435A-81AA-CFDCCDEBE78D}"
+              DTS:DTSID="{6DE0ED83-91F6-404C-8F6A-09D6748BAEC7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -964,7 +969,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス売価"
-              DTS:DTSID="{2E656BAB-8713-4D27-AD80-D2AD6168EEE0}"
+              DTS:DTSID="{55F8D250-07CD-43D9-A819-147A91BF52B9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -972,7 +977,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス数量(受託分)"
-              DTS:DTSID="{7E6148E3-BBBD-4A7D-96DA-D6B6750832DA}"
+              DTS:DTSID="{DBD726B6-64D5-45A1-B501-126803CC279F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -980,7 +985,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(移)(受託分)"
-              DTS:DTSID="{E9580866-3404-41B9-A868-6F55FA8059FB}"
+              DTS:DTSID="{4FA57635-C10E-4484-857F-2F9B22AE0B94}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -988,7 +993,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス売価(受託分)"
-              DTS:DTSID="{B9AA863B-7208-49F9-B889-5697AF65F2FD}"
+              DTS:DTSID="{541D2FC2-D83D-497B-9C84-5ECD1EDF7173}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -996,7 +1001,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫数量"
-              DTS:DTSID="{52BC49E3-661E-434B-BA67-58BBB67098F8}"
+              DTS:DTSID="{F965E15A-BE5C-443C-A035-4DD61849B50F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1004,7 +1009,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫原価(売還)"
-              DTS:DTSID="{0817CC00-5BDA-4716-86B1-E8A200CC7106}"
+              DTS:DTSID="{EDF66FB9-A5FF-4E5D-B072-0E948FF06603}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1012,7 +1017,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫原価(移)"
-              DTS:DTSID="{0CFE3E4F-EAD9-4CB1-BBAE-EE614914E138}"
+              DTS:DTSID="{552408C4-7688-46FE-A89C-9730782EDE71}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1020,7 +1025,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫売価"
-              DTS:DTSID="{4006BFF6-C600-465F-9749-564C1C702C8D}"
+              DTS:DTSID="{19504792-21F8-4DA9-87A2-0E67692F86E9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1028,7 +1033,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="前売還調整額"
-              DTS:DTSID="{351E3D35-C6A8-43BE-BED8-1774CADA06B8}"
+              DTS:DTSID="{86779D48-2704-450B-A7CB-4D3977FEC310}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1036,7 +1041,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫数量"
-              DTS:DTSID="{9E8748EB-D139-41EC-9DBC-977067BAC7DE}"
+              DTS:DTSID="{3FF5D5D6-C930-4F83-8A57-10E4DB8D01DF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1044,7 +1049,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫原価(売還)"
-              DTS:DTSID="{779DC396-9088-453F-966A-C9427F5451E3}"
+              DTS:DTSID="{FB7A9E55-D7F4-4857-84B9-6B5006E7CE2C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1052,7 +1057,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫原価(移)"
-              DTS:DTSID="{2EEC9AD5-C9C5-4C28-8226-950A41018191}"
+              DTS:DTSID="{1DA5AA0B-4942-42CE-AE6A-A80D3BEAA48E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1060,7 +1065,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫売価"
-              DTS:DTSID="{11F50BFE-5F29-4F47-B8AD-2E6FA2211BFB}"
+              DTS:DTSID="{C173AC79-76AC-4293-9B21-BDE6B77F433C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1068,7 +1073,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="売還調整額"
-              DTS:DTSID="{FB395F19-ADB0-499A-A853-5975210C627F}"
+              DTS:DTSID="{8020F985-CA70-4A7A-891A-7E0098B37F7B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1076,7 +1081,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="売上原価(売還)"
-              DTS:DTSID="{5B2EF47B-193F-4DDB-B331-5A48F6471147}"
+              DTS:DTSID="{CBB484B4-B04D-491F-B923-29489DFC6820}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1084,7 +1089,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上原価(移)"
-              DTS:DTSID="{1D651A20-4F69-4DC2-BBA8-47B1A1E289BC}"
+              DTS:DTSID="{7BA08B74-CE8C-47E3-821B-542476DF9495}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1092,7 +1097,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="原価率(％)(売還)"
-              DTS:DTSID="{11B866F4-F688-4012-8850-691F115BE313}"
+              DTS:DTSID="{BE247011-4F24-44DF-9FE5-3E94C7BEE7EB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1100,7 +1105,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="粗利(売還)"
-              DTS:DTSID="{606ECB9F-0ECB-4073-AB9D-107F1CD5CDA9}"
+              DTS:DTSID="{95B7DA97-A932-40AB-95AA-EEBE8D4D3DC8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1108,7 +1113,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="粗利(移)"
-              DTS:DTSID="{98FAD7A8-EB95-4B78-9D26-F02B93F581A3}"
+              DTS:DTSID="{023F3781-23B6-4439-BDEC-E8906E524088}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1116,7 +1121,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫数量(総在庫)"
-              DTS:DTSID="{977C93CA-C078-4C9E-A459-1F768CA959B5}"
+              DTS:DTSID="{0D5FFF84-8737-4ADF-ADCD-0FB67D3E8183}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1124,7 +1129,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫数量(総在庫)"
-              DTS:DTSID="{362394F5-3CE0-4D40-9597-A7E83746F0DC}"
+              DTS:DTSID="{AB1A8341-DC56-494D-A2B8-539C0CCCB554}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1132,7 +1137,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="単純粗利"
-              DTS:DTSID="{F4D75DFF-7F68-4F39-AE18-6BD40B42379B}"
+              DTS:DTSID="{8982916C-94C9-4CAD-8548-24F5E65BD706}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1140,7 +1145,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="客数"
-              DTS:DTSID="{59AE386E-14A6-4BB8-BE2B-95243BD6E8E9}"
+              DTS:DTSID="{0500348A-A385-42C0-9B7F-04FD590EB6DB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1149,7 +1154,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="登録者"
-              DTS:DTSID="{37A03E55-9C9E-4782-805E-316D27F6810A}"
+              DTS:DTSID="{CF05F90F-FAA8-48F2-BFE8-E3E9271D653B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1158,7 +1163,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="変更日"
-              DTS:DTSID="{D566B1D5-5ADE-491F-B245-384CA20E2A70}"
+              DTS:DTSID="{97248044-1CA0-4571-91A5-C6A843E17E14}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1167,7 +1172,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="変更時刻"
-              DTS:DTSID="{F291434F-ED70-4BEA-B723-C06554E24B10}"
+              DTS:DTSID="{A6730E9A-8516-4116-8EAC-2C37E64B73A9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1176,7 +1181,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="略式の UTC タイムスタンプ (YYYYMMDDhhmmss)"
-              DTS:DTSID="{BADD8A7C-BFCC-4307-BE0F-8BE22A79FAF6}"
+              DTS:DTSID="{2413E85A-DB8D-48D9-9255-EDE695A6471A}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1188,7 +1193,7 @@
       DTS:ConfigString="Logging.txt"
       DTS:CreationName="Microsoft.LogProviderTextFile"
       DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
-      DTS:DTSID="{BFCA7D41-F474-4DD7-8AF2-43138344C406}"
+      DTS:DTSID="{1F19208E-E009-4726-B498-7EBF74B82CA6}"
       DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
       <DTS:ObjectData>
         <InnerObject />
@@ -1198,7 +1203,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{1EDD89E4-8B30-4DEB-A61E-1CF9379BC427}"
+      DTS:DTSID="{CA00079F-291C-4FF3-90AA-18172D773B53}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="autoLoggerPath">
@@ -1207,7 +1212,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{88918FE2-5FA2-479C-BE44-E0C7C990BFD4}"
+      DTS:DTSID="{1C691835-F62C-47BF-A50E-078B9E1CED9C}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="connectionString">
@@ -1216,18 +1221,18 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4C3A3022-07B4-4C62-86EA-BEAA0CE775C6}"
+      DTS:DTSID="{81C7C19E-F936-4AC4-9DDD-4AC7BA4FAEC8}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="REPLACE(REPLACE(REPLACE((DT_WSTR, 20) (DT_DATE) GETDATE(),&quot;/&quot;,&quot;&quot;),&quot; &quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;)"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="dateTimeStamp">
       <DTS:VariableValue
-        DTS:DataType="8">20170731142533</DTS:VariableValue>
+        DTS:DataType="8">20170508135102</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D0ABF765-9DAC-4948-821B-25C1238A468A}"
+      DTS:DTSID="{477BC411-F575-4E71-9F71-ADE99A236E5A}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="end_date">
@@ -1236,7 +1241,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{98DF35BD-2E76-4187-A5A4-2A87A7FE32F5}"
+      DTS:DTSID="{DE8297B2-F3AB-4EBC-90C5-A0DA6A54351C}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="fileFolder">
@@ -1245,7 +1250,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3DB54BBA-BB72-4331-9E69-A9B1977BB9E3}"
+      DTS:DTSID="{18B007E2-9660-4D2B-9EDD-8285D917C16B}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ftpFileName">
@@ -1254,7 +1259,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{E069884C-4E82-484A-95A4-E4E5D65638B3}"
+      DTS:DTSID="{075DE4F4-FF47-43A9-97D0-F92B3B665511}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="getsudo">
@@ -1263,7 +1268,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{722A7647-F309-48D0-8B14-B42574412681}"
+      DTS:DTSID="{61B7C534-A523-40B7-9FB4-015FFC9B1B85}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="kaikei">
@@ -1273,7 +1278,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8C0FD8C9-A6D2-4FD8-84D2-4E5C49407E1F}"
+      DTS:DTSID="{9D010F95-5692-48BE-845C-39D8D132AC06}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="nendo">
@@ -1282,7 +1287,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F1E3119C-774B-463C-9BB9-E9BEC6AF85C0}"
+      DTS:DTSID="{ED903FE2-0453-4E6B-BB68-3EF247FD903F}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="packageFolder">
@@ -1291,7 +1296,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A535D493-E875-473C-91A4-A55AD4A4A493}"
+      DTS:DTSID="{188E8AC5-F2BC-41EB-BF61-F84DD704FF84}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="prevGetu">
@@ -1300,7 +1305,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F44E1F5C-7304-43D1-BDFF-111C6A1A1C24}"
+      DTS:DTSID="{ACA9C167-F468-4DB9-A196-EE25E4A027A2}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="prevNendo">
@@ -1309,7 +1314,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{5FF68941-00DE-4738-B36E-56CFC5B8F947}"
+      DTS:DTSID="{2FDAE99B-9E08-47B4-99A2-BC6C6733FDD8}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="REPLACE(REPLACE((REPLACE( @[User::ruikeiSyukeiSql] , &quot;T_DAY_TEN_SKU_UKEBARAI_RUIKEI_201701&quot;, @[User::thisMonthRuikeiTable] )),&quot;2016/12/21&quot;, (DT_STR, 10, 932) @[User::start_date]), &quot;2017/01/20&quot;,(DT_STR, 10, 932) @[User::end_date])"
       DTS:IncludeInDebugDump="2345"
@@ -1320,7 +1325,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{75836606-AE07-464F-9722-3121AF5E7C18}"
+      DTS:DTSID="{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="start_date">
@@ -1329,7 +1334,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4408B255-2A96-40C5-A4D0-604396FC11D7}"
+      DTS:DTSID="{614089E9-2A8F-44B2-B8A0-75143E09C8A7}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="thisMonthRuikeiTable">
@@ -1338,14 +1343,14 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{EA26319A-DFC7-41C7-B3EE-6E682AE4DAE4}"
+      DTS:DTSID="{61C9832A-8167-4A31-B02B-2D9CAE45AE77}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; +  (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0, GETDATE() )),2))"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="today">
       <DTS:VariableValue
-        DTS:DataType="7">7/31/2017</DTS:VariableValue>
+        DTS:DataType="7">5/8/2017</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:LoggingOptions
@@ -1428,7 +1433,7 @@
     </DTS:Property>
     <DTS:SelectedLogProviders>
       <DTS:SelectedLogProvider
-        DTS:InstanceID="{BFCA7D41-F474-4DD7-8AF2-43138344C406}" />
+        DTS:InstanceID="{1F19208E-E009-4726-B498-7EBF74B82CA6}" />
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
@@ -1436,7 +1441,7 @@
       DTS:refId="Package\FTP PUT"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{71B04B27-079D-4517-BDF5-BDE3E3B50C96}"
+      DTS:DTSID="{D6562A0C-5CFE-4AFE-AD78-848216CEDB3E}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="FTP PUT"
@@ -1452,14 +1457,35 @@
           Language="CSharp"
           ReadOnlyVariables="User::ftpFileName,User::packageFolder,System::PackageName">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_4260a491174c473c9badfd6cb0bf44b9")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -1580,6 +1606,35 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Settings.get_Default():ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Sett" +
+    "ings")]
+
+namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="ST_34cf097b9faf461a8eec98ea283f05fb.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{B1E9EC81-E9E1-485A-8532-1509F58C8AD3}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_4260a491174c473c9badfd6cb0bf44b9</RootNamespace><AssemblyName>ST_34cf097b9faf461a8eec98ea283f05fb</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Program.cs" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\InstallDir#\devenv.exe" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
           <ProjectItem
@@ -1647,19 +1702,6 @@ namespace ST_4260a491174c473c9badfd6cb0bf44b9
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Program.cs"
-            Encoding="UTF8"><![CDATA[using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ST_4260a491174c473c9badfd6cb0bf44b9
-{
-    class Program
-    {
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
@@ -1681,64 +1723,27 @@ namespace ST_4260a491174c473c9badfd6cb0bf44b9
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
+            Name="Program.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Settings.get_Default():ST_4260a491174c473c9badfd6cb0bf44b9.Properties.Sett" +
-    "ings")]
-
-namespace ST_4260a491174c473c9badfd6cb0bf44b9.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
+namespace ST_4260a491174c473c9badfd6cb0bf44b9
+{
+    class Program
+    {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_4260a491174c473c9badfd6cb0bf44b9")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_4260a491174c473c9badfd6cb0bf44b9")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -1950,7 +1955,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       DTS:refId="Package\R051_2データ作成"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{7957135F-ED04-424A-989A-B4516F9A992B}"
+      DTS:DTSID="{8DE629FE-C5CA-49ED-B1EC-19A6947EF47B}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="R051_2データ作成"
@@ -3937,7 +3942,7 @@ ORDER BY 店舗コード,MST.ＳＫＵコード</property>
                 <property
                   dataType="System.String"
                   description="SQL コマンドのパラメーターと変数間のマッピングです。"
-                  name="ParameterMapping">"Parameter0:Input",{75836606-AE07-464F-9722-3121AF5E7C18};"Parameter1:Input",{D0ABF765-9DAC-4948-821B-25C1238A468A};"Parameter2:Input",{75836606-AE07-464F-9722-3121AF5E7C18};"Parameter3:Input",{D0ABF765-9DAC-4948-821B-25C1238A468A};"Parameter4:Input",{75836606-AE07-464F-9722-3121AF5E7C18};"Parameter5:Input",{D0ABF765-9DAC-4948-821B-25C1238A468A};"Parameter6:Input",{75836606-AE07-464F-9722-3121AF5E7C18};"Parameter7:Input",{D0ABF765-9DAC-4948-821B-25C1238A468A};</property>
+                  name="ParameterMapping">"Parameter0:Input",{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9};"Parameter1:Input",{477BC411-F575-4E71-9F71-ADE99A236E5A};"Parameter2:Input",{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9};"Parameter3:Input",{477BC411-F575-4E71-9F71-ADE99A236E5A};"Parameter4:Input",{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9};"Parameter5:Input",{477BC411-F575-4E71-9F71-ADE99A236E5A};"Parameter6:Input",{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9};"Parameter7:Input",{477BC411-F575-4E71-9F71-ADE99A236E5A};</property>
               </properties>
               <connections>
                 <connection
@@ -12192,7 +12197,7 @@ WHERE 売上計上日 BETWEEN ? AND ? GROUP BY 店舗コード</property>
                 <property
                   dataType="System.String"
                   description="SQL コマンドのパラメーターと変数間のマッピングです。"
-                  name="ParameterMapping">"Parameter0:Input",{75836606-AE07-464F-9722-3121AF5E7C18};"Parameter1:Input",{D0ABF765-9DAC-4948-821B-25C1238A468A};</property>
+                  name="ParameterMapping">"Parameter0:Input",{0BCF2EEC-6388-4A37-8B5B-DFAB707F82F9};"Parameter1:Input",{477BC411-F575-4E71-9F71-ADE99A236E5A};</property>
               </properties>
               <connections>
                 <connection
@@ -12658,7 +12663,7 @@ WHERE 売上計上日 BETWEEN ? AND ? GROUP BY 店舗コード</property>
       DTS:refId="Package\TRUNCATE R051_2"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{AF293A04-8681-4DB6-A939-4C2725643921}"
+      DTS:DTSID="{2665766F-5B36-4849-B24E-461E20CDF673}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="TRUNCATE R051_2"
@@ -12669,7 +12674,7 @@ WHERE 売上計上日 BETWEEN ? AND ? GROUP BY 店舗コード</property>
         DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{21DFF1E6-5A7F-46A7-9E84-67849EAE3664}"
+          SQLTask:Connection="{EEF90544-AA74-458C-BE78-1BAC6BA68C73}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE R051_2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -12677,7 +12682,7 @@ WHERE 売上計上日 BETWEEN ? AND ? GROUP BY 店舗コード</property>
       DTS:refId="Package\データ フロー タスク"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="データ フロー タスク"
-      DTS:DTSID="{09B330A4-8743-4977-83D7-68B4A32A5784}"
+      DTS:DTSID="{8BC9D465-EE37-4487-83F3-2CB601A37357}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="データ フロー タスク"
@@ -17143,7 +17148,7 @@ ORDER BY 店舗コード</property>
       DTS:refId="Package\回復テーブル選択"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{B3CA50BD-F7DB-42CA-A52A-508FB6835884}"
+      DTS:DTSID="{90ECD638-CBF3-4782-947D-F3C565BFAE17}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="回復テーブル選択"
@@ -17159,6 +17164,36 @@ ORDER BY 店舗コード</property>
           Language="CSharp"
           ReadOnlyVariables="User::connectionString,User::today"
           ReadWriteVariables="User::end_date,User::getsudo,User::kaikei,User::nendo,User::prevGetu,User::prevNendo,User::start_date,User::thisMonthRuikeiTable">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_8b28edd8aa494aedbc07ba48b45ea0df")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_8b28edd8aa494aedbc07ba48b45ea0df")]
+[assembly: AssemblyCopyright("Copyright @  2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -17278,35 +17313,6 @@ ORDER BY 店舗コード</property>
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties.Settings.get_Default():ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties.Sett" +
-    "ings")]
-
-namespace ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
           <ProjectItem
             Name="ST_49c3b7e49cce41f29b1494e9e4b3deec.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{7b511012-ddb7-45b2-a2d9-40a94b60a4ea}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_8b28edd8aa494aedbc07ba48b45ea0df</RootNamespace><AssemblyName>ST_49c3b7e49cce41f29b1494e9e4b3deec</AssemblyName><TargetFrameworkVersion>v4.0</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\10.0\InstallDir#\devenv.exe" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" /><Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host><ProjectClient><HostIdentifier>SSIS_ST120</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
@@ -17544,35 +17550,34 @@ namespace ST_8b28edd8aa494aedbc07ba48b45ea0df
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_8b28edd8aa494aedbc07ba48b45ea0df")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_8b28edd8aa494aedbc07ba48b45ea0df")]
-[assembly: AssemblyCopyright("Copyright @  2016")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties.Settings.get_Default():ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties.Sett" +
+    "ings")]
 
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+namespace ST_8b28edd8aa494aedbc07ba48b45ea0df.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -17839,7 +17844,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{666E58F7-AC3A-4062-B320-BA2BDFB69EAE}"
+      DTS:DTSID="{E6226BF1-50A1-431B-9D85-965FEAA7C579}"
       DTS:From="Package\TRUNCATE R051_2"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -17847,7 +17852,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B351C2ED-44F5-4940-83E8-2D517903928A}"
+      DTS:DTSID="{DDA6BB32-46D5-42A6-B87A-91E39C83568B}"
       DTS:From="Package\回復テーブル選択"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -17855,7 +17860,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{4916814B-2643-4458-BDD3-1A43C4456F72}"
+      DTS:DTSID="{2E904ABE-06E1-42CB-8478-8C0AFACB7B66}"
       DTS:From="Package\R051_2データ作成"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -17863,7 +17868,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{4A3E5712-DEB4-4FB4-91EE-23653CAEBF77}"
+      DTS:DTSID="{51CA8436-D214-4948-8EE7-CDCB681C2284}"
       DTS:From="Package\データ フロー タスク"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"

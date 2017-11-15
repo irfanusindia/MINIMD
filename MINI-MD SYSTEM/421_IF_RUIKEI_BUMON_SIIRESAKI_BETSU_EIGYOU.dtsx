@@ -5,34 +5,34 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="RONDMA6400240"
   DTS:CreatorName="RIGHT-ON\999982"
-  DTS:DTSID="{8D6B71C7-F497-48F3-8F26-D7B1305CC5FF}"
+  DTS:DTSID="{C389BA3C-1B20-4CD2-878D-05CB12BB4FAC}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
   DTS:LocaleID="1041"
   DTS:ObjectName="421_IF_RUIKEI_BUMON_SIIRESAKI_BETSU_EIGYOU"
   DTS:PackageType="5"
-  DTS:VersionBuild="347"
-  DTS:VersionGUID="{55E337F4-7942-493C-87BC-CB58723CCD3F}">
+  DTS:VersionBuild="342"
+  DTS:VersionGUID="{ED04C3AD-7C0B-43E7-931A-1396BF4C155D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Logging.txt]"
       DTS:CreationName="FILE"
-      DTS:DTSID="{3B1482E3-FB2E-46B2-9E4A-02EE9E08C83E}"
+      DTS:DTSID="{C22F91CF-4799-4362-9B72-E6D9FA23CA9F}"
       DTS:ObjectName="Logging.txt">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::autoLoggerPath] +"\\"+ @[System::PackageName]  +"_"+ ((DT_WSTR,4)YEAR(DATEADD("Day",0,GETDATE()))  + RIGHT("00" + (DT_WSTR,2)MONTH(DATEADD("Day",0,GETDATE())),2) +  RIGHT("00" + (DT_WSTR,2)DAY(DATEADD("Day",0,GETDATE())),2))</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:FileUsageType="1"
-          DTS:ConnectionString="D:\public\dailyLog\421_IF_RUIKEI_BUMON_SIIRESAKI_BETSU_EIGYOU_20170725" />
+          DTS:ConnectionString="D:\public\dailyLog\421_IF_RUIKEI_BUMON_SIIRESAKI_BETSU_EIGYOU_20170420" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MINIMD]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{EBFA6B32-A1D7-4322-9BA2-77D92AFE07C0}"
+      DTS:DTSID="{98D29CC7-3C61-4667-87C9-F333E2D2140D}"
       DTS:ObjectName="MINIMD">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -40,7 +40,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAi8keQ+723USXFCAUh5mH1wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAbr0bT01S3aeTqWm/40r6pAAAAAASAAACgAAAAEAAAAG4z/7nmVVnWaXyWpyv0VUEYAAAAGgSfKXOfrcfgliOfU4Xiv+5bpR1KpJg2FAAAAJ1jNzFzNUNIXTCH5tW5rKb7d3FC</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA32tYfgxgJkK7gRQWnfokdwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAarFeDP9hTGi12yzBvBhnL2pKX87bXTnaL8hasqSreNgAAAAAOgAAAAAIAACAAAACH60xKUsx6zKpJD1GbxQIqrWed7wlurGxzbKdk415HjiAAAABK2uK1ff4/+OcI7QAzunvjGWLxTlw2Log6OCM5ZZQ0qEAAAACfIrM10vhqiHtqahTMmq8vocFej7ezOQLa2Dx/Ffrne680ugpwpQe5S7K473p9rxgStKAxDaScZE91dvv2vFZ+</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -48,7 +48,7 @@
       DTS:refId="Package.ConnectionManagers[TSV_CREATOR]"
       DTS:CreationName="FLATFILE"
       DTS:Description="TSV_CREATOR"
-      DTS:DTSID="{D92AF281-CEA7-4D30-8C84-A2C01BCCF4C3}"
+      DTS:DTSID="{56735039-D8F5-44E0-B288-5C9C268FB634}"
       DTS:ObjectName="TSV_CREATOR">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::fileFolder] + "\\R052_" +  REPLACE(((DT_WSTR, 10) @[User::today]),"/","") + ".TSV"</DTS:PropertyExpression>
@@ -60,7 +60,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="932"
-          DTS:ConnectionString="D:\public\IM_FILES\R052_20170725.TSV">
+          DTS:ConnectionString="D:\public\IM_FILES\R052_20170420.TSV">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -69,7 +69,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="年度"
-              DTS:DTSID="{9D189A8D-85FF-43CF-963C-D96295D215EA}"
+              DTS:DTSID="{3993676F-0E24-4162-BFA4-34120573FE1E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -78,7 +78,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="会計期間"
-              DTS:DTSID="{74D8512B-56D6-4BB0-A481-B4AE4D41B13E}"
+              DTS:DTSID="{1D6A7E5C-8AAD-4E19-85C3-77BDDDB099A8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -87,7 +87,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="月度"
-              DTS:DTSID="{BD9C381B-F6C3-4405-ABC6-84798AAAFF72}"
+              DTS:DTSID="{E058394E-D30E-42F9-9171-6BFCB7CC6AFA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -96,7 +96,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="部門"
-              DTS:DTSID="{681EFA3F-A97A-48F1-9190-5C0F9D714B47}"
+              DTS:DTSID="{912BFB39-86F7-4D08-8586-BB499325D207}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -105,7 +105,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入先コード"
-              DTS:DTSID="{9F88C68E-A83A-4E61-BBCF-FEA125037E79}"
+              DTS:DTSID="{3E586E80-B38C-4F0B-AC4D-827A8B0D5658}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +113,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上数量"
-              DTS:DTSID="{21452810-2267-4D8A-B058-2815284AEC1C}"
+              DTS:DTSID="{6107FB39-ADEA-4001-99C3-957DED9CFE6D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高原価"
-              DTS:DTSID="{CDFA4287-24AA-44C7-8ADC-B5A9AA8D2C92}"
+              DTS:DTSID="{A06C57E4-898B-41A6-9CF1-66CED8B4834D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -129,7 +129,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高"
-              DTS:DTSID="{19291B13-71E0-456B-8C47-CA1DBC5F431F}"
+              DTS:DTSID="{1B2BF042-12A3-4AE8-B4CD-D0914F62A76A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -137,7 +137,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品数量"
-              DTS:DTSID="{D0BB6181-794E-416C-BDFC-64234447E7C4}"
+              DTS:DTSID="{97FDBB42-B964-4C75-8A7E-59DA365BB4D3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -145,7 +145,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品原価"
-              DTS:DTSID="{8E02B851-DBF2-4B46-AA0A-92BC8944A839}"
+              DTS:DTSID="{9B96F607-D2C5-4A8F-84E5-A9E31D79684E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -153,7 +153,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品金額"
-              DTS:DTSID="{1F09C825-6DDC-43BB-9411-078E52C03E97}"
+              DTS:DTSID="{888E46A9-97B0-4A27-9F3E-989127D9AE01}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -161,7 +161,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上数量(受託分)"
-              DTS:DTSID="{5A0F288C-4BF3-47DB-834D-5CFF0A55250E}"
+              DTS:DTSID="{D25190A9-E6D9-478C-9094-2DD09AB2CA0A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -169,7 +169,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高原価(受託分)"
-              DTS:DTSID="{F08A14E6-1224-457E-B44F-E50845A648C7}"
+              DTS:DTSID="{9558219B-D0E3-43F9-B38F-BEEBBB553543}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -177,7 +177,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総売上高(受託分)"
-              DTS:DTSID="{D2E1D797-DC24-47BF-9EE9-76CC37597CFC}"
+              DTS:DTSID="{7600A450-8496-47CB-8690-A43770985579}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -185,7 +185,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品数量(受託分)"
-              DTS:DTSID="{51E249ED-9C6E-405A-A8D3-4E61C29E1F2C}"
+              DTS:DTSID="{B58FC6CE-3FC4-4A00-845B-00CD5151F080}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -193,7 +193,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品原価(受託分)"
-              DTS:DTSID="{1AC10F02-2399-4044-BBE6-9322DB75176B}"
+              DTS:DTSID="{51244223-C1A0-4628-B6C4-6720C70259F2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -201,7 +201,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上返品金額(受託分)"
-              DTS:DTSID="{C32B39F6-B07B-4E95-833F-08E035129E3C}"
+              DTS:DTSID="{6B576FAC-AD51-4F62-B443-54277E5F6E64}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -209,7 +209,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上値引金額"
-              DTS:DTSID="{A15C6BA6-35D0-4F5B-8A15-342902D10D6E}"
+              DTS:DTSID="{05E87BA3-31C1-4642-B386-72022F644741}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -217,7 +217,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純売上高"
-              DTS:DTSID="{4E0655D4-529A-4904-B648-6DE7126ABDA9}"
+              DTS:DTSID="{61443F77-E6FF-4B28-A5C7-43EFD5561F5C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -225,7 +225,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(総在庫)"
-              DTS:DTSID="{8AD13632-3ED9-4CA2-A12F-18D8EA4323C4}"
+              DTS:DTSID="{C677D6FC-1394-48CE-B082-B8BC3A73FC0A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -233,7 +233,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入原価(総在庫)"
-              DTS:DTSID="{E4469A10-970A-4920-8B8A-DB481C707488}"
+              DTS:DTSID="{91ED8AA7-6EEA-46BC-BA55-FFAB2E107894}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -241,7 +241,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入売価(総在庫)"
-              DTS:DTSID="{D4952AAD-355A-49FE-B8DF-183D4B6B08DA}"
+              DTS:DTSID="{FF857166-9044-4EA9-B2FA-0118E2C7ADAD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -249,7 +249,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(受託分)"
-              DTS:DTSID="{4528882F-E9E2-4717-9417-73827D9BF788}"
+              DTS:DTSID="{8DF11344-205A-4C00-801F-9FF0404A12E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -257,7 +257,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入数量(純在庫)"
-              DTS:DTSID="{131CA0BC-8566-42C9-895A-1A27C8A0D5A1}"
+              DTS:DTSID="{50C177B9-1D75-4329-8278-43B88C42EF52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -265,7 +265,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入原価(純在庫)"
-              DTS:DTSID="{DDBCA09B-79D0-403A-A73B-25D6C02FF753}"
+              DTS:DTSID="{22511185-7C63-4D1F-9FB7-040E07AC95BA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -273,7 +273,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="総仕入売価(純在庫)"
-              DTS:DTSID="{90CE3B4C-FEF8-4F24-9255-DEE8073DD429}"
+              DTS:DTSID="{6E52AEAD-0404-47C6-A704-139B1252C6C1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -281,7 +281,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品数量"
-              DTS:DTSID="{169F62F1-BB0A-4BDA-B7A4-7363F1CAEF86}"
+              DTS:DTSID="{56E769D5-62FA-4CAE-A013-BF32F6FFF54F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -289,7 +289,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品原価"
-              DTS:DTSID="{183C05E5-4E51-423A-AEC8-9723732A7A7F}"
+              DTS:DTSID="{F924BF23-7748-44AA-BDDD-A360A430EE0B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -297,7 +297,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品売価"
-              DTS:DTSID="{131E26A7-B576-4F6A-9445-70B1CAF316E0}"
+              DTS:DTSID="{8200B452-3D16-42D1-8993-91427B8C19F6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -305,7 +305,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入返品数量(受託分)"
-              DTS:DTSID="{F4AFF3E2-A9CA-4557-A54E-62AEAC56EB8D}"
+              DTS:DTSID="{B6608B6E-D786-4449-BEB9-549046AF1442}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -313,7 +313,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入数量"
-              DTS:DTSID="{9B615C13-AD21-420C-AA10-6A43BF765EB3}"
+              DTS:DTSID="{E73549AE-1E53-4043-BB41-2FEC70504051}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -321,7 +321,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入原価"
-              DTS:DTSID="{8B81E02B-C148-4747-AA47-41A9E1B2E927}"
+              DTS:DTSID="{9F577E90-59E3-4B22-80E9-671D8D73017D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -329,7 +329,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="純仕入売価"
-              DTS:DTSID="{C95CBEA6-0712-499E-887A-5D15124C6A39}"
+              DTS:DTSID="{E6B784E0-5D53-4575-9FCA-BB69B0600E1E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -337,7 +337,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計数量"
-              DTS:DTSID="{44FFC708-2952-47DF-AEE3-764718976B72}"
+              DTS:DTSID="{4AD9BE22-24D7-4A39-973A-48A625631625}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -345,7 +345,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計原価"
-              DTS:DTSID="{58A588C0-44DD-40C8-9306-1C624D209D1A}"
+              DTS:DTSID="{D41CD7CA-5975-46F0-9426-3B6C26372416}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -353,7 +353,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入合計売価"
-              DTS:DTSID="{0AB95FA2-7D86-4204-BD49-75E7F8973490}"
+              DTS:DTSID="{011791FC-4D9E-4C52-AA3C-9CBFAACF4B25}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -361,7 +361,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="リベート"
-              DTS:DTSID="{7478D294-1E13-4E9D-AEB5-4D0EC77A2DFB}"
+              DTS:DTSID="{6D4F2B3F-78BC-421C-823E-323B71E64A10}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -369,7 +369,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロイヤリティ"
-              DTS:DTSID="{EEF83539-3F32-4B42-B02D-B9650AC88DCD}"
+              DTS:DTSID="{8AE33110-DA6E-450D-B389-960749620BE7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -377,7 +377,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="為替差損益"
-              DTS:DTSID="{CE049316-9B47-4600-957A-C9A9B1F0E2E7}"
+              DTS:DTSID="{EE7D3CCB-A19A-492B-AC10-BD06193663F2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -385,7 +385,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入値引"
-              DTS:DTSID="{FB8AA16B-3856-4B5C-99E3-5795183A227C}"
+              DTS:DTSID="{31B07356-98AA-4083-B8DA-5E41EE74F4DB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -393,7 +393,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="仕入値引合計金額"
-              DTS:DTSID="{0469043E-6248-4F07-B986-688D2AACC796}"
+              DTS:DTSID="{10D918D8-0CF5-4674-9C90-9DF98E1CE375}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -401,7 +401,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入数量"
-              DTS:DTSID="{BDC428E9-1F1A-4F20-8A2A-0089E5CE7E5D}"
+              DTS:DTSID="{4E9551E4-E620-48D0-8189-6E99FF8B2C1C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -409,7 +409,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入原価(移)"
-              DTS:DTSID="{45C242B6-C4A4-46A0-A91D-4CBA3CEB744E}"
+              DTS:DTSID="{87734C61-66D9-4E32-9975-2F1605E6E15D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -417,7 +417,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入売価"
-              DTS:DTSID="{6DD668CB-4360-43FA-BEED-916C1E267E5D}"
+              DTS:DTSID="{0410DC53-82EF-4FB7-B1F4-E7BAE637D087}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -425,7 +425,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出数量"
-              DTS:DTSID="{7E33E02C-700F-4B16-81A9-D8C24FE404E4}"
+              DTS:DTSID="{BCBD07D2-5F8C-4709-A1B9-3D1746C4F3CC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -433,7 +433,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出原価(移)"
-              DTS:DTSID="{4CFDBD50-C97A-489A-9B47-63534AD773BD}"
+              DTS:DTSID="{0F441186-DD2F-4E47-841D-4BBEA205626A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -441,7 +441,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出売価"
-              DTS:DTSID="{82C6C239-D06A-433E-821F-6765DE188322}"
+              DTS:DTSID="{95A3ABB9-133F-4C26-8B54-F4B91DF6C99B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -449,7 +449,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)数量"
-              DTS:DTSID="{41F3D520-226F-4EE9-A474-440A26BAC6BA}"
+              DTS:DTSID="{B5128107-BAC2-4823-A905-73F4FBD10948}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -457,7 +457,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)原価(移)"
-              DTS:DTSID="{E4877BAD-C329-45E3-B071-0823DD7425F8}"
+              DTS:DTSID="{09D03A04-CC06-4599-AE2D-BABBEEE6D61C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -465,7 +465,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)売価"
-              DTS:DTSID="{3179B498-286B-4945-BC51-E1996C9868DF}"
+              DTS:DTSID="{8D55CDD6-3E71-4296-B552-BB63C24F0CD4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -473,7 +473,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)数量"
-              DTS:DTSID="{255EE9D1-45C2-4E93-A3C6-43CC3BA80640}"
+              DTS:DTSID="{659FECA3-CA8F-4830-BF74-415DB398D566}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -481,7 +481,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)原価(移)"
-              DTS:DTSID="{B20099A4-CEAB-499D-86A5-1FA803B12AAA}"
+              DTS:DTSID="{47E983B1-E6A1-4B7E-9395-5EB126295847}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -489,7 +489,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)売価"
-              DTS:DTSID="{B809C2DD-373F-4A15-A731-354C3830C6E7}"
+              DTS:DTSID="{6B9AE7FD-0964-4F32-BB8F-231994F731D7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -497,7 +497,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入数量"
-              DTS:DTSID="{A1A22C21-AB33-48DF-9142-7E7E142032F1}"
+              DTS:DTSID="{AD408A7D-1D38-4CD9-8115-6A96C6E0089B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -505,7 +505,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入原価(移)"
-              DTS:DTSID="{37920128-77E6-409F-B5A2-3A1F8B9D5537}"
+              DTS:DTSID="{85DC7C06-0D9C-4879-AADE-B1B0EAC9B375}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -513,7 +513,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入売価"
-              DTS:DTSID="{8B76033C-67C7-49F6-9FE1-C186F9BE0622}"
+              DTS:DTSID="{05D5D55A-21C9-4C52-9EA3-3E16FFD96757}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -521,7 +521,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出数量"
-              DTS:DTSID="{6AF19BA7-C7C2-4D10-9FC1-A8C9B678DA69}"
+              DTS:DTSID="{3642BC78-7620-4FC5-9D05-C37D40EBB80A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -529,7 +529,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出原価(移)"
-              DTS:DTSID="{CAF820C6-2108-49F1-88E2-8D80B34B9885}"
+              DTS:DTSID="{E803414A-256E-46E2-BB1D-5D55C3F48E38}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -537,7 +537,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出売価"
-              DTS:DTSID="{B562E51C-D676-4C85-AE77-0A4B4C6B995A}"
+              DTS:DTSID="{C281CB79-6F7F-41FC-BB8D-C388086FD974}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -545,7 +545,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振入数量(受託分)"
-              DTS:DTSID="{59125ECF-B3CB-4A88-90E5-99A84C9B0C0A}"
+              DTS:DTSID="{EC751D35-AF6E-4188-BF11-C52333A10028}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -553,7 +553,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振出数量(受託分)"
-              DTS:DTSID="{67120C40-C535-46D3-9A2E-5CB44ECFA262}"
+              DTS:DTSID="{1300F08A-9FF3-4F72-9360-F92C043591FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -561,7 +561,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(入)数量(受託分)"
-              DTS:DTSID="{B52D669B-41CA-477F-84F6-65AD44E6CC9D}"
+              DTS:DTSID="{07F23875-1D2B-4653-B13D-01BAA3B24F54}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -569,7 +569,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替(出)数量(受託分)"
-              DTS:DTSID="{CBADD8B0-E8AA-459F-B6DC-CEA74526A29E}"
+              DTS:DTSID="{8BEA13A6-0D23-4271-BA5B-E5D741FAEA1F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -577,7 +577,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振入数量(受託分)"
-              DTS:DTSID="{C16F128A-30AF-4DF5-93AD-091EBF29E1A0}"
+              DTS:DTSID="{DB834240-2176-4538-919D-6AA1B5FD4CA7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -585,7 +585,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="振替振出数量(受託分)"
-              DTS:DTSID="{E0CAD8A9-10C8-4995-BACE-C61315B8B47C}"
+              DTS:DTSID="{14046EF1-F205-446B-AA71-EC31EC2B977A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -593,7 +593,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替数量"
-              DTS:DTSID="{16BE408F-1D52-43C3-9328-CDF8F93DEC13}"
+              DTS:DTSID="{432A936F-944F-47B0-826B-F7272C7119EC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -601,7 +601,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替原価(移)"
-              DTS:DTSID="{726A4282-4800-4DB3-BF72-5BEE57335490}"
+              DTS:DTSID="{D1637DB8-F317-4773-8FEA-577E76838ED3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -609,7 +609,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="経費振替売価"
-              DTS:DTSID="{E1E11C25-E1E1-4B3F-8394-6FA68A99E329}"
+              DTS:DTSID="{F7425263-011E-44EB-A810-BE420E11149D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -617,7 +617,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄数量"
-              DTS:DTSID="{7B5208DC-11C3-4663-B799-78FB832B3106}"
+              DTS:DTSID="{1271FA8C-F418-4EBC-B882-40E50DDA0919}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -625,7 +625,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄原価(移)"
-              DTS:DTSID="{88ADC7B1-1CFF-40E2-9DBF-A5A8F6A9F732}"
+              DTS:DTSID="{87C4C039-0BFE-49B3-85AD-306033EC4ADB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -633,7 +633,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="廃棄売価"
-              DTS:DTSID="{53C3AB64-3A23-434E-9E98-6CE96729A154}"
+              DTS:DTSID="{6E4AB30E-C7FF-46D1-8BC1-5BBAE51C8275}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -641,7 +641,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="調整数量"
-              DTS:DTSID="{7B6E1143-F089-4DF1-B923-3C75441CCE0A}"
+              DTS:DTSID="{315ABB0B-CF07-4472-AB2D-B368AA60882A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -649,7 +649,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="調整原価(移)"
-              DTS:DTSID="{9EEB37B4-AA3B-46D6-B725-54B9CEFDCD3C}"
+              DTS:DTSID="{5CCC76FE-3140-4DAE-8FCE-7649C4483868}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -657,7 +657,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="調整売価"
-              DTS:DTSID="{8A00E102-C680-4F16-A71D-441EEECF2B54}"
+              DTS:DTSID="{A9D8274C-A686-425D-95CC-25D1D7501C52}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -665,7 +665,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売変金額"
-              DTS:DTSID="{927DB79A-FC87-4FA5-80C4-EB928F79041E}"
+              DTS:DTSID="{3423C758-DF7F-47A9-8818-170183BEDCD4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -673,7 +673,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売変金額(受託分)"
-              DTS:DTSID="{C2757304-491C-4485-89E6-1949CA111160}"
+              DTS:DTSID="{C7D2CDBE-9D01-4B28-9406-1D7BE297BE1F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -681,7 +681,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="評価差損益金額"
-              DTS:DTSID="{C63845DA-4A12-4446-A938-BEBB5341B3FE}"
+              DTS:DTSID="{0CB6FFED-21BF-4176-ACFB-499A0B2E6D5F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -689,7 +689,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫数量"
-              DTS:DTSID="{9CE5B90B-623A-4FC4-B000-781186EEA31A}"
+              DTS:DTSID="{6C98AAD0-59A5-435C-BEDB-2E6A909454B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -697,7 +697,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫原価(移)"
-              DTS:DTSID="{1E5CF0EE-3DF4-452D-8699-E554E654F3F0}"
+              DTS:DTSID="{E91513F1-1E38-4A2E-BB0C-A03C528474F1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -705,7 +705,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫売価"
-              DTS:DTSID="{AB3B1B94-DEFD-44BE-86A2-C8D483FC7F94}"
+              DTS:DTSID="{24B8AC82-AA3C-42B9-890D-562966F221AF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -713,7 +713,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫数量(受託分)"
-              DTS:DTSID="{1901E586-BE5F-41AA-A0A0-E8ACCE542C80}"
+              DTS:DTSID="{85C5BD53-78FC-4920-A56B-5EC91A0C21E1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -721,7 +721,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫原価(移)(受託分)"
-              DTS:DTSID="{87DA9B99-BAC0-47AC-9494-D9D69EEDD298}"
+              DTS:DTSID="{4EDA2F8F-8785-4985-AB6A-FA9F2872C05E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -729,7 +729,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="棚卸帳簿在庫売価(受託分)"
-              DTS:DTSID="{DBC66DCC-906C-4E14-8563-6DC21F32F3A2}"
+              DTS:DTSID="{AA609A32-EEBA-4EB4-A24B-33B32D538C01}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -737,7 +737,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫数量"
-              DTS:DTSID="{32677A00-B343-4D42-A847-50F9F72BD26A}"
+              DTS:DTSID="{8231EF57-A3DC-49D3-8678-8217D6F0298B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -745,7 +745,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫原価(移)"
-              DTS:DTSID="{627BF0A3-29D6-4BF8-B6BF-2C08C9D3A876}"
+              DTS:DTSID="{E1D7D92C-FC13-475C-B36E-DB94E70936D6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -753,7 +753,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫売価"
-              DTS:DTSID="{41589C1E-70CD-4E33-AD53-DDA5E19A4AF7}"
+              DTS:DTSID="{BB12C0B5-42B0-47C6-853C-E49690D78484}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -761,7 +761,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫数量(受託分)"
-              DTS:DTSID="{697BE733-62E4-4279-A592-8A43BFD13A56}"
+              DTS:DTSID="{BBAC55A5-3B84-485D-A670-794AC885D036}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -769,7 +769,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫原価(移)(受託分)"
-              DTS:DTSID="{D7BF6A15-4244-4E00-835A-05DC075BDBB1}"
+              DTS:DTSID="{6D34FE55-2920-4914-A2C1-CF3A6B48671F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -777,7 +777,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="実棚在庫売価(受託分)"
-              DTS:DTSID="{2557F24E-FBE0-4FB9-B821-000F9F536FF8}"
+              DTS:DTSID="{F41E8D3E-C903-4211-87C8-2CD3483B9688}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -785,7 +785,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス数量"
-              DTS:DTSID="{1AEDAA85-8EE0-45F9-8118-7BD7595DDCC1}"
+              DTS:DTSID="{F6BEDBB1-B169-488D-9923-36F4855A915D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -793,7 +793,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(移)"
-              DTS:DTSID="{472EF344-EFAE-4714-B8FC-CF8B60034B85}"
+              DTS:DTSID="{D5B3D635-2CA6-4225-9891-E7A4EDB1AE0E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -801,7 +801,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(売還)"
-              DTS:DTSID="{0967EDCF-B9C4-4C7D-8E28-5B0F6B3ECE2F}"
+              DTS:DTSID="{F180FD80-7435-41A3-A415-9CB0D1BFF13E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -809,7 +809,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス売価"
-              DTS:DTSID="{FC94B544-E5EA-4EEB-A7FC-9AA4CFAB02A3}"
+              DTS:DTSID="{466491E0-1823-4945-B2F4-2F55E58EBEA6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -817,7 +817,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス数量(受託分)"
-              DTS:DTSID="{D732A224-770B-48DF-B557-7624FFEBD5AF}"
+              DTS:DTSID="{809C5ADC-52D7-42AD-A169-3EA11A3EFAD4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -825,7 +825,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス原価(移)(受託分)"
-              DTS:DTSID="{029E9BD5-7CEE-4E79-9BEC-3B577A573EE1}"
+              DTS:DTSID="{4E183ECC-C77C-47F3-851F-F88CA7A0B385}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -833,7 +833,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="ロス売価(受託分)"
-              DTS:DTSID="{26AF0764-77DF-4F1A-9EE9-D3C2001B2417}"
+              DTS:DTSID="{524BB622-62E6-4BEA-BE90-2059CE0EAF1E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -841,7 +841,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫数量"
-              DTS:DTSID="{29F1C996-3612-4E6E-910E-766135FD8E15}"
+              DTS:DTSID="{A33FC64F-43B3-41BB-BEDC-65F7EEBE0B76}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -849,7 +849,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫原価(売還)"
-              DTS:DTSID="{3DCB5968-70C8-490B-B546-00AC55282082}"
+              DTS:DTSID="{F62D9526-5AE1-4CCE-B227-45D9035158E8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -857,7 +857,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫原価(移)"
-              DTS:DTSID="{4BC9DD87-D159-41F7-B72A-058A80C8E4B9}"
+              DTS:DTSID="{316D1DD8-B1FA-497C-A695-2D0C53DCB8B3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -865,7 +865,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫売価"
-              DTS:DTSID="{E9A7D119-F0F0-456D-97F2-8A81060CA5F4}"
+              DTS:DTSID="{0AF87FE7-BAB6-4D63-90A9-DF5E9E670C9A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -873,7 +873,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前売還調整額"
-              DTS:DTSID="{192923D1-A7F9-445D-B5A3-54FA27708517}"
+              DTS:DTSID="{6393F122-869E-4E92-9143-141E8A6D5969}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -881,7 +881,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫数量"
-              DTS:DTSID="{F5F81710-18E9-4963-88E2-1E96B9CB805F}"
+              DTS:DTSID="{9C0DFD4C-920D-40AB-A957-C1E035946143}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -889,7 +889,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫原価(売還)"
-              DTS:DTSID="{60D8DB4D-9E76-481C-A1CE-324E1EAF7A60}"
+              DTS:DTSID="{A5D1C306-F67B-43FF-8EA9-3D749B63E572}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -897,7 +897,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫原価(移)"
-              DTS:DTSID="{6017A5F3-B299-4955-A38A-FD6495B9BC0C}"
+              DTS:DTSID="{39551E59-93AF-4398-BB07-C9163854BA86}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -905,7 +905,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫売価"
-              DTS:DTSID="{587ED438-8C3D-48D0-BC1D-94AB46443B51}"
+              DTS:DTSID="{3D8293ED-C12D-444E-9CA0-E262FEA65175}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -913,7 +913,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売還調整額"
-              DTS:DTSID="{6F973352-013B-43D2-899F-328B726907DA}"
+              DTS:DTSID="{4E7C1C5B-E087-4888-BB79-6232CB33DAA2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -921,7 +921,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上原価(売還)"
-              DTS:DTSID="{20D6DD51-1708-4C14-801F-CF2F990A9BA9}"
+              DTS:DTSID="{D7DDA922-D47B-4157-BEFC-29C83B132178}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -929,7 +929,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="売上原価(移)"
-              DTS:DTSID="{1C94A5C4-0E4F-4659-96FD-D665A5BA5883}"
+              DTS:DTSID="{70F051C4-66EB-47E7-8DC2-5ABE5992828A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -938,7 +938,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="原価率(％)(売還)"
-              DTS:DTSID="{9B30D948-08C1-4D89-A21B-AE627D0186C1}"
+              DTS:DTSID="{03C90842-1F4B-40A8-B4B8-58E6C47FA425}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -946,7 +946,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="粗利(売還)"
-              DTS:DTSID="{07BE9024-CB35-4760-A3A6-927F4E8C0EBF}"
+              DTS:DTSID="{58B9CE8E-DED8-4E98-A0BB-8A75690CD878}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -954,7 +954,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="粗利(移)"
-              DTS:DTSID="{A5BB7730-FD14-49BC-B218-7009C6D4DB4F}"
+              DTS:DTSID="{7FD918C7-48E0-4F28-80E0-2C9C8477158A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -962,7 +962,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="前在庫数量(総在庫)"
-              DTS:DTSID="{E28E67C3-9D90-4920-8217-896E25AEABA4}"
+              DTS:DTSID="{18DB0587-84E2-49C4-BB3A-3D81EF94B39F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -970,7 +970,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="在庫数量(総在庫)"
-              DTS:DTSID="{092E617B-4F78-40DD-931E-3EC8505AE978}"
+              DTS:DTSID="{6C8C7A91-70C2-45B7-B26D-9D340525C327}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -978,7 +978,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="単純粗利"
-              DTS:DTSID="{E14DCDC8-BC46-4D88-97D3-DB0B9D7F2403}"
+              DTS:DTSID="{A71AC9CB-B890-4D73-A325-300F29C5AB0E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -986,7 +986,7 @@
               DTS:DataType="20"
               DTS:TextQualified="True"
               DTS:ObjectName="客数"
-              DTS:DTSID="{054C4302-BD3A-4AB6-81E4-81604F7A8E2A}"
+              DTS:DTSID="{048AF137-3EE0-4C84-9520-ECADE079E5AC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -995,7 +995,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="登録者"
-              DTS:DTSID="{B37606B2-C4D2-4C23-B210-474D4168CF76}"
+              DTS:DTSID="{9C1E2B24-2B28-4A99-AFC7-433D0E489A01}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1004,7 +1004,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="変更日"
-              DTS:DTSID="{A6ED3473-4C01-4C33-BB89-704EDB3E57A5}"
+              DTS:DTSID="{2CCE672D-EE04-4197-9A52-C89196303AB8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1013,7 +1013,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="変更時刻"
-              DTS:DTSID="{5153C298-FCAD-4ED4-ABAC-21C47444F555}"
+              DTS:DTSID="{84756E57-FE1C-4157-85C0-E7E64786C3C6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1022,7 +1022,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="略式の UTC タイムスタンプ"
-              DTS:DTSID="{64B733F6-7452-441A-9E76-F7D3F3FAE78C}"
+              DTS:DTSID="{EDC566B5-4E64-4F19-8425-CE0A70C3006E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1034,7 +1034,7 @@
       DTS:ConfigString="Logging.txt"
       DTS:CreationName="Microsoft.LogProviderTextFile"
       DTS:Description="イベントのログ エントリを CSV ファイルに書き込みます"
-      DTS:DTSID="{0C9B9646-E0D6-4514-80BE-5B93F131FFFE}"
+      DTS:DTSID="{9FCB647D-257C-4531-873C-9272CAA9CD3A}"
       DTS:ObjectName="テキスト ファイルの SSIS ログ プロバイダー">
       <DTS:ObjectData>
         <InnerObject />
@@ -1044,7 +1044,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{84409952-E4A5-48CE-99E5-6795C8E39A1E}"
+      DTS:DTSID="{CB37AE75-AC9B-4509-90C9-2D65767A9BC9}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="autoLoggerPath">
@@ -1053,18 +1053,18 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{E5F6BAA1-2A06-400D-9FD6-83484EA85ECB}"
+      DTS:DTSID="{2709F5B5-37E7-42EE-93A5-F948811BFC2C}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="REPLACE(REPLACE(REPLACE((DT_WSTR, 20) (DT_DATE) GETDATE(),&quot;/&quot;,&quot;&quot;),&quot; &quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;)"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="dateTimeStamp">
       <DTS:VariableValue
-        DTS:DataType="8">2017072595425</DTS:VariableValue>
+        DTS:DataType="8">20170420190336</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{39FF4297-D672-45FB-9E02-5617DA10D453}"
+      DTS:DTSID="{EA1EFE68-F57D-4DC3-A841-A095A3D3F709}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="dtNenGetsu">
@@ -1082,7 +1082,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F47EFFA9-C06E-45B9-B723-E11F804C3BD8}"
+      DTS:DTSID="{D69D1BE5-9944-4FDF-9E56-2BAFB8ACF7FF}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="fileFolder">
@@ -1091,7 +1091,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{95E1D64A-33A4-4C0E-880C-F91B498962F9}"
+      DTS:DTSID="{C03F454D-6F22-4F66-9CAC-76F8775AC61E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ftpFileName">
@@ -1100,7 +1100,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{58C2EDF7-B19B-4D4C-8E16-1030BCA46A32}"
+      DTS:DTSID="{4DB526A2-7D24-410C-BDFF-D1684479BD21}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="maxDate">
@@ -1109,7 +1109,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9E4CCB30-A3DF-40A6-9AA0-D69D524CD90D}"
+      DTS:DTSID="{4754D56C-DA57-45E0-B950-C52510EAE055}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="minDate">
@@ -1118,7 +1118,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9B343B60-4634-4FE8-8F31-320D7E54910B}"
+      DTS:DTSID="{5A66196C-B8DF-4531-B9A6-3FCBCB2D5C29}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="packageFolder">
@@ -1127,7 +1127,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{63C22262-8DDD-4255-B6BC-DB66FE591E18}"
+      DTS:DTSID="{8C288F68-4661-4B8C-94D7-A5B692A8B94E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="qryDistNenGetsu">
@@ -1136,7 +1136,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{BC1463A5-5113-4D9A-AA85-B2F751132140}"
+      DTS:DTSID="{40620895-778B-4572-821C-2872375323C3}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="REPLACE( @[User::qryRuikeiUke] , &quot;T_DAY_TEN_SKU_UKEBARAI_RUIKEI_201711&quot;, &quot;T_DAY_TEN_SKU_UKEBARAI_RUIKEI_&quot;+ @[User::strNenGetsu] )"
       DTS:IncludeInDebugDump="2345"
@@ -1147,18 +1147,18 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{25EF099D-25C8-4CC9-A6BB-3A61CF7A5F3A}"
+      DTS:DTSID="{36F2E624-A824-488B-A156-74BC11E516F7}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="REPLACE( @[User::qryUkebarai]  , &quot;T_DAY_TEN_SKU_UKEBARAI_RUIKEI_201711&quot;, &quot;T_DAY_TEN_SKU_UKEBARAI_RUIKEI_&quot;+ @[User::strNenGetsu] )"
+      DTS:Expression="REPLACE(REPLACE(REPLACE( @[User::qryUkebarai]  , &quot;T_DAY_TEN_SKU_UKEBARAI_201711&quot;, &quot;T_DAY_TEN_SKU_UKEBARAI_&quot;+ @[User::strNenGetsu] ), &quot;2017/01/21&quot;, (DT_STR, 10, 932) @[User::minDate] ),&quot;2017/02/20&quot;,(DT_STR, 10, 932)  @[User::maxDate])"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="qryUkebarai">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT UKE.部門コード, MST.仕入先コード,SUM(前在庫数量) AS [前在庫数量(総在庫)],SUM(在庫数量) AS [在庫数量(総在庫)] FROM T_DAY_TEN_SKU_UKEBARAI_RUIKEI_201711 UKE LEFT JOIN M_SHOUHIN_DATA MST ON UKE.SKUコード=MST.ＳＫＵコード WHERE MST.仕入先コード IS NOT NULL GROUP BY UKE.部門コード,MST.仕入先コード</DTS:VariableValue>
+        DTS:DataType="8">SELECT UKE.部門コード,MST.仕入先コード,SUM(前在庫数量) AS [前在庫数量(総在庫)], SUM(在庫数量) AS [在庫数量(総在庫)] FROM T_DAY_TEN_SKU_UKEBARAI_201711 UKE  LEFT JOIN M_SHOUHIN_DATA MST ON  UKE.SKUコード = MST.ＳＫＵコード  WHERE 運用日 BETWEEN '2017/01/21' AND '2017/01/21' AND MST.仕入先コード IS NOT NULL GROUP BY UKE.部門コード,MST.仕入先コード;</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{02F0B4FB-720B-4F2B-B9C3-F90376828711}"
+      DTS:DTSID="{ED6A45DC-A4E9-425D-979A-6B06D34C01F4}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strKaikeiKi">
@@ -1168,7 +1168,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7C7C41AE-6348-498A-9321-C4397EB32383}"
+      DTS:DTSID="{D286F658-CCFC-4497-8218-0A120EC163C8}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="(DT_DATE)(LEFT( @[User::strNenGetsu] ,4) + &quot;-08-21&quot;)"
       DTS:IncludeInDebugDump="2345"
@@ -1179,7 +1179,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B4FDC0A4-EA4C-48D3-ACDD-64F71F183C03}"
+      DTS:DTSID="{B03FE4CF-4786-43B5-8AB3-4EC15E5BC380}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="strNenGetsu">
@@ -1188,14 +1188,14 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D8F30F36-7CD0-4660-B719-AE999E0EEFC0}"
+      DTS:DTSID="{BE3A765F-FAD5-4EDA-AE32-D88C89D4E923}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="(DT_DATE) ((DT_WSTR,4)YEAR(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; + (DT_WSTR,2)MONTH(DATEADD(&quot;Day&quot;,0, GETDATE() )) + &quot;-&quot; +  (DT_WSTR,2)RIGHT(&quot;00&quot; +(DT_WSTR,2)DAY(DATEADD(&quot;Day&quot;,0, GETDATE() )),2))"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="today">
       <DTS:VariableValue
-        DTS:DataType="7">7/25/2017</DTS:VariableValue>
+        DTS:DataType="7">4/20/2017</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:LoggingOptions
@@ -1278,7 +1278,7 @@
     </DTS:Property>
     <DTS:SelectedLogProviders>
       <DTS:SelectedLogProvider
-        DTS:InstanceID="{0C9B9646-E0D6-4514-80BE-5B93F131FFFE}" />
+        DTS:InstanceID="{9FCB647D-257C-4531-873C-9272CAA9CD3A}" />
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
@@ -1286,7 +1286,7 @@
       DTS:refId="Package\DIST年度_月度と日付レンジ"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F499B06E-0FA8-4837-AECE-176614B73A13}"
+      DTS:DTSID="{A08BFC01-FF62-42A9-A25A-56C373C74D01}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="DIST年度_月度と日付レンジ"
@@ -1297,7 +1297,7 @@
         DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{EBFA6B32-A1D7-4322-9BA2-77D92AFE07C0}"
+          SQLTask:Connection="{98D29CC7-3C61-4667-87C9-F333E2D2140D}"
           SQLTask:SqlStmtSourceType="Variable"
           SQLTask:SqlStatementSource="User::qryDistNenGetsu"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
@@ -1311,8 +1311,7 @@
       DTS:refId="Package\FTP PUT"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{1385D0FF-37DA-4B00-9860-984EEE460F60}"
+      DTS:DTSID="{6f22b63a-efa6-4d15-bf29-e803f10459ae}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="FTP PUT"
@@ -1826,7 +1825,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       DTS:refId="Package\TSVファイル作成"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{DFB2A0F9-61E6-4E03-A6F2-ABCC489BCEFE}"
+      DTS:DTSID="{56B12624-E0E3-493B-9C17-447DD06EC7BA}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="TSVファイル作成"
@@ -5524,7 +5523,7 @@ ORDER BY 年度,会計期間,月度,部門,仕入先コード</property>
       DTS:refId="Package\トランケートIFテーブル"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{2E8D5CC9-4786-40B9-BF2D-75EA86451044}"
+      DTS:DTSID="{8BA7C454-5F12-408A-9CB8-2464F0157400}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="トランケートIFテーブル"
@@ -5535,7 +5534,7 @@ ORDER BY 年度,会計期間,月度,部門,仕入先コード</property>
         DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{EBFA6B32-A1D7-4322-9BA2-77D92AFE07C0}"
+          SQLTask:Connection="{98D29CC7-3C61-4667-87C9-F333E2D2140D}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE IF_RUIKEI_BUMON_SIRESAKI_BETSU_EIGYOU;&#xA;GO&#xA;TRUNCATE TABLE IF_RUIKEI_BUMON_SIRESAKI_BETSU_EIGYOU_TEMP;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -5543,14 +5542,14 @@ ORDER BY 年度,会計期間,月度,部門,仕入先コード</property>
       DTS:refId="Package\年度月度Wise Loop"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
-      DTS:DTSID="{80388CE9-494B-434A-BAA6-694AD4EB4264}"
+      DTS:DTSID="{37494AA0-FED0-4635-B1EB-B5960DB4072F}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
       DTS:ObjectName="年度月度Wise Loop">
       <DTS:ForEachEnumerator
         DTS:CreationName="Microsoft.ForEachADOEnumerator"
-        DTS:DTSID="{DD04E1B7-B3C1-4FF8-B901-5DB1E4B03168}"
-        DTS:ObjectName="{DD04E1B7-B3C1-4FF8-B901-5DB1E4B03168}">
+        DTS:DTSID="{DA42CCC1-0408-42EC-AA56-98E5575A474A}"
+        DTS:ObjectName="{DA42CCC1-0408-42EC-AA56-98E5575A474A}">
         <DTS:ObjectData>
           <FEEADO
             EnumType="EnumerateRowsInFirstTable"
@@ -5565,7 +5564,7 @@ ORDER BY 年度,会計期間,月度,部門,仕入先コード</property>
           DTS:refId="Package\年度月度Wise Loop\TEMPtoMAIN_AGR"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{707B4842-33D4-42DA-B853-F757C189F327}"
+          DTS:DTSID="{54FDC09D-FEBE-4288-8A7D-1956D0179BB8}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="TEMPtoMAIN_AGR"
@@ -13028,7 +13027,7 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
           DTS:refId="Package\年度月度Wise Loop\トランケートIFテーブル"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{889A4D4A-A35D-498F-A7E4-5959C352A219}"
+          DTS:DTSID="{2d2b9fd7-fc59-4a0d-b961-0587689ad91c}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="トランケートIFテーブル"
@@ -13039,7 +13038,7 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
             DTS:FilterKind="0" />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{EBFA6B32-A1D7-4322-9BA2-77D92AFE07C0}"
+              SQLTask:Connection="{98D29CC7-3C61-4667-87C9-F333E2D2140D}"
               SQLTask:SqlStatementSource="TRUNCATE TABLE IF_RUIKEI_BUMON_SIRESAKI_BETSU_EIGYOU_TEMP;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -13047,7 +13046,7 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
           DTS:refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{66193B3C-9A9A-4CB0-9AAC-A95151FD8986}"
+          DTS:DTSID="{C94783B8-6B71-47DF-B052-ACBCC28EE4B8}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="部門仕入先別営業報告書IFファイル作成"
@@ -16150,11 +16149,11 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
                   </outputs>
                 </component>
                 <component
-                  refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5"
+                  refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="OLE DB Destination 5"
+                  name="OLE DB Destination 4"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -16207,7 +16206,7 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Connections[OleDbConnection]"
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Connections[OleDbConnection]"
                       connectionManagerID="Package.ConnectionManagers[MINIMD]"
                       connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
                       description="The OLE DB runtime connection used to access the database."
@@ -16215,533 +16214,533 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input]"
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].Columns[仕入先コード]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].Columns[仕入先コード]"
                           cachedCodepage="932"
                           cachedDataType="str"
                           cachedLength="6"
                           cachedName="仕入先コード"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[仕入先コード]" />
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[仕入先コード]" />
                         <inputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].Columns[前在庫数量(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].Columns[前在庫数量(総在庫)]"
                           cachedDataType="i4"
                           cachedName="前在庫数量(総在庫)"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量(総在庫)]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]" />
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量(総在庫)]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]" />
                         <inputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].Columns[在庫数量(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].Columns[在庫数量(総在庫)]"
                           cachedDataType="i4"
                           cachedName="在庫数量(総在庫)"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量(総在庫)]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]" />
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量(総在庫)]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]" />
                         <inputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].Columns[部門コード]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].Columns[部門コード]"
                           cachedCodepage="932"
                           cachedDataType="str"
                           cachedLength="3"
                           cachedName="部門コード"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[部門]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[部門コード]" />
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[部門]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[部門コード]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[年度]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[年度]"
                           codePage="932"
                           dataType="str"
                           length="4"
                           name="年度" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[会計期間]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[会計期間]"
                           codePage="932"
                           dataType="str"
                           length="2"
                           name="会計期間" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[月度]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[月度]"
                           codePage="932"
                           dataType="str"
                           length="2"
                           name="月度" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[部門]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[部門]"
                           codePage="932"
                           dataType="str"
                           length="3"
                           name="部門" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入先コード]"
                           codePage="932"
                           dataType="str"
                           length="10"
                           name="仕入先コード" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上数量]"
                           dataType="i8"
                           name="総売上数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上高原価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上高原価]"
                           dataType="i8"
                           name="総売上高原価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上高]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上高]"
                           dataType="i8"
                           name="総売上高" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品数量]"
                           dataType="i8"
                           name="売上返品数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品原価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品原価]"
                           dataType="i8"
                           name="売上返品原価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品金額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品金額]"
                           dataType="i8"
                           name="売上返品金額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上数量(受託分)]"
                           dataType="i8"
                           name="総売上数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上高原価(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上高原価(受託分)]"
                           dataType="i8"
                           name="総売上高原価(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総売上高(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総売上高(受託分)]"
                           dataType="i8"
                           name="総売上高(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品数量(受託分)]"
                           dataType="i8"
                           name="売上返品数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品原価(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品原価(受託分)]"
                           dataType="i8"
                           name="売上返品原価(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上返品金額(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上返品金額(受託分)]"
                           dataType="i8"
                           name="売上返品金額(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上値引金額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上値引金額]"
                           dataType="i8"
                           name="売上値引金額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[純売上高]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[純売上高]"
                           dataType="i8"
                           name="純売上高" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(総在庫)]"
                           dataType="i8"
                           name="総仕入数量(総在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入原価(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入原価(総在庫)]"
                           dataType="i8"
                           name="総仕入原価(総在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入売価(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入売価(総在庫)]"
                           dataType="i8"
                           name="総仕入売価(総在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(受託分)]"
                           dataType="i8"
                           name="総仕入数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(純在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入数量(純在庫)]"
                           dataType="i8"
                           name="総仕入数量(純在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入原価(純在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入原価(純在庫)]"
                           dataType="i8"
                           name="総仕入原価(純在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[総仕入売価(純在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[総仕入売価(純在庫)]"
                           dataType="i8"
                           name="総仕入売価(純在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品数量]"
                           dataType="i8"
                           name="仕入返品数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品原価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品原価]"
                           dataType="i8"
                           name="仕入返品原価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品売価]"
                           dataType="i8"
                           name="仕入返品売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入返品数量(受託分)]"
                           dataType="i8"
                           name="仕入返品数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[純仕入数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[純仕入数量]"
                           dataType="i8"
                           name="純仕入数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[純仕入原価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[純仕入原価]"
                           dataType="i8"
                           name="純仕入原価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[純仕入売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[純仕入売価]"
                           dataType="i8"
                           name="純仕入売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計数量]"
                           dataType="i8"
                           name="仕入合計数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計原価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計原価]"
                           dataType="i8"
                           name="仕入合計原価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入合計売価]"
                           dataType="i8"
                           name="仕入合計売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[リベート]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[リベート]"
                           dataType="i8"
                           name="リベート" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロイヤリティ]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロイヤリティ]"
                           dataType="i8"
                           name="ロイヤリティ" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[為替差損益]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[為替差損益]"
                           dataType="i8"
                           name="為替差損益" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入値引]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入値引]"
                           dataType="i8"
                           name="仕入値引" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[仕入値引合計金額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[仕入値引合計金額]"
                           dataType="i8"
                           name="仕入値引合計金額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振入数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振入数量]"
                           dataType="i8"
                           name="振入数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振入原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振入原価(移)]"
                           dataType="i8"
                           name="振入原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振入売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振入売価]"
                           dataType="i8"
                           name="振入売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振出数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振出数量]"
                           dataType="i8"
                           name="振出数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振出原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振出原価(移)]"
                           dataType="i8"
                           name="振出原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振出売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振出売価]"
                           dataType="i8"
                           name="振出売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)数量]"
                           dataType="i8"
                           name="振替(入)数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)原価(移)]"
                           dataType="i8"
                           name="振替(入)原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)売価]"
                           dataType="i8"
                           name="振替(入)売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)数量]"
                           dataType="i8"
                           name="振替(出)数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)原価(移)]"
                           dataType="i8"
                           name="振替(出)原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)売価]"
                           dataType="i8"
                           name="振替(出)売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振入数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振入数量]"
                           dataType="i8"
                           name="振替振入数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振入原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振入原価(移)]"
                           dataType="i8"
                           name="振替振入原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振入売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振入売価]"
                           dataType="i8"
                           name="振替振入売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振出数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振出数量]"
                           dataType="i8"
                           name="振替振出数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振出原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振出原価(移)]"
                           dataType="i8"
                           name="振替振出原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振出売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振出売価]"
                           dataType="i8"
                           name="振替振出売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振入数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振入数量(受託分)]"
                           dataType="i8"
                           name="振入数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振出数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振出数量(受託分)]"
                           dataType="i8"
                           name="振出数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(入)数量(受託分)]"
                           dataType="i8"
                           name="振替(入)数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替(出)数量(受託分)]"
                           dataType="i8"
                           name="振替(出)数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振入数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振入数量(受託分)]"
                           dataType="i8"
                           name="振替振入数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[振替振出数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[振替振出数量(受託分)]"
                           dataType="i8"
                           name="振替振出数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[経費振替数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[経費振替数量]"
                           dataType="i8"
                           name="経費振替数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[経費振替原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[経費振替原価(移)]"
                           dataType="i8"
                           name="経費振替原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[経費振替売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[経費振替売価]"
                           dataType="i8"
                           name="経費振替売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[廃棄数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[廃棄数量]"
                           dataType="i8"
                           name="廃棄数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[廃棄原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[廃棄原価(移)]"
                           dataType="i8"
                           name="廃棄原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[廃棄売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[廃棄売価]"
                           dataType="i8"
                           name="廃棄売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[調整数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[調整数量]"
                           dataType="i8"
                           name="調整数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[調整原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[調整原価(移)]"
                           dataType="i8"
                           name="調整原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[調整売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[調整売価]"
                           dataType="i8"
                           name="調整売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売変金額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売変金額]"
                           dataType="i8"
                           name="売変金額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売変金額(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売変金額(受託分)]"
                           dataType="i8"
                           name="売変金額(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[評価差損益金額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[評価差損益金額]"
                           dataType="i8"
                           name="評価差損益金額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫数量]"
                           dataType="i8"
                           name="棚卸帳簿在庫数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫原価(移)]"
                           dataType="i8"
                           name="棚卸帳簿在庫原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫売価]"
                           dataType="i8"
                           name="棚卸帳簿在庫売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫数量(受託分)]"
                           dataType="i8"
                           name="棚卸帳簿在庫数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫原価(移)(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫原価(移)(受託分)]"
                           dataType="i8"
                           name="棚卸帳簿在庫原価(移)(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫売価(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[棚卸帳簿在庫売価(受託分)]"
                           dataType="i8"
                           name="棚卸帳簿在庫売価(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫数量]"
                           dataType="i8"
                           name="実棚在庫数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫原価(移)]"
                           dataType="i8"
                           name="実棚在庫原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫売価]"
                           dataType="i8"
                           name="実棚在庫売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫数量(受託分)]"
                           dataType="i8"
                           name="実棚在庫数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫原価(移)(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫原価(移)(受託分)]"
                           dataType="i8"
                           name="実棚在庫原価(移)(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫売価(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[実棚在庫売価(受託分)]"
                           dataType="i8"
                           name="実棚在庫売価(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス数量]"
                           dataType="i8"
                           name="ロス数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(移)]"
                           dataType="i8"
                           name="ロス原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(売還)]"
                           dataType="i8"
                           name="ロス原価(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス売価]"
                           dataType="i8"
                           name="ロス売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス数量(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス数量(受託分)]"
                           dataType="i8"
                           name="ロス数量(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(移)(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス原価(移)(受託分)]"
                           dataType="i8"
                           name="ロス原価(移)(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[ロス売価(受託分)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[ロス売価(受託分)]"
                           dataType="i8"
                           name="ロス売価(受託分)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量]"
                           dataType="i8"
                           name="前在庫数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫原価(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫原価(売還)]"
                           dataType="i8"
                           name="前在庫原価(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫原価(移)]"
                           dataType="i8"
                           name="前在庫原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫売価]"
                           dataType="i8"
                           name="前在庫売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前売還調整額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前売還調整額]"
                           dataType="i8"
                           name="前売還調整額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量]"
                           dataType="i8"
                           name="在庫数量" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫原価(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫原価(売還)]"
                           dataType="i8"
                           name="在庫原価(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫原価(移)]"
                           dataType="i8"
                           name="在庫原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫売価]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫売価]"
                           dataType="i8"
                           name="在庫売価" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売還調整額]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売還調整額]"
                           dataType="i8"
                           name="売還調整額" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上原価(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上原価(売還)]"
                           dataType="i8"
                           name="売上原価(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[売上原価(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[売上原価(移)]"
                           dataType="i8"
                           name="売上原価(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[原価率(％)(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[原価率(％)(売還)]"
                           dataType="r8"
                           name="原価率(％)(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[粗利(売還)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[粗利(売還)]"
                           dataType="i8"
                           name="粗利(売還)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[粗利(移)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[粗利(移)]"
                           dataType="i8"
                           name="粗利(移)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[前在庫数量(総在庫)]"
                           dataType="i8"
                           name="前在庫数量(総在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量(総在庫)]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[在庫数量(総在庫)]"
                           dataType="i8"
                           name="在庫数量(総在庫)" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[単純粗利]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[単純粗利]"
                           dataType="i8"
                           name="単純粗利" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[客数]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[客数]"
                           dataType="i8"
                           name="客数" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[登録者]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[登録者]"
                           codePage="932"
                           dataType="str"
                           length="12"
                           name="登録者" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[変更日]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[変更日]"
                           codePage="932"
                           dataType="str"
                           length="8"
                           name="変更日" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[変更時刻]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[変更時刻]"
                           codePage="932"
                           dataType="str"
                           length="6"
                           name="変更時刻" />
                         <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input].ExternalColumns[略式の UTC タイムスタンプ]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input].ExternalColumns[略式の UTC タイムスタンプ]"
                           codePage="932"
                           dataType="str"
                           length="14"
@@ -16751,22 +16750,22 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -17307,6 +17306,180 @@ WHERE 部門 NOT IN ('081','082','083','084','085','086','087','088','089')</pro
                   </outputs>
                 </component>
                 <component
+                  refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="受け払い"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 	UKE.部門コード, 	 MST.仕入先コード, 	 SUM(前在庫数量) AS [前在庫数量(総在庫)] 	,SUM(在庫数量)   AS [在庫数量(総在庫)] 
+FROM T_DAY_TEN_SKU_UKEBARAI_201711  UKE LEFT JOIN M_SHOUHIN_DATA MST ON UKE.SKUコード = MST.ＳＫＵコード 
+WHERE 運用日 between ? and ? GROUP BY UKE.部門コード,MST.仕入先コード;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::qryUkebarai</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">932</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{4754D56C-DA57-45E0-B950-C52510EAE055};"Parameter1:Input",{4DB526A2-7D24-410C-BDFF-D1684479BD21};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MINIMD]"
+                      connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[部門コード]"
+                          codePage="932"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[部門コード]"
+                          length="3"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[部門コード]"
+                          name="部門コード"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[仕入先コード]"
+                          codePage="932"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
+                          length="6"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[仕入先コード]"
+                          name="仕入先コード"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[前在庫数量(総在庫)]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]"
+                          name="前在庫数量(総在庫)"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[在庫数量(総在庫)]"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]"
+                          name="在庫数量(総在庫)"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[部門コード]"
+                          codePage="932"
+                          dataType="str"
+                          length="3"
+                          name="部門コード" />
+                        <externalMetadataColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
+                          codePage="932"
+                          dataType="str"
+                          length="6"
+                          name="仕入先コード" />
+                        <externalMetadataColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[前在庫数量(総在庫)]"
+                          dataType="i4"
+                          name="前在庫数量(総在庫)" />
+                        <externalMetadataColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output].ExternalColumns[在庫数量(総在庫)]"
+                          dataType="i4"
+                          name="在庫数量(総在庫)" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[部門コード]"
+                          codePage="932"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[部門コード]"
+                          name="部門コード" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
+                          codePage="932"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
+                          name="仕入先コード" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[前在庫数量(総在庫)]"
+                          dataType="i4"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[前在庫数量(総在庫)]"
+                          name="前在庫数量(総在庫)" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[在庫数量(総在庫)]"
+                          dataType="i4"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[在庫数量(総在庫)]"
+                          name="在庫数量(総在庫)" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\営業報告書"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -17416,7 +17589,7 @@ GROUP BY 部門,仕入先コード;</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{B4FDC0A4-EA4C-48D3-ACDD-64F71F183C03};</property>
+                      name="ParameterMapping">"Parameter0:Input",{B03FE4CF-4786-43B5-8AB3-4EC15E5BC380};</property>
                   </properties>
                   <connections>
                     <connection
@@ -18592,7 +18765,7 @@ GROUP BY MST.部門コード,MST.仕入先コード;</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{7C7C41AE-6348-498A-9321-C4397EB32383};"Parameter1:Input",{58C2EDF7-B19B-4D4C-8E16-1030BCA46A32};</property>
+                      name="ParameterMapping">"Parameter0:Input",{D286F658-CCFC-4497-8218-0A120EC163C8};"Parameter1:Input",{4DB526A2-7D24-410C-BDFF-D1684479BD21};</property>
                   </properties>
                   <connections>
                     <connection
@@ -19025,178 +19198,6 @@ GROUP BY MST.部門コード,MST.仕入先コード;</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB Source"
-                  name="累計在庫"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset"></property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable">User::qryUkebarai</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">932</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">3</property>
-                    <property
-                      dataType="System.String"
-                      description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[MINIMD]"
-                      connectionManagerRefId="Package.ConnectionManagers[MINIMD]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output]"
-                      name="OLE DB Source Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[部門コード]"
-                          codePage="932"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[部門コード]"
-                          length="3"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[部門コード]"
-                          name="部門コード"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[仕入先コード]"
-                          codePage="932"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
-                          length="6"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[仕入先コード]"
-                          name="仕入先コード"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[前在庫数量(総在庫)]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[前在庫数量(総在庫)]"
-                          name="前在庫数量(総在庫)"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[在庫数量(総在庫)]"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].Columns[在庫数量(総在庫)]"
-                          name="在庫数量(総在庫)"
-                          truncationRowDisposition="FailComponent" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[部門コード]"
-                          codePage="932"
-                          dataType="str"
-                          length="3"
-                          name="部門コード" />
-                        <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[仕入先コード]"
-                          codePage="932"
-                          dataType="str"
-                          length="6"
-                          name="仕入先コード" />
-                        <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[前在庫数量(総在庫)]"
-                          dataType="i4"
-                          name="前在庫数量(総在庫)" />
-                        <externalMetadataColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output].ExternalColumns[在庫数量(総在庫)]"
-                          dataType="i4"
-                          name="在庫数量(総在庫)" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output]"
-                      isErrorOut="true"
-                      name="OLE DB Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[部門コード]"
-                          codePage="932"
-                          dataType="str"
-                          length="3"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[部門コード]"
-                          name="部門コード" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
-                          codePage="932"
-                          dataType="str"
-                          length="6"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[仕入先コード]"
-                          name="仕入先コード" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[前在庫数量(総在庫)]"
-                          dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[前在庫数量(総在庫)]"
-                          name="前在庫数量(総在庫)" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[在庫数量(総在庫)]"
-                          dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[在庫数量(総在庫)]"
-                          name="在庫数量(総在庫)" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
                   refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\調整データ"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -19264,7 +19265,7 @@ GROUP BY
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping">"Parameter0:Input",{7C7C41AE-6348-498A-9321-C4397EB32383};"Parameter1:Input",{58C2EDF7-B19B-4D4C-8E16-1030BCA46A32};</property>
+                      name="ParameterMapping">"Parameter0:Input",{D286F658-CCFC-4497-8218-0A120EC163C8};"Parameter1:Input",{4DB526A2-7D24-410C-BDFF-D1684479BD21};</property>
                   </properties>
                   <connections>
                     <connection
@@ -19540,9 +19541,9 @@ GROUP BY
                   startId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\RUIKEI受け払い.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成.Paths[OLE DB Source Output4]"
-                  endId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5.Inputs[OLE DB Destination Input]"
+                  endId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
-                  startId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫.Outputs[OLE DB Source Output]" />
+                  startId="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -19552,7 +19553,7 @@ GROUP BY
         <DTS:PrecedenceConstraint
           DTS:refId="Package\年度月度Wise Loop.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{B44D2E20-FE08-48EC-B8E6-7573F2211FD3}"
+          DTS:DTSID="{D571D205-5D76-4079-9F05-4364F5D8DEA8}"
           DTS:From="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -19560,7 +19561,7 @@ GROUP BY
         <DTS:PrecedenceConstraint
           DTS:refId="Package\年度月度Wise Loop.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{D8F31018-782F-4425-9077-D5DD8E554371}"
+          DTS:DTSID="{8A828CBC-7A43-4921-A5B5-4002594A8692}"
           DTS:From="Package\年度月度Wise Loop\トランケートIFテーブル"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
@@ -19569,26 +19570,26 @@ GROUP BY
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{D6C686A1-B699-4322-9267-78566476A4AA}"
-          DTS:ObjectName="{D6C686A1-B699-4322-9267-78566476A4AA}"
+          DTS:DTSID="{35C1D74C-0A13-49C3-A446-F15DD1F54435}"
+          DTS:ObjectName="{35C1D74C-0A13-49C3-A446-F15DD1F54435}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::strNenGetsu" />
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{9D8DB4AE-F76F-4988-A990-EEF2960692C2}"
-          DTS:ObjectName="{9D8DB4AE-F76F-4988-A990-EEF2960692C2}"
+          DTS:DTSID="{781169B6-C032-4915-9A08-F0BBB616DC5F}"
+          DTS:ObjectName="{781169B6-C032-4915-9A08-F0BBB616DC5F}"
           DTS:ValueIndex="1"
           DTS:VariableName="User::minDate" />
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{CF3392B3-4D54-409D-AB09-3504D8960270}"
-          DTS:ObjectName="{CF3392B3-4D54-409D-AB09-3504D8960270}"
+          DTS:DTSID="{8088C800-8209-42F3-A101-6F60B2546466}"
+          DTS:ObjectName="{8088C800-8209-42F3-A101-6F60B2546466}"
           DTS:ValueIndex="2"
           DTS:VariableName="User::maxDate" />
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{CF0CC5AA-ADC6-4170-992E-0EDEFECE5568}"
-          DTS:ObjectName="{CF0CC5AA-ADC6-4170-992E-0EDEFECE5568}"
+          DTS:DTSID="{4F609100-554F-460D-B3AD-A1A539A0660C}"
+          DTS:ObjectName="{4F609100-554F-460D-B3AD-A1A539A0660C}"
           DTS:ValueIndex="3"
           DTS:VariableName="User::strKaikeiKi" />
       </DTS:ForEachVariableMappings>
@@ -19598,7 +19599,7 @@ GROUP BY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{3BB194BA-858C-45C9-923B-B47858FEBECD}"
+      DTS:DTSID="{0B18F971-332D-4ECF-A4B1-28B3C1DA682B}"
       DTS:From="Package\トランケートIFテーブル"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -19606,7 +19607,7 @@ GROUP BY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{7216E7AA-4223-47B8-8D4D-A63BF4860FBF}"
+      DTS:DTSID="{AAF682DB-6C34-42BA-8B6D-992759BCBB0C}"
       DTS:From="Package\DIST年度_月度と日付レンジ"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -19614,7 +19615,7 @@ GROUP BY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{41D2FDE9-C904-47B0-9918-77192FCF6A60}"
+      DTS:DTSID="{173A87F8-A368-4001-9635-D15322AB70C1}"
       DTS:From="Package\年度月度Wise Loop"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -19622,7 +19623,7 @@ GROUP BY
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{8BFBFB95-40E2-48B8-88DF-66AA6490EA8C}"
+      DTS:DTSID="{1D7869BC-8060-4447-9DB7-47720C9C4896}"
       DTS:From="Package\TSVファイル作成"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -19853,7 +19854,7 @@ GROUP BY
           Text="R052: RUIKEI BUMON SIIRESAKI"
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="225,40"
+          Size="225,39"
           Id="eb31ebbb-e76b-4459-8175-5f2802ce4ac5"
           TopLeft="15,63" />
       </GraphLayout>
@@ -20062,6 +20063,10 @@ GROUP BY
           TopLeft="290.5,42.5" />
         <NodeLayout
           Size="180,42"
+          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4"
+          TopLeft="1017.5,172.5" />
+        <NodeLayout
+          Size="180,42"
           Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 2"
           TopLeft="523.5,172.5" />
         <NodeLayout
@@ -20082,12 +20087,38 @@ GROUP BY
           TopLeft="765.5,170.5" />
         <NodeLayout
           Size="180,42"
+          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い"
+          TopLeft="1017.5,49.5" />
+        <NodeLayout
+          Size="180,42"
           Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination"
           TopLeft="57.5,169.5" />
         <NodeLayout
           Size="180,42"
           Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\RUIKEI受け払い"
           TopLeft="765.5,46.5" />
+        <EdgeLayout
+          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成.Paths[OLE DB Source Output4]"
+          TopLeft="1107.5,91.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成.Paths[OLE DB Source Output3]"
           TopLeft="855.5,88.5">
@@ -20176,48 +20207,6 @@ GROUP BY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="122,42"
-          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫"
-          TopLeft="1027,43" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5"
-          TopLeft="1013,163" />
-        <EdgeLayout
-          Id="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成.Paths[OLE DB Source Output4]"
-          TopLeft="1088,85">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15,78"
-              Start="0,0"
-              End="15,70.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35"
-                    Point2="0,39"
-                    Point3="4,39" />
-                  <mssgle:LineSegment
-                    End="11,39" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11,39"
-                    Point2="15,39"
-                    Point3="15,43" />
-                  <mssgle:LineSegment
-                    End="15,70.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -20226,6 +20215,19 @@ GROUP BY
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 4">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -20285,6 +20287,14 @@ GROUP BY
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\受け払い">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination">
     <Properties>
       <Property>
@@ -20302,27 +20312,6 @@ GROUP BY
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\累計在庫">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\年度月度Wise Loop\部門仕入先別営業報告書IFファイル作成\OLE DB Destination 5">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
